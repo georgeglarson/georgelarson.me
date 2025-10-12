@@ -7,11 +7,12 @@ interface HuggingFaceSuccess {
   generated_text?: string;
 }
 
-const DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.3";
+const DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.2";
 const ALLOWED_MODELS = new Set([
   DEFAULT_MODEL,
-  "meta-llama/Llama-3-8b-chat-hf",
-  "google/gemma-2-9b-it"
+  "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  "google/flan-t5-xxl",
+  "tiiuae/falcon-7b-instruct"
 ]);
 
 const JSON_ERROR = { error: "Unable to process request" };
