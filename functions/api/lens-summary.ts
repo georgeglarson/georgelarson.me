@@ -16,7 +16,10 @@ const ALLOWED_MODELS = new Set([
 
 const JSON_ERROR = { error: "Unable to process request" };
 
-export const onRequestPost = async ({ request, env }: PagesContext) => {
+export const onRequest = async ({ request, env }: PagesContext) => {
+  if (request.method.toUpperCase() !== "POST") {
+    return jsonResponse({ error: "Method not allowed" }, 405);
+  }
 
   let payload: LensRequest;
   try {
@@ -46,7 +49,7 @@ export const onRequestPost = async ({ request, env }: PagesContext) => {
   let resumeText = "";
   try {
     const resumeUrl = new URL("/resume.txt", request.url);
-    const resumeResp = await env.ASSETS.fetch(resumeUrl.toString());
+    const resumeResp = await env.ASSETS.fetch(new Request(resumeUrl.toString(), request));
     if (!resumeResp.ok) throw new Error(`Status ${resumeResp.status}`);
     resumeText = await resumeResp.text();
   } catch (err) {
