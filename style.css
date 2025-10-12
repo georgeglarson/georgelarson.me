@@ -178,6 +178,14 @@ iframe.embed{
 .lens{
   margin:24px 0 32px;
 }
+.lens-live,
+.lens-saved{
+  margin:26px 0;
+}
+.lens-live h3,
+.lens-saved h3{
+  color:var(--accent);
+}
 .lens-form{
   display:flex;
   flex-wrap:wrap;

@@ -14,31 +14,40 @@
 
     <section class="lens" aria-label="resume lenses">
       <h2>view the resume through a specific lens</h2>
-      <p class="hint">Generate a fresh summary with the Hugging Face Inference API, or fall back to precomputed lenses if you prefer.</p>
+      <p class="hint">Live summaries run on Cloudflare using the Hugging Face Inference API (token stays server-side). Saved lenses remain available for quick scanning.</p>
 
-      <form id="lens-form" class="lens-form">
-        <label class="lens-field">
-          <span>Focus</span>
-          <input id="lens-input" type="text" name="lens" maxlength="240" placeholder="e.g., AI privacy, manufacturing ops, leadership style" required />
-        </label>
-        <label class="lens-field">
-          <span>Model</span>
-          <select id="lens-model" name="model">
-            <option value="mistralai/Mistral-7B-Instruct-v0.3">Mistral 7B Instruct (default)</option>
-            <option value="meta-llama/Llama-3-8b-chat-hf">Llama 3 8B Chat</option>
-            <option value="google/gemma-2-9b-it">Gemma 2 9B Instruct</option>
-          </select>
-        </label>
-        <button type="submit" id="lens-submit">Generate summary</button>
-      </form>
+      <div class="lens-live">
+        <h3>Generate a fresh take</h3>
+        <form id="lens-form" class="lens-form">
+          <label class="lens-field">
+            <span>Focus</span>
+            <input id="lens-input" type="text" name="lens" maxlength="240" placeholder="e.g., AI privacy, manufacturing uptime, leadership style" required />
+          </label>
+          <label class="lens-field">
+            <span>Model</span>
+            <select id="lens-model" name="model">
+              <option value="mistralai/Mistral-7B-Instruct-v0.3">Mistral 7B Instruct (default)</option>
+              <option value="meta-llama/Llama-3-8b-chat-hf">Llama 3 8B Chat</option>
+              <option value="google/gemma-2-9b-it">Gemma 2 9B Instruct</option>
+            </select>
+          </label>
+          <button type="submit" id="lens-submit">Generate summary</button>
+        </form>
+        <p class="hint">Need ideas? These prompts showcase how the tool reacts.</p>
+        <div class="lens-suggestions" id="lens-suggestions" aria-label="Quick lens suggestions"></div>
+        <div id="lens-status" class="hint" role="status" aria-live="polite">Describe a focus and press enter to generate a custom summary.</div>
+        <article id="live-detail" class="lens-panel" aria-live="polite">
+          <p class="hint">No live summary yet. Submit the form to see the resume reframed for your focus.</p>
+        </article>
+      </div>
 
-      <div class="lens-suggestions" id="lens-suggestions" aria-label="Quick lens suggestions"></div>
-      <div id="lens-status" class="hint" role="status" aria-live="polite"></div>
-
-      <div id="lens-menu" class="lens-buttons" role="tablist" aria-label="Available resume lenses"></div>
-      <article id="lens-detail" class="lens-panel" role="tabpanel" tabindex="0" aria-live="polite">
-        <p class="hint">Select a lens or generate a new one to see an AI-assisted summary and suggested reading inside the resume.</p>
-      </article>
+      <div class="lens-saved">
+        <h3>Saved lenses</h3>
+        <div id="lens-menu" class="lens-buttons" role="tablist" aria-label="Available resume lenses"></div>
+        <article id="lens-detail" class="lens-panel" role="tabpanel" tabindex="0" aria-live="polite">
+          <p class="hint">Select a saved lens to see an AI-assisted summary and suggested reading inside the resume.</p>
+        </article>
+      </div>
     </section>
 
     <pre id="resume-text">loading resume...</pre>
@@ -60,7 +69,7 @@
       resumeText: "",
       lenses: [],
       selectedLens: null,
-      generatedLens: null,
+      liveResult: null,
       loading: false
     };
 
@@ -76,10 +85,10 @@
       }
     }
 
-    function renderLens(lens){
+    function renderSavedLens(lens){
       const detail = document.getElementById("lens-detail");
       if(!lens){
-        detail.innerHTML = '<p class="hint">Select a lens or generate a new one to see an AI-assisted summary and suggested reading inside the resume.</p>';
+        detail.innerHTML = '<p class="hint">Select a saved lens to see an AI-assisted summary and suggested reading inside the resume.</p>';
         detail.setAttribute("aria-label", "lens summary");
         return;
       }
@@ -94,30 +103,32 @@
         ${terms.length ? `<p class="hint">jump-start a deeper dive:</p>
           <div class="tag-list">${terms.map(term => `<a class="tag" href="/ask.html?q=${encodeURIComponent(term)}" title="Search the resume for ${term}">${term}</a>`).join("")}</div>` : ""}
         ${notes.length ? `<p class="hint">source sections: ${notes.join(", ")}</p>` : ""}
-        ${lens.model ? `<p class="hint">generated with ${lens.model}</p>` : ""}
+      `;
+    }
+
+    function renderLive(result){
+      const panel = document.getElementById("live-detail");
+      if(!result){
+        panel.innerHTML = '<p class="hint">No live summary yet. Submit the form to see the resume reframed for your focus.</p>';
+        return;
+      }
+      const bullets = result.key_points || [];
+      panel.innerHTML = `
+        <h3>Live lens: ${result.lens}</h3>
+        <p>${result.summary}</p>
+        ${bullets.length ? `<ul class="plain-list">${bullets.map(item => `<li>${item}</li>`).join("")}</ul>` : ""}
+        <p class="hint">Generated with ${result.model} at ${new Date(result.generated_at || Date.now()).toLocaleTimeString()}.</p>
       `;
     }
 
     function mountLensMenu(){
       const menu = document.getElementById("lens-menu");
       menu.innerHTML = "";
-      const allLenses = [...state.lenses];
-      if(state.generatedLens){
-        allLenses.unshift({
-          id: "live",
-          title: `Live: ${state.generatedLens.lens}`,
-          summary: state.generatedLens.summary,
-          key_points: state.generatedLens.key_points,
-          recommended_terms: [],
-          source_notes: [],
-          model: state.generatedLens.model
-        });
-      }
-      if(!allLenses.length){
-        menu.innerHTML = '<p class="hint">Lens summaries are unavailable right now.</p>';
+      if(!state.lenses.length){
+        menu.innerHTML = '<p class="hint">Saved lenses are unavailable right now.</p>';
         return;
       }
-      allLenses.forEach((lens, index) => {
+      state.lenses.forEach((lens, index) => {
         const button = document.createElement("button");
         button.className = "lens-button";
         button.type = "button";
@@ -128,7 +139,7 @@
         button.setAttribute("tabindex", isSelected ? "0" : "-1");
         button.addEventListener("click", () => {
           state.selectedLens = lens.id;
-          renderLens(lens);
+          renderSavedLens(lens);
           [...menu.children].forEach(child => {
             child.setAttribute("aria-selected", child === button ? "true" : "false");
             child.setAttribute("tabindex", child === button ? "0" : "-1");
@@ -138,7 +149,7 @@
         menu.appendChild(button);
         if(index === 0 && !state.selectedLens){
           state.selectedLens = lens.id;
-          renderLens(lens);
+          renderSavedLens(lens);
           button.setAttribute("aria-selected", "true");
           button.setAttribute("tabindex", "0");
         }else if(!isSelected){
@@ -158,7 +169,7 @@
       }catch(err){
         state.lenses = [];
         const detail = document.getElementById("lens-detail");
-        detail.innerHTML = '<p class="hint">Lens summaries could not be loaded. You can regenerate them with scripts/generate_lenses.py.</p>';
+        detail.innerHTML = '<p class="hint">Saved lenses could not be loaded. You can regenerate them with scripts/generate_lenses.py.</p>';
       }
       mountLensMenu();
     }
@@ -215,20 +226,9 @@
         if(!response.ok){
           throw new Error(data.error || "Generation failed.");
         }
-        state.generatedLens = data;
-        state.selectedLens = "live";
-        renderLens({
-          id: "live",
-          title: `Live: ${lensText}`,
-          summary: data.summary,
-          key_points: data.key_points,
-          recommended_terms: [],
-          source_notes: [],
-          model: data.model
-        });
-        mountLensMenu();
-        setLoading(false, "");
-        showStatus(`Generated at ${new Date(data.generated_at || Date.now()).toLocaleTimeString()}.`);
+        state.liveResult = data;
+        renderLive(data);
+        setLoading(false, "Summary generated.");
       }catch(err){
         console.error(err);
         setLoading(false, "");
@@ -238,6 +238,7 @@
 
     window.addEventListener("DOMContentLoaded", async () => {
       mountSuggestions();
+      renderLive(null);
       document.getElementById("lens-form").addEventListener("submit", handleGeneration);
       await loadResume();
       await loadLenses();
