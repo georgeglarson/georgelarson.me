@@ -1,0 +1,55 @@
+{
+  "generated_at": "2025-10-12",
+  "model_hint": "Summaries drafted offline; regenerate via scripts/generate_lenses.py using the Hugging Face Inference API.",
+  "lenses": [
+    {
+      "id": "ai-privacy",
+      "title": "AI + privacy",
+      "summary": "George approaches applied AI like a systems engineer: he evaluates models for leverage, guards regulated data, and designs privacy-preserving workflows. His leadership combines hands-on Linux and security skills with a calm insistence on guardrails, turning AI projects into reliable company assets rather than experiments.",
+      "key_points": [
+        "Drove AI adoption in manufacturing and ecommerce with measurable uptime targets and human oversight.",
+        "Builds RAG and OCR pipelines that run on vetted infrastructure while tracking provenance and compliance.",
+        "Leads policy, tabletop exercises, and data-governance practices that keep automation trustworthy."
+      ],
+      "recommended_terms": ["privacy", "AI", "OCR", "security", "tabletop"],
+      "source_notes": [
+        "SUMMARY",
+        "Security and Privacy",
+        "AI, Data, and OCR",
+        "Director of Technology, FM Expressions"
+      ]
+    },
+    {
+      "id": "manufacturing-ops",
+      "title": "Manufacturing operations",
+      "summary": "George has spent decades keeping production lines, firmware stations, and ecommerce fulfillment steady. He pairs automation savvy with people leadership so plants, logistics centers, and shop-floor systems stay online and profitable.",
+      "key_points": [
+        "Raised database performance by 93 percent and sustained 99 percent uptime for manufacturing and sales systems.",
+        "Ran Sony's TiVo firmware upgrade station and hardware diagnostics labs, ensuring national-scale reliability.",
+        "Led maintenance teams for robotics, conveyors, and PLC-driven packaging equipment with hands-on repair and programming."
+      ],
+      "recommended_terms": ["manufacturing", "TiVo", "PLC", "conveyors", "uptime"],
+      "source_notes": [
+        "Director of Technology, FM Expressions",
+        "Software Engineer and Team Manager, Sony Electronics",
+        "Maintenance and Automation Technician, T. Marzetti Company"
+      ]
+    },
+    {
+      "id": "technology-leadership",
+      "title": "Technology leadership",
+      "summary": "George leads with calm execution. He scales teams, translates executive intent into roadmaps, and keeps builders close to outcomes. His career arcs from hands-on coding to directing multi-disciplinary groups without losing technical empathy.",
+      "key_points": [
+        "Guides blended in-house and offshore teams with Agile delivery, analytics, and transparent roadmaps.",
+        "Improves performance, security posture, and observability while mentoring engineers and operators.",
+        "Bridges executive goals and shop-floor constraints, keeping communication steady across departments."
+      ],
+      "recommended_terms": ["roadmap", "team", "Agile", "mentorship", "leadership"],
+      "source_notes": [
+        "Technology Leadership and Strategy",
+        "Director of Technology, FM Expressions",
+        "Senior Software Engineer and Manager, Universal SmartComp"
+      ]
+    }
+  ]
+}

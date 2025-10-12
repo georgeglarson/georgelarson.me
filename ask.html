@@ -121,6 +121,12 @@
         }
       });
       await loadResumeForSearch();
+      const params = new URLSearchParams(window.location.search);
+      const preset = params.get("q");
+      if(preset){
+        input.value = preset;
+        search(preset.trim());
+      }
     });
   </script>
 </body>

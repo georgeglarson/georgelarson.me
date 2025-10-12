@@ -11,6 +11,16 @@
   <main class="page">
     <h1>resume.txt<span class="caret" aria-hidden="true"></span></h1>
     <p class="lead">rendered directly from the source text for printing, diffing, and quick scans.</p>
+
+    <section class="lens" aria-label="resume lenses">
+      <h2>view the resume through a specific lens</h2>
+      <p class="hint">Summaries are generated with the Hugging Face Inference API and stored locally. Regenerate them with <code>scripts/generate_lenses.py</code>.</p>
+      <div id="lens-menu" class="lens-buttons" role="tablist" aria-label="Available resume lenses"></div>
+      <article id="lens-detail" class="lens-panel" role="tabpanel" tabindex="0" aria-live="polite">
+        <p class="hint">Select a lens to see an AI-assisted summary and suggested reading inside the resume.</p>
+      </article>
+    </section>
+
     <pre id="resume-text">loading resume...</pre>
     <footer>
       <hr />
@@ -18,18 +28,102 @@
     </footer>
   </main>
   <script>
+    const state = {
+      resumeText: "",
+      lenses: [],
+      selectedLens: null
+    };
+
     async function loadResume(){
       const target = document.getElementById("resume-text");
       try{
         const res = await fetch("/resume.txt", {cache:"no-store"});
         if(!res.ok) throw new Error("fetch failed");
-        const text = await res.text();
-        target.textContent = text.trim();
+        state.resumeText = (await res.text()).trim();
+        target.textContent = state.resumeText;
       }catch(err){
         target.textContent = "Resume could not be loaded. Please download it directly at /resume.txt.";
       }
     }
-    window.addEventListener("DOMContentLoaded", loadResume);
+
+    function renderLens(lens){
+      const detail = document.getElementById("lens-detail");
+      if(!lens){
+        detail.innerHTML = '<p class="hint">Select a lens to see an AI-assisted summary and suggested reading inside the resume.</p>';
+        detail.setAttribute("aria-label", "lens summary");
+        return;
+      }
+      const points = lens.key_points || [];
+      const terms = lens.recommended_terms || [];
+      const notes = lens.source_notes || [];
+      detail.setAttribute("aria-label", lens.title + " summary");
+      detail.innerHTML = `
+        <h3>${lens.title}</h3>
+        <p>${lens.summary}</p>
+        ${points.length ? `<ul class="plain-list">${points.map(item => `<li>${item}</li>`).join("")}</ul>` : ""}
+        ${terms.length ? `<p class="hint">jump-start a deeper dive:</p>
+          <div class="tag-list">${terms.map(term => `<a class="tag" href="/ask.html?q=${encodeURIComponent(term)}" title="Search the resume for ${term}">${term}</a>`).join("")}</div>` : ""}
+        ${notes.length ? `<p class="hint">source sections: ${notes.join(", ")}</p>` : ""}
+      `;
+    }
+
+    function mountLensMenu(){
+      const menu = document.getElementById("lens-menu");
+      menu.innerHTML = "";
+      if(!state.lenses.length){
+        menu.innerHTML = '<p class="hint">Lens summaries are unavailable right now.</p>';
+        return;
+      }
+      state.lenses.forEach((lens, index) => {
+        const button = document.createElement("button");
+        button.className = "lens-button";
+        button.type = "button";
+        button.textContent = lens.title;
+        button.setAttribute("role", "tab");
+        const isSelected = state.selectedLens === lens.id;
+        button.setAttribute("aria-selected", isSelected ? "true" : "false");
+        button.setAttribute("tabindex", isSelected ? "0" : "-1");
+        button.addEventListener("click", () => {
+          state.selectedLens = lens.id;
+          renderLens(lens);
+          [...menu.children].forEach(child => {
+            child.setAttribute("aria-selected", child === button ? "true" : "false");
+            child.setAttribute("tabindex", child === button ? "0" : "-1");
+          });
+          button.focus();
+        });
+        menu.appendChild(button);
+        if(index === 0 && !state.selectedLens){
+          state.selectedLens = lens.id;
+          renderLens(lens);
+          button.setAttribute("aria-selected", "true");
+          button.setAttribute("tabindex", "0");
+        }else if(!isSelected){
+          button.setAttribute("aria-selected", "false");
+          button.setAttribute("tabindex", "-1");
+        }
+      });
+    }
+
+    async function loadLenses(){
+      try{
+        const res = await fetch("/data/resume_lenses.json", {cache:"no-store"});
+        if(!res.ok) throw new Error("fetch failed");
+        const data = await res.json();
+        state.lenses = data.lenses || [];
+        state.selectedLens = null;
+      }catch(err){
+        state.lenses = [];
+        const detail = document.getElementById("lens-detail");
+        detail.innerHTML = '<p class="hint">Lens summaries could not be loaded. You can regenerate them with scripts/generate_lenses.py.</p>';
+      }
+      mountLensMenu();
+    }
+
+    window.addEventListener("DOMContentLoaded", async () => {
+      await loadResume();
+      await loadLenses();
+    });
   </script>
 </body>
 </html>
