@@ -17,8 +17,75 @@ const ALLOWED_MODELS = new Set([
 const JSON_ERROR = { error: "Unable to process request" };
 
 export const onRequest = async ({ request, env }: PagesContext) => {
+  // Handle OPTIONS for CORS preflight
+  if (request.method.toUpperCase() === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    });
+  }
+
+  // Handle GET requests with diagnostics
+  if (request.method.toUpperCase() === "GET") {
+    const hasToken = Boolean(env.HF_TOKEN || env.HF_API_TOKEN);
+    const hasAssets = Boolean(env.ASSETS);
+    
+    return new Response(JSON.stringify({
+      endpoint: "/api/lens-summary",
+      method: "POST",
+      description: "Generate AI-powered resume summaries through specific lenses using Hugging Face Inference API",
+      status: "operational",
+      configuration: {
+        hf_token_configured: hasToken,
+        assets_configured: hasAssets,
+        default_model: DEFAULT_MODEL,
+        available_models: Array.from(ALLOWED_MODELS)
+      },
+      usage: {
+        url: "/api/lens-summary",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body_schema: {
+          lens: "string (required, max 240 chars) - Focus or perspective for the summary",
+          model: "string (optional) - One of the available models"
+        },
+        example: {
+          lens: "How does George handle manufacturing operations and uptime?",
+          model: DEFAULT_MODEL
+        }
+      },
+      response_schema: {
+        summary: "string - AI-generated paragraph summary",
+        key_points: "array - 3-5 bullet points highlighting relevant accomplishments",
+        model: "string - Model used for generation",
+        lens: "string - Original lens request",
+        generated_at: "string - ISO 8601 timestamp"
+      },
+      test_page: "/test-lens-api.html",
+      documentation: "/QUICK_START_GUIDE.md",
+      notes: [
+        hasToken ? "✓ HF_TOKEN is configured" : "⚠ HF_TOKEN is not configured - set it in Cloudflare Pages environment variables",
+        hasAssets ? "✓ ASSETS fetcher is available" : "⚠ ASSETS fetcher not available",
+        "Models may take 10-30 seconds to warm up on first request",
+        "Use the test page for browser-based testing"
+      ]
+    }, null, 2), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
+  }
+
   if (request.method.toUpperCase() !== "POST") {
-    return jsonResponse({ error: "Method not allowed" }, 405);
+    return jsonResponse({ error: "Method not allowed. Use POST for requests or GET for documentation." }, 405);
   }
 
   let payload: LensRequest;
@@ -30,20 +97,37 @@ export const onRequest = async ({ request, env }: PagesContext) => {
 
   const lensRaw = (payload.lens || "").toString().trim();
   if (!lensRaw) {
-    return jsonResponse({ error: "Provide a focus or lens description." }, 400);
+    return jsonResponse({
+      error: "Provide a focus or lens description.",
+      help: "Include a 'lens' field in your request body describing the perspective you want."
+    }, 400);
   }
   if (lensRaw.length > 240) {
-    return jsonResponse({ error: "Lens description is too long (max 240 characters)." }, 400);
+    return jsonResponse({
+      error: "Lens description is too long (max 240 characters).",
+      current_length: lensRaw.length
+    }, 400);
   }
 
   const requestedModel = (payload.model || "").toString().trim() || DEFAULT_MODEL;
   if (!ALLOWED_MODELS.has(requestedModel)) {
-    return jsonResponse({ error: "Model not permitted." }, 400);
+    return jsonResponse({
+      error: "Model not permitted.",
+      requested: requestedModel,
+      allowed_models: Array.from(ALLOWED_MODELS)
+    }, 400);
   }
+
+  console.log(`[lens-summary] Request received - lens: "${lensRaw.substring(0, 50)}${lensRaw.length > 50 ? '...' : ''}", model: ${requestedModel}`);
 
   const token = env.HF_TOKEN || env.HF_API_TOKEN;
   if (!token) {
-    return jsonResponse({ error: "Hugging Face token not configured." }, 500);
+    console.error("[lens-summary] HF_TOKEN not configured");
+    return jsonResponse({
+      error: "Hugging Face token not configured.",
+      help: "Set HF_TOKEN environment variable in Cloudflare Pages settings",
+      docs: "https://dash.cloudflare.com (Pages → Your Project → Settings → Environment Variables)"
+    }, 500);
   }
 
   let resumeText = "";
@@ -52,22 +136,38 @@ export const onRequest = async ({ request, env }: PagesContext) => {
     const resumeResp = await env.ASSETS.fetch(resumeUrl.toString());
     if (!resumeResp.ok) throw new Error(`Status ${resumeResp.status}`);
     resumeText = await resumeResp.text();
+    console.log(`[lens-summary] Resume loaded successfully (${resumeText.length} chars)`);
   } catch (err) {
-    console.error("Failed to load resume.txt", err);
-    return jsonResponse(JSON_ERROR, 500);
+    console.error("[lens-summary] Failed to load resume.txt", err);
+    return jsonResponse({
+      error: "Unable to load resume.txt",
+      details: err instanceof Error ? err.message : "Unknown error",
+      help: "Ensure resume.txt exists in the project root directory"
+    }, 500);
   }
 
   const prompt = buildPrompt(resumeText, lensRaw);
+  console.log(`[lens-summary] Calling Hugging Face API - model: ${requestedModel}, prompt length: ${prompt.length}`);
 
   let generated: string;
   try {
     generated = await queryHuggingFace(prompt, requestedModel, token);
+    console.log(`[lens-summary] HF response received (${generated.length} chars)`);
   } catch (err) {
-    console.error("HF error", err);
+    console.error("[lens-summary] HF API error", err);
     if (err instanceof ResponseError) {
-      return jsonResponse({ error: err.message }, err.status);
+      return jsonResponse({
+        error: err.message,
+        status_code: err.status,
+        help: err.status === 503
+          ? "Model is warming up. This is normal for the first request. Please retry in 10-15 seconds."
+          : "Check Hugging Face API status and your token permissions"
+      }, err.status);
     }
-    return jsonResponse(JSON_ERROR, 502);
+    return jsonResponse({
+      error: "Hugging Face API request failed",
+      details: err instanceof Error ? err.message : "Unknown error"
+    }, 502);
   }
 
   let summary = "";
@@ -78,9 +178,24 @@ export const onRequest = async ({ request, env }: PagesContext) => {
     bullets = Array.isArray(parsed.bullets)
       ? parsed.bullets.map((item: unknown) => String(item).trim()).filter(Boolean).slice(0, 5)
       : [];
+    
+    if (!summary || summary.length < 10) {
+      console.warn(`[lens-summary] Suspiciously short summary: "${summary}"`);
+    }
+    if (!bullets || bullets.length === 0) {
+      console.warn(`[lens-summary] No bullets generated`);
+    }
+    
+    console.log(`[lens-summary] Success - summary: ${summary.length} chars, bullets: ${bullets.length}`);
   } catch (err) {
-    console.error("JSON parse error", err, generated);
-    return jsonResponse({ error: "Model response was not in the expected format." }, 502);
+    console.error("[lens-summary] JSON parse error", err);
+    console.error("[lens-summary] Raw output:", generated.substring(0, 500));
+    return jsonResponse({
+      error: "Model response was not in the expected format.",
+      details: err instanceof Error ? err.message : "Could not extract JSON from model output",
+      help: "Try a different model or rephrase your lens description",
+      sample_output: generated.substring(0, 200) + (generated.length > 200 ? "..." : "")
+    }, 502);
   }
 
   return jsonResponse({
@@ -164,19 +279,41 @@ async function safeRead(response: Response): Promise<string> {
 }
 
 function extractJson(text: string): Record<string, unknown> {
+  // Strategy 1: Look for markdown code block
+  const codeBlockMatch = text.match(/```(?:json)?\s*(\{[\s\S]*?\})\s*```/);
+  if (codeBlockMatch) {
+    try {
+      return JSON.parse(codeBlockMatch[1]);
+    } catch {
+      // Fall through to other strategies
+    }
+  }
+
+  // Strategy 2: Find first complete JSON object
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
   if (start === -1 || end === -1 || end <= start) {
-    throw new Error("No JSON block detected.");
+    throw new Error(`No JSON block detected in output (length: ${text.length})`);
   }
+  
   const snippet = text.slice(start, end + 1);
-  return JSON.parse(snippet);
+  try {
+    return JSON.parse(snippet);
+  } catch (err) {
+    const errorMsg = err instanceof Error ? err.message : "Parse error";
+    throw new Error(`JSON parse failed: ${errorMsg}. Snippet: ${snippet.substring(0, 100)}...`);
+  }
 }
 
 function jsonResponse(body: Record<string, unknown>, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { "Content-Type": "application/json" }
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type"
+    }
   });
 }
 

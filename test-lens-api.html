@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lens API Diagnostics</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>Lens API Diagnostics<span class="caret" aria-hidden="true"></span></h1>
+    <p class="lead">Test the /api/lens-summary endpoint and diagnose production issues.</p>
+    
+    <section class="panel">
+      <h2>Diagnostic Checks</h2>
+      <p class="hint">Automated checks run on page load to verify configuration and connectivity.</p>
+      <ul id="diagnostics" class="plain-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Test Configuration</h2>
+      <form id="test-form">
+        <label class="lens-field">
+          <span>Lens Description</span>
+          <input id="lens-input" type="text" value="Explain George's experience with AI and privacy-aware systems" style="width: 100%;" />
+        </label>
+        <label class="lens-field">
+          <span>Model</span>
+          <select id="model-select">
+            <option value="mistralai/Mistral-7B-Instruct-v0.3">Mistral 7B Instruct (default)</option>
+            <option value="meta-llama/Llama-3-8b-chat-hf">Llama 3 8B Chat</option>
+            <option value="google/gemma-2-9b-it">Gemma 2 9B Instruct</option>
+          </select>
+        </label>
+        <button type="submit" id="test-button">Test API</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Test Results</h2>
+      <div id="results" style="white-space: pre-wrap; font-family: monospace; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 4px; max-height: 400px; overflow-y: auto;"></div>
+    </section>
+
+    <footer>
+      <hr />
+      <span>return to <a href="/index.html">home</a> / <a href="/resume.html">resume</a></span>
+    </footer>
+  </main>
+
+  <script>
+    const results = document.getElementById('results');
+    const diagnostics = document.getElementById('diagnostics');
+    const testButton = document.getElementById('test-button');
+
+    function addDiagnostic(name, status, details) {
+      const li = document.createElement('li');
+      const icon = status === 'pass' ? '✓' : status === 'fail' ? '✗' : '⚠';
+      li.innerHTML = `<strong>${icon} ${name}</strong>: ${details}`;
+      li.style.marginBottom = '0.5rem';
+      diagnostics.appendChild(li);
+      return li;
+    }
+
+    // Run diagnostics on load
+    async function runDiagnostics() {
+      diagnostics.innerHTML = '';
+      results.textContent = 'Running diagnostics...\n';
+
+      // Check 1: Resume accessibility
+      try {
+        const res = await fetch('/resume.txt');
+        if (res.ok) {
+          const text = await res.text();
+          addDiagnostic('resume.txt accessibility', 'pass', `Loaded successfully (${text.length} characters)`);
+        } else {
+          addDiagnostic('resume.txt accessibility', 'fail', `HTTP ${res.status} - file not accessible`);
+        }
+      } catch (err) {
+        addDiagnostic('resume.txt accessibility', 'fail', err.message);
+      }
+
+      // Check 2: API endpoint exists and responds to GET
+      try {
+        const res = await fetch('/api/lens-summary');
+        const data = await res.json();
+        if (res.status === 200 && data.configuration) {
+          addDiagnostic('API endpoint', 'pass', `Responds to GET with diagnostics (${res.status})`);
+          
+          // Show configuration details
+          if (data.configuration.hf_token_configured) {
+            addDiagnostic('HF_TOKEN configuration', 'pass', 'Token is configured');
+          } else {
+            addDiagnostic('HF_TOKEN configuration', 'fail', 'Token is NOT configured - set it in Cloudflare Pages environment variables');
+          }
+          
+          if (data.configuration.assets_configured) {
+            addDiagnostic('ASSETS fetcher', 'pass', 'Available');
+          } else {
+            addDiagnostic('ASSETS fetcher', 'fail', 'Not available');
+          }
+        } else {
+          addDiagnostic('API endpoint', 'warn', `Unexpected response (${res.status})`);
+        }
+      } catch (err) {
+        addDiagnostic('API endpoint', 'fail', err.message);
+      }
+
+      // Check 3: Test POST request capability
+      try {
+        const res = await fetch('/api/lens-summary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lens: 'diagnostic test' })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          addDiagnostic('POST request test', 'pass', 'API accepts POST requests and returns data');
+        } else if (res.status === 503) {
+          addDiagnostic('POST request test', 'warn', 'Model is warming up (503) - this is normal for first request');
+        } else if (res.status === 500 && data.error && data.error.includes('token')) {
+          addDiagnostic('POST request test', 'fail', 'Token configuration issue: ' + data.error);
+        } else {
+          addDiagnostic('POST request test', 'warn', `Status ${res.status}: ${data.error || 'Unknown error'}`);
+        }
+      } catch (err) {
+        addDiagnostic('POST request test', 'fail', err.message);
+      }
+
+      results.textContent = 'Diagnostics complete. See results above.\n\nUse the form below to test with a custom lens description.';
+    }
+
+    // Test form submission
+    document.getElementById('test-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const lens = document.getElementById('lens-input').value.trim();
+      const model = document.getElementById('model-select').value;
+
+      if (!lens) {
+        results.textContent = 'Error: Please enter a lens description.';
+        return;
+      }
+
+      testButton.disabled = true;
+      testButton.textContent = 'Testing...';
+      results.textContent = 'Testing API with lens: "' + lens.substring(0, 60) + (lens.length > 60 ? '...' : '') + '"\nModel: ' + model + '\n\nWaiting for response...\n';
+
+      try {
+        const startTime = Date.now();
+        const response = await fetch('/api/lens-summary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lens, model })
+        });
+
+        const duration = Date.now() - startTime;
+        const contentType = response.headers.get('content-type') || 'unknown';
+        let data;
+        
+        try {
+          data = await response.json();
+        } catch {
+          data = { error: 'Response was not valid JSON' };
+        }
+
+        let output = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        output += `Status: ${response.status} ${response.statusText}\n`;
+        output += `Duration: ${duration}ms\n`;
+        output += `Content-Type: ${contentType}\n`;
+        output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+        if (response.ok) {
+          output += `✓ SUCCESS\n\n`;
+          output += `Summary (${data.summary?.length || 0} chars):\n`;
+          output += `${data.summary}\n\n`;
+          
+          if (data.key_points && data.key_points.length > 0) {
+            output += `Key Points (${data.key_points.length}):\n`;
+            data.key_points.forEach((point, i) => {
+              output += `  ${i + 1}. ${point}\n`;
+            });
+            output += `\n`;
+          }
+          
+          output += `Model: ${data.model}\n`;
+          output += `Generated: ${data.generated_at}\n`;
+        } else {
+          output += `✗ ERROR\n\n`;
+          output += `Error: ${data.error || 'Unknown error'}\n`;
+          
+          if (data.help) {
+            output += `\nHelp: ${data.help}\n`;
+          }
+          
+          if (data.details) {
+            output += `\nDetails: ${data.details}\n`;
+          }
+          
+          if (data.docs) {
+            output += `\nDocs: ${data.docs}\n`;
+          }
+          
+          if (response.status === 503) {
+            output += `\n⚠ Model is warming up. Wait 10-15 seconds and try again.\n`;
+          } else if (response.status === 500 && data.error?.includes('token')) {
+            output += `\n⚠ HF_TOKEN is not configured in Cloudflare Pages.\n`;
+            output += `   Go to: Cloudflare Dashboard → Pages → Settings → Environment Variables\n`;
+            output += `   Add: HF_TOKEN = your_huggingface_token\n`;
+          }
+        }
+
+        output += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        output += `Raw Response:\n`;
+        output += JSON.stringify(data, null, 2);
+
+        results.textContent = output;
+      } catch (err) {
+        results.textContent = `✗ Network Error\n\n${err.message}\n\nThis could indicate:\n- The API endpoint is not deployed\n- Network connectivity issues\n- CORS configuration problems`;
+      } finally {
+        testButton.disabled = false;
+        testButton.textContent = 'Test API';
+      }
+    });
+
+    // Run diagnostics on load
+    runDiagnostics();
+  </script>
+</body>
+</html>
