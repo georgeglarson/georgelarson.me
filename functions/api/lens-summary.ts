@@ -49,7 +49,7 @@ export const onRequest = async ({ request, env }: PagesContext) => {
   let resumeText = "";
   try {
     const resumeUrl = new URL("/resume.txt", request.url);
-    const resumeResp = await env.ASSETS.fetch(new Request(resumeUrl.toString(), request));
+    const resumeResp = await env.ASSETS.fetch(resumeUrl.toString());
     if (!resumeResp.ok) throw new Error(`Status ${resumeResp.status}`);
     resumeText = await resumeResp.text();
   } catch (err) {
