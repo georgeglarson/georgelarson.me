@@ -11,6 +11,7 @@ Static, no-build personal site for George Larson.
 - `ask.html` - local, private search over the resume text (supports `?q=` links)
 - `style.css` - shared terminal aesthetic
 - `scripts/generate_lenses.py` - optional helper to regenerate lens summaries with Hugging Face or Venice.ai
+- `functions/api/lens-summary.ts` - Cloudflare Pages Function that proxies Hugging Face Inference for on-demand lens summaries
 
 ## Deploy on Cloudflare Pages
 1. Create a GitHub repo and push these files to `main`.
@@ -25,7 +26,7 @@ Static, no-build personal site for George Larson.
 
 ## Notes
 - `ask.html` intentionally keeps everything client side. It is a placeholder for a future RAG or on-device LLM workflow while remaining private today.
-- The resume lens feature is precomputed. Regenerate summaries with the Hugging Face Inference API by running the script below.
+- The resume lens feature can be generated live (via `/api/lens-summary`) or by using the cached JSON. The Cloudflare Pages function uses `HF_TOKEN` so your secret never reaches the browser.
 
 ## Generate lens summaries (Hugging Face)
 1. Create a Hugging Face access token with Inference API permissions and set it in your shell:
@@ -36,3 +37,9 @@ Static, no-build personal site for George Larson.
 3. Run `python scripts/generate_lenses.py`.
    - The script writes `data/resume_lenses.json`. Commit the change to publish new summaries.
 4. If the API returns errors, the script will surface the response body so you can adjust rate limits or prompts.
+
+## Live lens endpoint
+- Path: `POST /api/lens-summary`
+- Body: `{"lens": "How does George handle manufacturing ops?", "model": "mistralai/Mistral-7B-Instruct-v0.3"}`
+- Response: JSON containing `summary`, `key_points`, `model`, `generated_at`
+- The function reads `resume.txt` at request time, so updates deploy instantly without new scripts.
