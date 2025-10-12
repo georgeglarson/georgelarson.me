@@ -7,12 +7,12 @@ interface HuggingFaceSuccess {
   generated_text?: string;
 }
 
-const DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.2";
+const DEFAULT_MODEL = "google/flan-t5-base";
 const ALLOWED_MODELS = new Set([
   DEFAULT_MODEL,
-  "mistralai/Mixtral-8x7B-Instruct-v0.1",
-  "google/flan-t5-xxl",
-  "tiiuae/falcon-7b-instruct"
+  "google/flan-t5-large",
+  "facebook/bart-large-cnn",
+  "gpt2"
 ]);
 
 const JSON_ERROR = { error: "Unable to process request" };
@@ -235,6 +235,15 @@ Format:
 
 async function queryHuggingFace(prompt: string, model: string, token: string): Promise<string> {
   const endpoint = `https://api-inference.huggingface.co/models/${model}`;
+  
+  console.log(`[lens-summary] HF API Request:`, {
+    endpoint,
+    model,
+    token_present: Boolean(token),
+    token_prefix: token ? token.substring(0, 7) + '...' : 'none',
+    prompt_length: prompt.length
+  });
+  
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {
@@ -251,12 +260,35 @@ async function queryHuggingFace(prompt: string, model: string, token: string): P
     })
   });
 
+  console.log(`[lens-summary] HF API Response:`, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: Object.fromEntries(response.headers.entries())
+  });
+
   if (!response.ok) {
     const message = await safeRead(response);
+    console.error(`[lens-summary] HF API Error ${response.status}:`, message);
+    
+    // Try to parse as JSON for better error details
+    let errorDetails;
+    try {
+      errorDetails = JSON.parse(message);
+      console.error(`[lens-summary] HF Error Details:`, errorDetails);
+    } catch {
+      errorDetails = { raw: message };
+    }
+    
     if (response.status === 503 && message.includes("currently loading")) {
       throw new ResponseError("Model is warming up. Please try again in a few seconds.", 503);
     }
-    throw new ResponseError(message || "Hugging Face API error.", response.status);
+    
+    // Include full error details in response
+    const errorMsg = errorDetails.error || message || "Hugging Face API error";
+    throw new ResponseError(
+      `HF API returned ${response.status}: ${errorMsg}. Model: ${model}. Details: ${JSON.stringify(errorDetails)}`,
+      response.status
+    );
   }
 
   const data = await response.json() as unknown;
