@@ -215,16 +215,26 @@
         showStatus("Please describe the lens you want to explore.");
         return;
       }
-      setLoading(true, "Generating summary…");
+      await requestLensSummary(lensText, modelSelect.value);
+    }
+
+    async function requestLensSummary(lensText, model, attempt = 1){
+      setLoading(true, attempt === 1 ? "Generating summary…" : `Retrying attempt ${attempt}…`);
       try{
         const response = await fetch("/api/lens-summary", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ lens: lensText, model: modelSelect.value })
+          body: JSON.stringify({ lens: lensText, model })
         });
-        const data = await response.json();
+        const data = await response.json().catch(()=>({}));
         if(!response.ok){
-          throw new Error(data.error || "Generation failed.");
+          if(response.status === 503 && attempt < 3){
+            showStatus("Model is waking up (takes ~10 seconds). Retrying…");
+            setTimeout(() => requestLensSummary(lensText, model, attempt + 1), 7000);
+            setLoading(false, "");
+            return;
+          }
+          throw new Error(data.error || `Generation failed (status ${response.status}).`);
         }
         state.liveResult = data;
         renderLive(data);
@@ -236,12 +246,44 @@
       }
     }
 
+    function shouldWarm(){
+      try{
+        const key = "gl-lens-warm";
+        const stored = sessionStorage.getItem(key);
+        const today = new Date().toISOString().slice(0,10);
+        if(stored === today) return false;
+        sessionStorage.setItem(key, today);
+        return true;
+      }catch{
+        return true;
+      }
+    }
+
+    async function warmModel(){
+      if(!shouldWarm()) return;
+      const model = document.getElementById("lens-model").value;
+      try{
+        const res = await fetch("/api/lens-summary", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ lens: "Warm up request to keep the model ready.", model })
+        });
+        if(res.status === 503){
+          console.info("Model warming up; retrying in 10s.");
+          setTimeout(warmModel, 10000);
+        }
+      }catch(err){
+        console.warn("Warm-up failed", err);
+      }
+    }
+
     window.addEventListener("DOMContentLoaded", async () => {
       mountSuggestions();
       renderLive(null);
       document.getElementById("lens-form").addEventListener("submit", handleGeneration);
       await loadResume();
       await loadLenses();
+      warmModel();
     });
   </script>
 </body>
