@@ -5,19 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>resume - george larson</title>
   <link rel="stylesheet" href="/style.css" />
+  <style>
+    .lens-onboarding{
+      margin: 1.75rem 0;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(0, 255, 170, 0.35);
+      border-radius: 0.75rem;
+      background: rgba(0, 255, 170, 0.08);
+      box-shadow: 0 0 25px rgba(0, 80, 55, 0.25);
+    }
+    .lens-onboarding h3{
+      margin: 0 0 0.75rem 0;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .lens-steps{
+      margin: 0 0 1rem 1.1rem;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .lens-steps li{
+      margin: 0 0 0.4rem 0;
+    }
+    .lens-steps li strong{
+      color: rgba(0, 255, 170, 0.85);
+    }
+    .lens-demo-block{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .lens-demo{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.55rem 1.05rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 170, 0.75);
+      background: rgba(0, 255, 170, 0.18);
+      color: inherit;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .lens-demo:hover:not(:disabled){
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 255, 170, 0.18);
+      background: rgba(0, 255, 170, 0.28);
+    }
+    .lens-demo:focus-visible{
+      outline: 2px solid rgba(0, 255, 170, 0.7);
+      outline-offset: 2px;
+    }
+    .lens-demo:disabled{
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .lens-demo-block .hint{
+      margin: 0;
+      max-width: 32rem;
+    }
+    @media (max-width: 640px){
+      .lens-onboarding{
+        padding: 1.1rem 1.25rem;
+      }
+      .lens-demo-block{
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
   <meta name="description" content="Plain text resume for George Larson, director of technology and builder focused on pragmatic systems and privacy-aware AI." />
 </head>
 <body>
   <main class="page">
     <h1>resume.txt<span class="caret" aria-hidden="true"></span></h1>
     <p class="lead">rendered directly from the source text for printing, diffing, and quick scans.</p>
+    <nav class="resume-actions" aria-label="resume shortcuts">
+      <a class="pill-link" href="#resume-text">Jump to resume</a>
+      <a class="pill-link" href="#lens-tools">Explore AI summaries</a>
+    </nav>
 
-    <section class="lens" aria-label="resume lenses">
-      <h2>view the resume through a specific lens</h2>
+    <section class="lens" id="lens-tools" aria-label="resume lenses">
+      <h2>optional: view the resume through a specific lens</h2>
       <p class="hint">Live summaries run on Cloudflare using the Hugging Face Inference API (token stays server-side). Saved lenses remain available for quick scanning.</p>
       <div class="lens-onboarding" role="note">
-        <p><strong>Quick start:</strong> Choose a saved lens below to get a feel for the summaries.</p>
-        <p class="hint">Ready to explore your own angle? Type a focus (or tap a prompt) and press Generate to see the resume reframed for that priority.</p>
+        <h3>How to explore</h3>
+        <ol class="lens-steps">
+          <li><strong>Preview</strong> a saved lens to see an instant AI summary.</li>
+          <li><strong>Describe</strong> the focus you care about (or tap a prompt below).</li>
+          <li><strong>Generate</strong> to get a tailored overview and reading path.</li>
+        </ol>
+        <div class="lens-demo-block">
+          <button type="button" id="lens-demo" class="lens-demo">Watch a quick demo</button>
+          <p class="hint">The demo runs the first quick lens ("AI + privacy") so you can observe the status updates.</p>
+        </div>
       </div>
 
       <div class="lens-live">
@@ -40,12 +124,12 @@
         </form>
         <p class="hint">Need ideas? These prompts showcase how the tool reacts.</p>
         <div class="lens-suggestions" id="lens-suggestions" aria-label="Quick lens suggestions"></div>
-        <div id="lens-status" class="hint" role="status" aria-live="polite">Type a focus or tap a prompt, then press Enter to generate your custom summary.</div>
+        <div id="lens-status" class="hint" role="status" aria-live="polite">Type a focus, tap a prompt, or run the demo above, then press Enter to generate your custom summary.</div>
         <article id="live-detail" class="lens-panel" aria-live="polite">
           <h3>What you'll see</h3>
           <p>The live lens rewrites the resume for the focus you provide and points you to the sections worth skimming.</p>
           <ul class="plain-list">
-            <li>Try a suggestion above or describe the angle you're hiring for.</li>
+            <li>Use the demo button or try a suggestion above, then describe the angle you're hiring for.</li>
             <li>Summaries generate in a few seconds and stay on this page.</li>
           </ul>
         </article>
@@ -82,7 +166,7 @@
       liveResult: null,
       loading: false
     };
-    const DEFAULT_STATUS = "Type a focus or tap a prompt, then press Enter to generate your custom summary.";
+    const DEFAULT_STATUS = "Type a focus, tap a prompt, or run the demo above, then press Enter to generate your custom summary.";
 
     async function loadResume(){
       const target = document.getElementById("resume-text");
@@ -209,12 +293,26 @@
       });
     }
 
+    function runDemoLens(){
+      if(state.loading) return;
+      if(!QUICK_LENSES.length) return;
+      const demo = QUICK_LENSES[0];
+      const input = document.getElementById("lens-input");
+      input.value = demo.prompt;
+      input.focus();
+      requestLensSummary(demo.prompt, document.getElementById("lens-model").value);
+    }
+
     function setLoading(isLoading, message){
       state.loading = Boolean(isLoading);
       const status = document.getElementById("lens-status");
       status.textContent = message || DEFAULT_STATUS;
       const submit = document.getElementById("lens-submit");
       submit.disabled = state.loading;
+      const demoButton = document.getElementById("lens-demo");
+      if(demoButton){
+        demoButton.disabled = state.loading;
+      }
       submit.textContent = state.loading ? "Generating..." : "Generate summary";
     }
 
@@ -299,6 +397,10 @@
       mountSuggestions();
       renderLive(null);
       document.getElementById("lens-form").addEventListener("submit", handleGeneration);
+      const demoButton = document.getElementById("lens-demo");
+      if(demoButton){
+        demoButton.addEventListener("click", runDemoLens);
+      }
       await loadResume();
       await loadLenses();
       warmModel();
