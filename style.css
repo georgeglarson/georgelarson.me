@@ -214,6 +214,10 @@ iframe.embed{
   background:transparent;
   color:var(--ink);
 }
+.lens-field select option{
+  background:var(--bg);
+  color:var(--ink);
+}
 .lens-form button{
   padding:10px 18px;
   min-width:180px;
