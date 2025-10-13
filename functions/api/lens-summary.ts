@@ -3,16 +3,13 @@ interface LensRequest {
   model?: string;
 }
 
-interface HuggingFaceSuccess {
-  generated_text?: string;
-}
-
-const DEFAULT_MODEL = "google/flan-t5-base";
+// Cloudflare Workers AI models
+const DEFAULT_MODEL = "@cf/meta/llama-3-8b-instruct";
 const ALLOWED_MODELS = new Set([
   DEFAULT_MODEL,
-  "google/flan-t5-large",
-  "facebook/bart-large-cnn",
-  "gpt2"
+  "@cf/mistral/mistral-7b-instruct-v0.1",
+  "@hf/thebloke/neural-chat-7b-v3-1-awq",
+  "@cf/meta/llama-2-7b-chat-int8"
 ]);
 
 const JSON_ERROR = { error: "Unable to process request" };
@@ -32,16 +29,16 @@ export const onRequest = async ({ request, env }: PagesContext) => {
 
   // Handle GET requests with diagnostics
   if (request.method.toUpperCase() === "GET") {
-    const hasToken = Boolean(env.HF_TOKEN || env.HF_API_TOKEN);
+    const hasAI = Boolean(env.AI);
     const hasAssets = Boolean(env.ASSETS);
     
     return new Response(JSON.stringify({
       endpoint: "/api/lens-summary",
       method: "POST",
-      description: "Generate AI-powered resume summaries through specific lenses using Hugging Face Inference API",
+      description: "Generate AI-powered resume summaries using Cloudflare Workers AI",
       status: "operational",
       configuration: {
-        hf_token_configured: hasToken,
+        workers_ai_available: hasAI,
         assets_configured: hasAssets,
         default_model: DEFAULT_MODEL,
         available_models: Array.from(ALLOWED_MODELS)
@@ -54,7 +51,7 @@ export const onRequest = async ({ request, env }: PagesContext) => {
         },
         body_schema: {
           lens: "string (required, max 240 chars) - Focus or perspective for the summary",
-          model: "string (optional) - One of the available models"
+          model: "string (optional) - One of the available Cloudflare AI models"
         },
         example: {
           lens: "How does George handle manufacturing operations and uptime?",
@@ -71,10 +68,10 @@ export const onRequest = async ({ request, env }: PagesContext) => {
       test_page: "/test-lens-api.html",
       documentation: "/QUICK_START_GUIDE.md",
       notes: [
-        hasToken ? "✓ HF_TOKEN is configured" : "⚠ HF_TOKEN is not configured - set it in Cloudflare Pages environment variables",
+        hasAI ? "✓ Workers AI is available" : "⚠ Workers AI not available",
         hasAssets ? "✓ ASSETS fetcher is available" : "⚠ ASSETS fetcher not available",
-        "Models may take 10-30 seconds to warm up on first request",
-        "Use the test page for browser-based testing"
+        "Running on Cloudflare's edge AI network",
+        "No external API calls - all processing on Cloudflare infrastructure"
       ]
     }, null, 2), {
       status: 200,
@@ -98,13 +95,13 @@ export const onRequest = async ({ request, env }: PagesContext) => {
 
   const lensRaw = (payload.lens || "").toString().trim();
   if (!lensRaw) {
-    return jsonResponse({
+    return jsonResponse({ 
       error: "Provide a focus or lens description.",
       help: "Include a 'lens' field in your request body describing the perspective you want."
     }, 400);
   }
   if (lensRaw.length > 240) {
-    return jsonResponse({
+    return jsonResponse({ 
       error: "Lens description is too long (max 240 characters).",
       current_length: lensRaw.length
     }, 400);
@@ -112,7 +109,7 @@ export const onRequest = async ({ request, env }: PagesContext) => {
 
   const requestedModel = (payload.model || "").toString().trim() || DEFAULT_MODEL;
   if (!ALLOWED_MODELS.has(requestedModel)) {
-    return jsonResponse({
+    return jsonResponse({ 
       error: "Model not permitted.",
       requested: requestedModel,
       allowed_models: Array.from(ALLOWED_MODELS)
@@ -121,13 +118,12 @@ export const onRequest = async ({ request, env }: PagesContext) => {
 
   console.log(`[lens-summary] Request received - lens: "${lensRaw.substring(0, 50)}${lensRaw.length > 50 ? '...' : ''}", model: ${requestedModel}`);
 
-  const token = env.HF_TOKEN || env.HF_API_TOKEN;
-  if (!token) {
-    console.error("[lens-summary] HF_TOKEN not configured");
-    return jsonResponse({
-      error: "Hugging Face token not configured.",
-      help: "Set HF_TOKEN environment variable in Cloudflare Pages settings",
-      docs: "https://dash.cloudflare.com (Pages → Your Project → Settings → Environment Variables)"
+  if (!env.AI) {
+    console.error("[lens-summary] Workers AI not available");
+    return jsonResponse({ 
+      error: "Cloudflare Workers AI is not available.",
+      help: "Workers AI should be automatically available in Cloudflare Pages Functions",
+      docs: "https://developers.cloudflare.com/workers-ai/"
     }, 500);
   }
 
@@ -140,7 +136,7 @@ export const onRequest = async ({ request, env }: PagesContext) => {
     console.log(`[lens-summary] Resume loaded successfully (${resumeText.length} chars)`);
   } catch (err) {
     console.error("[lens-summary] Failed to load resume.txt", err);
-    return jsonResponse({
+    return jsonResponse({ 
       error: "Unable to load resume.txt",
       details: err instanceof Error ? err.message : "Unknown error",
       help: "Ensure resume.txt exists in the project root directory"
@@ -148,26 +144,18 @@ export const onRequest = async ({ request, env }: PagesContext) => {
   }
 
   const prompt = buildPrompt(resumeText, lensRaw);
-  console.log(`[lens-summary] Calling Hugging Face API - model: ${requestedModel}, prompt length: ${prompt.length}`);
+  console.log(`[lens-summary] Calling Workers AI - model: ${requestedModel}, prompt length: ${prompt.length}`);
 
   let generated: string;
   try {
-    generated = await queryHuggingFace(prompt, requestedModel, token);
-    console.log(`[lens-summary] HF response received (${generated.length} chars)`);
+    generated = await queryWorkersAI(env.AI, prompt, requestedModel);
+    console.log(`[lens-summary] AI response received (${generated.length} chars)`);
   } catch (err) {
-    console.error("[lens-summary] HF API error", err);
-    if (err instanceof ResponseError) {
-      return jsonResponse({
-        error: err.message,
-        status_code: err.status,
-        help: err.status === 503
-          ? "Model is warming up. This is normal for the first request. Please retry in 10-15 seconds."
-          : "Check Hugging Face API status and your token permissions"
-      }, err.status);
-    }
-    return jsonResponse({
-      error: "Hugging Face API request failed",
-      details: err instanceof Error ? err.message : "Unknown error"
+    console.error("[lens-summary] Workers AI error", err);
+    return jsonResponse({ 
+      error: "Workers AI request failed",
+      details: err instanceof Error ? err.message : "Unknown error",
+      help: "Check Cloudflare Workers AI status and your account limits"
     }, 502);
   }
 
@@ -191,7 +179,7 @@ export const onRequest = async ({ request, env }: PagesContext) => {
   } catch (err) {
     console.error("[lens-summary] JSON parse error", err);
     console.error("[lens-summary] Raw output:", generated.substring(0, 500));
-    return jsonResponse({
+    return jsonResponse({ 
       error: "Model response was not in the expected format.",
       details: err instanceof Error ? err.message : "Could not extract JSON from model output",
       help: "Try a different model or rephrase your lens description",
@@ -210,104 +198,64 @@ export const onRequest = async ({ request, env }: PagesContext) => {
 
 function buildPrompt(resumeText: string, lens: string): string {
   return `
-System:
-You generate concise JSON summaries for professional resumes. Do not include commentary outside JSON.
+You are an expert resume analyst. Generate a JSON response analyzing this resume through a specific lens.
 
-Lens request: ${lens}
+Lens: ${lens}
 
 Resume:
 ${resumeText}
 
-Instruction:
-Explain how this resume speaks to the lens request above. Provide a short paragraph (<= 120 words) and three concise bullet points that surface relevant accomplishments.
+Task: Analyze how this resume addresses the given lens. Provide:
+1. A concise summary paragraph (100-120 words)
+2. Three specific bullet points highlighting relevant accomplishments
 
-Format:
+Respond ONLY with valid JSON in this exact format:
 {
-  "summary": "...",
+  "summary": "Your analysis paragraph here",
   "bullets": [
-    "point one",
-    "point two",
-    "point three"
+    "First key point",
+    "Second key point", 
+    "Third key point"
   ]
 }
-`.trim();
+
+Do not include any text outside the JSON structure.`.trim();
 }
 
-async function queryHuggingFace(prompt: string, model: string, token: string): Promise<string> {
-  const endpoint = `https://api-inference.huggingface.co/models/${model}`;
-  
-  console.log(`[lens-summary] HF API Request:`, {
-    endpoint,
+async function queryWorkersAI(ai: Ai, prompt: string, model: string): Promise<string> {
+  console.log(`[lens-summary] Workers AI Request:`, {
     model,
-    token_present: Boolean(token),
-    token_prefix: token ? token.substring(0, 7) + '...' : 'none',
     prompt_length: prompt.length
   });
   
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      inputs: prompt,
-      parameters: {
-        max_new_tokens: 320,
-        temperature: 0.2,
-        return_full_text: false
-      }
-    })
-  });
-
-  console.log(`[lens-summary] HF API Response:`, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: Object.fromEntries(response.headers.entries())
-  });
-
-  if (!response.ok) {
-    const message = await safeRead(response);
-    console.error(`[lens-summary] HF API Error ${response.status}:`, message);
-    
-    // Try to parse as JSON for better error details
-    let errorDetails;
-    try {
-      errorDetails = JSON.parse(message);
-      console.error(`[lens-summary] HF Error Details:`, errorDetails);
-    } catch {
-      errorDetails = { raw: message };
-    }
-    
-    if (response.status === 503 && message.includes("currently loading")) {
-      throw new ResponseError("Model is warming up. Please try again in a few seconds.", 503);
-    }
-    
-    // Include full error details in response
-    const errorMsg = errorDetails.error || message || "Hugging Face API error";
-    throw new ResponseError(
-      `HF API returned ${response.status}: ${errorMsg}. Model: ${model}. Details: ${JSON.stringify(errorDetails)}`,
-      response.status
-    );
-  }
-
-  const data = await response.json() as unknown;
-  if (Array.isArray(data) && data.length > 0) {
-    const first = data[0] as HuggingFaceSuccess;
-    if (first.generated_text) return first.generated_text;
-  } else if (typeof data === "object" && data !== null && "generated_text" in data) {
-    return String((data as Record<string, unknown>).generated_text || "");
-  }
-
-  throw new Error("Unexpected Hugging Face response format.");
-}
-
-async function safeRead(response: Response): Promise<string> {
   try {
-    const text = await response.text();
-    return text.slice(0, 500);
-  } catch {
-    return "";
+    const response = await ai.run(model as any, {
+      prompt: prompt,
+      max_tokens: 512,
+      temperature: 0.3
+    });
+
+    console.log(`[lens-summary] Workers AI Response:`, {
+      success: true,
+      response_type: typeof response
+    });
+
+    // Workers AI returns an object with a response field
+    if (response && typeof response === 'object' && 'response' in response) {
+      return String(response.response);
+    }
+    
+    // Sometimes it might return the text directly
+    if (typeof response === 'string') {
+      return response;
+    }
+
+    // Fallback: stringify the response
+    return JSON.stringify(response);
+    
+  } catch (err) {
+    console.error("[lens-summary] Workers AI Error:", err);
+    throw new Error(`Workers AI request failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
   }
 }
 
@@ -341,7 +289,7 @@ function extractJson(text: string): Record<string, unknown> {
 function jsonResponse(body: Record<string, unknown>, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: {
+    headers: { 
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -350,19 +298,22 @@ function jsonResponse(body: Record<string, unknown>, status = 200): Response {
   });
 }
 
-class ResponseError extends Error {
-  public status: number;
-  constructor(message: string, status: number) {
-    super(message);
-    this.status = status;
-  }
+// Type definitions for Cloudflare Workers AI
+interface Ai {
+  run(model: string, options: {
+    prompt: string;
+    max_tokens?: number;
+    temperature?: number;
+  }): Promise<unknown>;
 }
+
 type AssetsFetcher = {
   fetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
 };
 
 type PagesEnv = {
   ASSETS: AssetsFetcher;
+  AI: Ai;
   HF_TOKEN?: string;
   HF_API_TOKEN?: string;
 };

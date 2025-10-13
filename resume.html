@@ -26,10 +26,10 @@
           <label class="lens-field">
             <span>Model</span>
             <select id="lens-model" name="model">
-              <option value="google/flan-t5-base">Google Flan-T5 Base (default, most stable)</option>
-              <option value="google/flan-t5-large">Google Flan-T5 Large</option>
-              <option value="facebook/bart-large-cnn">Facebook BART Large (summarization)</option>
-              <option value="gpt2">GPT-2 (classic, always available)</option>
+              <option value="@cf/meta/llama-3-8b-instruct">Llama 3 8B Instruct (default, recommended)</option>
+              <option value="@cf/mistral/mistral-7b-instruct-v0.1">Mistral 7B Instruct</option>
+              <option value="@hf/thebloke/neural-chat-7b-v3-1-awq">Neural Chat 7B</option>
+              <option value="@cf/meta/llama-2-7b-chat-int8">Llama 2 7B Chat</option>
             </select>
           </label>
           <button type="submit" id="lens-submit">Generate summary</button>
