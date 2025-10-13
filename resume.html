@@ -81,16 +81,44 @@
 </head>
 <body>
   <main class="page">
-    <h1>resume.txt<span class="caret" aria-hidden="true"></span></h1>
-    <p class="lead">rendered directly from the source text for printing, diffing, and quick scans.</p>
-    <nav class="resume-actions" aria-label="resume shortcuts">
-      <a class="pill-link" href="/resume.txt" download="george-larson-resume.txt">Download resume.txt</a>
-      <a class="pill-link" href="#resume-text">Jump to resume</a>
-      <a class="pill-link" href="#lens-tools">Explore AI summaries</a>
-    </nav>
+    <header class="resume-hero" id="overview">
+      <div class="hero-heading">
+        <h1>George Larson<span class="caret" aria-hidden="true"></span></h1>
+        <p class="lead">Director of Technology and long-time builder across software engineering, infrastructure, and manufacturing. I ship calm, privacy-aware systems while staying close to the keyboard and the teams that operate them.</p>
+      </div>
+      <nav class="resume-actions" aria-label="resume shortcuts">
+        <a class="pill-link" href="/resume.txt" download="george-larson-resume.txt">Download resume.txt</a>
+        <a class="pill-link" href="#resume">Read the full resume</a>
+        <a class="pill-link" href="#lens-tools">Explore with AI</a>
+        <a class="pill-link" href="#ask-search">Search the resume</a>
+      </nav>
+      <p class="hint">This page pulls directly from <code>resume.txt</code> below—diff it, print it, or explore it with the live tools.</p>
+      <div class="metrics-grid" aria-label="key metrics">
+        <article class="metric-card">
+          <h3>Security coverage</h3>
+          <p>36 public assets scanned via HostedScan + OWASP ZAP; 33 findings closed in 60 days with zero critical/high issues.</p>
+        </article>
+        <article class="metric-card">
+          <h3>Platform</h3>
+          <p>36 GitLab projects (11 users, 739 CI pipelines, 2,204 merge requests) with 16 managed SSH keys.</p>
+        </article>
+        <article class="metric-card">
+          <h3>Collaboration</h3>
+          <p>7 Mattermost teams, 40 channels, ~1M lifetime posts, 313 calls—wired to uptime, upgrade, helpdesk, GitLab, and web-critical alerts.</p>
+        </article>
+        <article class="metric-card">
+          <h3>Support velocity</h3>
+          <p>Zammad processed 1,487 tickets YTD (~150–206/month) with ≥97% close rate; 68% resolved inside 24 hours.</p>
+        </article>
+        <article class="metric-card">
+          <h3>Observability</h3>
+          <p>31 Uptime Kuma monitors across GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, and more—feeding Mattermost alert channels.</p>
+        </article>
+      </div>
+    </header>
 
-    <section class="lens" id="lens-tools" aria-label="resume lenses">
-      <h2>optional: view the resume through a specific lens</h2>
+    <section class="lens" id="lens-tools" aria-label="resume explorer">
+      <h2>Explore with AI & local search</h2>
       <p class="hint">Live summaries run on Cloudflare using the Hugging Face Inference API (token stays server-side). Saved lenses remain available for quick scanning.</p>
       <div class="lens-onboarding" role="note">
         <h3>How to explore</h3>
@@ -143,9 +171,24 @@
           <p class="hint">Select a saved lens to see an AI-assisted summary and suggested reading inside the resume.</p>
         </article>
       </div>
+
+      <div class="lens-search" id="ask-search" aria-label="search the resume">
+        <h3>Search the resume</h3>
+        <p class="hint">Everything runs locally in your browser. Try queries like <code>zero trust</code>, <code>manufacturing</code>, or <code>OCR</code> to jump to matching paragraphs.</p>
+        <div class="searchbox">
+          <input id="ask-query" type="text" placeholder="Find topics across the resume" aria-label="search resume text" />
+          <button id="ask-button" type="button">Search</button>
+        </div>
+        <p class="hint">Tip: multi-word searches rank paragraphs by match count and length so the most relevant sections stay on top.</p>
+        <section id="ask-results" class="ask-results" aria-live="polite"></section>
+      </div>
     </section>
 
-    <pre id="resume-text">loading resume...</pre>
+    <section class="resume-source" id="resume">
+      <h2>Full resume</h2>
+      <p class="hint">Rendered straight from <code>resume.txt</code> for printing, diffing, or quick reference.</p>
+      <pre id="resume-text">loading resume...</pre>
+    </section>
     <footer>
       <hr />
       <span>return to <a href="/index.html">home</a> / <a href="/schedule.html">schedule time</a></span>
@@ -157,17 +200,102 @@
       { title: "Manufacturing ops", prompt: "Explain George's manufacturing, PLC, and uptime experience." },
       { title: "Technology leadership", prompt: "Summarise how George leads teams and ships roadmaps." },
       { title: "Meditation influence", prompt: "Connect George's Zen practice to his leadership style." },
-      { title: "Baker?", prompt: "Evaluate George's resume as if he were interviewing for a baker role." }
+      { title: "Baker?", prompt: "Evaluate George's resume as if he were interviewing for a baker role." },
+      { title: "Butcher?", prompt: "Review George's experience as if he were applying for a butcher position—highlight transferable strengths." },
+      { title: "Candlestick maker?", prompt: "Describe how George could thrive as a candlestick maker and which traits would translate well." }
     ];
 
     const state = {
       resumeText: "",
+      paragraphs: [],
       lenses: [],
       selectedLens: null,
       liveResult: null,
       loading: false
     };
     const DEFAULT_STATUS = "Type a focus, tap a prompt, or run the demo above, then press Enter to generate your custom summary.";
+    const ASK_DEFAULT_MESSAGE = "Type a topic to search the resume.";
+
+    function escapeRegExp(str){
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function scoreParagraph(text, terms){
+      const lower = text.toLowerCase();
+      let score = 0;
+      terms.forEach(term => {
+        if(!term) return;
+        const re = new RegExp(escapeRegExp(term), "gi");
+        const matches = lower.match(re);
+        if(matches){
+          const weight = term.length >= 3 ? 2 : 1;
+          score += matches.length * weight;
+        }
+      });
+      return score / Math.sqrt(text.length + 1);
+    }
+
+    function renderHighlight(container, text, terms){
+      if(terms.length === 0){
+        container.textContent = text;
+        return;
+      }
+      const pattern = new RegExp("(" + terms.map(escapeRegExp).join("|") + ")", "gi");
+      const lowerTerms = new Set(terms.map(t => t.toLowerCase()));
+      const parts = text.split(pattern);
+      parts.forEach(part => {
+        if(part.length === 0) return;
+        if(lowerTerms.has(part.toLowerCase())){
+          const mark = document.createElement("mark");
+          mark.textContent = part;
+          container.appendChild(mark);
+        }else{
+          container.appendChild(document.createTextNode(part));
+        }
+      });
+    }
+
+    function resetAskResults(message){
+      const output = document.getElementById("ask-results");
+      if(!output) return;
+      output.innerHTML = `<p class="hint">${message || ASK_DEFAULT_MESSAGE}</p>`;
+    }
+
+    function runAskSearch(query){
+      const output = document.getElementById("ask-results");
+      if(!output) return;
+      if(!state.paragraphs.length){
+        resetAskResults("Resume is still loading. Try again in a moment.");
+        return;
+      }
+      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+      if(!terms.length){
+        resetAskResults();
+        return;
+      }
+      const ranked = state.paragraphs
+        .map(text => ({ text, score: scoreParagraph(text, terms) }))
+        .filter(entry => entry.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 6);
+      if(!ranked.length){
+        resetAskResults(`No matches for “${query}”. Try different or shorter terms.`);
+        return;
+      }
+      output.innerHTML = "";
+      ranked.forEach(entry => {
+        const wrapper = document.createElement("article");
+        wrapper.className = "result";
+        const meta = document.createElement("div");
+        meta.className = "hint";
+        meta.textContent = "score " + entry.score.toFixed(2);
+        const body = document.createElement("p");
+        renderHighlight(body, entry.text, terms);
+        wrapper.appendChild(meta);
+        wrapper.appendChild(body);
+        output.appendChild(wrapper);
+      });
+    }
 
     async function loadResume(){
       const target = document.getElementById("resume-text");
@@ -176,8 +304,17 @@
         if(!res.ok) throw new Error("fetch failed");
         state.resumeText = (await res.text()).trim();
         target.textContent = state.resumeText;
+        state.paragraphs = state.resumeText
+          .split(/\n\s*\n/)
+          .map(item => item.replace(/\s+/g, " ").trim())
+          .filter(Boolean);
+        const askInput = document.getElementById("ask-query");
+        if(askInput && askInput.value.trim()){
+          runAskSearch(askInput.value.trim());
+        }
       }catch(err){
         target.textContent = "Resume could not be loaded. Please download it directly at /resume.txt.";
+        resetAskResults("Resume could not be loaded. Please download it directly at /resume.txt.");
       }
     }
 
@@ -395,6 +532,8 @@
     }
 
     window.addEventListener("DOMContentLoaded", async () => {
+      const askInput = document.getElementById("ask-query");
+      const askButton = document.getElementById("ask-button");
       mountSuggestions();
       renderLive(null);
       document.getElementById("lens-form").addEventListener("submit", handleGeneration);
@@ -402,8 +541,29 @@
       if(demoButton){
         demoButton.addEventListener("click", runDemoLens);
       }
+      if(askInput){
+        askInput.addEventListener("keydown", event => {
+          if(event.key === "Enter"){
+            event.preventDefault();
+            runAskSearch(askInput.value.trim());
+          }
+        });
+      }
+      if(askButton){
+        askButton.addEventListener("click", () => {
+          const query = askInput ? askInput.value.trim() : "";
+          runAskSearch(query);
+        });
+      }
+      resetAskResults();
+      const params = new URLSearchParams(window.location.search);
+      const presetQuery = params.get("q");
       await loadResume();
       await loadLenses();
+      if(presetQuery && askInput){
+        askInput.value = presetQuery;
+        runAskSearch(presetQuery.trim());
+      }
       warmModel();
     });
   </script>

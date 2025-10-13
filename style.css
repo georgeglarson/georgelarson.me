@@ -115,8 +115,8 @@ h1 {
 }
 
 .resume-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
   gap: 0.75rem;
   margin: 0 0 2.25rem 0;
 }
@@ -142,6 +142,66 @@ h1 {
 .pill-link:focus-visible {
   outline: 2px solid rgba(22, 245, 166, 0.65);
   outline-offset: 2px;
+}
+
+.resume-hero {
+  padding: 2.75rem 2rem;
+  margin-bottom: 3rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(8, 18, 28, 0.75);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.resume-hero .lead {
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+}
+
+.resume-hero .hint {
+  margin-top: -0.5rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.metric-card {
+  padding: 1.4rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(22, 245, 166, 0.22);
+  background: rgba(5, 12, 18, 0.75);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
+}
+
+.metric-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-strong);
+}
+
+.metric-card p {
+  margin: 0;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
+
+.resume-source {
+  margin-top: 3rem;
+}
+
+.resume-source h2 {
+  margin-bottom: 0.75rem;
+}
+
+.resume-source .hint {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
 
 .panel {
@@ -231,7 +291,8 @@ button:disabled {
 }
 
 .lens-live,
-.lens-saved {
+.lens-saved,
+.lens-search {
   margin-top: 1.75rem;
   padding: 1.75rem 1.5rem;
   border-radius: var(--radius);
@@ -391,6 +452,7 @@ small {
   .panel,
   .lens-live,
   .lens-saved,
+  .lens-search,
   .lens-panel {
     padding: 1.4rem 1.15rem;
   }
@@ -408,13 +470,22 @@ small {
   }
 
   .resume-actions {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+
+  .resume-hero {
+    padding: 2.2rem 1.5rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
   }
 
   .page.page-wide {
     max-width: 100%;
   }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   *,
