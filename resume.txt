@@ -4,12 +4,12 @@ Phone: 412-945-0101
 Location: Pittsburgh, PA
 
 SUMMARY
-Director of Technology and long-time builder with a career across software engineering, infrastructure, and manufacturing. I lead calm, pragmatic teams that deliver Linux and cloud systems, DevOps automation, and resilient ecommerce platforms. I stay close to the keyboard, understand the whiteboard, and use AI with an eye toward privacy and measurable outcomes.
+Director of Technology and long-time builder with a career across software engineering, infrastructure, and manufacturing. I lead calm, pragmatic teams that deliver Linux and cloud systems, DevOps automation, and resilient ecommerce platforms while decades of Zen practice keep the room steady under pressure. I stay close to the keyboard, understand the whiteboard, and use AI with an eye toward privacy and measurable outcomes.
 
 CURRENT FOCUS
 - Building and operating manufacturing and ecommerce platforms with 99 percent uptime targets.
 - Coaching teams through lean, testable delivery practices that keep production stable.
-- Applying AI where it offers leverage while protecting data, people, and compliance boundaries.
+- Scaling an AI-assisted knowledge stack and security programs that keep data, people, and compliance boundaries protected.
 
 CORE STRENGTHS
 DevOps and Infrastructure Automation
@@ -32,14 +32,24 @@ AI, Data, and OCR
 - Workflow design using open and commercial models, RAG pipelines, and model selection.
 - OCR digitization for historical archives with validation and quality control.
 
+OPEN SOURCE PROJECTS
+Deep Research Privacy Edition, Creator and Maintainer (2024 to Present)
+- Created a privacy-focused research tool combining Venice.ai's uncensored language models with Brave Search capabilities.
+- Implemented robust privacy features ensuring user data protection and local processing.
+- Developed clean, maintainable TypeScript codebase with comprehensive documentation.
+- Integrated multiple AI models and search providers with intelligent rate limiting and error recovery.
+
 SELECTED WORK HISTORY
 Director of Technology, FM Expressions (2018 to Present)
 - Lead technology strategy for a mid-size manufacturing company serving ecommerce channels.
-- Improved database performance by 93 percent while driving critical systems to 99 percent uptime.
-- Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance.
-- Operate infrastructure for GitLab, Mattermost, Redmine, Authentik, MySQL, Zammad, and internal services.
-- Built three custom ecommerce portals plus a Shopify presence, integrating with manufacturing systems.
-- Established security programs covering policy, training, and response.
+- Improved database performance by 93 percent while driving critical systems to 99 percent uptime; cut MySQL slow-query volume by 96 percent to accelerate incident response.
+- Built an AI-assisted knowledge stack (Wiki.js, Gitea, Qdrant, ETL pipelines) that captures production logs, transcripts, and operator notes so teams can search, surface, and act on institutional knowledge in real time.
+- Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep safety and operations guidance consistent.
+- Reduced a 1.03 GB legacy software repository (4,656 binary artifacts) to a clean, LFS-ready codebase, eliminating clone failures and enabling sustainable development practices.
+- Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, and routine vulnerability scanning to satisfy supplier security assessments.
+- Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
+- Built three custom ecommerce portals plus a Shopify presence, integrating order flow with manufacturing systems.
+- Operate GitLab, Mattermost, Redmine, Authentik, Zammad, and other internal platforms that anchor day-to-day collaboration.
 
 Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
 - Helped scale the company from a 50 person startup to a national leader in medical billing.
@@ -73,10 +83,12 @@ VOLUNTEER WORK
 
 TECHNICAL SKILLS
 Languages: Python, Perl, PHP, C++, SQL, TypeScript
-Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea
-Infrastructure: Linux, Apache, Nginx, IIS, CrowdSec, Kubernetes
+Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
+Infrastructure: Linux, Apache, Nginx, Caddy, IIS, CrowdSec, Kubernetes, Let's Encrypt/ACME
 Cloud: AWS, Azure, Google Cloud, Proxmox
-Security and Identity: Authentik, Psono, CrowdSec, policy development
-Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab
+Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, DefectDojo, OpenVAS
+Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptPad
+Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
-AI and ML: applied research workflows, RAG design, model governance, privacy safeguards
+AI and ML: Venice.ai integration, Model Context Protocol, applied research workflows, RAG design, model governance, privacy safeguards
+Vector Search: Qdrant, semantic embedding pipelines, AI-assisted knowledge bases
