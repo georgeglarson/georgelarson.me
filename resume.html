@@ -359,6 +359,7 @@
         ${bullets.length ? `<ul class="plain-list">${bullets.map(item => `<li>${item}</li>`).join("")}</ul>` : ""}
         <p class="hint">Generated with ${result.model} at ${new Date(result.generated_at || Date.now()).toLocaleTimeString()}.</p>
       `;
+      requestAnimationFrame(() => panel.scrollIntoView({ behavior: "smooth", block: "start" }));
     }
 
     function mountLensMenu(){

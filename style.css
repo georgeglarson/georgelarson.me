@@ -514,3 +514,22 @@ small {
     scroll-behavior: auto !important;
   }
 }
+.input-glow {
+  box-shadow: 0 0 0 3px rgba(255, 196, 40, 0.5);
+  outline: 2px solid rgba(255, 196, 40, 0.65);
+  transition: box-shadow 0.3s ease, outline 0.3s ease;
+}
+
+.button-flash {
+  animation: button-pulse 0.4s ease-in-out alternate 3;
+}
+
+@keyframes button-pulse {
+  from {
+    box-shadow: 0 0 0 rgba(255, 196, 40, 0);
+  }
+  to {
+    box-shadow: 0 0 16px rgba(255, 196, 40, 0.75);
+  }
+}
+
