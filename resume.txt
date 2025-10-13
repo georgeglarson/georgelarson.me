@@ -39,6 +39,11 @@ Deep Research Privacy Edition, Creator and Maintainer (2024 to Present)
 - Developed clean, maintainable TypeScript codebase with comprehensive documentation.
 - Integrated multiple AI models and search providers with intelligent rate limiting and error recovery.
 
+Interactive Resume (georgelarson.me/resume.html), Builder (2024 to Present)
+- Shipped a static, terminal-themed resume with AI-assisted lens summaries running on Cloudflare Pages.
+- Serves the canonical resume.txt for printing and diffing while keeping inference tokens server-side for privacy.
+- Highlights saved lenses and quick prompts so visitors can explore leadership, manufacturing, or privacy angles in seconds.
+
 SELECTED WORK HISTORY
 Director of Technology, FM Expressions (2018 to Present)
 - Lead technology strategy for a mid-size manufacturing company serving ecommerce channels.
