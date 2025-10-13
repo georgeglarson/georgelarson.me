@@ -1,0 +1,18 @@
+- HostedScan/ZAP: 36 public assets, 7 scheduled scans, 0 critical/high, 33 closed issues (last 60 days).
+- GitLab: 28 private repos spanning APIs, control systems, Shopify apps, manufacturing tooling (owner/admin).
+- Toolchain: Deployed/manually maintain Redmine, Zammad, Mattermost for roadmap, support, comms.
+- Primary MySQL cluster with dual replicas for HA + point-in-time recovery.
+- Infra: VMware ESXi, Datto backups, Active Directory, Cisco Meraki switching, Cisco & SonicWall firewalls, pfSense edge; rolling VPN?ZTN migration.
+- GitLab instance overview: 36 projects, 11 users, 2 groups; 2,204 merge requests; 4,045 notes; 16 SSH keys managed.
+- Redmine: 22 active cross-functional projects spanning ops (accounting, HR, press, shipping, software engineering, etc.).
+- Zammad helpdesk: ~200 tickets/month created vs closed, backlog near zero; 1,486 tickets logged YTD (download count).
+- Red Sift OnDMARC: 3 domains enforced (fmexpressions.com at p=reject) with ~1.5M emails/month, 99.48% compliance.
+- Zammad metrics: 1,487 tickets YTD; average close time ~68 hours with ~68% resolved inside 24h (56% inside 8h). Monthly volume 150-206 tickets in Jun-Aug with >97% close rate until October tapering.
+- GitLab usage trends: 739 pipelines run (avg 565 success / 58 failed), 84 issues tracked, steady growth from 20?36 projects across FY25.
+- Mattermost: multi-team deployment with dedicated alert channels (uptime, unattended upgrades, helpdesk, Redmine, GitLab, web critical) + docs/announcements structure for ops coordination.
+- Uptime Kuma: 31 monitors (23 up / 8 down / 10 paused) covering GitLab, helpdesk, Shopify APIs, FTP, chat, docs, etc.—driving alerting back into Mattermost.
+- Mashy dashboard + toolchain: central launcher for GitLab, Gitea, helpdesk, mail, wiki, plans, uptime, Psono vault, PrivateBin, Adminer/phpMyAdmin, DBeaver, etc.
+- CDN evolution: built custom data-center CDN, migrated to Contabo, then to Cloudflare to improve performance and management.
+- Mattermost stats: 13 activated users across 7 teams / 40 channels tallying ~1.0M posts; dev team alone: 6 activated, 5 public + 20 private channels with ~977k posts and daily active contributors 3-5.
+- Knowledge stack usage metrics TBD (search volume, embeddings, team adoption).
+- Need to collect historical metrics for early-career stories: Major BBS modem bank, TRS-80 cassette conversions, Daifuku/Sounding Board artifacts.

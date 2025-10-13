@@ -6,6 +6,13 @@ Location: Pittsburgh, PA
 SUMMARY
 Director of Technology and long-time builder with a career across software engineering, infrastructure, and manufacturing. I lead calm, pragmatic teams that deliver Linux and cloud systems, DevOps automation, and resilient ecommerce platforms while decades of Zen practice keep the room steady under pressure. I stay close to the keyboard, understand the whiteboard, and use AI with an eye toward privacy and measurable outcomes.
 
+KEY METRICS (2025)
+- 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
+- 36 active GitLab projects (11 users, 2 groups), 2,204 merge requests, 739 CI pipelines (avg 565 successes / 58 fails) and 16 managed SSH keys.
+- Mattermost workspace with 7 teams, 40 channels, ~1.0M lifetime posts, 313 calls, and alert channels wired to uptime, upgrade, helpdesk, GitLab, and web-critical events.
+- Zammad helpdesk processed 1,487 tickets YTD (~150–206/month in Jun–Aug) with ≥97% close rate, 68% resolved inside 24 hours (56% inside 8 hours), zero reopen events.
+- Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding Mattermost.
+
 CURRENT FOCUS
 - Building and operating manufacturing and ecommerce platforms with 99 percent uptime targets.
 - Coaching teams through lean, testable delivery practices that keep production stable.
@@ -13,8 +20,8 @@ CURRENT FOCUS
 
 CORE STRENGTHS
 DevOps and Infrastructure Automation
-- CI and CD design, infrastructure as code, container orchestration, and repeatable releases.
-- Observability, incident response, and pragmatic SLO tracking for hybrid environments.
+- CI and CD design, infrastructure as code, container orchestration, and repeatable releases on self-hosted runners.
+- Observability, incident response, high-availability design (replication, backups, CDN), and pragmatic SLO tracking for hybrid environments.
 
 Technology Leadership and Strategy
 - Strategic roadmaps that connect executive goals to team-level delivery.
@@ -25,8 +32,8 @@ Software Development and Engineering
 - Code review, automated testing, and performance tuning for legacy and greenfield systems.
 
 Security and Privacy
-- Network hardening, IAM, policy writing, and tabletop drills.
-- Privacy-preserving AI workflows and sensitivity to regulated data.
+- Network hardening, IAM, HostedScan/ZAP/Nikto assessment loops, and zero-trust rollouts.
+- Privacy-preserving AI workflows, regulated-data guardrails, and tabletop response drills.
 
 AI, Data, and OCR
 - Workflow design using open and commercial models, RAG pipelines, and model selection.
@@ -51,10 +58,13 @@ Director of Technology, FM Expressions (2018 to Present)
 - Built an AI-assisted knowledge stack (Wiki.js, Gitea, Qdrant, ETL pipelines) that captures production logs, transcripts, and operator notes so teams can search, surface, and act on institutional knowledge in real time.
 - Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep safety and operations guidance consistent.
 - Reduced a 1.03 GB legacy software repository (4,656 binary artifacts) to a clean, LFS-ready codebase, eliminating clone failures and enabling sustainable development practices.
-- Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, and routine vulnerability scanning to satisfy supplier security assessments.
+- Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, HostedScan/OWASP ZAP sweeps across 36 public assets, and Red Sift OnDMARC (p=reject, 1.5M emails/month at 99.48% compliance) to keep critical/high findings at zero and close 33 issues in the past 60 days.
+- Run GitLab (36 projects, 11 users, 739 CI pipelines) and Mattermost (7 teams, 40 channels, ~1M posts) as the collaboration core tied into Redmine (22 cross-functional projects), Zammad (~200 tickets/month with 68% closed inside 24 hours), and Uptime Kuma (31 monitors feeding alert channels).
+- Maintained high-availability platforms: dual MySQL replicas, VMware ESXi with Datto backups, Active Directory, Cisco Meraki switching, SonicWall/pfSense firewalls, and a staged CDN migration from self-hosted edges to Contabo and Cloudflare.
+- Built the Mashy internal dashboard plus tooling such as Psono vault, PrivateBin, phpMyAdmin/Adminer, DBeaver, knowledge mining utilities, and status pages so teams access credentials, data stores, and observability in one click.
+- Driving adoption metrics for the knowledge stack (semantic search, embeddings, saved lessons) to quantify time-to-answer gains for production and customer operations.
+- Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while migrating remote access from VPN to zero-trust policies.
 - Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
-- Built three custom ecommerce portals plus a Shopify presence, integrating order flow with manufacturing systems.
-- Operate GitLab, Mattermost, Redmine, Authentik, Zammad, and other internal platforms that anchor day-to-day collaboration.
 
 Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
 - Helped scale the company from a 50 person startup to a national leader in medical billing.
@@ -89,11 +99,12 @@ VOLUNTEER WORK
 TECHNICAL SKILLS
 Languages: Python, Perl, PHP, C++, SQL, TypeScript
 Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
-Infrastructure: Linux, Apache, Nginx, Caddy, IIS, CrowdSec, Kubernetes, Let's Encrypt/ACME
+Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
 Cloud: AWS, Azure, Google Cloud, Proxmox
-Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, DefectDojo, OpenVAS
+Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, DefectDojo, OpenVAS, zero-trust network design
 Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 AI and ML: Venice.ai integration, Model Context Protocol, applied research workflows, RAG design, model governance, privacy safeguards
 Vector Search: Qdrant, semantic embedding pipelines, AI-assisted knowledge bases
+Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Mashy internal portal
