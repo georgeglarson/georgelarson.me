@@ -15,6 +15,10 @@
     <section class="lens" aria-label="resume lenses">
       <h2>view the resume through a specific lens</h2>
       <p class="hint">Live summaries run on Cloudflare using the Hugging Face Inference API (token stays server-side). Saved lenses remain available for quick scanning.</p>
+      <div class="lens-onboarding" role="note">
+        <p><strong>Quick start:</strong> Choose a saved lens below to get a feel for the summaries.</p>
+        <p class="hint">Ready to explore your own angle? Type a focus (or tap a prompt) and press Generate to see the resume reframed for that priority.</p>
+      </div>
 
       <div class="lens-live">
         <h3>Generate a fresh take</h3>
@@ -36,9 +40,14 @@
         </form>
         <p class="hint">Need ideas? These prompts showcase how the tool reacts.</p>
         <div class="lens-suggestions" id="lens-suggestions" aria-label="Quick lens suggestions"></div>
-        <div id="lens-status" class="hint" role="status" aria-live="polite">Describe a focus and press enter to generate a custom summary.</div>
+        <div id="lens-status" class="hint" role="status" aria-live="polite">Type a focus or tap a prompt, then press Enter to generate your custom summary.</div>
         <article id="live-detail" class="lens-panel" aria-live="polite">
-          <p class="hint">No live summary yet. Submit the form to see the resume reframed for your focus.</p>
+          <h3>What you'll see</h3>
+          <p>The live lens rewrites the resume for the focus you provide and points you to the sections worth skimming.</p>
+          <ul class="plain-list">
+            <li>Try a suggestion above or describe the angle you're hiring for.</li>
+            <li>Summaries generate in a few seconds and stay on this page.</li>
+          </ul>
         </article>
       </div>
 
@@ -73,6 +82,7 @@
       liveResult: null,
       loading: false
     };
+    const DEFAULT_STATUS = "Type a focus or tap a prompt, then press Enter to generate your custom summary.";
 
     async function loadResume(){
       const target = document.getElementById("resume-text");
@@ -110,7 +120,14 @@
     function renderLive(result){
       const panel = document.getElementById("live-detail");
       if(!result){
-        panel.innerHTML = '<p class="hint">No live summary yet. Submit the form to see the resume reframed for your focus.</p>';
+        panel.innerHTML = `
+          <h3>What you'll see</h3>
+          <p>The live lens rewrites the resume for the focus you provide and points you to the sections worth skimming.</p>
+          <ul class="plain-list">
+            <li>Try a suggestion above or describe the angle you're hiring for.</li>
+            <li>Summaries generate in a few seconds and stay on this page.</li>
+          </ul>
+        `;
         return;
       }
       const bullets = result.key_points || [];
@@ -195,7 +212,7 @@
     function setLoading(isLoading, message){
       state.loading = Boolean(isLoading);
       const status = document.getElementById("lens-status");
-      status.textContent = message || "";
+      status.textContent = message || DEFAULT_STATUS;
       const submit = document.getElementById("lens-submit");
       submit.disabled = state.loading;
       submit.textContent = state.loading ? "Generating..." : "Generate summary";
@@ -203,7 +220,7 @@
 
     function showStatus(message){
       const status = document.getElementById("lens-status");
-      status.textContent = message || "";
+      status.textContent = message || DEFAULT_STATUS;
     }
 
     async function handleGeneration(event){
@@ -220,7 +237,7 @@
     }
 
     async function requestLensSummary(lensText, model, attempt = 1){
-      setLoading(true, attempt === 1 ? "Generating summary…" : `Retrying attempt ${attempt}…`);
+      setLoading(true, attempt === 1 ? "Generating your summary..." : `Retrying (attempt ${attempt})...`);
       try{
         const response = await fetch("/api/lens-summary", {
           method: "POST",
@@ -230,7 +247,7 @@
         const data = await response.json().catch(()=>({}));
         if(!response.ok){
           if(response.status === 503 && attempt < 3){
-            showStatus("Model is waking up (takes ~10 seconds). Retrying…");
+            showStatus("Model is waking up (about 10 seconds). We'll retry automatically.");
             setTimeout(() => requestLensSummary(lensText, model, attempt + 1), 7000);
             setLoading(false, "");
             return;
@@ -239,7 +256,7 @@
         }
         state.liveResult = data;
         renderLive(data);
-        setLoading(false, "Summary generated.");
+        setLoading(false, "Summary ready. Scroll down to review the recommended sections.");
       }catch(err){
         console.error(err);
         setLoading(false, "");
