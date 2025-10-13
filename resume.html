@@ -438,12 +438,19 @@
       const input = document.getElementById("lens-input");
       input.value = demo.prompt;
       input.focus();
+      const status = document.getElementById("lens-status");
+      if(status){
+        status.classList.add("status-flash");
+        setTimeout(() => status.classList.remove("status-flash"), 1200);
+        status.textContent = "Running the quick demo (AI + privacy)...";
+      }
       requestLensSummary(demo.prompt, document.getElementById("lens-model").value);
     }
 
     function setLoading(isLoading, message){
       state.loading = Boolean(isLoading);
       const status = document.getElementById("lens-status");
+      status.classList.remove("status-flash");
       status.textContent = message || DEFAULT_STATUS;
       const submit = document.getElementById("lens-submit");
       submit.disabled = state.loading;
@@ -456,6 +463,7 @@
 
     function showStatus(message){
       const status = document.getElementById("lens-status");
+      status.classList.remove("status-flash");
       status.textContent = message || DEFAULT_STATUS;
     }
 
