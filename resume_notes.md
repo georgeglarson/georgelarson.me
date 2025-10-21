@@ -10,8 +10,8 @@
 - Zammad metrics: 1,487 tickets YTD; average close time ~68 hours with ~68% resolved inside 24h (56% inside 8h). Monthly volume 150-206 tickets in Jun-Aug with >97% close rate until October tapering.
 - GitLab usage trends: 739 pipelines run (avg 565 success / 58 failed), 84 issues tracked, steady growth from 20?36 projects across FY25.
 - Mattermost: multi-team deployment with dedicated alert channels (uptime, unattended upgrades, helpdesk, Redmine, GitLab, web critical) + docs/announcements structure for ops coordination.
-- Uptime Kuma: 31 monitors (23 up / 8 down / 10 paused) covering GitLab, helpdesk, Shopify APIs, FTP, chat, docs, etc.—driving alerting back into Mattermost.
-- Mashy dashboard + toolchain: central launcher for GitLab, Gitea, helpdesk, mail, wiki, plans, uptime, Psono vault, PrivateBin, Adminer/phpMyAdmin, DBeaver, etc.
+- Uptime Kuma: 31 monitors (23 up / 8 down / 10 paused) covering GitLab, helpdesk, Shopify APIs, FTP, chat, docs, etc. driving alerting back into Mattermost.
+- Dashy dashboard + toolchain: central launcher for GitLab, Gitea, helpdesk, mail, wiki, plans, uptime, Psono vault, PrivateBin, Adminer/phpMyAdmin, DBeaver, etc.
 - CDN evolution: built custom data-center CDN, migrated to Contabo, then to Cloudflare to improve performance and management.
 - Mattermost stats: 13 activated users across 7 teams / 40 channels tallying ~1.0M posts; dev team alone: 6 activated, 5 public + 20 private channels with ~977k posts and daily active contributors 3-5.
 - Knowledge stack usage metrics TBD (search volume, embeddings, team adoption).

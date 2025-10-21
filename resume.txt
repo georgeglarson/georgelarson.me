@@ -107,4 +107,4 @@ Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 AI and ML: Venice.ai integration, Model Context Protocol, applied research workflows, RAG design, model governance, privacy safeguards
 Vector Search: Qdrant, semantic embedding pipelines, AI-assisted knowledge bases
-Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Mashy internal portal
+Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
