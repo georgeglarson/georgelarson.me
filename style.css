@@ -187,10 +187,16 @@ h1 {
 }
 
 .metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+}
+
+.metrics-grid .metric-card {
+  flex: 1 1 240px;
+  max-width: 280px;
 }
 
 .metric-card {
