@@ -175,7 +175,7 @@
 
       <div class="lens-search" id="ask-search" aria-label="search the resume">
         <h3>Search the resume</h3>
-        <p class="hint">Everything runs locally in your browser. Try queries like <code>zero trust</code>, <code>manufacturing</code>, or <code>OCR</code> to jump to matching paragraphs.</p>
+        <p class="hint">Everything runs locally in your browser. Try queries like <code>zero trust</code>, <code>manufacturing</code>, or <code>OCR</code> to jump to matching paragraphs. Press <kbd>/</kbd> to focus the search box.</p>
         <div class="searchbox">
           <input id="ask-query" type="text" placeholder="Find topics across the resume" aria-label="search resume text" />
           <button id="ask-button" type="button">Search</button>
@@ -565,6 +565,15 @@
           runAskSearch(query);
         });
       }
+      document.addEventListener("keydown", event => {
+        if(event.key === "/" && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)){
+          event.preventDefault();
+          if(askInput){
+            askInput.focus();
+            askInput.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }
+      });
       resetAskResults();
       const params = new URLSearchParams(window.location.search);
       const presetQuery = params.get("q");

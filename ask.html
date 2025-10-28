@@ -15,7 +15,7 @@
       <input id="ask-query" type="text" placeholder="try: plc, ocr, linux, ai privacy" aria-label="search resume text" />
       <button id="ask-button" type="button">search</button>
     </div>
-    <p><small class="hint">Tip: press Enter to submit. Results show the most relevant paragraphs with highlights.</small></p>
+    <p><small class="hint">Tip: press <kbd>/</kbd> to focus search or Enter to submit. Results show the most relevant paragraphs with highlights.</small></p>
     <section id="ask-results" aria-live="polite"></section>
     <footer>
       <hr />
@@ -118,6 +118,12 @@
         if(event.key === "Enter"){
           event.preventDefault();
           search(input.value.trim());
+        }
+      });
+      document.addEventListener("keydown", event => {
+        if(event.key === "/" && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)){
+          event.preventDefault();
+          input.focus();
         }
       });
       await loadResumeForSearch();

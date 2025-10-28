@@ -6,6 +6,30 @@
   <title>george larson - builder and director of technology</title>
   <link rel="stylesheet" href="/style.css" />
   <meta name="description" content="George Larson is a director of technology and long-time builder focused on pragmatic systems, privacy-first AI, and calm execution." />
+  <meta property="og:title" content="george larson - builder and director of technology" />
+  <meta property="og:description" content="Director of technology and long-time builder focused on pragmatic systems, privacy-first AI, and calm execution." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://georgelarson.me/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="george larson - builder and director of technology" />
+  <meta name="twitter:description" content="Director of technology and long-time builder focused on pragmatic systems, privacy-first AI, and calm execution." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "George Larson",
+    "jobTitle": "Director of Technology",
+    "description": "Director of technology and long-time builder focused on pragmatic systems, privacy-first AI, and calm execution.",
+    "email": "george.g.larson@pm.me",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pittsburgh",
+      "addressRegion": "PA"
+    },
+    "url": "https://georgelarson.me",
+    "sameAs": []
+  }
+  </script>
 </head>
 <body>
   <main class="page">
@@ -15,7 +39,25 @@
       <a href="/resume.html">resume</a>
       <a href="/schedule.html">schedule time</a>
       <a href="/ask.html">ask the resume</a>
+      <a href="/now.html">now</a>
+      <a href="/uses.html">uses</a>
     </nav>
+    <hr />
+    <section class="terminal-wrapper">
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-title">george@larson:~$</span>
+          <button type="button" id="terminal-toggle" class="terminal-minimize" aria-label="toggle terminal">_</button>
+        </div>
+        <div id="terminal-output" class="terminal-output">
+          <p class="terminal-line">Welcome to george larson's terminal. Type <span class="terminal-cmd">help</span> to see available commands.</p>
+        </div>
+        <div class="terminal-input-wrapper">
+          <span class="terminal-prompt">george@larson:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="terminal command input" />
+        </div>
+      </div>
+    </section>
     <hr />
     <section class="panel">
       <p>I design and operate pragmatic systems: Linux, DevOps, databases, and the teams that ship them. I like minimal solutions that age gracefully, and I stay close to the keyboard even when the work is strategic.</p>
@@ -32,5 +74,148 @@
       <span>&copy; george larson</span>
     </footer>
   </main>
+  <script>
+    const COMMANDS = {
+      help: {
+        desc: 'Show available commands',
+        exec: () => {
+          const cmds = Object.keys(COMMANDS).map(cmd => `  <span class="terminal-cmd">${cmd.padEnd(12)}</span> ${COMMANDS[cmd].desc}`).join('\n');
+          return `Available commands:\n${cmds}`;
+        }
+      },
+      ls: {
+        desc: 'List available pages',
+        exec: () => 'resume.html\nschedule.html\nask.html\nnow.html\nuses.html\nresume.txt\ngeorge-larson-resume.pdf'
+      },
+      cat: {
+        desc: 'Read a file (try: cat resume.txt)',
+        exec: (args) => {
+          if (!args[0]) return 'Usage: cat [filename]';
+          const file = args[0].toLowerCase();
+          if (file === 'resume.txt' || file === 'resume') {
+            window.location.href = 'resume.html';
+            return 'Opening resume...';
+          }
+          if (file === 'now.html' || file === 'now') {
+            window.location.href = 'now.html';
+            return 'Opening now...';
+          }
+          if (file === 'uses.html' || file === 'uses') {
+            window.location.href = 'uses.html';
+            return 'Opening uses...';
+          }
+          if (file.match(/^(ask|schedule)(.html)?$/)) {
+            const page = file.replace('.html', '');
+            window.location.href = `${page}.html`;
+            return `Opening ${page}...`;
+          }
+          return `cat: ${args[0]}: No such file or directory`;
+        }
+      },
+      whoami: {
+        desc: 'About George',
+        exec: () => 'George Larson\nDirector of Technology / Builder / Zen Practitioner\nPittsburgh, PA\nguidance for manufacturing, ecommerce, AI, and infrastructure'
+      },
+      contact: {
+        desc: 'Get contact information',
+        exec: () => 'Email: george.g.larson@pm.me\nSchedule: <a href="/schedule.html" class="terminal-link">georgelarson.me/schedule</a>\nLocation: Pittsburgh, PA'
+      },
+      skills: {
+        desc: 'Show technical skills',
+        exec: () => 'Linux • DevOps • Kubernetes • GitLab CI/CD\nPostgreSQL • Redis • Vector DBs\nPython • TypeScript • Bash\nZero-trust security • AI/RAG • Manufacturing automation'
+      },
+      focus: {
+        desc: 'Current priorities',
+        exec: () => '• Guiding manufacturing and ecommerce platforms\n• Using AI where it offers leverage while keeping data safe\n• Helping peers and meditation communities with calm technology decisions'
+      },
+      uptime: {
+        desc: 'System status',
+        exec: () => {
+          const start = new Date('2000-01-01');
+          const now = new Date();
+          const years = Math.floor((now - start) / (365.25 * 24 * 60 * 60 * 1000));
+          return `george@larson has been online for ${years} years\nCurrent status: ✓ Available for consulting\nLast major upgrade: Continuous learning`;
+        }
+      },
+      clear: {
+        desc: 'Clear terminal output',
+        exec: () => {
+          document.getElementById('terminal-output').innerHTML = '';
+          return null;
+        }
+      },
+      zen: {
+        desc: 'A moment of calm',
+        exec: () => {
+          const quotes = [
+            'The obstacle is the path.',
+            'Sitting quietly, doing nothing, spring comes, and the grass grows by itself.',
+            'The way is not in the sky. The way is in the heart.',
+            'Do not seek to follow in the footsteps of the wise. Seek what they sought.',
+            'When you reach the top of the mountain, keep climbing.'
+          ];
+          return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+      }
+    };
+
+    const terminalOutput = document.getElementById('terminal-output');
+    const terminalInput = document.getElementById('terminal-input');
+    const terminal = document.querySelector('.terminal');
+    const terminalToggle = document.getElementById('terminal-toggle');
+
+    function addOutput(text, isCommand = false) {
+      if (text === null) return;
+      const line = document.createElement('p');
+      line.className = 'terminal-line';
+      if (isCommand) {
+        line.innerHTML = `<span class="terminal-prompt">george@larson:~$</span> ${text}`;
+      } else {
+        line.innerHTML = text.replace(/\n/g, '<br>');
+      }
+      terminalOutput.appendChild(line);
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    function executeCommand(input) {
+      const trimmed = input.trim();
+      if (!trimmed) return;
+      
+      addOutput(trimmed, true);
+      
+      const parts = trimmed.split(/\s+/);
+      const cmd = parts[0].toLowerCase();
+      const args = parts.slice(1);
+      
+      if (COMMANDS[cmd]) {
+        const result = COMMANDS[cmd].exec(args);
+        if (result) addOutput(result);
+      } else {
+        addOutput(`Command not found: ${cmd}. Type <span class="terminal-cmd">help</span> for available commands.`);
+      }
+    }
+
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        executeCommand(terminalInput.value);
+        terminalInput.value = '';
+      }
+    });
+
+    terminalToggle.addEventListener('click', () => {
+      terminal.classList.toggle('terminal-minimized');
+      if (terminal.classList.contains('terminal-minimized')) {
+        terminalToggle.textContent = '□';
+        terminalToggle.setAttribute('aria-label', 'expand terminal');
+      } else {
+        terminalToggle.textContent = '_';
+        terminalToggle.setAttribute('aria-label', 'minimize terminal');
+        terminalInput.focus();
+      }
+    });
+
+    terminalInput.focus();
+  </script>
 </body>
 </html>

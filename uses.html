@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>uses - george larson</title>
+  <link rel="stylesheet" href="/style.css" />
+  <meta name="description" content="Tools, hardware, and software that George Larson uses daily for development, operations, and calm execution." />
+  <meta property="og:title" content="uses - george larson" />
+  <meta property="og:description" content="Tools, hardware, and software that George Larson uses daily for development, operations, and calm execution." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://georgelarson.me/uses.html" />
+  <meta name="twitter:card" content="summary" />
+</head>
+<body>
+  <main class="page">
+    <h1>uses<span class="caret" aria-hidden="true"></span></h1>
+    <p class="lead">the tools, hardware, and software i use daily for development, operations, and calm execution</p>
+    <hr />
+    
+    <section class="panel">
+      <h2>Editor & terminal</h2>
+      <ul class="plain-list">
+        <li><strong>Editor:</strong> VS Code with Vim keybindings - pragmatic balance of power and plugins</li>
+        <li><strong>Terminal:</strong> Alacritty on Linux, Windows Terminal on Windows - fast, GPU-accelerated, minimal config</li>
+        <li><strong>Shell:</strong> Bash for scripting, zsh for interactive work with oh-my-zsh (minimal plugins: git, docker, kubectl)</li>
+        <li><strong>Multiplexer:</strong> tmux for long-running sessions and remote pair programming</li>
+        <li><strong>Font:</strong> Fira Code with ligatures - clean, readable, designed for code</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Development stack</h2>
+      <ul class="plain-list">
+        <li><strong>Languages:</strong> Python (FastAPI, asyncio), TypeScript/Node.js, Bash for glue</li>
+        <li><strong>Databases:</strong> PostgreSQL (primary), Redis (caching, queues), SQLite (local dev, embedded use)</li>
+        <li><strong>Infrastructure:</strong> Docker + Docker Compose locally, Kubernetes (k3s) for production</li>
+        <li><strong>CI/CD:</strong> GitLab CI/CD with self-hosted runners, some GitHub Actions for OSS</li>
+        <li><strong>Version control:</strong> Git via CLI, GitLab for hosting, conventional commits for clarity</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>DevOps & observability</h2>
+      <ul class="plain-list">
+        <li><strong>Monitoring:</strong> Uptime Kuma (uptime), Prometheus + Grafana (metrics), custom alerting to Mattermost</li>
+        <li><strong>Logs:</strong> Loki for aggregation, grep and tail for quick debugging</li>
+        <li><strong>Secrets:</strong> Vault for production, pass (passwordstore.org) for personal, 1Password for team shared credentials</li>
+        <li><strong>Backup:</strong> Restic to S3-compatible storage, automated daily snapshots, tested quarterly restores</li>
+        <li><strong>Networking:</strong> WireGuard for VPN, nginx for reverse proxy, Cloudflare for DNS and edge caching</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>AI & data tools</h2>
+      <ul class="plain-list">
+        <li><strong>LLMs:</strong> Claude (Anthropic) for complex reasoning, Llama 3 via Cloudflare Workers AI for on-demand inference</li>
+        <li><strong>RAG:</strong> pgvector for embeddings, OpenAI text-embedding-3-small for vectors, custom Python pipelines</li>
+        <li><strong>OCR:</strong> Tesseract for open source, Azure Document Intelligence for production regulated workflows</li>
+        <li><strong>Data:</strong> pandas for analysis, DuckDB for fast local queries, Jupyter for exploration</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Communication & productivity</h2>
+      <ul class="plain-list">
+        <li><strong>Team chat:</strong> Mattermost (self-hosted, integrated with CI/CD and alerts)</li>
+        <li><strong>Email:</strong> ProtonMail for privacy, Thunderbird as client</li>
+        <li><strong>Calendar:</strong> Cal.com (self-hosted) for scheduling, Nextcloud Calendar for personal planning</li>
+        <li><strong>Notes:</strong> Markdown files in git repos, Obsidian for personal knowledge base, pen and paper for thinking</li>
+        <li><strong>Task tracking:</strong> GitLab issues for work, todo.txt for personal, daily meditation on priorities</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Hardware</h2>
+      <ul class="plain-list">
+        <li><strong>Primary workstation:</strong> Custom-built Linux desktop (AMD Ryzen 9, 64GB RAM, NVMe storage)</li>
+        <li><strong>Laptop:</strong> ThinkPad T-series running Ubuntu - durable, repairable, excellent keyboard</li>
+        <li><strong>Server:</strong> Dell R720 homelab (ESXi, nested Kubernetes, staging environments)</li>
+        <li><strong>Keyboard:</strong> Leopold FC660C (Topre switches) - quiet, tactile, built like a tank</li>
+        <li><strong>Mouse:</strong> Logitech MX Master 3 - ergonomic, programmable, lasts all day</li>
+        <li><strong>Displays:</strong> Dual 27" 4K monitors (Dell UltraSharp) - color-accurate, USB-C daisy chain</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Operating systems</h2>
+      <ul class="plain-list">
+        <li><strong>Daily driver:</strong> Ubuntu LTS (22.04) - stable, well-supported, great for Docker/K8s work</li>
+        <li><strong>Servers:</strong> Debian stable for production, Alpine Linux for containers</li>
+        <li><strong>Also use:</strong> Windows 11 for vendor tools and manufacturing integrations, macOS occasionally for testing</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Philosophy</h2>
+      <p>I prefer tools that are:</p>
+      <ul class="plain-list">
+        <li><strong>Open source</strong> when possible - inspect, modify, trust</li>
+        <li><strong>Self-hosted</strong> for sensitive data - control your infrastructure</li>
+        <li><strong>Scriptable</strong> and CLI-friendly - automate the boring parts</li>
+        <li><strong>Boring technology</strong> - proven, stable, well-documented</li>
+        <li><strong>Privacy-respecting</strong> - no telemetry without consent, no data mining</li>
+      </ul>
+      <p>I avoid tools that lock me in, phone home excessively, or prioritize VC growth over user respect.</p>
+    </section>
+
+    <footer>
+      <hr />
+      <span>return to <a href="/index.html">home</a> / <a href="/resume.html">resume</a></span>
+      <p class="hint">Inspired by <a href="https://uses.tech" target="_blank" rel="noopener">uses.tech</a> - a collection of /uses pages from developers worldwide.</p>
+    </footer>
+  </main>
+</body>
+</html>
