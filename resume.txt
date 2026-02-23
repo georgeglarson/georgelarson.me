@@ -6,7 +6,7 @@ Location: Pittsburgh, PA
 SUMMARY
 Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I deliver Linux platforms, DevOps automation, resilient ecommerce, and security programs while decades of Zen practice keep the room steady under pressure. I stay close to the keyboard, understand the whiteboard, and apply automation — including AI where it offers measurable leverage — to ship pragmatic results.
 
-KEY METRICS (2025)
+KEY METRICS
 - 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
 - 36 active GitLab projects (11 users, 2 groups), 2,204 merge requests, 739 CI pipelines (avg 565 successes / 58 fails) and 16 managed SSH keys.
 - Mattermost workspace with 7 teams, 40 channels, ~1.0M lifetime posts, 313 calls, and alert channels wired to uptime, upgrade, helpdesk, GitLab, and web-critical events.
@@ -50,7 +50,7 @@ termshark (Go), Contributor and Maintainer (2026 to Present)
 
 WORK EXPERIENCE
 Director of Technology, FM Expressions (2018 to Present)
-- Lead technology strategy for a mid-size manufacturing company serving ecommerce channels.
+- Led technology strategy for a mid-size manufacturing company serving ecommerce channels.
 - Improved database performance by 93 percent while driving critical systems to 99 percent uptime; cut MySQL slow-query volume by 96 percent to accelerate incident response.
 - Built a knowledge management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) that captures production logs, transcripts, and operator notes so teams can search, surface, and act on institutional knowledge in real time.
 - Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep safety and operations guidance consistent.
@@ -62,6 +62,9 @@ Director of Technology, FM Expressions (2018 to Present)
 - Driving adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
 - Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while migrating remote access from VPN to zero-trust policies.
 - Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
+
+Software Developer (2016 to 2018)
+- Departed after company practices conflicted with professional engineering standards.
 
 Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
 - Helped scale the company from a 50 person startup to a national leader in medical billing.
@@ -105,3 +108,7 @@ Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, applied research workflows, model governance
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
+
+EDUCATION AND PROFESSIONAL DEVELOPMENT
+- Self-directed education in computer science, systems engineering, and network security across 25+ years of professional practice.
+- Continuous professional development through applied projects, open source contributions, and technical community participation.
