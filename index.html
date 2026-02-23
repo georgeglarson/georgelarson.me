@@ -53,7 +53,6 @@
       <a href="/schedule.html">schedule time</a>
       <a href="/ask.html">ask the resume</a>
       <a href="/now.html">now</a>
-      <a href="/uses.html">uses</a>
     </nav>
     <hr />
     <section class="terminal-wrapper">
@@ -98,7 +97,7 @@
       },
       ls: {
         desc: 'List available pages',
-        exec: () => 'resume.html\nschedule.html\nask.html\nnow.html\nuses.html\nresume.txt\ngeorge-larson-resume.pdf'
+        exec: () => 'resume.html\nschedule.html\nask.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
       },
       cat: {
         desc: 'Read a file (try: cat resume.txt)',
@@ -112,10 +111,6 @@
           if (file === 'now.html' || file === 'now') {
             window.location.href = 'now.html';
             return 'Opening now...';
-          }
-          if (file === 'uses.html' || file === 'uses') {
-            window.location.href = 'uses.html';
-            return 'Opening uses...';
           }
           if (file.match(/^(ask|schedule)(.html)?$/)) {
             const page = file.replace('.html', '');
