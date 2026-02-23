@@ -14,8 +14,8 @@ KEY METRICS (2025)
 - Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding Mattermost.
 
 CURRENT FOCUS
-- Building and operating manufacturing and ecommerce platforms with 99 percent uptime targets.
-- Coaching teams through lean, testable delivery practices that keep production stable.
+- Seeking a full-time technology leadership role where I can build, ship, and lead teams hands-on.
+- Building systems tools in Rust and Go (netgrep, termshark) for network analysis and security.
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
 CORE STRENGTHS
