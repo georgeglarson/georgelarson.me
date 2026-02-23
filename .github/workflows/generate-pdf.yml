@@ -3,7 +3,10 @@ name: Generate PDF resume
 on:
   push:
     branches: [main]
-    paths: [resume.txt]
+    paths:
+      - resume.txt
+      - scripts/generate_pdf.py
+  workflow_dispatch:
 
 permissions:
   contents: write
