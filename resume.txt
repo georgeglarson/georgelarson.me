@@ -63,7 +63,7 @@ Director of Technology, FM Expressions (2018 to Present)
 - Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while migrating remote access from VPN to zero-trust policies.
 - Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
 
-Software Developer (2016 to 2018)
+Software Developer (2017)
 - Departed after company practices conflicted with professional engineering standards.
 
 Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
@@ -110,5 +110,7 @@ Systems and Networking: TCP/IP analysis, packet capture, PLC programming, indust
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
 EDUCATION AND PROFESSIONAL DEVELOPMENT
-- Self-directed education in computer science, systems engineering, and network security across 25+ years of professional practice.
-- Continuous professional development through applied projects, open source contributions, and technical community participation.
+- Self-taught from C++ books as a teenager; built BBS modules in production before attending college.
+- Continuous learner across hundreds of online courses, lectures, and certifications (see LinkedIn for details).
+- Currently studying: Stanford CS336 — Language Modeling from Scratch (2025).
+- Additional coursework spanning systems engineering, network security, database internals, and cloud architecture through platforms including Coursera, MIT OpenCourseWare, and vendor certification programs.
