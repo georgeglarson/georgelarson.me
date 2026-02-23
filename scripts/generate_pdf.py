@@ -23,57 +23,57 @@ DEFAULT_OUTPUT = ROOT / "george-larson-resume.pdf"
 STYLESHEET = """
 @page {
     size: letter;
-    margin: 0.6in 0.7in;
+    margin: 0.5in 0.6in;
 }
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 10pt;
-    line-height: 1.4;
+    font-size: 9.5pt;
+    line-height: 1.35;
     color: #1a1a1a;
 }
 h1 {
-    font-size: 18pt;
-    margin: 0 0 2pt 0;
+    font-size: 17pt;
+    margin: 0 0 1pt 0;
     letter-spacing: 0.04em;
 }
 .contact {
-    font-size: 9pt;
+    font-size: 8.5pt;
     color: #444;
-    margin: 0 0 10pt 0;
+    margin: 0 0 6pt 0;
 }
 h2 {
-    font-size: 11pt;
+    font-size: 10.5pt;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     border-bottom: 1.5pt solid #1a1a1a;
-    padding-bottom: 2pt;
-    margin: 14pt 0 6pt 0;
+    padding-bottom: 1pt;
+    margin: 10pt 0 4pt 0;
 }
 h3 {
-    font-size: 10pt;
-    margin: 8pt 0 2pt 0;
+    font-size: 9.5pt;
+    margin: 6pt 0 1pt 0;
 }
 p {
-    margin: 0 0 4pt 0;
+    margin: 0 0 3pt 0;
 }
 ul {
-    margin: 2pt 0 6pt 0;
-    padding-left: 16pt;
+    margin: 1pt 0 4pt 0;
+    padding-left: 14pt;
 }
 li {
-    margin: 0 0 2pt 0;
+    margin: 0 0 1pt 0;
 }
 .summary {
-    margin: 0 0 6pt 0;
+    margin: 0 0 4pt 0;
 }
 .skills-line {
-    margin: 0 0 2pt 0;
+    margin: 0 0 1pt 0;
 }
 .skills-label {
     font-weight: 600;
 }
 .job-header {
-    margin: 8pt 0 2pt 0;
+    margin: 6pt 0 1pt 0;
     font-weight: 600;
 }
 """
