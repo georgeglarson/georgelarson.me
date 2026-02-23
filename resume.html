@@ -5,93 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>resume - george larson</title>
   <link rel="stylesheet" href="/style.css" />
-  <style>
-    .lens-onboarding{
-      margin: 1.75rem 0;
-      padding: 1.25rem 1.5rem;
-      border: 1px solid rgba(0, 255, 170, 0.35);
-      border-radius: 0.75rem;
-      background: rgba(0, 255, 170, 0.08);
-      box-shadow: 0 0 25px rgba(0, 80, 55, 0.25);
-    }
-    .lens-onboarding h3{
-      margin: 0 0 0.75rem 0;
-      font-size: 1.15rem;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .lens-steps{
-      margin: 0 0 1rem 1.1rem;
-      padding: 0;
-      line-height: 1.6;
-    }
-    .lens-steps li{
-      margin: 0 0 0.4rem 0;
-    }
-    .lens-steps li strong{
-      color: rgba(0, 255, 170, 0.85);
-    }
-    .lens-demo-block{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .lens-demo{
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.55rem 1.05rem;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 255, 170, 0.75);
-      background: rgba(0, 255, 170, 0.18);
-      color: inherit;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-    .lens-demo:hover:not(:disabled){
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(0, 255, 170, 0.18);
-      background: rgba(0, 255, 170, 0.28);
-    }
-    .lens-demo:focus-visible{
-      outline: 2px solid rgba(0, 255, 170, 0.7);
-      outline-offset: 2px;
-    }
-    .lens-demo:disabled{
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-    .lens-demo-block .hint{
-      margin: 0;
-      max-width: 32rem;
-    }
-    @media (max-width: 640px){
-      .lens-onboarding{
-        padding: 1.1rem 1.25rem;
-      }
-      .lens-demo-block{
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-  </style>
-  <meta name="description" content="Plain text resume for George Larson, director of technology and Zen Buddhist practitioner focused on pragmatic systems, privacy-aware AI, and calm leadership." />
+  <meta name="description" content="Plain text resume for George Larson, director of technology with 25+ years in software engineering, manufacturing, infrastructure, and calm leadership." />
 </head>
 <body>
   <main class="page">
     <header class="resume-hero" id="overview">
       <div class="hero-heading">
         <h1>George Larson<span class="caret" aria-hidden="true"></span></h1>
-        <p class="lead">Director of Technology and long-time builder across software engineering, infrastructure, and manufacturing. I ship calm, privacy-aware systems while staying close to the keyboard and the teams that operate them.</p>
+        <p class="lead">Director of Technology with 25+ years across software engineering, infrastructure, and manufacturing. I ship calm, reliable systems while staying close to the keyboard and the teams that operate them.</p>
       </div>
       <nav class="resume-actions" aria-label="resume shortcuts">
         <a class="pill-link" href="/resume.txt" download="george-larson-resume.txt">Download resume (.txt)</a>
         <a class="pill-link" href="/george-larson-resume.pdf" download="george-larson-resume.pdf">Download resume (.pdf)</a>
-        <a class="pill-link" href="#resume">Read the full resume</a>
-        <a class="pill-link" href="#lens-tools">Explore with AI</a>
         <a class="pill-link" href="#ask-search">Search the resume</a>
+        <a class="pill-link" href="#resume">Read the full resume</a>
+        <a class="pill-link" href="#lens-tools">AI lens (experimental)</a>
       </nav>
       <p class="hint">This page pulls directly from <code>resume.txt</code> below—diff it, print it, or explore it with the live tools.</p>
       <div class="metrics-grid" aria-label="key metrics">
@@ -118,48 +46,44 @@
       </div>
     </header>
 
-    <section class="lens" id="lens-tools" aria-label="resume explorer">
-      <h2>Explore with AI & local search</h2>
-      <p class="hint">Live summaries run on Cloudflare using the Hugging Face Inference API (token stays server-side). Saved lenses remain available for quick scanning.</p>
-      <div class="lens-onboarding" role="note">
-        <h3>How to explore</h3>
-        <ol class="lens-steps">
-          <li><strong>Preview</strong> a saved lens to see an instant AI summary.</li>
-          <li><strong>Describe</strong> the focus you care about (or tap a prompt below).</li>
-          <li><strong>Generate</strong> to get a tailored overview and reading path.</li>
-        </ol>
-        <div class="lens-demo-block">
-          <button type="button" id="lens-demo" class="lens-demo">Watch a quick demo</button>
-          <p class="hint">The demo runs the first quick lens ("AI + privacy") so you can observe the status updates.</p>
-        </div>
+    <section class="lens-search" id="ask-search" aria-label="search the resume">
+      <h2>Search the resume</h2>
+      <p class="hint">Everything runs locally in your browser. Try queries like <code>zero trust</code>, <code>manufacturing</code>, or <code>OCR</code> to jump to matching paragraphs. Press <kbd>/</kbd> to focus the search box.</p>
+      <div class="searchbox">
+        <input id="ask-query" type="text" placeholder="Find topics across the resume" aria-label="search resume text" />
+        <button id="ask-button" type="button">Search</button>
       </div>
+      <p class="hint">Tip: multi-word searches rank paragraphs by match count and length so the most relevant sections stay on top.</p>
+      <section id="ask-results" class="ask-results" aria-live="polite"></section>
+    </section>
+
+    <section class="resume-source" id="resume">
+      <h2>Full resume</h2>
+      <p class="hint">Rendered straight from <code>resume.txt</code> for printing, diffing, or quick reference.</p>
+      <pre id="resume-text">loading resume...</pre>
+    </section>
+
+    <section class="lens" id="lens-tools" aria-label="AI lens explorer">
+      <h2>AI lens (experimental)</h2>
+      <p class="hint">Live summaries run on Cloudflare using the Hugging Face Inference API (token stays server-side). Saved lenses remain available for quick scanning. Try a suggestion or describe your own focus.</p>
 
       <div class="lens-live">
         <h3>Generate a fresh take</h3>
         <form id="lens-form" class="lens-form">
           <label class="lens-field">
             <span>Focus</span>
-            <input id="lens-input" type="text" name="lens" maxlength="240" placeholder="e.g., AI privacy, manufacturing uptime, leadership style" required />
-          </label>
-          <label class="lens-field">
-            <span>Model</span>
-            <select id="lens-model" name="model">
-              <option value="@cf/meta/llama-3-8b-instruct">Llama 3 8B Instruct (default, recommended)</option>
-              <option value="@cf/mistral/mistral-7b-instruct-v0.1">Mistral 7B Instruct</option>
-              <option value="@hf/thebloke/neural-chat-7b-v3-1-awq">Neural Chat 7B</option>
-              <option value="@cf/meta/llama-2-7b-chat-int8">Llama 2 7B Chat</option>
-            </select>
+            <input id="lens-input" type="text" name="lens" maxlength="240" placeholder="e.g., infrastructure, manufacturing uptime, leadership style" required />
           </label>
           <button type="submit" id="lens-submit">Generate summary</button>
         </form>
         <p class="hint">Need ideas? These prompts showcase how the tool reacts.</p>
         <div class="lens-suggestions" id="lens-suggestions" aria-label="Quick lens suggestions"></div>
-        <div id="lens-status" class="hint" role="status" aria-live="polite">Type a focus, tap a prompt, or run the demo above, then press Enter to generate your custom summary.</div>
+        <div id="lens-status" class="hint" role="status" aria-live="polite">Type a focus or tap a prompt, then press Enter to generate your custom summary.</div>
         <article id="live-detail" class="lens-panel" aria-live="polite">
           <h3>What you'll see</h3>
           <p>The live lens rewrites the resume for the focus you provide and points you to the sections worth skimming.</p>
           <ul class="plain-list">
-            <li>Use the demo button or try a suggestion above, then describe the angle you're hiring for.</li>
+            <li>Try a suggestion above or describe the angle you're hiring for.</li>
             <li>Summaries generate in a few seconds and stay on this page.</li>
           </ul>
         </article>
@@ -169,27 +93,11 @@
         <h3>Saved lenses</h3>
         <div id="lens-menu" class="lens-buttons" role="tablist" aria-label="Available resume lenses"></div>
         <article id="lens-detail" class="lens-panel" role="tabpanel" tabindex="0" aria-live="polite">
-          <p class="hint">Select a saved lens to see an AI-assisted summary and suggested reading inside the resume.</p>
+          <p class="hint">Select a saved lens to see a summary and suggested reading inside the resume.</p>
         </article>
       </div>
-
-      <div class="lens-search" id="ask-search" aria-label="search the resume">
-        <h3>Search the resume</h3>
-        <p class="hint">Everything runs locally in your browser. Try queries like <code>zero trust</code>, <code>manufacturing</code>, or <code>OCR</code> to jump to matching paragraphs. Press <kbd>/</kbd> to focus the search box.</p>
-        <div class="searchbox">
-          <input id="ask-query" type="text" placeholder="Find topics across the resume" aria-label="search resume text" />
-          <button id="ask-button" type="button">Search</button>
-        </div>
-        <p class="hint">Tip: multi-word searches rank paragraphs by match count and length so the most relevant sections stay on top.</p>
-        <section id="ask-results" class="ask-results" aria-live="polite"></section>
-      </div>
     </section>
 
-    <section class="resume-source" id="resume">
-      <h2>Full resume</h2>
-      <p class="hint">Rendered straight from <code>resume.txt</code> for printing, diffing, or quick reference.</p>
-      <pre id="resume-text">loading resume...</pre>
-    </section>
     <footer>
       <hr />
       <span>return to <a href="/index.html">home</a> / <a href="/schedule.html">schedule time</a></span>
@@ -197,14 +105,14 @@
   </main>
   <script>
     const QUICK_LENSES = [
-      { title: "AI + privacy", prompt: "How does George apply AI while guarding privacy and regulated data?" },
+      { title: "Infrastructure & DevOps", prompt: "Summarise George's infrastructure, DevOps, and Linux experience." },
       { title: "Manufacturing ops", prompt: "Explain George's manufacturing, PLC, and uptime experience." },
       { title: "Technology leadership", prompt: "Summarise how George leads teams and ships roadmaps." },
-      { title: "Meditation influence", prompt: "Connect George's Zen practice to his leadership style." },
-      { title: "Baker?", prompt: "Evaluate George's resume as if he were interviewing for a baker role." },
-      { title: "Butcher?", prompt: "Review George's experience as if he were applying for a butcher position—highlight transferable strengths." },
-      { title: "Candlestick maker?", prompt: "Describe how George could thrive as a candlestick maker and which traits would translate well." }
+      { title: "Security posture", prompt: "How does George approach security, zero-trust, and compliance?" },
+      { title: "Software engineering", prompt: "Describe George's software development skills across languages and platforms." }
     ];
+
+    const DEFAULT_MODEL = "@cf/meta/llama-3-8b-instruct";
 
     const state = {
       resumeText: "",
@@ -214,7 +122,7 @@
       liveResult: null,
       loading: false
     };
-    const DEFAULT_STATUS = "Type a focus, tap a prompt, or run the demo above, then press Enter to generate your custom summary.";
+    const DEFAULT_STATUS = "Type a focus or tap a prompt, then press Enter to generate your custom summary.";
     const ASK_DEFAULT_MESSAGE = "Type a topic to search the resume.";
 
     function escapeRegExp(str){
@@ -280,7 +188,7 @@
         .sort((a, b) => b.score - a.score)
         .slice(0, 6);
       if(!ranked.length){
-        resetAskResults(`No matches for “${query}”. Try different or shorter terms.`);
+        resetAskResults(`No matches for "${query}". Try different or shorter terms.`);
         return;
       }
       output.innerHTML = "";
@@ -322,7 +230,7 @@
     function renderSavedLens(lens){
       const detail = document.getElementById("lens-detail");
       if(!lens){
-        detail.innerHTML = '<p class="hint">Select a saved lens to see an AI-assisted summary and suggested reading inside the resume.</p>';
+        detail.innerHTML = '<p class="hint">Select a saved lens to see a summary and suggested reading inside the resume.</p>';
         detail.setAttribute("aria-label", "lens summary");
         return;
       }
@@ -433,22 +341,6 @@
       });
     }
 
-    function runDemoLens(){
-      if(state.loading) return;
-      if(!QUICK_LENSES.length) return;
-      const demo = QUICK_LENSES[0];
-      const input = document.getElementById("lens-input");
-      input.value = demo.prompt;
-      input.focus();
-      const status = document.getElementById("lens-status");
-      if(status){
-        status.classList.add("status-flash");
-        setTimeout(() => status.classList.remove("status-flash"), 1200);
-        status.textContent = "Running the quick demo (AI + privacy)...";
-      }
-      requestLensSummary(demo.prompt, document.getElementById("lens-model").value);
-    }
-
     function setLoading(isLoading, message){
       state.loading = Boolean(isLoading);
       const status = document.getElementById("lens-status");
@@ -456,10 +348,6 @@
       status.textContent = message || DEFAULT_STATUS;
       const submit = document.getElementById("lens-submit");
       submit.disabled = state.loading;
-      const demoButton = document.getElementById("lens-demo");
-      if(demoButton){
-        demoButton.disabled = state.loading;
-      }
       submit.textContent = state.loading ? "Generating..." : "Generate summary";
     }
 
@@ -473,13 +361,12 @@
       event.preventDefault();
       if(state.loading) return;
       const input = document.getElementById("lens-input");
-      const modelSelect = document.getElementById("lens-model");
       const lensText = input.value.trim();
       if(!lensText){
         showStatus("Please describe the lens you want to explore.");
         return;
       }
-      await requestLensSummary(lensText, modelSelect.value);
+      await requestLensSummary(lensText, DEFAULT_MODEL);
     }
 
     async function requestLensSummary(lensText, model, attempt = 1){
@@ -510,47 +397,12 @@
       }
     }
 
-    function shouldWarm(){
-      try{
-        const key = "gl-lens-warm";
-        const stored = sessionStorage.getItem(key);
-        const today = new Date().toISOString().slice(0,10);
-        if(stored === today) return false;
-        sessionStorage.setItem(key, today);
-        return true;
-      }catch{
-        return true;
-      }
-    }
-
-    async function warmModel(){
-      if(!shouldWarm()) return;
-      const model = document.getElementById("lens-model").value;
-      try{
-        const res = await fetch("/api/lens-summary", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ lens: "Warm up request to keep the model ready.", model })
-        });
-        if(res.status === 503){
-          console.info("Model warming up; retrying in 10s.");
-          setTimeout(warmModel, 10000);
-        }
-      }catch(err){
-        console.warn("Warm-up failed", err);
-      }
-    }
-
     window.addEventListener("DOMContentLoaded", async () => {
       const askInput = document.getElementById("ask-query");
       const askButton = document.getElementById("ask-button");
       mountSuggestions();
       renderLive(null);
       document.getElementById("lens-form").addEventListener("submit", handleGeneration);
-      const demoButton = document.getElementById("lens-demo");
-      if(demoButton){
-        demoButton.addEventListener("click", runDemoLens);
-      }
       if(askInput){
         askInput.addEventListener("keydown", event => {
           if(event.key === "Enter"){
@@ -583,7 +435,6 @@
         askInput.value = presetQuery;
         runAskSearch(presetQuery.trim());
       }
-      warmModel();
     });
   </script>
 </body>

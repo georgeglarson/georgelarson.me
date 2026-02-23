@@ -24,14 +24,14 @@ HF_DEFAULT_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
 
 # Lenses to generate; tweak prompts or add new ones here.
 LENSES: Dict[str, Dict[str, object]] = {
-    "ai-privacy": {
-        "title": "AI + privacy",
+    "infrastructure-devops": {
+        "title": "Infrastructure & DevOps",
         "instruction": (
-            "Summarise how George Larson applies AI while protecting privacy and regulated data. "
-            "Focus on applied systems, leadership signals, and measurable outcomes. "
-            "Return bullet points that show real projects, not generic traits."
+            "Summarise George Larson's infrastructure and DevOps experience. "
+            "Cover Linux administration, CI/CD pipelines, container orchestration, observability, and hybrid environments. "
+            "Return bullet points that show real projects and measurable outcomes."
         ),
-        "recommended_terms": ["privacy", "AI", "OCR", "security", "tabletop"],
+        "recommended_terms": ["Linux", "GitLab", "CI/CD", "Kubernetes", "uptime"],
     },
     "manufacturing-ops": {
         "title": "Manufacturing operations",
@@ -48,6 +48,15 @@ LENSES: Dict[str, Dict[str, object]] = {
             "Cover roadmaps, mixed teams, communication, and how he balances hands-on work with management."
         ),
         "recommended_terms": ["roadmap", "team", "Agile", "mentorship", "leadership"],
+    },
+    "security-posture": {
+        "title": "Security posture",
+        "instruction": (
+            "Summarise George Larson's approach to security and compliance. "
+            "Cover zero-trust architecture, vulnerability scanning, identity management, and incident response. "
+            "Return bullet points that show real projects and measurable outcomes."
+        ),
+        "recommended_terms": ["security", "zero-trust", "HostedScan", "OWASP", "compliance"],
     },
 }
 

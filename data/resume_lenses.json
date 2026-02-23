@@ -1,22 +1,21 @@
 {
-  "generated_at": "2025-10-12",
+  "generated_at": "2026-02-23",
   "model_hint": "Summaries drafted offline; regenerate via scripts/generate_lenses.py using the Hugging Face Inference API.",
   "lenses": [
     {
-      "id": "ai-privacy",
-      "title": "AI + privacy",
-      "summary": "George approaches applied AI like a systems engineer: he evaluates models for leverage, guards regulated data, and designs privacy-preserving workflows. His leadership combines hands-on Linux and security skills with a calm insistence on guardrails, turning AI projects into reliable company assets rather than experiments.",
+      "id": "infrastructure-devops",
+      "title": "Infrastructure & DevOps",
+      "summary": "George builds and operates hybrid infrastructure with an emphasis on reliability, automation, and pragmatic tooling. He runs GitLab CI/CD across dozens of projects, manages Linux servers, container orchestration, and CDN migrations, and ties everything into observability dashboards that feed real-time alerts.",
       "key_points": [
-        "Drove AI adoption in manufacturing and ecommerce with measurable uptime targets and human oversight.",
-        "Builds RAG and OCR pipelines that run on vetted infrastructure while tracking provenance and compliance.",
-        "Leads policy, tabletop exercises, and data-governance practices that keep automation trustworthy."
+        "Operates 36 GitLab projects with 739 CI pipelines and self-hosted runners, maintaining high build success rates.",
+        "Manages hybrid infrastructure spanning VMware ESXi, Kubernetes, Cloudflare CDN, and dual MySQL replicas with tested backups.",
+        "Monitors 31 services via Uptime Kuma with alert channels wired into Mattermost for 24x7 observability."
       ],
-      "recommended_terms": ["privacy", "AI", "OCR", "security", "tabletop"],
+      "recommended_terms": ["Linux", "GitLab", "CI/CD", "Kubernetes", "uptime"],
       "source_notes": [
-        "SUMMARY",
-        "Security and Privacy",
-        "AI, Data, and OCR",
-        "Director of Technology, FM Expressions"
+        "DevOps and Infrastructure Automation",
+        "Director of Technology, FM Expressions",
+        "KEY METRICS (2025)"
       ]
     },
     {
@@ -49,6 +48,22 @@
         "Technology Leadership and Strategy",
         "Director of Technology, FM Expressions",
         "Senior Software Engineer and Manager, Universal SmartComp"
+      ]
+    },
+    {
+      "id": "security-posture",
+      "title": "Security posture",
+      "summary": "George treats security as an operational discipline, not a checkbox. He runs continuous vulnerability scanning across all public assets, enforces zero-trust access, and builds layered defenses from network hardening to email authentication, closing findings systematically.",
+      "key_points": [
+        "Scans 36 public assets continuously via HostedScan and OWASP ZAP with zero critical/high issues in backlog.",
+        "Hardened infrastructure with Authentik SSO, HashiCorp Vault, CrowdSec, and DMARC at p=reject covering 1.5M emails/month.",
+        "Captured industrial protocol PCAPs and tuned security tools to protect manufacturing systems while migrating to zero-trust."
+      ],
+      "recommended_terms": ["security", "zero-trust", "HostedScan", "OWASP", "compliance"],
+      "source_notes": [
+        "Security and Privacy",
+        "Director of Technology, FM Expressions",
+        "KEY METRICS (2025)"
       ]
     }
   ]

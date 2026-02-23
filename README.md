@@ -4,13 +4,13 @@ Static, no-build personal site for George Larson.
 
 ## Structure
 - `index.html` - intro and navigation hub
-- `resume.html` - renders `resume.txt` and shows AI-assisted lens summaries
+- `resume.html` - renders `resume.txt` with local search and optional AI lens summaries
 - `resume.txt` - plain text source for search, printing, and lens generation
 - `data/resume_lenses.json` - cached lens summaries (regen via script below)
 - `schedule.html` - Cal.com embed for booking sessions
 - `ask.html` - local, private search over the resume text (supports `?q=` links)
 - `style.css` - shared terminal aesthetic
-- `scripts/generate_lenses.py` - optional helper to regenerate lens summaries with Hugging Face or Venice.ai
+- `scripts/generate_lenses.py` - optional helper to regenerate lens summaries with the Hugging Face Inference API
 - `functions/api/lens-summary.ts` - Cloudflare Pages Function that proxies Hugging Face Inference for on-demand lens summaries
 
 ## Deploy on Cloudflare Pages
