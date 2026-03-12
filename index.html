@@ -52,6 +52,7 @@
       <a href="/resume.html">resume</a>
       <a href="/schedule.html">schedule time</a>
       <a href="/ask.html">ask the resume</a>
+      <a href="/fracture.html">fracture</a>
       <a href="/now.html">now</a>
       <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a>
       <a href="https://github.com/georgeglarson" target="_blank" rel="noopener">github</a>
@@ -99,7 +100,7 @@
       },
       ls: {
         desc: 'List available pages',
-        exec: () => 'resume.html\nschedule.html\nask.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
+        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
       },
       cat: {
         desc: 'Read a file (try: cat resume.txt)',
@@ -113,6 +114,10 @@
           if (file === 'now.html' || file === 'now') {
             window.location.href = 'now.html';
             return 'Opening now...';
+          }
+          if (file === 'fracture.html' || file === 'fracture') {
+            window.location.href = 'fracture.html';
+            return 'Opening fracture...';
           }
           if (file.match(/^(ask|schedule)(.html)?$/)) {
             const page = file.replace('.html', '');
@@ -134,9 +139,13 @@
         desc: 'Show technical skills',
         exec: () => 'Linux • DevOps • Kubernetes • GitLab CI/CD\nPostgreSQL • Redis • Database tuning\nPython • Go • Rust • C# • TypeScript • Bash\nSecurity hardening • Manufacturing automation'
       },
+      fracture: {
+        desc: 'Fracture — legacy modernization case study',
+        exec: () => 'Fracture: BrowserQuest (2012) → production multiplayer RPG (2025)\n217 TypeScript files • 3,161 tests • 8 AI services • OpenTelemetry\n\nType <span class="terminal-cmd">cat fracture</span> to read the full case study.'
+      },
       focus: {
         desc: 'Current priorities',
-        exec: () => '• Seeking my next full-time technology leadership role\n• Building systems tools in Rust and Go (netgrep, termshark)\n• Open to director/VP roles in manufacturing, ecommerce, infrastructure, or security'
+        exec: () => '• Seeking my next full-time technology leadership role\n• Building Fracture — legacy modernization of BrowserQuest with AI integration\n• 968 polyglot tests across Rust, Zig, Go, Perl, Python, TypeScript/React\n• Building systems tools in Rust and Go (netgrep, termshark)\n• Open to director/VP roles in manufacturing, ecommerce, infrastructure, or security'
       },
       uptime: {
         desc: 'System status',

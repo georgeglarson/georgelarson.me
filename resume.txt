@@ -4,7 +4,7 @@ Phone: 412-945-0101
 Location: Pittsburgh, PA
 
 SUMMARY
-Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I deliver Linux platforms, DevOps automation, resilient ecommerce, and security programs while decades of Zen practice keep the room steady under pressure. I stay close to the keyboard, understand the whiteboard, and apply automation — including AI where it offers measurable leverage — to ship pragmatic results.
+Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic, and I use AI tooling where it actually helps.
 
 KEY METRICS
 - 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
@@ -105,7 +105,7 @@ Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, 
 Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
-Data and Automation: RAG design, OCR pipelines, semantic search, ETL, applied research workflows, model governance
+Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
