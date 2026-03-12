@@ -8,10 +8,10 @@
       "summary": "George builds and operates hybrid infrastructure with an emphasis on reliability, automation, and pragmatic tooling. He runs GitLab CI/CD across dozens of projects, manages Linux servers, container orchestration, and CDN migrations, and ties everything into observability dashboards that feed real-time alerts.",
       "key_points": [
         "Operates 36 GitLab projects with 739 CI pipelines and self-hosted runners, maintaining high build success rates.",
-        "Manages hybrid infrastructure spanning VMware ESXi, Kubernetes, Cloudflare CDN, and dual MySQL replicas with tested backups.",
+        "Manages hybrid infrastructure spanning VMware ESXi, Cloudflare CDN, and dual MySQL replicas with tested backups.",
         "Monitors 31 services via Uptime Kuma with alert channels wired into Mattermost for 24x7 observability."
       ],
-      "recommended_terms": ["Linux", "GitLab", "CI/CD", "Kubernetes", "uptime"],
+      "recommended_terms": ["Linux", "GitLab", "CI/CD", "Docker", "uptime"],
       "source_notes": [
         "DevOps and Infrastructure Automation",
         "Director of Technology, FM Expressions",
@@ -37,7 +37,7 @@
     {
       "id": "technology-leadership",
       "title": "Technology leadership",
-      "summary": "George leads with calm execution. He scales teams, translates executive intent into roadmaps, and keeps builders close to outcomes. His career arcs from hands-on coding to directing multi-disciplinary groups without losing technical empathy.",
+      "summary": "George scales teams, translates executive goals into roadmaps, and keeps builders close to outcomes. His career runs from hands-on coding to directing cross-functional groups while staying technical.",
       "key_points": [
         "Guides blended in-house and offshore teams with Agile delivery, analytics, and transparent roadmaps.",
         "Improves performance, security posture, and observability while mentoring engineers and operators.",
