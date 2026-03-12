@@ -232,8 +232,8 @@
     <section class="panel genesis">
       <span class="section-label">the genesis</span>
       <p>In 2012, Mozilla shipped <a href="https://github.com/mozilla/BrowserQuest" target="_blank" rel="noopener">BrowserQuest</a> &mdash; an HTML5 technology demo. A multiplayer RPG running in the browser, built to prove that the web could handle real-time games. It worked. Then Mozilla archived it.</p>
-      <p>The codebase was pure 2012 JavaScript: no types, no tests, <code>var self = this</code>, God-object classes, everything coupled to everything. A 1,100-line Player class that handled combat, inventory, movement, chat, persistence, and rendering callbacks all in one file.</p>
-      <p>That's exactly the kind of code I've spent 25 years fixing in enterprise software. So I fixed it here too.</p>
+      <p>It was a vertical slice: just enough code to prove the concept. No persistence beyond localStorage. No tests. No security. No observability. No separation of concerns. The kind of prototype that ships to prove a point, not to run in production.</p>
+      <p>That's the same starting point as most legacy enterprise systems I've worked on. Something that worked once, never got the supporting infrastructure it needed, and now needs to scale. So I built those systems.</p>
     </section>
 
     <!-- ================================================================ -->
@@ -246,9 +246,9 @@
         <ul>
           <li>JavaScript, no types</li>
           <li>0 tests</li>
-          <li>1,100-line God-object Player class</li>
+          <li>Vertical slice prototype, no supporting systems</li>
           <li>No persistence (localStorage only)</li>
-          <li>Single-file message handling</li>
+          <li>All message handling in one file</li>
           <li>console.log debugging</li>
           <li>No security, no rate limiting</li>
         </ul>
@@ -282,14 +282,14 @@
           <span class="step-num">1</span>
           <div>
             <h3>understand before changing</h3>
-            <p>Read every file. Map the dependency graph. Identify the blast radius. The original had circular dependencies, <code>as any</code> casts holding things together, and zero separation of concerns. You can't fix what you don't understand.</p>
+            <p>Read every file. Map the dependency graph. Identify what the prototype does and what it's missing. The original had no module boundaries, no error handling, and no separation between game logic and transport. Figure out what production systems it needs before writing any code.</p>
           </div>
         </article>
         <article class="step">
           <span class="step-num">2</span>
           <div>
             <h3>safety net first</h3>
-            <p>3,161 tests before refactoring anything. When I decomposed the Player God-object from 1,100 lines to 720, every extracted method was verified. When I rewrote the aggro system, policy tests caught edge cases I'd have shipped as bugs.</p>
+            <p>3,161 tests before refactoring anything. When I extracted the combat system, every interaction was verified. When I built the aggro policy engine, tests caught edge cases I'd have shipped as bugs.</p>
           </div>
         </article>
         <article class="step">
