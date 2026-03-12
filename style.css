@@ -117,6 +117,10 @@ h1 {
   margin-bottom: 1.75rem;
 }
 
+.nav + .nav {
+  margin-top: -1rem;
+}
+
 .nav a {
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
@@ -137,6 +141,10 @@ h1 {
   justify-content: center;
   gap: 0.75rem;
   margin: 0 0 2.25rem 0;
+}
+
+.resume-actions + .resume-actions {
+  margin-top: -1.5rem;
 }
 
 .pill-link {
