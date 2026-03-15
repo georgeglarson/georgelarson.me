@@ -38,7 +38,7 @@
       "Team Leadership"
     ],
     "sameAs": [
-      "https://github.com/georgeglarson",
+      "https://codeberg.org/georgelarson",
       "https://www.linkedin.com/in/georgelarson/"
     ]
   }
@@ -52,13 +52,7 @@
       <a href="/resume.html">resume</a>
       <a href="/schedule.html">schedule time</a>
     </nav>
-    <nav class="nav" aria-label="external profiles">
-      <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a>
-      <a href="https://github.com/georgeglarson" target="_blank" rel="noopener">github</a>
-      <a href="https://codeberg.org/georgelarson" target="_blank" rel="noopener">codeberg</a>
-      <a href="https://mastodon.sdf.org/@j0rg3" target="_blank" rel="me noopener">mastodon</a>
-      <a href="/ask.html">ask the resume</a>
-      <a href="/now.html">now</a>
+
     </nav>
     <hr />
     <section>
@@ -75,7 +69,7 @@
           </div>
           <span class="project-link">play it live / read the case study</span>
         </a>
-        <a class="project-card" href="https://github.com/georgeglarson/netgrep" target="_blank" rel="noopener">
+        <a class="project-card" href="/netgrep.html">
           <h3>netgrep</h3>
           <p>modern ngrep replacement. TCP reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, interactive TUI.</p>
           <div class="project-meta">
@@ -85,7 +79,7 @@
           </div>
           <span class="project-link">source</span>
         </a>
-        <a class="project-card" href="https://github.com/georgeglarson/termshark" target="_blank" rel="noopener">
+        <a class="project-card" href="/termshark.html">
           <h3>termshark</h3>
           <p>modernized fork. refactored architecture, expanded tests, security audit, experimental browser-based web UI.</p>
           <div class="project-meta">
@@ -167,7 +161,7 @@
       },
       ls: {
         desc: 'List available pages',
-        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
+        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nwiregraph.html\nnetgrep.html\ntermshark.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
       },
       cat: {
         desc: 'Read a file (try: cat resume.txt)',
@@ -200,7 +194,7 @@
       },
       contact: {
         desc: 'Get contact information',
-        exec: () => 'Email: george.g.larson@pm.me\nLinkedIn: <a href="https://www.linkedin.com/in/georgelarson/" class="terminal-link" target="_blank" rel="noopener">linkedin.com/in/georgelarson</a>\nGitHub: <a href="https://github.com/georgeglarson" class="terminal-link" target="_blank" rel="noopener">github.com/georgeglarson</a>\nSchedule: <a href="/schedule.html" class="terminal-link">georgelarson.me/schedule</a>\nLocation: Pittsburgh, PA'
+        exec: () => 'Email: george.g.larson@pm.me\nLinkedIn: <a href="https://www.linkedin.com/in/georgelarson/" class="terminal-link" target="_blank" rel="noopener">linkedin.com/in/georgelarson</a>\nGitHub: <a href="https://codeberg.org/georgelarson" class="terminal-link" target="_blank" rel="noopener">github.com/georgeglarson</a>\nSchedule: <a href="/schedule.html" class="terminal-link">georgelarson.me/schedule</a>\nLocation: Pittsburgh, PA'
       },
       skills: {
         desc: 'Show technical skills',
@@ -209,6 +203,7 @@
       fracture: {
         desc: 'Fracture — legacy modernization case study',
         exec: () => 'Fracture: BrowserQuest (2012) → production multiplayer RPG (2025)\n217 TypeScript files • 3,161 tests • 8 AI services • OpenTelemetry\n\nType <span class="terminal-cmd">cat fracture</span> to read the full case study.'
+          if (file === "wiregraph.html" || file === "wiregraph") {            window.location.href = "wiregraph.html";            return "Opening wiregraph...";          }          if (file === "netgrep.html" || file === "netgrep") {            window.location.href = "netgrep.html";            return "Opening netgrep...";          }          if (file === "termshark.html" || file === "termshark") {            window.location.href = "termshark.html";            return "Opening termshark...";          }
       },
       focus: {
         desc: 'Current priorities',

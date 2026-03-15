@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>termshark - george larson</title>
+  <link rel="stylesheet" href="/style.css" />
+  <meta name="description" content="termshark: a terminal UI for tshark. Wireshark-like packet analysis in the terminal with display filters, stream reassembly, and pcap export." />
+  <meta property="og:title" content="termshark - george larson" />
+  <meta property="og:description" content="Terminal-based packet analysis with Wireshark display filters." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://georgelarson.me/termshark" />
+  <style>
+    .project-hero {
+      padding: 2.75rem 2rem; margin-bottom: 2.5rem; border-radius: var(--radius);
+      border: 1px solid var(--border); background: rgba(8, 18, 28, 0.75);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    }
+    .project-hero .lead { margin-bottom: 1.5rem; max-width: 60ch; }
+    .project-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+    .section-label {
+      text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.22em;
+      color: var(--accent-dark); margin: 0 0 0.85rem 0; display: block;
+    }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+    .feature-card {
+      padding: 1.5rem 1.25rem; border-radius: var(--radius);
+      border: 1px solid rgba(22, 245, 166, 0.22); background: rgba(5, 12, 18, 0.75);
+    }
+    .feature-card h3 { margin: 0 0 0.5rem 0; font-size: 0.95rem; }
+    .feature-card p { margin: 0; color: var(--fg-muted); font-size: 0.92rem; line-height: 1.5; }
+    .stack-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .stack-tag {
+      padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.82rem;
+      background: rgba(22, 245, 166, 0.1); border: 1px solid rgba(22, 245, 166, 0.2); color: var(--accent);
+    }
+    .code-block {
+      background: rgba(5, 12, 18, 0.9); border: 1px solid rgba(22, 245, 166, 0.15);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.25rem 0;
+      font-size: 0.88rem; line-height: 1.7; overflow-x: auto; color: var(--fg-muted);
+    }
+    .code-block .cmd { color: var(--accent); }
+    .code-block .comment { color: rgba(146, 203, 180, 0.5); }
+    .relationship { margin-top: 3rem; }
+    .relationship p { color: var(--fg-muted); }
+    @media (max-width: 720px) {
+      .project-hero { padding: 2.2rem 1.5rem; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page page-wide">
+    <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
+    <header class="project-hero">
+      <h1>termshark<span class="caret" aria-hidden="true"></span></h1>
+      <p class="lead">wireshark for the terminal. packet analysis with display filters, stream reassembly, and hex dump &mdash; no GUI required.</p>
+      <nav class="project-nav" aria-label="project links">
+        <a class="pill-link" href="https://codeberg.org/georgelarson/termshark" target="_blank" rel="noopener">source code</a>
+        <a class="pill-link" href="/netgrep.html">netgrep</a>
+        <a class="pill-link" href="/wiregraph.html">wiregraph</a>
+        <a class="pill-link" href="/index.html">back to home</a>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <span class="section-label">why</span>
+      <p>Wireshark is the gold standard for packet analysis but it needs a display server. When you're SSH'd into a production box investigating an issue, you don't have X11. You have a terminal.</p>
+      <p>termshark gives you Wireshark's display filter language, three-pane layout (packet list, protocol tree, hex dump), and stream reassembly &mdash; all in a terminal UI. Capture live or load a pcap. Apply the same filters you'd use in Wireshark. Export what you find.</p>
+    </section>
+
+    <div class="features">
+      <div class="feature-card">
+        <h3>wireshark display filters</h3>
+        <p>Full Wireshark display filter syntax via tshark. <code>tcp.port == 443</code>, <code>http.request.method == "POST"</code>, <code>dns.qry.name contains "example"</code> &mdash; the filters you already know.</p>
+      </div>
+      <div class="feature-card">
+        <h3>three-pane layout</h3>
+        <p>Packet list, protocol detail tree, and hex dump. Navigate with keyboard. Expand/collapse protocol layers. The same mental model as Wireshark, adapted for the terminal.</p>
+      </div>
+      <div class="feature-card">
+        <h3>stream reassembly</h3>
+        <p>Follow TCP and UDP streams. See the full conversation between two hosts reconstructed from individual packets. Essential for understanding application-layer behavior.</p>
+      </div>
+      <div class="feature-card">
+        <h3>live capture + pcap</h3>
+        <p>Capture live from any interface or load existing pcap files. Apply filters during or after capture. Export filtered packets to new pcap files for sharing or further analysis.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>usage</h2>
+      <div class="code-block">
+        <span class="comment"># live capture on an interface</span><br>
+        <span class="cmd">sudo termshark -i eth0</span><br><br>
+        <span class="comment"># read a pcap file</span><br>
+        <span class="cmd">termshark -r capture.pcap</span><br><br>
+        <span class="comment"># capture with a display filter</span><br>
+        <span class="cmd">sudo termshark -i eth0 -Y "http.request"</span><br><br>
+        <span class="comment"># filter to a specific conversation</span><br>
+        <span class="cmd">termshark -r capture.pcap -Y "ip.addr == 10.0.0.1 && tcp.port == 443"</span>
+      </div>
+    </section>
+
+    <div class="stack-list">
+      <span class="stack-tag">go</span>
+      <span class="stack-tag">tshark</span>
+      <span class="stack-tag">gowid (terminal widgets)</span>
+      <span class="stack-tag">pcap</span>
+      <span class="stack-tag">wireshark display filters</span>
+    </div>
+
+    <hr />
+
+    <section class="relationship">
+      <h2>part of the network tools suite</h2>
+      <p><a href="/netgrep.html">netgrep</a> &mdash; capture and search. grep for the network with TLS decryption and stream reassembly.</p>
+      <p><a href="/wiregraph.html">wiregraph</a> &mdash; visualize. real-time topology dashboard. see the shape of traffic.</p>
+      <p><strong>termshark</strong> &mdash; analyze. deep packet inspection when you need to look at individual packets in detail.</p>
+    </section>
+
+    <footer>
+      <hr />
+      <span>&copy; george larson</span>
+    </footer>
+  </main>
+</body>
+</html>
