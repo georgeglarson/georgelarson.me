@@ -52,7 +52,10 @@
       <a href="/resume.html">resume</a>
       <a href="/schedule.html">schedule time</a>
     </nav>
-
+    <nav class="nav" aria-label="external profiles">
+      <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://codeberg.org/georgelarson" target="_blank" rel="noopener">codeberg</a>
+      <a href="https://mastodon.sdf.org/@j0rg3" target="_blank" rel="me noopener">mastodon</a>
     </nav>
     <hr />
     <section>
@@ -68,6 +71,16 @@
             <span class="project-stat">OpenTelemetry</span>
           </div>
           <span class="project-link">play it live / read the case study</span>
+        </a>
+        <a class="project-card" href="/wiregraph.html">
+          <h3>wiregraph</h3>
+          <p>real-time network traffic visualization. interactive topology, protocol breakdown, packet inspection, conversation analysis.</p>
+          <div class="project-meta">
+            <span class="tag">Rust</span>
+            <span class="project-stat">libpcap</span>
+            <span class="project-stat">vanilla JS</span>
+          </div>
+          <span class="project-link">live demo / case study</span>
         </a>
         <a class="project-card" href="/netgrep.html">
           <h3>netgrep</h3>
@@ -180,6 +193,18 @@
             window.location.href = 'fracture.html';
             return 'Opening fracture...';
           }
+          if (file === 'wiregraph.html' || file === 'wiregraph') {
+            window.location.href = 'wiregraph.html';
+            return 'Opening wiregraph...';
+          }
+          if (file === 'netgrep.html' || file === 'netgrep') {
+            window.location.href = 'netgrep.html';
+            return 'Opening netgrep...';
+          }
+          if (file === 'termshark.html' || file === 'termshark') {
+            window.location.href = 'termshark.html';
+            return 'Opening termshark...';
+          }
           if (file.match(/^(ask|schedule)(.html)?$/)) {
             const page = file.replace('.html', '');
             window.location.href = `${page}.html`;
@@ -203,7 +228,6 @@
       fracture: {
         desc: 'Fracture — legacy modernization case study',
         exec: () => 'Fracture: BrowserQuest (2012) → production multiplayer RPG (2025)\n217 TypeScript files • 3,161 tests • 8 AI services • OpenTelemetry\n\nType <span class="terminal-cmd">cat fracture</span> to read the full case study.'
-          if (file === "wiregraph.html" || file === "wiregraph") {            window.location.href = "wiregraph.html";            return "Opening wiregraph...";          }          if (file === "netgrep.html" || file === "netgrep") {            window.location.href = "netgrep.html";            return "Opening netgrep...";          }          if (file === "termshark.html" || file === "termshark") {            window.location.href = "termshark.html";            return "Opening termshark...";          }
       },
       focus: {
         desc: 'Current priorities',
