@@ -72,35 +72,16 @@
           </div>
           <span class="project-link">play it live / read the case study</span>
         </a>
-        <a class="project-card" href="/wiregraph.html">
-          <h3>wiregraph</h3>
-          <p>real-time network traffic visualization. interactive topology, protocol breakdown, packet inspection, conversation analysis.</p>
+        <a class="project-card" href="/network-tools.html">
+          <h3>network tools</h3>
+          <p>three tools for understanding network traffic. netgrep (capture + TLS decryption), wiregraph (real-time visualization), termshark (terminal packet analysis).</p>
           <div class="project-meta">
             <span class="tag">Rust</span>
-            <span class="project-stat">libpcap</span>
-            <span class="project-stat">vanilla JS</span>
-          </div>
-          <span class="project-link">live demo / case study</span>
-        </a>
-        <a class="project-card" href="/netgrep.html">
-          <h3>netgrep</h3>
-          <p>modern ngrep replacement. TCP reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, interactive TUI.</p>
-          <div class="project-meta">
-            <span class="tag">Rust</span>
-            <span class="project-stat">ratatui</span>
-            <span class="project-stat">libpcap</span>
-          </div>
-          <span class="project-link">source</span>
-        </a>
-        <a class="project-card" href="/termshark.html">
-          <h3>termshark</h3>
-          <p>modernized fork. refactored architecture, expanded tests, security audit, experimental browser-based web UI.</p>
-          <div class="project-meta">
             <span class="tag">Go</span>
-            <span class="project-stat">web UI</span>
-            <span class="project-stat">tshark</span>
+            <span class="project-stat">libpcap</span>
+            <span class="project-stat">live demo</span>
           </div>
-          <span class="project-link">source</span>
+          <span class="project-link">the full story / live wiregraph demo</span>
         </a>
         <a class="project-card" href="https://github.com/georgeglarson/venice-dev-tools" target="_blank" rel="noopener">
           <h3>venice-dev-tools</h3>
@@ -174,7 +155,7 @@
       },
       ls: {
         desc: 'List available pages',
-        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nwiregraph.html\nnetgrep.html\ntermshark.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
+        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nnetwork-tools.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
       },
       cat: {
         desc: 'Read a file (try: cat resume.txt)',
@@ -193,17 +174,9 @@
             window.location.href = 'fracture.html';
             return 'Opening fracture...';
           }
-          if (file === 'wiregraph.html' || file === 'wiregraph') {
-            window.location.href = 'wiregraph.html';
-            return 'Opening wiregraph...';
-          }
-          if (file === 'netgrep.html' || file === 'netgrep') {
-            window.location.href = 'netgrep.html';
-            return 'Opening netgrep...';
-          }
-          if (file === 'termshark.html' || file === 'termshark') {
-            window.location.href = 'termshark.html';
-            return 'Opening termshark...';
+          if (file.match(/^(network-tools|wiregraph|netgrep|termshark)(.html)?$/)) {
+            window.location.href = 'network-tools.html';
+            return 'Opening network tools...';
           }
           if (file.match(/^(ask|schedule)(.html)?$/)) {
             const page = file.replace('.html', '');
