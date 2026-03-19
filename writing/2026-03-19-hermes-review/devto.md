@@ -1,5 +1,5 @@
 ---
-title: "Hermes Agent: Honest Review After a Month of Testing"
+title: "Hermes Agent: Honest Review"
 published: false
 description: "I paid $10 to test NousResearch's Hermes Agent. The multi-platform gateway is real engineering. The model is a Llama fine-tune. Software engineers can skip."
 tags: ai, review, agents, llm
@@ -9,13 +9,13 @@ cover_image:
 
 Hermes Agent. An agent that grows with you.
 
-I paid $10 for a month to find out what's actually under the hood.
+I paid $10 to find out what's actually under the bonnet.
 
 ## The short version
 
 Hermes is an autonomous agent framework with genuine multi-platform integration: Telegram, Discord, WhatsApp, Slack, Signal, Home Assistant, and more. If you need an AI agent that lives on messaging platforms, Hermes is the most complete option available.
 
-If you're a software engineer working in a terminal, you already have better tools for everything Hermes does on the coding side. Skip it.
+If you're a software engineer working in a terminal, the coding tools will overlap with what you already use. The gateway is where the real value is.
 
 ## The model
 
@@ -35,7 +35,9 @@ This is the same pattern used by Claude Code, OpenCode, and every other tool wit
 
 Hermes has a skills system. Skills are markdown files with YAML frontmatter. When activated, their content is injected into the model's context. That's it.
 
-I asked Hermes to critique my resume. It created a "portfolio analysis skill," which was a markdown file describing how to analyze portfolios. This is structured prompt injection with a CRUD layer, not a capability. The progressive disclosure design (metadata loaded first, full content on demand) is genuinely good token management. 
+I asked Hermes to critique my resume. It created a "portfolio analysis skill," which was a markdown file describing how to analyze portfolios. This is structured prompt injection with a CRUD layer, not a capability. The progressive disclosure design (metadata loaded first, full content on demand) is genuinely good token management.
+
+To be fair, calling these "skills" is an industry-wide convention, not something Hermes invented. Claude Code, OpenAI's custom GPTs, and most agent frameworks use similar language for what amounts to structured context injection. Hermes's implementation is actually better-engineered than most.
 
 ## What's real vs. what's a wrapper
 
@@ -59,21 +61,21 @@ I asked Hermes to critique my resume. It created a "portfolio analysis skill," w
 
 If you manage a community, run a Discord server, coordinate a team on Slack, or want an AI assistant on Signal/WhatsApp/Telegram, Hermes is the most complete agent framework for that. I haven't found anything else with this level of multi-platform gateway support. The engineering is real.
 
-If you're a software engineer working in a terminal, the value proposition collapses. The coding tools are wrappers around things you already use. The model is a Llama fine-tune you can run yourself. The memory system is markdown files. And the skills are system prompts.
+If you're a software engineer working in a terminal, the coding tools probably overlap with what you already use. But if you coordinate across messaging platforms, this is worth a serious look.
 
 ## The business model
 
 The agent is MIT-licensed and free. You bring your own API keys: OpenRouter, Anthropic, OpenAI, whatever you prefer. The monetization is [Nous Portal](https://portal.nousresearch.com), their inference service that hosts Hermes-4. You get $5 in free credits and the agent has first-class OAuth integration with Nous as a provider.
 
-The strategy: give away the agent, sell the inference. Smart, if the model were differentiated enough to justify paying for it over Claude or GPT. For now, it's Llama with extra steps.
+The strategy: give away the agent, sell the inference. Smart model, and the free tier makes it easy to evaluate.
 
 ## Bottom line
 
 Hermes Agent is real software with real engineering effort: 40 tool modules, 12 platform adapters, active development. The multi-platform gateway is genuinely impressive and has no equivalent in the ecosystem.
 
-But the "grows with you" and "gets more capable" framing oversells what the software actually does. It saves markdown to disk and loads it next time. The model is a Llama fine-tune. The skills are prompt injections. The web tools are API wrappers.
+The "grows with you" and "gets more capable" framing is a stretch for what amounts to structured note-taking, but the underlying implementation is solid. The naming conventions are the same ones the whole industry uses.
 
-If your use case is "AI agent accessible on messaging platforms," Hermes is the answer. If your use case is "AI agent that helps me write software," you already have better options in your terminal.
+If your use case is "AI agent accessible on messaging platforms," Hermes is the best option I've found. If you primarily work in a terminal, the coding tools will feel familiar, but the gateway alone may be worth exploring.
 
 ---
 
