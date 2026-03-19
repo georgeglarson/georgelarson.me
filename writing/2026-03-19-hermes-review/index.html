@@ -41,6 +41,8 @@
       padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.82rem;
       background: rgba(22, 245, 166, 0.1); border: 1px solid rgba(22, 245, 166, 0.2); color: var(--accent);
     }
+    .screenshot { margin: 2rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .screenshot img { width: 100%; display: block; }
     @media (max-width: 720px) {
       .breakdown { grid-template-columns: 1fr; }
     }
@@ -53,6 +55,10 @@
       <h1>hermes agent<span class="caret" aria-hidden="true"></span></h1>
       <p class="lead">I paid $10 to test NousResearch's Hermes Agent. The marketing is excellent. The engineering is real. The value proposition depends entirely on who you are.</p>
     </header>
+
+    <div class="screenshot">
+      <img src="hermes-landing.png" alt="Hermes Agent landing page" loading="lazy" />
+    </div>
 
     <section class="verdict">
       <h3>the short version</h3>
