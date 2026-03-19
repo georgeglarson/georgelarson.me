@@ -8,7 +8,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta name="description" content="Three tools for understanding network traffic: netgrep (capture + search), wiregraph (visualize), termshark (analyze). Built in Rust and Go." />
   <meta property="og:title" content="network tools - george larson" />
-  <meta property="og:description" content="I needed to see what was happening on a network. So I built the capture engine, the visualization layer, and the analysis interface." />
+  <meta property="og:description" content="I wanted to understand what was actually happening on a network. So I built the tools to look at it." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://georgelarson.me/network-tools" />
   <meta name="twitter:card" content="summary" />
@@ -242,7 +242,7 @@
     <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
     <header class="hero">
       <h1>network tools<span class="caret" aria-hidden="true"></span></h1>
-      <p class="lead">i needed to see what was happening on a network. so i built the capture engine, the visualization layer, and the analysis interface.</p>
+      <p class="lead">i wanted to understand what was actually happening on a network. so i built the tools to look at it.</p>
       <nav class="hero-nav" aria-label="project links">
         <a class="pill-link" href="https://wiregraph.georgelarson.me" target="_blank" rel="noopener">live demo (wiregraph)</a>
         <a class="pill-link" href="https://codeberg.org/georgelarson" target="_blank" rel="noopener">all source (codeberg)</a>
@@ -251,10 +251,9 @@
     </header>
 
     <section class="panel genesis">
-      <span class="section-label">the problem</span>
-      <p>Network debugging has a tool gap. ngrep is frozen at single-packet matching &mdash; useless when everything is TLS. Wireshark needs a display server you don't have when you're SSH'd into production. tshark gives you everything but buries it in output nobody reads.</p>
-      <p>The existing tools each solve a piece of it. None of them talk to each other. None of them were built for a world where most traffic is encrypted.</p>
-      <p>So I built a suite. Three tools, one packet parsing core, three different interfaces for three different questions: "what's in the traffic?" / "what does the traffic look like?" / "what's inside this specific packet?"</p>
+      <span class="section-label">the itch</span>
+      <p>Two problems at work pushed me here. A vendor changed network configs and crashes started happening around the same time. I needed to see the traffic to prove the connection. Separately, we inherited hardware and software from a vendor going bankrupt. No licence, no support, no docs. I had questions basic enough that I felt they deserved answers anyway. At one point I was ready to sniff the wire, reverse the protocol, and write a partial open implementation.</p>
+      <p>Wireshark could have done most of it. But ngrep hasn't been updated since the 90s and can't handle TLS. Wireshark needs a display server you don't have over SSH. tshark gives you everything but buries it in noise. I kept wanting tools that didn't quite exist, so I started building them.</p>
     </section>
 
     <!-- ================================================================ -->
@@ -430,12 +429,9 @@
 
     <section class="section-space">
       <h2>why build all three</h2>
-      <p class="hint">This is what technical leadership looks like at the infrastructure level.</p>
-
       <div class="panel genesis">
-        <p>Any one of these tools is a weekend project's worth of ambition. Building all three &mdash; and making them share a packet parsing core &mdash; is a different kind of work. It's seeing a problem end-to-end and building the toolchain, not just one utility.</p>
         <p>netgrep and wiregraph share the same Rust library for packet parsing, protocol classification, and pcap I/O. The protocol labels in wiregraph's dashboard are the same classifiers netgrep uses for filtering. A pcap exported from wiregraph can be loaded into termshark for deep analysis. The tools compose.</p>
-        <p>This is how I approach infrastructure: understand the full workflow, build tools that fit together, and keep each one small enough to reason about.</p>
+        <p>I just really like looking at network traffic.</p>
       </div>
 
       <div class="stack-list">
