@@ -1,0 +1,10 @@
+{
+	"server": {
+		"url": "wss://nullclaw.georgelarson.me",
+		"autojoin": "#lobby",
+		"nick": "visitor-*",
+		"autoconnect": true,
+		"auth": "disabled",
+		"ping": 60
+	}
+}

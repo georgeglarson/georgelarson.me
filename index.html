@@ -254,14 +254,8 @@
       irc: {
         desc: 'Chat with nully, my AI agent',
         exec: () => {
-          const existing = document.getElementById('irc-frame');
-          if (existing) { existing.remove(); return 'Disconnected from nully.'; }
-          const frame = document.createElement('iframe');
-          frame.id = 'irc-frame';
-          frame.src = 'https://kiwiirc.com/nextclient/#irc://nullclaw.georgelarson.me:+443/#lobby?nick=visitor-' + Math.random().toString(36).slice(2, 6);
-          frame.style.cssText = 'width:100%;height:400px;border:1px solid var(--border, #333);border-radius:4px;margin-top:1rem;background:#000;';
-          document.querySelector('.terminal-wrapper').after(frame);
-          return 'Connecting to nully — standing by in #lobby.\nType <span class="terminal-cmd">irc</span> again to disconnect.';
+          window.open('/chat/', '_blank');
+          return 'Opening chat with nully in a new tab...';
         }
       },
       zen: {
@@ -325,15 +319,7 @@
 
     document.getElementById('chat-link').addEventListener('click', (e) => {
       e.preventDefault();
-      if (!document.getElementById('irc-frame')) {
-        const result = COMMANDS.irc.exec();
-        terminal.classList.remove('terminal-minimized');
-        terminalToggle.textContent = '_';
-        terminalToggle.setAttribute('aria-label', 'minimize terminal');
-        addOutput('irc', true);
-        addOutput(result);
-      }
-      document.getElementById('irc-frame').scrollIntoView({ behavior: 'smooth' });
+      window.open('/chat/', '_blank');
     });
 
     terminalToggle.addEventListener('click', () => {
