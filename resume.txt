@@ -16,6 +16,7 @@ KEY METRICS
 CURRENT FOCUS
 - Seeking a full-time technology leadership role where I can build, ship, and lead teams hands-on.
 - Building systems tools in Rust and Go (netgrep, termshark) for network analysis and security.
+- Operating a multi-agent architecture (nullclaw + ironclaw) with tiered inference, agent-to-agent routing, and security-hardened perimeter design.
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
 CORE STRENGTHS
@@ -40,6 +41,12 @@ Data Engineering and Automation
 - Workflow automation using scripting, open models, and RAG pipelines where they deliver measurable ROI.
 
 OPEN SOURCE PROJECTS
+nullclaw Agent Infrastructure (Zig), Deployment and Integration (2026 to Present)
+- Deployed nullclaw as a public-facing AI concierge ("Nully") on a hardened perimeter box with Haiku for conversational triage and Sonnet for code analysis, demonstrating tiered inference at the edge.
+- Built the full communication stack: Ergo IRC server, self-hosted gamja web client, WebSocket proxied through Cloudflare, Let's Encrypt TLS with automated renewal.
+- Designed agent-to-agent routing between nullclaw (public doorman) and ironclaw (private personal agent) across separate systems with distinct security boundaries.
+- The agent answers visitor questions by examining public GitHub repositories and preloaded context rather than rephrasing static resume text.
+
 netgrep (Rust), Creator and Maintainer (2026 to Present)
 - Modern replacement for ngrep: live packet capture and pcap analysis with TCP stream reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, and an interactive terminal UI.
 - Maintains ngrep-compatible CLI flags; outputs colored text, JSON, hex dump, or pcap.
@@ -97,7 +104,7 @@ VOLUNTEER WORK
 - OCR and digitization project contributor for historical legal documents.
 
 TECHNICAL SKILLS
-Languages: Python, Go, Rust, C#, TypeScript, PHP, Perl, C++, Bash, SQL
+Languages: Python, Go, Rust, Zig, C#, TypeScript, PHP, Perl, C++, Bash, SQL
 Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
 Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
 Cloud: AWS, Azure, Google Cloud, Proxmox
@@ -106,7 +113,8 @@ Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptP
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
-Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls
+AI Agent Infrastructure: nullclaw, ironclaw, multi-agent routing, tiered inference, model selection (Haiku/Sonnet/Opus), LLM cost optimization, agent security boundaries
+Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
 EDUCATION AND PROFESSIONAL DEVELOPMENT
