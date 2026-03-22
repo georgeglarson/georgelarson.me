@@ -150,7 +150,7 @@
       <p>25 years building software, infrastructure, and manufacturing systems. Minimal solutions that age gracefully. Close to the keyboard even when the work is strategic.</p>
       <p>Looking for hands-on technical leadership. Director, VP, or senior engineering roles in manufacturing, ecommerce, security, or platform teams.</p>
       <p><a href="mailto:george.g.larson@pm.me">george.g.larson@pm.me</a> / <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a> / <a href="https://codeberg.org/georgelarson" target="_blank" rel="noopener">codeberg</a> / <a href="https://mastodon.sdf.org/@j0rg3" target="_blank" rel="me noopener">mastodon</a> / Pittsburgh, PA</p>
-      <p>or <a href="#" id="chat-link">ask nullclaw</a> — an AI agent that knows my work and can look through my repos.</p>
+      <p>or <a href="#" id="chat-link">ask nully</a> — an AI agent that knows my work and can look through my repos.</p>
     </section>
     <hr />
     <section class="terminal-wrapper">
@@ -184,7 +184,7 @@
       },
       ls: {
         desc: 'List available pages',
-        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nnetwork-tools.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf\n\nTip: type <span class="terminal-cmd">irc</span> to chat with nullclaw, my AI agent.'
+        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nnetwork-tools.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf\n\nTip: type <span class="terminal-cmd">irc</span> to chat with nully, my AI agent.'
       },
       cat: {
         desc: 'Read a file (try: cat resume.txt)',
@@ -252,16 +252,16 @@
         }
       },
       irc: {
-        desc: 'Chat with nullclaw, my AI agent',
+        desc: 'Chat with nully, my AI agent',
         exec: () => {
           const existing = document.getElementById('irc-frame');
-          if (existing) { existing.remove(); return 'IRC disconnected.'; }
+          if (existing) { existing.remove(); return 'Disconnected from nully.'; }
           const frame = document.createElement('iframe');
           frame.id = 'irc-frame';
-          frame.src = 'https://kiwiirc.com/nextclient/#irc://irc.georgelarson.me:+6697/#lobby?nick=visitor-' + Math.random().toString(36).slice(2, 6);
+          frame.src = 'https://kiwiirc.com/nextclient/#irc://nullclaw.georgelarson.me:+443/#lobby?nick=visitor-' + Math.random().toString(36).slice(2, 6);
           frame.style.cssText = 'width:100%;height:400px;border:1px solid var(--border, #333);border-radius:4px;margin-top:1rem;background:#000;';
           document.querySelector('.terminal-wrapper').after(frame);
-          return 'Connecting to LarsonNet #lobby — nullclaw is standing by.\nType <span class="terminal-cmd">irc</span> again to disconnect.';
+          return 'Connecting to nully — standing by in #lobby.\nType <span class="terminal-cmd">irc</span> again to disconnect.';
         }
       },
       zen: {
