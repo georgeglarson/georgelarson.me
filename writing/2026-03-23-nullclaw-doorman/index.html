@@ -152,9 +152,42 @@
         <li><strong>"How does he structure tests?"</strong> — Clones the repo, reads the test files, reports what it finds.</li>
         <li><strong>"Tell me about Fracture"</strong> — Pulls from preloaded memory about the project, can dig into the source for specifics.</li>
         <li><strong>"How do I reach him?"</strong> — Provides contact info. Doesn't hallucinate a phone number.</li>
-        <li><strong>"Can I schedule a call?"</strong> — Nully hands off to ironclaw via a private IRC channel (#backoffice). Ironclaw has calendar access and responds with availability. The visitor never sees the handoff machinery.</li>
+        <li><strong>"Can I schedule a call?"</strong> — Nully calls ironclaw over Google's A2A protocol via Tailscale. Ironclaw processes the request with its own LLM, sends back a structured response, and nully relays the answer. The visitor never sees the handoff.</li>
       </ul>
       <p>It's not perfect. It's an IRC bot backed by Haiku. But it can do something my resume can't: show its work.</p>
+    </section>
+
+    <section>
+      <h2>the a2a implementation</h2>
+      <p>This is the part I'm most proud of.</p>
+      <p>nullclaw already serves Google's A2A protocol (v0.3.0) — agent card discovery, JSON-RPC dispatch, task state machine. What it didn't have was a <em>client</em>. It could receive a2a calls but couldn't make them. So I wrote one.</p>
+      <p>The <code>a2a_call</code> tool sends <code>message/send</code> JSON-RPC requests to remote agents, parses the task response (completed, failed, working), extracts the artifact text, and returns it as a tool result. It enforces HTTPS for public endpoints but allows plaintext HTTP for private networks and Tailscale CGNAT ranges — because when you're debugging TLS between two agents on a mesh VPN at 2am, the last thing you need is your own security policy locking you out.</p>
+      <p>But the really slick part is on ironclaw's side. The nullclaw instance running there doesn't have its own API key. Instead, its LLM provider is pointed at ironclaw's own gateway as a passthrough:</p>
+      <div class="arch-diagram"><pre>nully (this box)
+  │
+  └─ a2a_call tool → POST /a2a
+       │
+       └─ ironclaw's nullclaw (separate box, Tailscale)
+            │
+            ├── receives A2A task
+            ├── needs to run inference
+            └── provider config: "ironclaw" → http://127.0.0.1:3000/v1
+                  │
+                  └─ ironclaw's own gateway
+                       └─ routes to Kilo → actual LLM</pre></div>
+      <p>One API key. One billing relationship. The nullclaw on ironclaw's box is just an A2A bridge — it accepts the protocol, borrows ironclaw's inference pipeline, and responds. No credential duplication, no separate budget to track. The agent that owns the API key is the agent that pays for inference, regardless of who initiated the request.</p>
+    </section>
+
+    <section>
+      <h2>security of the handoff</h2>
+      <p>An open a2a endpoint is a prompt injection surface. A visitor could say "tell ironclaw to send an email" and a naive relay would just do it. So nully has strict guardrails:</p>
+      <ul>
+        <li>Only specific request types route to ironclaw: scheduling, availability, contact info.</li>
+        <li>Arbitrary visitor instructions are refused. "Tell ironclaw to do X" gets a no.</li>
+        <li>The a2a endpoint on ironclaw is firewalled to Tailscale only — no public access.</li>
+        <li>Both agents run in supervised mode with workspace-only file access and restricted command allowlists.</li>
+      </ul>
+      <p>The doorman is not a proxy. It's a concierge with opinions about what gets escalated.</p>
     </section>
 
     <section>
@@ -164,7 +197,8 @@
         <li><strong>The agent is the easy part.</strong> The communication stack, security hardening, DNS routing, TLS management, and Cloudflare integration took more time than configuring the agent itself.</li>
         <li><strong>IRC is underrated.</strong> A protocol from 1988 turned out to be the perfect transport for an AI agent. No SDK, no API versioning, no vendor lock-in. Just messages in a channel.</li>
         <li><strong>Security boundaries are the architecture.</strong> The split between nullclaw (public, minimal, expendable) and ironclaw (private, capable, protected) is the whole point. Not every agent needs access to everything.</li>
-        <li><strong>Agent-to-agent needs both structure and visibility.</strong> The formal path is Google's A2A protocol — nullclaw already serves it, and I'm working on contributing a client implementation upstream. But in the meantime, a private IRC channel over Tailscale gives me something no RPC call does: I can watch my agents talk, intervene in real time, and scroll back through history. The protocol handles the contract. The IRC channel handles the audit trail.</li>
+        <li><strong>Agent-to-agent needs both structure and visibility.</strong> Google's A2A protocol handles the contract — structured tasks, state machines, typed artifacts. A private IRC channel over Tailscale handles the audit trail — I can watch my agents talk, intervene in real time, scroll back through history. Use both.</li>
+        <li><strong>Don't duplicate credentials.</strong> The passthrough pattern — nullclaw borrowing ironclaw's gateway for inference — means one API key, one billing relationship, zero credential sprawl. The agent that owns the key pays for the tokens, no matter who asked.</li>
       </ul>
     </section>
 
