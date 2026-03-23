@@ -164,7 +164,7 @@
         <li><strong>The agent is the easy part.</strong> The communication stack, security hardening, DNS routing, TLS management, and Cloudflare integration took more time than configuring the agent itself.</li>
         <li><strong>IRC is underrated.</strong> A protocol from 1988 turned out to be the perfect transport for an AI agent. No SDK, no API versioning, no vendor lock-in. Just messages in a channel.</li>
         <li><strong>Security boundaries are the architecture.</strong> The split between nullclaw (public, minimal, expendable) and ironclaw (private, capable, protected) is the whole point. Not every agent needs access to everything.</li>
-        <li><strong>Agent-to-agent routing doesn't need a protocol spec.</strong> I looked at Google's A2A protocol. Then I put both agents in an IRC channel over Tailscale. A 30-year-old chat protocol on a private mesh network turned out to be a better agent bus than any JSON-RPC spec. The agents talk in plain text. I can watch. I can intervene. I can scroll back through history. Try doing that with a binary RPC call.</li>
+        <li><strong>Agent-to-agent needs both structure and visibility.</strong> The formal path is Google's A2A protocol — nullclaw already serves it, and I'm working on contributing a client implementation upstream. But in the meantime, a private IRC channel over Tailscale gives me something no RPC call does: I can watch my agents talk, intervene in real time, and scroll back through history. The protocol handles the contract. The IRC channel handles the audit trail.</li>
       </ul>
     </section>
 
