@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>fracture: legacy modernization with AI - george larson</title>
+  <title>I Took a 2012 Mozilla Demo and Turned It Into a Production MMO With AI - george larson</title>
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="How I turned Mozilla's abandoned 2012 BrowserQuest into a production multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests." />
+  <meta name="description" content="How a legacy modernization veteran used Claude as a development partner to transform BrowserQuest into Fracture, a real-time multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests." />
   <meta property="og:title" content="fracture: legacy modernization with AI" />
   <meta property="og:description" content="BrowserQuest (2012) to production MMO. 3,161 tests, OpenTelemetry, AI-powered NPCs. One engineer." />
   <meta property="og:type" content="article" />
@@ -69,183 +69,119 @@
       .project-hero { padding: 2.2rem 1.5rem; }
       .comparison, .features { grid-template-columns: 1fr; }
     }
-  </style>
-</head>
+</style></head>
 <body>
   <main class="page page-wide">
     <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
-    <header class="project-hero">
-      <h1>fracture<span class="caret" aria-hidden="true"></span></h1>
+    <header>
+      <h1>I Took a 2012 Mozilla Demo and Turned It Into a Production MMO With AI<span class="caret" aria-hidden="true"></span></h1>
       <p class="lead">I took Mozilla's abandoned 2012 BrowserQuest and turned it into a production multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests.</p>
-      <nav class="project-nav" aria-label="project links">
-        <a class="pill-link" href="https://fracture.georgelarson.me" target="_blank" rel="noopener">play it</a>
-        <a class="pill-link" href="https://github.com/georgeglarson/Fracture" target="_blank" rel="noopener">source code</a>
-        <a class="pill-link" href="/fracture.html">project page</a>
-      </nav>
     </header>
 
-    <div class="screenshot">
-      <img src="town.png" alt="Fracture gameplay with AI-powered NPCs and thought bubbles" loading="lazy" />
-    </div>
-
-    <section class="panel">
-      <span class="section-label">the question</span>
-      <p>In 2012, Mozilla and Little Workshop released <a href="https://github.com/mozilla/BrowserQuest" target="_blank" rel="noopener">BrowserQuest</a>, an HTML5 multiplayer demo that proved browsers could handle real-time games. No types. No tests. No persistence beyond <code>localStorage</code>. One massive <code>Player</code> class doing everything from combat to inventory to chat.</p>
-      <p>It served its purpose and was abandoned. I picked it up and asked: <strong>what would it take to turn this into something you'd actually ship?</strong></p>
+    <p>In 2012, Mozilla and Little Workshop released <a href="https://github.com/mozilla/BrowserQuest" target="_blank" rel="noopener">BrowserQuest</a>, an HTML5 multiplayer demo that proved browsers could handle real-time games. It was a tech demo. No types. No tests. No persistence beyond <code>localStorage</code>. No separation of concerns. One massive <code>Player</code> class doing everything from combat to inventory to chat.</p>
+    <p>It served its purpose and was abandoned.</p>
+    <p>I picked it up and asked a simple question: <strong>what would it take to turn this into something you'd actually ship?</strong></p>
+    <p>The answer is <a href="https://github.com/georgeglarson/Fracture" target="_blank" rel="noopener">Fracture</a>. You can <a href="https://fracture.georgelarson.me" target="_blank" rel="noopener">play it live</a>.</p>
+    <section>
+    <h2>Why this project</h2>
+    <p>I've spent 25 years modernizing legacy systems: manufacturing execution platforms, enterprise infrastructure, database tuning, security hardening. Python, Go, Rust, C#, PHP, TypeScript, Bash, Perl. Whatever the system was written in, the work was the same: understand what exists, establish contracts, decompose responsibilities, add observability, write tests, and ship without breaking what already works.</p>
+    <p>I wanted to demonstrate that the methodology I've applied to manufacturing automation and enterprise platforms translates directly to any domain, and that AI as a development agent changes the economics of what one engineer can ship.</p>
+    <p>Not "AI wrote my code." More like "AI enables one engineer do what used to take a team."</p>
+    <p>A game is the perfect vehicle. It has real-time networking, state management, persistence, external API integrations, and enough complexity that architecture actually matters. And unlike yet another CRUD app, people can play it and immediately understand what it does.</p>
     </section>
-
-    <div class="comparison">
-      <div class="comparison-col col-before">
-        <h3>BrowserQuest (2012)</h3>
-        <ul>
-          <li>No type safety: everything was <code>any</code></li>
-          <li>No tests. Zero.</li>
-          <li>No persistence. Die, refresh, start over.</li>
-          <li>No observability. <code>console.log</code> or nothing.</li>
-          <li>God classes. <code>Player</code> handled everything.</li>
-          <li>No security. Client-trusted positions.</li>
-        </ul>
-      </div>
-      <div class="comparison-col col-after">
-        <h3>Fracture (2026)</h3>
-        <ul>
-          <li>TypeScript strict mode. Every message typed.</li>
-          <li>3,161 tests across 65 files. Zero failures.</li>
-          <li>SQLite persistence. Resume where you left off.</li>
-          <li>OpenTelemetry + Pino + SigNoz + Grafana.</li>
-          <li>SRP decomposition. 14 handler modules.</li>
-          <li>Rate limiting, input validation, server authority.</li>
-        </ul>
-      </div>
-    </div>
-
-    <hr />
 
     <section>
-      <h2>decomposition</h2>
-      <p>The <code>Player</code> class had grown to 1,742 lines handling over a dozen concerns. I extracted each into its own module:</p>
-      <table class="module-table">
-        <thead><tr><th>Module</th><th>Responsibility</th></tr></thead>
-        <tbody>
-          <tr><td><code>combat/</code></td><td>Aggro policy, combat tracker, kill streaks, nemesis system</td></tr>
-          <tr><td><code>player/</code></td><td>MessageRouter + 14 handler modules</td></tr>
-          <tr><td><code>world/</code></td><td>Spatial manager, spawn manager, game loop</td></tr>
-          <tr><td><code>storage/</code></td><td>SQLite persistence layer</td></tr>
-          <tr><td><code>inventory/</code></td><td>Item management and serialization</td></tr>
-          <tr><td><code>zones/</code></td><td>Zone boundaries, bonuses, level scaling</td></tr>
-          <tr><td><code>party/</code></td><td>Invite, XP sharing, proximity tracking</td></tr>
-          <tr><td><code>rifts/</code></td><td>Endgame dungeons with stacking modifiers</td></tr>
-        </tbody>
-      </table>
-      <p>Post-refactor, <code>Player</code> is 726 lines. Systems communicate through a typed <code>EventBus</code>, not direct method calls. Combat doesn't know about achievements. The narrator doesn't know about inventory.</p>
+    <h2>What I started with</h2>
+    <p>BrowserQuest's server was a single JavaScript file ecosystem with:</p>
+    <ul>
+      <li><strong>No type safety:</strong> everything was <code>any</code>, passed through string-keyed message arrays</li>
+      <li><strong>No tests.</strong> Zero.</li>
+      <li><strong>No persistence.</strong> Die, refresh, start over</li>
+      <li><strong>No observability.</strong> <code>console.log</code> or nothing</li>
+      <li><strong>God classes.</strong> <code>Player</code> handled auth, combat, movement, inventory, chat, and serialization</li>
+      <li><strong>No security.</strong> Client-trusted positions, no rate limiting, no input validation</li>
+    </ul>
     </section>
-
-    <hr />
 
     <section>
-      <h2>testing</h2>
-      <p><strong>3,161 tests across 65 test files</strong> with zero failures. Statement coverage by module:</p>
-      <ul>
-        <li>Party, Shop, Zones, Events: <strong>100%</strong></li>
-        <li>Rifts: <strong>98%</strong></li>
-        <li>Equipment, Inventory: <strong>97-100%</strong></li>
-        <li>Storage: <strong>76%</strong></li>
-        <li>Player (aggregate): <strong>75%</strong></li>
-      </ul>
-      <p>Storage tests use in-memory SQLite, no mocks pretending to be a database. Coverage thresholds enforced in CI. Tests run on Node 20 and 22.</p>
-    </section>
+    <h2>The methodology</h2>
+    <p>Same playbook as enterprise, just applied to a game server:</p>
+    <h3>1. Type safety first</h3>
+    <p>Migrated everything to TypeScript strict mode. Every <code>any</code> replaced. Every message format typed. This is the unsexy work that makes everything else possible; but it's easier to refactor what is easily understood.</p>
+    <div class="code-block"><pre><code>Phase 1: Type Safety - Replace any types in message.ts
+Phase 1: Type Safety - Replace any types in player.ts
+Phase 1: Type Safety - Fix ws.ts, character.ts, map.ts
+Phase 1: Type Safety - Add typed imports to world.ts</code></pre></div>
+    <p>These were the first commits. No features. Just contracts.</p>
+    <h3>2. Decompose by responsibility</h3>
+    <p>The <code>Player</code> class had grown to 1,742 lines handling over a dozen concerns. I extracted each into its own module:</p>
+    <p>| Module       | Responsibility                                             | | --------------| ------------------------------------------------------------| | <code>combat/</code>    | Aggro policy, combat tracker, kill streaks, nemesis system | | <code>player/</code>    | MessageRouter + 14 handler modules                         | | <code>world/</code>     | Spatial manager, spawn manager, game loop                  | | <code>storage/</code>   | SQLite persistence layer                                   | | <code>inventory/</code> | Item management and serialization                          | | <code>zones/</code>     | Zone boundaries, bonuses, level scaling                    | | <code>party/</code>     | Invite, XP sharing, proximity tracking                     | | <code>rifts/</code>     | Endgame dungeons with stacking modifiers                   |</p>
+    <p>Post-refactor, <code>Player</code> is 726 lines. Every module has one job.</p>
+    <h3>3. Event-driven architecture</h3>
+    <p>Systems communicate through a typed <code>EventBus</code>, not direct method calls. Combat doesn't know about achievements. The narrator doesn't know about inventory. They publish events; interested systems subscribe.</p>
+    <p>This is the same pattern you'd use in a microservice architecture, applied at the module level. It makes testing trivial; you can verify each system in isolation.</p>
+    <h3>4. Test everything</h3>
+    <p>The codebase has <strong>3,161 tests across 65 test files</strong> with zero failures. Coverage by module (statement coverage):</p>
+    <ul>
+      <li>Party, Shop, Zones, Events: <strong>100%</strong></li>
+      <li>Rifts: <strong>98%</strong></li>
+      <li>Equipment, Inventory: <strong>97-100%</strong></li>
+      <li>Storage: <strong>76%</strong></li>
+      <li>Player (aggregate): <strong>75%</strong></li>
+    </ul>
+    <p>Storage tests use in-memory SQLite, no mocks pretending to be a database. Coverage thresholds are enforced in CI. Tests run on Node 20 and 22.</p>
+    <p>I wrote tests <em>before</em> refactors, not after. When you're decomposing a class that handles 13 responsibilities, you need to know immediately when you break something.</p>
+    <h3>5. Production-grade observability</h3>
+    <p>All <code>console.log</code> calls across the codebase were replaced with Pino structured logging, then wired in OpenTelemetry distributed tracing:</p>
+    <div class="code-block"><pre><code>// Every message handler is traced
+const span = tracer.startSpan(`player.message.${type}`);
 
-    <hr />
+// Every database call
+const span = tracer.startSpan('storage.saveCharacter');
+
+// Every AI call with latency tracking
+const span = tracer.startSpan('ai.venice');</code></pre></div>
+    <p>Logs and traces are correlated. Every log line carries a <code>trace_id</code> and <code>span_id</code>. The whole stack ships to a self-hosted SigNoz instance backed by ClickHouse, with public Grafana dashboards for portfolio visitors.</p>
+    <p>This is the same OTel + Pino + SigNoz stack used in production microservices. I just applied it to a game server.</p>
+    </section>
 
     <section>
-      <h2>observability</h2>
-      <p>All <code>console.log</code> calls replaced with Pino structured logging. OpenTelemetry distributed tracing on every message handler, database call, and AI request.</p>
-      <div class="code-block">
-        <span class="comment">// every message handler is traced</span><br>
-        <span class="cmd">const span = tracer.startSpan(`player.message.${type}`);</span><br><br>
-        <span class="comment">// every database call</span><br>
-        <span class="cmd">const span = tracer.startSpan('storage.saveCharacter');</span><br><br>
-        <span class="comment">// every AI call with latency tracking</span><br>
-        <span class="cmd">const span = tracer.startSpan('ai.venice');</span>
-      </div>
-      <p>Logs and traces are correlated. Every log line carries a <code>trace_id</code> and <code>span_id</code>. Self-hosted SigNoz backed by ClickHouse, with public Grafana dashboards.</p>
+    <h2>Where AI changed the game</h2>
+    <p>Claude was a development partner throughout this project. Here's what that actually means in practice:</p>
+    <p><strong>AI as force multiplier, not replacement.</strong> I made every architectural decision. I chose SRP decomposition. I chose event-driven communication and OpenTelemetry over custom metrics. AI didn't make those calls; 25 years of experience did. But AI let me <em>execute</em> those decisions at a pace that was previously unthinkable.</p>
+    <p><strong>AI for the tedious but important work.</strong> Migrating every console.log call to structured logging with proper context? Writing 3,161 tests? Extracting 14 handler modules from a monolithic class? This is work that matters but takes forever when you're doing it alone. AI compressed weeks into days.</p>
+    <p><strong>AI-powered game features.</strong> AI also ships as part of the product:</p>
+    <ul>
+      <li><strong>NPC dialogue:</strong> Every NPC generates contextual responses via Venice AI (llama-3.3-70b). The village priest talks about "the time before the sky broke." The guard asks where you came from. Conversations have memory.</li>
+      <li><strong>Entity thoughts:</strong> Mobs display visible AI-generated thought bubbles. Rats think about cheese. Skeletons scheme about revenge. 25% AI-generated, 75% template-based, refreshed on a 5-minute cycle.</li>
+      <li><strong>Narrator system:</strong> Zone-specific narrative voices describe events with unique vocabularies. Deaths are mourned. Achievements are celebrated. Voice synthesis via Fish Audio TTS.</li>
+      <li><strong>Graceful degradation:</strong> If Venice goes down, the game keeps running with static fallbacks. AI enhances the experience; it never blocks it. Circuit breaker opens after 5 failures, recovers automatically.</li>
+    </ul>
     </section>
-
-    <div class="screenshot">
-      <img src="grafana.png" alt="Fracture Grafana dashboard showing production observability metrics" loading="lazy" />
-    </div>
-
-
-    <hr />
 
     <section>
-      <h2>AI in the product</h2>
-      <div class="features">
-        <div class="feature-card">
-          <h3>NPC dialogue</h3>
-          <p>Every NPC generates contextual responses via Venice AI (llama-3.3-70b). The village priest talks about "the time before the sky broke." The guard asks where you came from. Conversations have memory.</p>
-        </div>
-        <div class="feature-card">
-          <h3>entity thoughts</h3>
-          <p>Mobs display visible AI-generated thought bubbles. Rats think about cheese. Skeletons scheme about revenge. 25% AI-generated, 75% template-based, refreshed on a 5-minute cycle.</p>
-        </div>
-        <div class="feature-card">
-          <h3>narrator system</h3>
-          <p>Zone-specific narrative voices describe events with unique vocabularies. Deaths are mourned. Achievements are celebrated. Voice synthesis via Fish Audio TTS.</p>
-        </div>
-        <div class="feature-card">
-          <h3>graceful degradation</h3>
-          <p>If Venice goes down, the game keeps running with static fallbacks. Circuit breaker opens after 5 failures, recovers automatically. AI enhances the experience; it never blocks it.</p>
-        </div>
-      </div>
+    <h2>The stack</h2>
+    <p>| Layer         | Technology                                       | | ---------------| --------------------------------------------------| | Client        | HTML5 Canvas, TypeScript 5.8, Webpack 5          | | Server        | Node.js, TypeScript 5.8, Socket.IO 4             | | Database      | SQLite (better-sqlite3)                          | | AI            | Venice AI (llama-3.3-70b), Fish Audio TTS        | | Observability | OpenTelemetry, Pino, SigNoz, Grafana, ClickHouse | | Testing       | Vitest 4, v8 coverage, CI on Node 20 + 22        | | Production    | nginx, Let's Encrypt SSL, Docker Compose         |</p>
+    <p>~215 TypeScript source files. 280 including tests. 105 WebSocket message types. 50 levels, 7 zones, 6 roaming bosses, a nemesis system where mobs track grudges and power up against players who've killed them before.</p>
     </section>
-
-    <div class="screenshot">
-      <img src="npc-convo.png" alt="NPC dialogue generated by Venice AI" loading="lazy" />
-    </div>
-
-    <hr />
 
     <section>
-      <h2>AI as development partner</h2>
-      <p>Claude was a development partner throughout this project. I made every architectural decision: SRP decomposition, event-driven communication, OpenTelemetry over custom metrics. AI didn't make those calls; 25 years of experience did. But AI let me execute those decisions at a pace that was previously unthinkable.</p>
-      <p>Migrating every console.log call to structured logging with proper context? Writing 3,161 tests? Extracting 14 handler modules from a monolithic class? This is work that matters but takes forever alone. AI compressed weeks into days.</p>
-      <p>Not "AI wrote my code." More like "AI enables one engineer to do what used to take a team."</p>
+    <h2>What I'd tell someone doing this at work</h2>
+    <p>Legacy modernization with AI follows the same rules as legacy modernization without it:</p>
+    <ol>
+      <li><strong>Type safety is not optional.</strong> You cannot safely refactor code you cannot reason about. This is always step one.</li>
+      <li><strong>Test before you refactor.</strong> Decomposing a 1,700-line class is not the time to discover you broke chat because it was coupled to combat through a shared mutable array.</li>
+      <li><strong>AI amplifies your judgment, not replaces it.</strong> If you don't want SRP patterns, AI may not suggest it. If you do know what you want, AI will help you implement it 10x faster.</li>
+      <li><strong>Observability is not a luxury.</strong> Structured logging and tracing aren't just for microservices; they're for anything you plan to operate.</li>
+    </ol>
     </section>
-
-    <hr />
 
     <section>
-      <h2>the stack</h2>
-      <table class="module-table">
-        <thead><tr><th>Layer</th><th>Technology</th></tr></thead>
-        <tbody>
-          <tr><td>Client</td><td>HTML5 Canvas, TypeScript 5.8, Webpack 5</td></tr>
-          <tr><td>Server</td><td>Node.js, TypeScript 5.8, Socket.IO 4</td></tr>
-          <tr><td>Database</td><td>SQLite (better-sqlite3)</td></tr>
-          <tr><td>AI</td><td>Venice AI (llama-3.3-70b), Fish Audio TTS</td></tr>
-          <tr><td>Observability</td><td>OpenTelemetry, Pino, SigNoz, Grafana, ClickHouse</td></tr>
-          <tr><td>Testing</td><td>Vitest 4, v8 coverage, CI on Node 20 + 22</td></tr>
-          <tr><td>Production</td><td>nginx, Let's Encrypt SSL, Docker Compose</td></tr>
-        </tbody>
-      </table>
-      <p>~215 TypeScript source files. 280 including tests. 105 WebSocket message types. 50 levels, 7 zones, 6 roaming bosses, a nemesis system where mobs track grudges and power up against players who've killed them before.</p>
+    <h2>Try it</h2>
+    <p><strong>Play:</strong> <a href="https://fracture.georgelarson.me" target="_blank" rel="noopener">fracture.georgelarson.me</a> <strong>Code:</strong> <a href="https://github.com/georgeglarson/Fracture" target="_blank" rel="noopener">github.com/georgeglarson/Fracture</a></p>
+    <p>The game runs 24/7 on a real server with real observability. Walk around, fight mobs, read their thoughts, talk to NPCs. Everything you see (the combat, the AI dialogue, the persistence, the spatial partitioning) is the result of applying boring enterprise modernization patterns to a fun problem.</p>
+    <p>That's the whole point. The strategies transfer. The methodology scales. AI just makes it possible to do it alone.</p>
     </section>
-
-    <div class="screenshot">
-      <img src="TUI.png" alt="Nethack-style TUI debugger for live server introspection" loading="lazy" />
-    </div>
-
-    <div class="stack-list">
-      <span class="stack-tag">TypeScript</span>
-      <span class="stack-tag">Socket.IO</span>
-      <span class="stack-tag">SQLite</span>
-      <span class="stack-tag">OpenTelemetry</span>
-      <span class="stack-tag">Venice AI</span>
-      <span class="stack-tag">Vitest</span>
-      <span class="stack-tag">3,161 tests</span>
-    </div>
-
     <footer>
       <hr />
       <span>&copy; george larson</span>

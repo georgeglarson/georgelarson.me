@@ -1,11 +1,43 @@
 ---
 title: "Hermes Agent: Honest Review"
-published: false
+slug: 2026-03-19-hermes-review
+date: 2026-03-19
 description: "I paid $10 to test NousResearch's Hermes Agent. The multi-platform gateway is real engineering. The model is a Llama fine-tune. Software engineers can skip."
 tags: ai, review, agents, llm
-canonical_url: https://georgelarson.me/writing/2026-03-19-hermes-review/
-cover_image: 
+og_title: "hermes agent: honest review"
+og_description: "I paid $10 to test Hermes Agent. Here's what I found under the bonnet."
+cover_image:
+lead: "I paid $10 to test NousResearch's Hermes Agent. The marketing is excellent. The engineering is real. The value proposition depends entirely on who you are."
 ---
+
+<!-- social:mastodon -->
+I tested NousResearch's Hermes Agent.
+
+The model is a Llama 3.1 fine-tune. The memory and skills systems are markdown on disk, but well-engineered. Atomic writes, file locking, progressive token management. Better than most agent frameworks doing the same thing.
+
+What's real: 12-platform messaging gateway. Discord, Telegram, Signal, Slack, WhatsApp. 2,085 lines just for Discord. No equivalent elsewhere.
+
+If you coordinate across messaging platforms, worth a serious look.
+
+https://georgelarson.me/writing/2026-03-19-hermes-review/
+<!-- /social:mastodon -->
+
+<!-- social:linkedin -->
+I tested Hermes Agent, "an agent that grows with you".
+Here's what I found under the bonnet.
+
+The model (Hermes-4-405B) is a supervised fine-tune of Llama 3.1 405B. About 5 million training samples, tool-calling baked in. The HuggingFace card is upfront about this. If you've used Llama 3.1 through any other provider, you already know roughly what to expect.
+
+The memory system writes structured markdown to disk. The skills system injects context into the model's prompt. Both are well-engineered. Hermes actually does these better than most agent frameworks I've looked at, with atomic writes, file locking, and progressive disclosure for token management. The naming conventions (skills, memory, growth) are industry-standard at this point; every agent framework from Claude Code to custom GPTs uses similar language.
+
+What genuinely impressed me: the multi-platform gateway. 12 messaging integrations. Discord, Telegram, Slack, Signal, WhatsApp, Home Assistant, and more. The Discord adapter alone is 2,085 lines. I haven't found an equivalent elsewhere. If you need an AI agent that lives on messaging platforms, Hermes is the most complete option available.
+
+If you're a software engineer working in a terminal, the coding tools probably overlap with what you already use. But for community managers, team leads, or anyone coordinating across multiple platforms, this is worth a serious look.
+
+Full writeup with the technical breakdown: https://georgelarson.me/writing/2026-03-19-hermes-review/
+
+#AI #OpenSource #DevTools #LLM
+<!-- /social:linkedin -->
 
 Hermes Agent. An agent that grows with you.
 
@@ -77,6 +109,39 @@ The "grows with you" and "gets more capable" framing is a stretch for what amoun
 
 If your use case is "AI agent accessible on messaging platforms," Hermes is the best option I've found. If you primarily work in a terminal, the coding tools will feel familiar, but the gateway alone may be worth exploring.
 
----
-
-*George Larson, 25 years in software engineering, infrastructure, manufacturing systems, and cybersecurity. Currently looking for Director/VP or senior engineering roles. More at [georgelarson.me](https://georgelarson.me).*
+<style>
+    .verdict {
+      padding: 2rem 1.75rem; margin: 2rem 0; border-radius: var(--radius);
+      border: 1px solid rgba(22, 245, 166, 0.3); background: rgba(5, 12, 18, 0.75);
+    }
+    .verdict h3 { margin: 0 0 0.75rem 0; }
+    .verdict p { margin: 0.4rem 0; color: var(--fg-muted); }
+    .breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+    .breakdown-card {
+      padding: 1.5rem 1.25rem; border-radius: var(--radius);
+      border: 1px solid rgba(22, 245, 166, 0.22); background: rgba(5, 12, 18, 0.75);
+    }
+    .breakdown-card h3 { margin: 0 0 0.5rem 0; font-size: 0.95rem; }
+    .breakdown-card p { margin: 0; color: var(--fg-muted); font-size: 0.92rem; line-height: 1.5; }
+    .breakdown-card.real { border-color: rgba(22, 245, 166, 0.35); }
+    .breakdown-card.real h3 { color: var(--accent); }
+    .breakdown-card.wrapper { border-color: rgba(255, 200, 100, 0.25); }
+    .breakdown-card.wrapper h3 { color: rgba(255, 200, 100, 0.85); }
+    .code-block {
+      background: rgba(5, 12, 18, 0.9); border: 1px solid rgba(22, 245, 166, 0.15);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.25rem 0;
+      font-size: 0.88rem; line-height: 1.7; overflow-x: auto; color: var(--fg-muted);
+    }
+    .code-block .cmd { color: var(--accent); }
+    .code-block .comment { color: rgba(146, 203, 180, 0.5); }
+    .stack-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .stack-tag {
+      padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.82rem;
+      background: rgba(22, 245, 166, 0.1); border: 1px solid rgba(22, 245, 166, 0.2); color: var(--accent);
+    }
+    .screenshot { margin: 2rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .screenshot img { width: 100%; display: block; }
+    @media (max-width: 720px) {
+      .breakdown { grid-template-columns: 1fr; }
+    }
+</style>

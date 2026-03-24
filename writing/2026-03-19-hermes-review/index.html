@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>hermes agent review - george larson</title>
+  <title>Hermes Agent: Honest Review - george larson</title>
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="An honest review of NousResearch's Hermes Agent after hands-on testing. Great for social media management. Software engineers can skip." />
+  <meta name="description" content="I paid $10 to test NousResearch's Hermes Agent. The multi-platform gateway is real engineering. The model is a Llama fine-tune. Software engineers can skip." />
   <meta property="og:title" content="hermes agent: honest review" />
   <meta property="og:description" content="I paid $10 to test Hermes Agent. Here's what I found under the bonnet." />
   <meta property="og:type" content="article" />
@@ -46,127 +46,73 @@
     @media (max-width: 720px) {
       .breakdown { grid-template-columns: 1fr; }
     }
-  </style>
-</head>
+</style></head>
 <body>
   <main class="page page-wide">
     <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
     <header>
-      <h1>hermes agent<span class="caret" aria-hidden="true"></span></h1>
+      <h1>Hermes Agent: Honest Review<span class="caret" aria-hidden="true"></span></h1>
       <p class="lead">I paid $10 to test NousResearch's Hermes Agent. The marketing is excellent. The engineering is real. The value proposition depends entirely on who you are.</p>
     </header>
 
-    <div class="screenshot">
-      <img src="hermes-landing.png" alt="Hermes Agent landing page" loading="lazy" />
-    </div>
-
-    <section class="verdict">
-      <h3>the short version</h3>
-      <p>Hermes is an autonomous agent framework with genuine multi-platform integration: Telegram, Discord, WhatsApp, Slack, Signal, Home Assistant, and more. If you need an AI agent that lives on messaging platforms, Hermes is the most complete option available.</p>
-      <p>If you're a software engineer working in a terminal, you already have better tools for everything Hermes does on the coding side. Skip it.</p>
+    <p>Hermes Agent. An agent that grows with you.</p>
+    <p>I paid $10 to find out what's actually under the bonnet.</p>
+    <section>
+    <h2>The short version</h2>
+    <p>Hermes is an autonomous agent framework with genuine multi-platform integration: Telegram, Discord, WhatsApp, Slack, Signal, Home Assistant, and more. If you need an AI agent that lives on messaging platforms, Hermes is the most complete option available.</p>
+    <p>If you're a software engineer working in a terminal, the coding tools will overlap with what you already use. The gateway is where the real value is.</p>
     </section>
-
-    <hr />
-
-    <section class="panel">
-      <span class="section-label">the hook</span>
-      <p>The landing page is a masterclass. ASCII art banner, "an agent that grows with you," "lives on your server," "gets more capable the longer it runs." I signed up for what I thought was a waitlist and got a key within minutes — likely just their onboarding flow, not artificial scarcity. Every instinct says: this is something new.</p>
-      <p>Then you lift the bonnet.</p>
-    </section>
-
-    <hr />
 
     <section>
-      <h2>the model</h2>
-      <p>Hermes-4-405B is a supervised fine-tune of Meta's Llama 3.1 405B. Not a secret. The <a href="https://huggingface.co/NousResearch/Hermes-4-405B" target="_blank" rel="noopener">HuggingFace model card</a> lists the base model explicitly. Every Hermes model since version 1 has been a Llama fine-tune. NousResearch is fundamentally a Llama fine-tuning shop.</p>
-      <p>The fine-tuning is competent: ~5 million training samples, ~60 billion tokens, tool-calling format baked in. But the moment you interact with it, you feel Llama. If you've used Llama 3.1 405B through any other provider, you already know what Hermes-4 feels like.</p>
-      <p>The agent itself is model-agnostic. You can point it at Claude, GPT, Gemini, or anything via OpenRouter. Oddly, the default configuration ships pointed at Claude Opus via OpenRouter, not their own model. Getting Hermes-4 running on their own inference portal took some troubleshooting. The portal is the actual business model (free agent, paid inference) but the onboarding doesn't make it easy.</p>
+    <h2>The model</h2>
+    <p>Hermes-4-405B is a supervised fine-tune of Meta's Llama 3.1 405B. The <a href="https://huggingface.co/NousResearch/Hermes-4-405B" target="_blank" rel="noopener">HuggingFace model card</a> lists the base model explicitly. Every Hermes model since version 1 has been a Llama fine-tune. NousResearch is fundamentally a Llama fine-tuning shop.</p>
+    <p>The fine-tuning is competent: ~5 million training samples, ~60 billion tokens, tool-calling format baked in. But the moment you interact with it, you feel Llama. If you've used Llama 3.1 405B through any other provider, you already know what Hermes-4 feels like.</p>
+    <p>The agent itself is model-agnostic. You can point it at Claude, GPT, Gemini, or anything via OpenRouter. Oddly, the default configuration ships pointed at Claude Opus via OpenRouter, not their own model. Getting Hermes-4 running on their own inference portal took some troubleshooting. The portal is the actual business model (free agent, paid inference) but the onboarding doesn't make it easy.</p>
     </section>
-
-    <hr />
 
     <section>
-      <h2>"grows with you"</h2>
-      <p>The marketing implies something approaching learning. The reality: Hermes writes markdown files to <code>~/.hermes/memories/</code>. A <code>MEMORY.md</code> (and optionally a <code>USER.md</code>) with section delimiters, loaded into context at the start of each session.</p>
-      <p>This is the same pattern used by Claude Code, OpenCode, and every other tool with a config file. The implementation is well-engineered: atomic writes via temp files, file locking, injection scanning, character budgets, frozen snapshots for cache stability. But "grows with you" is a stretch for what amounts to structured note-taking.</p>
+    <h2>"Grows with you"</h2>
+    <p>The marketing implies something approaching learning. The reality: Hermes writes markdown files to <code>~/.hermes/memories/</code>. A <code>MEMORY.md</code> (and optionally a <code>USER.md</code>) with section delimiters, loaded into context at the start of each session.</p>
+    <p>This is the same pattern used by Claude Code, OpenCode, and every other tool with a config file. The implementation is well-engineered: atomic writes via temp files, file locking, injection scanning, character budgets, frozen snapshots for cache stability. But "grows with you" is a stretch for what amounts to structured note-taking.</p>
     </section>
-
-    <hr />
 
     <section>
-      <h2>skills are system prompts</h2>
-      <p>Hermes has a "skills" system. Skills are markdown files with YAML frontmatter. When activated, their content is injected into the model's context. That's it.</p>
-      <p>I asked Hermes to critique my resume. It created a "portfolio analysis skill," which was a markdown file describing how to analyze portfolios. This is structured prompt injection with a CRUD layer, not a capability. The progressive disclosure design (metadata loaded first, full content on demand) is genuinely good token management.</p>
-      <p>To be fair, calling these "skills" is an industry-wide convention, not something Hermes invented. Claude Code, OpenAI's custom GPTs, and most agent frameworks use similar language for what amounts to structured context injection. Hermes's implementation is actually better-engineered than most.</p>
+    <h2>Skills are system prompts</h2>
+    <p>Hermes has a skills system. Skills are markdown files with YAML frontmatter. When activated, their content is injected into the model's context. That's it.</p>
+    <p>I asked Hermes to critique my resume. It created a "portfolio analysis skill," which was a markdown file describing how to analyze portfolios. This is structured prompt injection with a CRUD layer, not a capability. The progressive disclosure design (metadata loaded first, full content on demand) is genuinely good token management.</p>
+    <p>To be fair, calling these "skills" is an industry-wide convention, not something Hermes invented. Claude Code, OpenAI's custom GPTs, and most agent frameworks use similar language for what amounts to structured context injection. Hermes's implementation is actually better-engineered than most.</p>
     </section>
-
-    <hr />
 
     <section>
-      <h2>what's real vs. what's a wrapper</h2>
-
-      <div class="breakdown">
-        <div class="breakdown-card real">
-          <h3>multi-platform gateway</h3>
-          <p>12 messaging platform integrations, each with hundreds to thousands of lines of adapter code. Discord alone is 2,085 lines. Telegram, Slack, Signal, WhatsApp, Matrix, Home Assistant, email, SMS. These are real, substantial integrations with media handling, threading, and typing indicators. This is the genuinely unique thing Hermes offers.</p>
-        </div>
-        <div class="breakdown-card real">
-          <h3>terminal tool</h3>
-          <p>Six execution backends: local subprocess, Docker, Singularity, Modal (cloud), SSH, and Daytona. Persistent shell that preserves state across calls. Dangerous command approval system. Environment variable isolation to prevent API key leakage. Real engineering on top of subprocess.</p>
-        </div>
-        <div class="breakdown-card wrapper">
-          <h3>web tools</h3>
-          <p>Configurable wrapper around Firecrawl, Parallel, or Tavily. The value-add is an LLM post-processing layer that summarizes results to reduce token usage. Functional but not novel.</p>
-        </div>
-        <div class="breakdown-card wrapper">
-          <h3>mixture of agents</h3>
-          <p>Sends the same prompt to four frontier models (Claude, Gemini, GPT, DeepSeek) in parallel, then aggregates with a fifth. ~550 lines implementing a <a href="https://arxiv.org/abs/2406.04692" target="_blank" rel="noopener">published paper</a>. Works, but expensive: five frontier model calls per query.</p>
-        </div>
-        <div class="breakdown-card real">
-          <h3>memory system</h3>
-          <p>Flat files with atomic writes, file locking, injection/exfiltration scanning, and frozen snapshots for prefix cache stability. Well-thought-out engineering for what is fundamentally markdown on disk.</p>
-        </div>
-        <div class="breakdown-card wrapper">
-          <h3>browser tool</h3>
-          <p>Uses accessibility tree snapshots for text-based page interaction, a better pattern than DOM selectors for LLM agents. Supports local Chromium, Browserbase, and Browser Use as backends. Solid design, but the same approach is available via Vercel's <a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener">agent-browser</a> as a standalone tool.</p>
-        </div>
-      </div>
+    <h2>What's real vs. what's a wrapper</h2>
+    <h3>Real engineering</h3>
+    <p><strong>Multi-platform gateway.</strong> 12 messaging platform integrations, each with hundreds to thousands of lines of adapter code. Discord alone is 2,085 lines. Telegram, Slack, Signal, WhatsApp, Matrix, Home Assistant, email, SMS. These are real, substantial integrations with media handling, threading, and typing indicators. This is the genuinely unique thing Hermes offers.</p>
+    <p><strong>Terminal tool.</strong> Six execution backends: local subprocess, Docker, Singularity, Modal (cloud), SSH, and Daytona. Persistent shell that preserves state across calls. Dangerous command approval system. Environment variable isolation to prevent API key leakage. Real engineering on top of subprocess.</p>
+    <p><strong>Memory system.</strong> Flat files with atomic writes, file locking, injection/exfiltration scanning, and frozen snapshots for prefix cache stability. Well-thought-out engineering for what is fundamentally markdown on disk.</p>
+    <h3>Wrapper layer</h3>
+    <p><strong>Web tools.</strong> Configurable wrapper around Firecrawl, Parallel, or Tavily. The value-add is an LLM post-processing layer that summarizes results to reduce token usage. Functional but not novel.</p>
+    <p><strong>Mixture of Agents.</strong> Sends the same prompt to four frontier models (Claude, Gemini, GPT, DeepSeek) in parallel, then aggregates with a fifth. ~550 lines implementing a <a href="https://arxiv.org/abs/2406.04692" target="_blank" rel="noopener">published paper</a>. Works, but expensive: five frontier model calls per query.</p>
+    <p><strong>Browser tool.</strong> Uses accessibility tree snapshots for text-based page interaction, a better pattern than DOM selectors for LLM agents. Supports local Chromium, Browserbase, and Browser Use as backends. Solid design, but the same approach is available via Vercel's <a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener">agent-browser</a> as a standalone tool.</p>
     </section>
-
-    <hr />
 
     <section>
-      <h2>who this is for</h2>
-      <p>If you manage a community, run a Discord server, coordinate a team on Slack, or want an AI assistant on Signal/WhatsApp/Telegram, Hermes is the most complete agent framework for that. I haven't found anything else with this level of multi-platform gateway support. The engineering is real.</p>
-      <p>If you're a software engineer working in a terminal, the value proposition collapses. The coding tools are wrappers around things you already use. The model is a Llama fine-tune you can run yourself. The memory system is markdown files. And the skills are system prompts.</p>
+    <h2>Who this is for</h2>
+    <p>If you manage a community, run a Discord server, coordinate a team on Slack, or want an AI assistant on Signal/WhatsApp/Telegram, Hermes is the most complete agent framework for that. I haven't found anything else with this level of multi-platform gateway support. The engineering is real.</p>
+    <p>If you're a software engineer working in a terminal, the coding tools probably overlap with what you already use. But if you coordinate across messaging platforms, this is worth a serious look.</p>
     </section>
-
-    <hr />
 
     <section>
-      <h2>the business model</h2>
-      <p>The agent is MIT-licensed and free. You bring your own API keys: OpenRouter, Anthropic, OpenAI, whatever you prefer. The monetization is <a href="https://portal.nousresearch.com" target="_blank" rel="noopener">Nous Portal</a>, their inference service that hosts Hermes-4. You get $5 in free credits and the agent has first-class OAuth integration with Nous as a provider.</p>
-      <p>The strategy: give away the agent, sell the inference. Smart, if the model were differentiated enough to justify paying for it over Claude or GPT. For now, it's Llama with extra steps.</p>
+    <h2>The business model</h2>
+    <p>The agent is MIT-licensed and free. You bring your own API keys: OpenRouter, Anthropic, OpenAI, whatever you prefer. The monetization is <a href="https://portal.nousresearch.com" target="_blank" rel="noopener">Nous Portal</a>, their inference service that hosts Hermes-4. You get $5 in free credits and the agent has first-class OAuth integration with Nous as a provider.</p>
+    <p>The strategy: give away the agent, sell the inference. Smart model, and the free tier makes it easy to evaluate.</p>
     </section>
 
-    <hr />
-
-    <section class="panel">
-      <span class="section-label">bottom line</span>
-      <p>Hermes Agent is real software with real engineering effort: 40 tool modules, 12 platform adapters, active development. The multi-platform gateway is genuinely impressive and has no equivalent in the ecosystem.</p>
-      <p>But the "grows with you" and "gets more capable" framing oversells what the software actually does. It saves markdown to disk and loads it next time. The model is a Llama fine-tune. The skills are prompt injections. The web tools are API wrappers.</p>
-      <p>If your use case is "AI agent accessible on messaging platforms," Hermes is the answer. If your use case is "AI agent that helps me write software," you already have better options in your terminal.</p>
+    <section>
+    <h2>Bottom line</h2>
+    <p>Hermes Agent is real software with real engineering effort: 40 tool modules, 12 platform adapters, active development. The multi-platform gateway is genuinely impressive and has no equivalent in the ecosystem.</p>
+    <p>The "grows with you" and "gets more capable" framing is a stretch for what amounts to structured note-taking, but the underlying implementation is solid. The naming conventions are the same ones the whole industry uses.</p>
+    <p>If your use case is "AI agent accessible on messaging platforms," Hermes is the best option I've found. If you primarily work in a terminal, the coding tools will feel familiar, but the gateway alone may be worth exploring.</p>
     </section>
-
-    <div class="stack-list">
-      <span class="stack-tag">NousResearch</span>
-      <span class="stack-tag">Llama 3.1 405B</span>
-      <span class="stack-tag">Python</span>
-      <span class="stack-tag">MIT license</span>
-      <span class="stack-tag">12 platforms</span>
-      <span class="stack-tag">$10/mo test drive</span>
-    </div>
-
     <footer>
       <hr />
       <span>&copy; george larson</span>

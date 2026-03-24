@@ -1,4 +1,4 @@
-I tested Hermes Agent, "an agent that grows with you". 
+I tested Hermes Agent, "an agent that grows with you".
 Here's what I found under the bonnet.
 
 The model (Hermes-4-405B) is a supervised fine-tune of Llama 3.1 405B. About 5 million training samples, tool-calling baked in. The HuggingFace card is upfront about this. If you've used Llama 3.1 through any other provider, you already know roughly what to expect.
