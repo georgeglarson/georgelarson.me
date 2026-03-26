@@ -2,7 +2,7 @@ Put an AI agent on a $7/month VPS with IRC as its transport layer. It answers qu
 
 Haiku for chat, Sonnet for tool use. Google A2A for agent-to-agent handoff over Tailscale. 10 MB of binaries, 5 MB RAM, $2/day cost cap.
 
-The doorman is not a proxy. It's a concierge with opinions.
+Nully decides what gets escalated and what doesn't.
 
 Chat: https://georgelarson.me/chat/
 Writeup: https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/

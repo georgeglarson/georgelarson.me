@@ -47,7 +47,7 @@
     <h2>the problem with "ask my resume"</h2>
     <p>Every portfolio site with an AI chatbot does the same thing: feed the resume into a model and let visitors rephrase it. It's a parlor trick. The model can't tell you anything the resume doesn't already say.</p>
     <p>I wanted something different. If a hiring manager asks "how does George handle test coverage?" the answer shouldn't be "George values comprehensive testing." It should clone the repo, count the tests, read the CI config, and come back with specifics.</p>
-    <p>That's not prompt engineering. That's agent infrastructure.</p>
+    <p>So I built the infrastructure to make that work.</p>
     </section>
 
     <section>
@@ -96,13 +96,13 @@
     <h2>model selection as a design decision</h2>
     <p>This is where most people reach for the biggest model they can afford. That's the wrong instinct for a doorman.</p>
     <h3>conversational layer: Haiku 4.5</h3>
-    <p>Greetings, triage, simple questions about my background. Sub-second responses. Pennies per conversation. A doorman should be fast, not thoughtful.</p>
+    <p>Greetings, triage, simple questions about my background. Sub-second responses. Pennies per conversation. Speed matters more than depth here.</p>
     <h3>tool-use layer: Sonnet 4.6 (fallback)</h3>
     <p>When nully needs to clone a repo, read code, or synthesize findings across files — Sonnet steps in. You pay for reasoning only when reasoning is needed.</p>
     <h3>cost cap: $2/day</h3>
     <p>A public-facing agent without a spending limit is a liability. The cap prevents both runaway conversations and abuse. If someone tries to burn through my inference budget, they hit a wall.</p>
     <h3>the portfolio signal</h3>
-    <p>Using Opus for a concierge would signal the opposite of model understanding. The right model is the smallest one that does the job. Tiered inference — cheap for the hot path, capable for the heavy lifting — is the point.</p>
+    <p>Using Opus for a concierge would signal the opposite of model understanding. If Haiku can handle it, don't send it to Sonnet. Tiered inference — cheap for the hot path, capable for the heavy lifting — is how I keep this under $2/day.</p>
     </section>
 
     <section>
@@ -142,7 +142,7 @@
       <li><strong>"How do I reach him?"</strong> — Provides contact info. Doesn't hallucinate a phone number.</li>
       <li><strong>"Can I schedule a call?"</strong> — Nully calls ironclaw over Google's A2A protocol via Tailscale. Ironclaw processes the request with its own LLM, sends back a structured response, and nully relays the answer. The visitor never sees the handoff.</li>
     </ul>
-    <p>It's not perfect. It's an IRC bot backed by Haiku. But it can do something my resume can't: show its work.</p>
+    <p>It's not perfect. It's an IRC bot backed by Haiku. But it backs up what it says with code, and my resume can't do that.</p>
     </section>
 
     <section>
@@ -175,7 +175,7 @@
       <li>The A2A endpoint on ironclaw is firewalled to Tailscale only — no public access.</li>
       <li>Both agents run in supervised mode with workspace-only file access and restricted command allowlists.</li>
     </ul>
-    <p>The doorman is not a proxy. It's a concierge with opinions about what gets escalated.</p>
+    <p>Nully doesn't just relay messages — it decides what's worth escalating and what isn't.</p>
     </section>
 
     <section>
@@ -184,7 +184,7 @@
       <li><strong>Model selection is architecture.</strong> Picking the right model for each layer of the system is a design decision, not a settings toggle. It affects cost, latency, capability, and user experience.</li>
       <li><strong>The agent is the easy part.</strong> The communication stack, security hardening, DNS routing, TLS management, and Cloudflare integration took more time than configuring the agent itself.</li>
       <li><strong>IRC is underrated.</strong> A protocol from 1988 turned out to be the perfect transport for an AI agent. No SDK, no API versioning, no vendor lock-in. Just messages in a channel.</li>
-      <li><strong>Security boundaries are the architecture.</strong> The split between nullclaw (public, minimal, expendable) and ironclaw (private, capable, protected) is the whole point. Not every agent needs access to everything.</li>
+      <li><strong>The split between nullclaw and ironclaw is load-bearing.</strong> Public, minimal, expendable on one side. Private, capable, protected on the other. If you flatten that boundary you lose the security model.</li>
       <li><strong>Agent-to-agent needs both structure and visibility.</strong> Google's A2A protocol handles the contract — structured tasks, state machines, typed artifacts. A private IRC channel over Tailscale handles the audit trail — I can watch my agents talk, intervene in real time, scroll back through history. Use both.</li>
       <li><strong>Don't duplicate credentials.</strong> The passthrough pattern — nullclaw borrowing ironclaw's gateway for inference — means one API key, one billing relationship, zero credential sprawl. The agent that owns the key pays for the tokens, no matter who asked.</li>
     </ul>

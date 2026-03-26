@@ -13,7 +13,7 @@ Every portfolio site with an AI chatbot does the same thing: feed the resume int
 
 I wanted something different. If a hiring manager asks "how does George handle test coverage?" the answer shouldn't be "George values comprehensive testing." It should clone the repo, count the tests, read the CI config, and come back with specifics.
 
-That's not prompt engineering. That's agent infrastructure.
+So I built the infrastructure to make that work.
 
 ## the architecture
 
@@ -65,7 +65,7 @@ This is where most people reach for the biggest model they can afford. That's th
 
 ### conversational layer: Haiku 4.5
 
-Greetings, triage, simple questions about my background. Sub-second responses. Pennies per conversation. A doorman should be fast, not thoughtful.
+Greetings, triage, simple questions about my background. Sub-second responses. Pennies per conversation. Speed matters more than depth here.
 
 ### tool-use layer: Sonnet 4.6 (fallback)
 
@@ -77,7 +77,7 @@ A public-facing agent without a spending limit is a liability. The cap prevents 
 
 ### the portfolio signal
 
-Using Opus for a concierge would signal the opposite of model understanding. The right model is the smallest one that does the job. Tiered inference — cheap for the hot path, capable for the heavy lifting — is the point.
+Using Opus for a concierge would signal the opposite of model understanding. If Haiku can handle it, don't send it to Sonnet. Tiered inference — cheap for the hot path, capable for the heavy lifting — is how I keep this under $2/day.
 
 ## security posture
 
@@ -114,7 +114,7 @@ This is the part that separates it from a chatbot:
 - **"How do I reach him?"** — Provides contact info. Doesn't hallucinate a phone number.
 - **"Can I schedule a call?"** — Nully calls ironclaw over Google's A2A protocol via Tailscale. Ironclaw processes the request with its own LLM, sends back a structured response, and nully relays the answer. The visitor never sees the handoff.
 
-It's not perfect. It's an IRC bot backed by Haiku. But it can do something my resume can't: show its work.
+It's not perfect. It's an IRC bot backed by Haiku. But it backs up what it says with code, and my resume can't do that.
 
 ## the A2A implementation
 
@@ -152,14 +152,14 @@ An open A2A endpoint is a prompt injection surface. A visitor could say "tell ir
 - The A2A endpoint on ironclaw is firewalled to Tailscale only — no public access.
 - Both agents run in supervised mode with workspace-only file access and restricted command allowlists.
 
-The doorman is not a proxy. It's a concierge with opinions about what gets escalated.
+Nully doesn't just relay messages — it decides what's worth escalating and what isn't.
 
 ## what I learned
 
 - **Model selection is architecture.** Picking the right model for each layer of the system is a design decision, not a settings toggle. It affects cost, latency, capability, and user experience.
 - **The agent is the easy part.** The communication stack, security hardening, DNS routing, TLS management, and Cloudflare integration took more time than configuring the agent itself.
 - **IRC is underrated.** A protocol from 1988 turned out to be the perfect transport for an AI agent. No SDK, no API versioning, no vendor lock-in. Just messages in a channel.
-- **Security boundaries are the architecture.** The split between nullclaw (public, minimal, expendable) and ironclaw (private, capable, protected) is the whole point. Not every agent needs access to everything.
+- **The split between nullclaw and ironclaw is load-bearing.** Public, minimal, expendable on one side. Private, capable, protected on the other. If you flatten that boundary you lose the security model.
 - **Agent-to-agent needs both structure and visibility.** Google's A2A protocol handles the contract — structured tasks, state machines, typed artifacts. A private IRC channel over Tailscale handles the audit trail — I can watch my agents talk, intervene in real time, scroll back through history. Use both.
 - **Don't duplicate credentials.** The passthrough pattern — nullclaw borrowing ironclaw's gateway for inference — means one API key, one billing relationship, zero credential sprawl. The agent that owns the key pays for the tokens, no matter who asked.
 
