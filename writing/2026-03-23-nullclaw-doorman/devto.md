@@ -1,5 +1,5 @@
 ---
-title: "building a doorman: nullclaw as a portfolio agent"
+title: "building a digital doorman"
 published: false
 description: "How I deployed nullclaw as a public-facing AI agent on a $5 perimeter box with IRC, tiered inference, and Cloudflare-proxied WebSocket — and why the architecture matters more than the model."
 tags: ai, agents, irc, security

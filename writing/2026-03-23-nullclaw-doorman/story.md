@@ -1,10 +1,10 @@
 ---
-title: "building a doorman: nullclaw as a portfolio agent"
+title: "building a digital doorman"
 slug: 2026-03-23-nullclaw-doorman
 date: 2026-03-23
 description: "How I deployed nullclaw as a public-facing AI agent on a $5 perimeter box with IRC, tiered inference, and Cloudflare-proxied WebSocket — and why the architecture matters more than the model."
 tags: ai, agents, irc, security
-og_title: "building a doorman: nullclaw as a portfolio agent"
+og_title: "building a digital doorman"
 og_description: "A lightweight AI agent that answers questions about my work by reading actual code. Architecture, security, and model selection decisions."
 cover_image:
 lead: "I put an AI agent on a $7/month VPS, connected it to my own IRC server, and pointed it at my GitHub repos. Visitors can ask it about my work and get answers backed by actual code — not rephrased resume text."
