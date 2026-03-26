@@ -207,6 +207,8 @@ Visit [georgelarson.me/chat](https://georgelarson.me/chat/) or type `irc` in the
 If you're technical and prefer a real IRC client: `irc.georgelarson.me` port `6697` (TLS), channel `#lobby`.
 
 <style>
+    .screenshot { margin: 1.5rem 0; }
+    .screenshot img { max-width: 100%; height: auto; border-radius: var(--radius); border: 1px solid rgba(22, 245, 166, 0.15); }
     .arch-diagram {
       background: rgba(5, 12, 18, 0.9); border: 1px solid rgba(22, 245, 166, 0.15);
       border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.25rem 0;
