@@ -4,10 +4,10 @@ published: false
 description: "How I deployed nullclaw as a public-facing AI agent on a $5 perimeter box with IRC, tiered inference, and Cloudflare-proxied WebSocket, and why the architecture matters more than the model."
 tags: ai, agents, irc, security
 canonical_url: https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/
-cover_image: digital-doorman.png
+cover_image: digital-doorman.jpg
 ---
 
-![nully standing guard outside George's Code Vault](https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/digital-doorman.png)
+![nully standing guard outside George's Code Vault](https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/digital-doorman.jpg)
 
 ## the problem with "ask my resume"
 
