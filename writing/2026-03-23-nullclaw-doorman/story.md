@@ -6,7 +6,7 @@ description: "How I deployed nullclaw as a public-facing AI agent on a $5 perime
 tags: ai, agents, irc, security
 og_title: "building a digital doorman"
 og_description: "A lightweight AI agent that answers questions about my work by reading actual code. Architecture, security, and model selection decisions."
-cover_image:
+cover_image: digital-doorman.png
 lead: "I put an AI agent on a $7/month VPS, connected it to my own IRC server, and pointed it at my GitHub repos. Visitors can ask it about my work and get answers backed by actual code, not rephrased resume text."
 ---
 
@@ -39,6 +39,8 @@ Full writeup: https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/
 
 #AI #Agents #IRC #Security #A2A #Infrastructure
 <!-- /social:linkedin -->
+
+![nully standing guard outside George's Code Vault](digital-doorman.png)
 
 ## the problem with "ask my resume"
 
@@ -138,6 +140,8 @@ Every component is small, self-hosted, and replaceable:
 Total footprint: under 10 MB of binaries, under 5 MB of RAM at idle. This runs on the cheapest VPS tier available.
 
 ## what nully can actually do
+
+![nully answering questions in IRC](nully-chat.png)
 
 This is the part that separates it from a chatbot:
 

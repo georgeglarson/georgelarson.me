@@ -4,8 +4,10 @@ published: false
 description: "How I deployed nullclaw as a public-facing AI agent on a $5 perimeter box with IRC, tiered inference, and Cloudflare-proxied WebSocket, and why the architecture matters more than the model."
 tags: ai, agents, irc, security
 canonical_url: https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/
-cover_image: 
+cover_image: digital-doorman.png
 ---
+
+![nully standing guard outside George's Code Vault](https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/digital-doorman.png)
 
 ## the problem with "ask my resume"
 
@@ -105,6 +107,8 @@ Every component is small, self-hosted, and replaceable:
 Total footprint: under 10 MB of binaries, under 5 MB of RAM at idle. This runs on the cheapest VPS tier available.
 
 ## what nully can actually do
+
+![nully answering questions in IRC](https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/nully-chat.png)
 
 This is the part that separates it from a chatbot:
 
