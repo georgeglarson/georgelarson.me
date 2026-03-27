@@ -10,4 +10,4 @@
 | Hashnode  | https://georgelarson.hashnode.dev/building-a-digital-doorman |
 | Mastodon  | https://mastodon.sdf.org/@j0rg3/116297785217243902 |
 | Bluesky   | https://bsky.app/profile/geo-logic.bsky.social |
-| Moltbook  | (requested via nully in #backoffice) |
+| Moltbook  | https://www.moltbook.com/post/20d922b4-315f-41ce-a383-8bde774621ff |
