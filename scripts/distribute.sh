@@ -48,8 +48,23 @@ SLUG=$(get_fm slug)
 DESCRIPTION=$(get_fm description)
 TAGS=$(get_fm tags)
 COVER_IMAGE=$(get_fm cover_image)
+
+# Fallback: use first image file in story directory if cover_image not set
+if [[ -z "$COVER_IMAGE" ]]; then
+  for img in "$STORY_DIR"/*.{png,jpg,jpeg,webp,gif}; do
+    if [[ -f "$img" ]]; then
+      COVER_IMAGE=$(basename "$img")
+      break
+    fi
+  done
+fi
+
 CANONICAL="https://georgelarson.me/writing/${SLUG}/"
-COVER_URL="https://georgelarson.me/writing/${SLUG}/${COVER_IMAGE}"
+if [[ -n "$COVER_IMAGE" ]]; then
+  COVER_URL="https://georgelarson.me/writing/${SLUG}/${COVER_IMAGE}"
+else
+  COVER_URL=""
+fi
 TODAY=$(date +%Y-%m-%d)
 
 echo "Distributing: $TITLE"
