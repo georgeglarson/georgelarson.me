@@ -102,8 +102,15 @@ publish_devto() {
   error=$(echo "$response" | jq -r '.error // empty')
 
   if [[ -n "$url" ]]; then
-    echo "$url"
-    echo "| Dev.to    | $url |" >> "$PUBLISHED_LOG"
+    local published_at
+    published_at=$(echo "$response" | jq -r '.published_at // empty')
+    if [[ -n "$published_at" ]]; then
+      echo "$url"
+      echo "| Dev.to    | $url |" >> "$PUBLISHED_LOG"
+    else
+      echo "PENDING (account moderation): $url"
+      echo "| Dev.to    | $url (pending moderation) |" >> "$PUBLISHED_LOG"
+    fi
   else
     echo "FAILED: $error"
     ERRORS="${ERRORS}Dev.to: ${error}\n"
@@ -137,37 +144,57 @@ publish_hashnode() {
   # then strip the trailing Dev.to footer ("---" onwards at end of file)
   local content
   content=$(awk '
-    BEGIN { in_fm=1; in_footer=0; started=0 }
-    /^---$/ && in_fm { in_fm=0; next }
-    in_fm { next }
-    /^---$/ && started && !in_footer { in_footer=1; next }
+    BEGIN { fm_count=0; in_footer=0 }
+    /^---$/ { fm_count++; next }
+    fm_count < 2 { next }
+    fm_count >= 3 { in_footer=1; next }
     in_footer { next }
-    { started=1; print }
+    { print }
   ' "$STORY_DIR/devto.md")
 
   # Trim leading/trailing blank lines
   content=$(echo "$content" | sed '/./,$!d' | sed -e :a -e '/^[[:space:]]*$/{ $d; N; ba; }')
 
   local query
-  query=$(jq -n \
-    --arg content "$content" \
-    --arg title "$TITLE" \
-    --arg pubId "$pub_id" \
-    --arg coverUrl "$COVER_URL" \
-    --arg canonical "$CANONICAL" \
-    '{
-      query: "mutation PublishPost($input: PublishPostInput!) { publishPost(input: $input) { post { id url } } }",
-      variables: {
-        input: {
-          title: $title,
-          contentMarkdown: $content,
-          publicationId: $pubId,
-          coverImageOptions: { coverImageURL: $coverUrl },
-          originalArticleURL: $canonical,
-          tags: []
+  if [[ -n "$COVER_IMAGE" ]]; then
+    query=$(jq -n \
+      --arg content "$content" \
+      --arg title "$TITLE" \
+      --arg pubId "$pub_id" \
+      --arg coverUrl "$COVER_URL" \
+      --arg canonical "$CANONICAL" \
+      '{
+        query: "mutation PublishPost($input: PublishPostInput!) { publishPost(input: $input) { post { id url } } }",
+        variables: {
+          input: {
+            title: $title,
+            contentMarkdown: $content,
+            publicationId: $pubId,
+            coverImageOptions: { coverImageURL: $coverUrl },
+            originalArticleURL: $canonical,
+            tags: []
+          }
         }
-      }
-    }')
+      }')
+  else
+    query=$(jq -n \
+      --arg content "$content" \
+      --arg title "$TITLE" \
+      --arg pubId "$pub_id" \
+      --arg canonical "$CANONICAL" \
+      '{
+        query: "mutation PublishPost($input: PublishPostInput!) { publishPost(input: $input) { post { id url } } }",
+        variables: {
+          input: {
+            title: $title,
+            contentMarkdown: $content,
+            publicationId: $pubId,
+            originalArticleURL: $canonical,
+            tags: []
+          }
+        }
+      }')
+  fi
 
   local response
   response=$(curl -s -X POST https://gql.hashnode.com \
