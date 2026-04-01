@@ -2,7 +2,7 @@
 title: "six problems, six languages, one AI"
 published: false
 description: "I used AI to solve six coding exercises in six languages. 968 tests. Here's what that actually takes."
-tags: ai, rust, zig, perl, python, go, typescript
+tags: ai, programming, testing, codegeneration
 canonical_url: https://georgelarson.me/writing/2026-03-31-codetest/
 cover_image: 
 ---

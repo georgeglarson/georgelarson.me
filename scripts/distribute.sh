@@ -79,9 +79,16 @@ publish_devto() {
   fi
   echo -n "  Dev.to... "
 
-  # Fix relative cover_image path in frontmatter
   local body
-  body=$(sed "s|^cover_image: ${COVER_IMAGE}$|cover_image: ${COVER_URL}|" "$STORY_DIR/devto.md")
+  body=$(cat "$STORY_DIR/devto.md")
+
+  # Fix cover_image path if present and non-empty
+  if [[ -n "$COVER_IMAGE" ]]; then
+    body=$(echo "$body" | sed "s|^cover_image: ${COVER_IMAGE}$|cover_image: ${COVER_URL}|")
+  fi
+
+  # Remove empty cover_image line (Dev.to chokes on it)
+  body=$(echo "$body" | sed '/^cover_image:[[:space:]]*$/d')
 
   local response
   response=$(curl -s -X POST https://dev.to/api/articles \
@@ -121,13 +128,25 @@ publish_hashnode() {
 
   if [[ -z "$pub_id" ]]; then
     echo "FAILED: could not get publication ID"
+    echo "  Raw response: $pub_response" >&2
     ERRORS="${ERRORS}Hashnode: could not get publication ID\n"
     return
   fi
 
-  # Strip frontmatter and social blocks from devto.md for content
+  # Extract content: strip YAML frontmatter (first --- to second ---)
+  # then strip the trailing Dev.to footer ("---" onwards at end of file)
   local content
-  content=$(sed '1,/^---$/{ /^---$/!d; /^---$/d; }' "$STORY_DIR/devto.md" | sed '1,/^---$/d')
+  content=$(awk '
+    BEGIN { in_fm=1; in_footer=0; started=0 }
+    /^---$/ && in_fm { in_fm=0; next }
+    in_fm { next }
+    /^---$/ && started && !in_footer { in_footer=1; next }
+    in_footer { next }
+    { started=1; print }
+  ' "$STORY_DIR/devto.md")
+
+  # Trim leading/trailing blank lines
+  content=$(echo "$content" | sed '/./,$!d' | sed -e :a -e '/^[[:space:]]*$/{ $d; N; ba; }')
 
   local query
   query=$(jq -n \
@@ -166,6 +185,7 @@ publish_hashnode() {
     local error
     error=$(echo "$response" | jq -r '.errors[0].message // "unknown error"')
     echo "FAILED: $error"
+    echo "  Raw response: $response" >&2
     ERRORS="${ERRORS}Hashnode: ${error}\n"
   fi
 }
@@ -326,25 +346,68 @@ note_linkedin() {
 }
 
 # ---------------------------------------------------------------------------
-# Moltbook (via nully in #backoffice)
+# Moltbook (via nully direct message)
 # ---------------------------------------------------------------------------
 notify_nully() {
   echo -n "  Moltbook (via nully)... "
 
-  local irc_result
-  irc_result=$(echo "NICK ironclaw-dist
-USER ironclaw-dist 0 * :ironclaw distributor
-JOIN #backoffice
-PRIVMSG #backoffice :nully, please write a Moltbook post about George's new article \"${TITLE}\" — published today at ${CANONICAL}. Write something authentic from your perspective.
-QUIT :done" | timeout 10 nc 100.125.241.86 6667 2>&1) || true
+  local attempt=0
+  local max_attempts=2
 
-  if echo "$irc_result" | grep -q "Welcome"; then
-    echo "requested"
-    echo "| Moltbook  | (requested via nully in #backoffice) |" >> "$PUBLISHED_LOG"
-  else
-    echo "FAILED: could not connect to IRC"
-    ERRORS="${ERRORS}Moltbook: IRC connection failed\n"
-  fi
+  while [[ $attempt -lt $max_attempts ]]; do
+    attempt=$((attempt + 1))
+    if [[ $attempt -gt 1 ]]; then
+      echo -n "    retry ${attempt}/${max_attempts}... "
+    fi
+
+    local response_file
+    response_file=$(mktemp)
+
+    # Send DM to nully directly — no channel join needed
+    {
+      sleep 0.5
+      echo "NICK ironclaw-dist"
+      echo "USER ironclaw-dist 0 * :ironclaw distributor"
+      sleep 1
+      echo "PRIVMSG nully :please write a Moltbook post about George's new article \"${TITLE}\" — published today at ${CANONICAL}. Write something authentic from your perspective."
+      # Stay alive for 25 seconds, responding to PINGs
+      for i in $(seq 1 25); do
+        sleep 1
+        if grep -q "^PING " "$response_file" 2>/dev/null; then
+          local ping_token
+          ping_token=$(grep "^PING " "$response_file" | tail -1 | sed 's/^PING //')
+          echo "PONG :$ping_token"
+        fi
+      done
+      echo "QUIT :done"
+    } | nc 100.125.241.86 6667 > "$response_file" 2>&1
+
+    local irc_result
+    irc_result=$(cat "$response_file" 2>/dev/null)
+    rm -f "$response_file"
+
+    # Check for nully's acknowledgment via DM
+    local nully_reply
+    nully_reply=$(echo "$irc_result" | grep "PRIVMSG" | grep -i "nully" | grep -v "PRIVMSG nully" | tail -1 | sed 's/.*PRIVMSG.*://' | sed 's/\x01.*//' || true)
+
+    if [[ -n "$nully_reply" ]]; then
+      echo "requested"
+      echo "    nully: $nully_reply"
+      echo "| Moltbook  | (requested via nully DM) |" >> "$PUBLISHED_LOG"
+      return
+    fi
+
+    # Check if we at least connected and sent the message
+    if echo "$irc_result" | grep -q "Welcome\|001\|MODE.*ironclaw"; then
+      echo "sent (no ACK received)"
+      echo "| Moltbook  | (sent to nully via DM, no ACK) |" >> "$PUBLISHED_LOG"
+      return
+    fi
+  done
+
+  echo "FAILED: could not connect to IRC"
+  echo "| Moltbook  | FAILED (IRC connection error) |" >> "$PUBLISHED_LOG"
+  ERRORS="${ERRORS}Moltbook: IRC connection failed\n"
 }
 
 # ---------------------------------------------------------------------------
