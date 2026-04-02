@@ -61,7 +61,7 @@ I spun up a $25/year RackNerd VPS (2.5GB RAM, 3 cores), wrote a URL shortener ch
 
 6 out of 7 OpenRouter models failed. Deepseek-r1-zero hit "no endpoints found." GPT-OSS-120b and minimax-M2.5 were advertised as free but unavailable. Llama-3.3-70b got intermittent API errors. Mistral-small-3.1 timed out repeatedly. These models never had a chance to show what they could do because they couldn't connect.
 
-To be fair to OpenRouter: this was one overnight run on a Sunday. Free-tier infrastructure is volatile, and a 10-minute timeout per iteration with a 15-iteration cap is aggressive. Some of these models might have passed with a longer timeout or on a different night. A timeout is a test parameter, not a measure of intelligence. If you're running your own tests on free infrastructure, expect some amount of "well, try it again tomorrow."
+To be fair to OpenRouter: this was one overnight run. Free-tier infrastructure is volatile, and a 10-minute timeout per iteration with a 15-iteration cap is aggressive. Some of these models might have passed with a longer timeout or on a different night. A timeout is a test parameter, not a measure of intelligence. If you're running your own tests on free infrastructure, expect some amount of "well, try it again tomorrow."
 
 OpenCode's built-in free models went 5 for 5. OpenRouter went 1 for 7. The failure mode wasn't "model is dumb." It was "model is unavailable."
 
@@ -103,7 +103,7 @@ My favorite detail: nemotron implemented a test/prod rate limit split where `NOD
 
 It passed because it wrote tests that validated its own broken API instead of the spec. The challenge says "build a URL shortener with these endpoints." qwen3-32b built something different and wrote tests to match what it built. From the test runner's perspective, green is green. From the spec's perspective, it never built the thing that was asked for.
 
-Git-committing every iteration is what made this visible. Without the forensic record of each diff, qwen3-32b's false positive would have been invisible. Green tests, move on. Only by looking at the actual code could you see that the model built the wrong thing and then wrote tests to prove itself right.
+Going through every passing model's server.js is what made this visible. Green tests, move on. Only by looking at the actual code could you see that the model built the wrong thing and then wrote tests to prove itself right.
 
 ## the total bill
 
@@ -115,4 +115,4 @@ Every model I tested was free in some form: free-tier, included with a token I a
 
 ## what's next
 
-This was round 1 of a project that grew into something much bigger: 33 models, 17 providers, a 6-level difficulty ladder, containerized challenges, and some genuinely surprising findings about prompt engineering, provider infrastructure, and orchestrated AI. The origin story is here. The rest is coming.
+This was round 1 of a project that grew into something much bigger: 33 models, a 6-level difficulty ladder, and some genuinely surprising findings about prompt engineering, provider infrastructure, and orchestration. The origin story is here. The rest is coming.

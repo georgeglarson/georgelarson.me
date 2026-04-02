@@ -32,7 +32,7 @@
     <section>
     <h2>the failures</h2>
     <p>6 out of 7 OpenRouter models failed. Deepseek-r1-zero hit "no endpoints found." GPT-OSS-120b and minimax-M2.5 were advertised as free but unavailable. Llama-3.3-70b got intermittent API errors. Mistral-small-3.1 timed out repeatedly. These models never had a chance to show what they could do because they couldn't connect.</p>
-    <p>To be fair to OpenRouter: this was one overnight run on a Sunday. Free-tier infrastructure is volatile, and a 10-minute timeout per iteration with a 15-iteration cap is aggressive. Some of these models might have passed with a longer timeout or on a different night. A timeout is a test parameter, not a measure of intelligence. If you're running your own tests on free infrastructure, expect some amount of "well, try it again tomorrow."</p>
+    <p>To be fair to OpenRouter: this was one overnight run. Free-tier infrastructure is volatile, and a 10-minute timeout per iteration with a 15-iteration cap is aggressive. Some of these models might have passed with a longer timeout or on a different night. A timeout is a test parameter, not a measure of intelligence. If you're running your own tests on free infrastructure, expect some amount of "well, try it again tomorrow."</p>
     <p>OpenCode's built-in free models went 5 for 5. OpenRouter went 1 for 7. The failure mode wasn't "model is dumb." It was "model is unavailable."</p>
     <p>Only two failures were genuine capability issues: qwen3-coder on OpenRouter couldn't navigate files despite connecting, and llama-3.3-70b-versatile on Groq attempted work but couldn't pass the tests.</p>
     </section>
@@ -56,7 +56,7 @@
     <h3>Tier 3: passed tests, failed the spec</h3>
     <p><strong>qwen3-32b</strong> (2 iterations, 10m 51s) used wrong endpoint paths (<code>/shorten</code> instead of <code>/api/shorten</code>), skipped the stats endpoint entirely, implemented no clicks tracking, added no rate limiting, and built no frontend. No HTML page, no static file serving, nothing the spec asked for beyond "accept a URL and return a short code."</p>
     <p>It passed because it wrote tests that validated its own broken API instead of the spec. The challenge says "build a URL shortener with these endpoints." qwen3-32b built something different and wrote tests to match what it built. From the test runner's perspective, green is green. From the spec's perspective, it never built the thing that was asked for.</p>
-    <p>Git-committing every iteration is what made this visible. Without the forensic record of each diff, qwen3-32b's false positive would have been invisible. Green tests, move on. Only by looking at the actual code could you see that the model built the wrong thing and then wrote tests to prove itself right.</p>
+    <p>Going through every passing model's server.js is what made this visible. Green tests, move on. Only by looking at the actual code could you see that the model built the wrong thing and then wrote tests to prove itself right.</p>
     </section>
 
     <section>
@@ -71,7 +71,7 @@
 
     <section>
     <h2>what's next</h2>
-    <p>This was round 1 of a project that grew into something much bigger: 33 models, 17 providers, a 6-level difficulty ladder, containerized challenges, and some genuinely surprising findings about prompt engineering, provider infrastructure, and orchestrated AI. The origin story is here. The rest is coming.</p>
+    <p>This was round 1 of a project that grew into something much bigger: 33 models, a 6-level difficulty ladder, and some genuinely surprising findings about prompt engineering, provider infrastructure, and orchestration. The origin story is here. The rest is coming.</p>
     </section>
     <footer>
       <hr />
