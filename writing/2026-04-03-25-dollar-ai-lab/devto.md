@@ -75,6 +75,8 @@ Going through every passing model's server.js is what made this visible. Green t
 
 Every model I tested was free in some form: free-tier, included with a token I already held, or available through a provider's no-cost plan. I'm not going to tell you which specific models are free right now, because free tiers change and this was a research project, not a shopping guide. The point is that running a meaningful AI benchmark is cheap. You can do this.
 
+Source code: [GitHub](https://github.com/georgeglarson/llm-showdown-data)
+
 ## what's next
 
 This was round 1 of a project that grew into something much bigger: 33 models, a 6-level difficulty ladder, and some genuinely surprising findings about prompt engineering, provider infrastructure, and orchestration. The origin story is here. The rest is coming.
