@@ -37,6 +37,14 @@ https://georgelarson.me/writing/2026-04-03-25-dollar-ai-lab/
 #AI #LLM #Benchmarking #SoftwareEngineering
 <!-- /social:linkedin -->
 
+<!-- social:hn -->
+
+Show HN: I tested 15 free AI models at building real software on a $25/year VPS
+
+https://georgelarson.me/writing/2026-04-03-25-dollar-ai-lab/
+
+<!-- /social:hn -->
+
 ## the question
 
 ![two computers sumo wrestling](sumo.webp)

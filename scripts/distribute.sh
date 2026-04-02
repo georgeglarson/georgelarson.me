@@ -283,9 +283,12 @@ publish_bluesky() {
   local char_count
   char_count=$(echo -n "$post_text" | wc -m)
   if [[ $char_count -gt 300 ]]; then
-    # Truncate to fit — keep first part + canonical URL
-    post_text=$(echo -n "$post_text" | head -c 250)
-    post_text="${post_text}...
+    # Strip the canonical URL, trim the body to ~280 chars, then re-append URL
+    post_text=$(echo -n "$post_text" | sed "s|${CANONICAL}||")
+    post_text=$(echo -n "$post_text" | head -c 280)
+    # Trim trailing whitespace/newlines after truncation
+    post_text=$(echo -n "$post_text" | sed -e 's/[[:space:]]*$//')
+    post_text="${post_text}
 
 ${CANONICAL}"
   fi
