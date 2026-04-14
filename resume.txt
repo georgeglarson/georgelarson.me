@@ -4,7 +4,7 @@ Phone: 412-945-0101
 Location: Pittsburgh, PA
 
 SUMMARY
-Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic, and I use AI tooling where it actually helps.
+Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships — multi-agent infrastructure, MCP servers, model-routing pipelines, and SDKs in the Venice AI ecosystem.
 
 KEY METRICS
 - 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
@@ -15,8 +15,9 @@ KEY METRICS
 
 CURRENT FOCUS
 - Seeking a full-time technology leadership role where I can build, ship, and lead teams hands-on.
-- Building systems tools in Rust and Go (netgrep, termshark) for network analysis and security.
-- Operating a multi-agent architecture (nullclaw + ironclaw) with tiered inference, agent-to-agent routing, and security-hardened perimeter design.
+- Operating a multi-machine agent mesh (Agent Zero with A2A routing across nodes; nullclaw on a hardened perimeter; ironclaw as private agent; automated job-application pipeline as a working production case study) with tiered inference and clear security boundaries.
+- Building in the Venice AI SDK ecosystem — TypeScript, PHP, and Rust SDKs; an MCP server; an AI research tool (deep-research-privacy, 35★) — alongside continued systems work in Rust and Go (netgrep, termshark, wiregraph).
+- Running larson.help, a small AI consulting practice, in parallel with the job hunt.
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
 CORE STRENGTHS
@@ -41,11 +42,32 @@ Data Engineering and Automation
 - Workflow automation using scripting, open models, and RAG pipelines where they deliver measurable ROI.
 
 OPEN SOURCE PROJECTS
-nullclaw Agent Infrastructure (Zig), Deployment and Integration (2026 to Present)
-- Deployed nullclaw as a public-facing AI concierge ("Nully") on a hardened perimeter box with Haiku for conversational triage and Sonnet for code analysis, demonstrating tiered inference at the edge.
-- Built the full communication stack: Ergo IRC server, self-hosted gamja web client, WebSocket proxied through Cloudflare, Let's Encrypt TLS with automated renewal.
-- Designed agent-to-agent routing between nullclaw (public doorman) and ironclaw (private personal agent) across separate systems with distinct security boundaries.
-- The agent answers visitor questions by examining public GitHub repositories and preloaded context rather than rephrasing static resume text.
+
+Venice AI Ecosystem (2025 to Present)
+- deep-research-privacy (35 stars, TypeScript) — Privacy-first AI research tool using Venice's uncensored mode; iterative search and synthesis pipeline that runs end-to-end against a local or self-hosted endpoint.
+- venice-dev-tools (14 stars, TypeScript) — Comprehensive SDK for the Venice AI API; widely-installed npm package powering downstream tools.
+- venice-ai-php (7 stars, PHP) — Drop-in OpenAI-compatible PHP SDK for Venice.
+- venicecode (5 stars, TypeScript) — AI-powered development tool integrating Venice into the editor workflow.
+- venice-mcp (4 stars, TypeScript) — Model Context Protocol server exposing Venice models to MCP-aware clients (Claude Desktop, Cline, Cursor).
+- venice-ai-api-sdk-rust, venice-ai-client, venice-cache-monitor — Rust SDK, lightweight TypeScript client, and a cache-behavior test harness.
+
+LLM Showdown (2026 to Present)
+- llm-showdown-data — Companion dataset for the blog series benchmarking 15+ free coding models on a $25 VPS using opencode and a ralph-wiggum-style iterative loop.
+- Designed and runs the evaluation harness; publishes per-round results comparing model behavior on real coding tasks.
+
+Job Search Agent (2026 to Present)
+- Multi-machine agent pipeline: laptop scraper feeds an Agent Zero task on a remote node that scores LinkedIn and Built In job postings against a structured profile, drafts cover letters under voice and revision rules, and emits a structured queue.
+- Companion laptop processor mutates the application tracker, builds PDFs, commits to git, and posts a Mattermost digest. Inbox-sweep classifier reads Gmail replies via Composio and routes rejections through the same tracker convention.
+- Demonstrates the production shape — source adapter, scoring profile, draft+scrub pass, audited tracker — that generalizes to client lead-monitoring agents.
+
+Fracture (2 stars, TypeScript) — Modernization Case Study (2026)
+- Modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services: RAG, semantic search, agent-driven triage, and content moderation.
+- Live demo at fracture.georgelarson.me. The case study itself is the deliverable: how to take a frozen reference codebase from a major vendor and bring it forward without rewriting from scratch.
+
+nullclaw + ironclaw — Agent Mesh (Zig + Rust, 2026 to Present)
+- nullclaw: public-facing AI concierge ("Nully") on a hardened perimeter box. Tiered inference (Haiku for conversational triage, Sonnet for code analysis). Full self-hosted comms stack (Ergo IRC, gamja web client, Cloudflare-proxied WebSocket, Let's Encrypt TLS).
+- ironclaw: private personal agent on a separate system with distinct security boundaries. Agent-to-agent routing between the two.
+- Now extended into a multi-node Agent Zero mesh with A2A routing, dedicated chat and utility models, and per-node project isolation.
 
 netgrep (Rust), Creator and Maintainer (2026 to Present)
 - Modern replacement for ngrep: live packet capture and pcap analysis with TCP stream reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, and an interactive terminal UI.
@@ -54,6 +76,9 @@ netgrep (Rust), Creator and Maintainer (2026 to Present)
 termshark (Go), Contributor and Maintainer (2026 to Present)
 - Modernized fork of termshark, a terminal UI for Wireshark/tshark.
 - Refactored architecture, improved test coverage, updated to Go 1.22+ idioms, and added an experimental browser-based web interface.
+
+wiregraph (Rust, 2026 to Present)
+- GPU-rendered network traffic visualizer. Hosts as nodes, flows as edges, real-time topology view of a live capture session.
 
 WORK EXPERIENCE
 Director of Technology, FM Expressions (2018 to Present)
@@ -113,7 +138,7 @@ Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptP
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
-AI Agent Infrastructure: nullclaw, ironclaw, multi-agent routing, tiered inference, model selection (Haiku/Sonnet/Opus), LLM cost optimization, agent security boundaries
+AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP/Rust SDKs), LiteLLM, multi-provider model routing (Anthropic, Z.AI GLM, Venice, MiniMax, Groq, Featherless), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
