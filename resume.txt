@@ -23,7 +23,7 @@ CURRENT FOCUS
 
 CORE STRENGTHS
 Software Development and Engineering
-- Full stack delivery across Python, Go, Rust, C#, TypeScript, PHP, Perl, C++, SQL.
+- Full stack delivery across PHP, Perl, SQL, Python, Go, Rust, C#, TypeScript, C++ — PHP and Perl have been the career staples; the rest sit alongside.
 - Code review, automated testing, and performance tuning for legacy and greenfield systems.
 
 DevOps and Infrastructure Automation
@@ -132,7 +132,7 @@ VOLUNTEER WORK
 - OCR and digitization project contributor for historical legal documents.
 
 TECHNICAL SKILLS
-Languages: Python, Go, Rust, Zig, C#, TypeScript, PHP, Perl, C++, Bash, SQL
+Languages: PHP, Perl, SQL, Bash, Python, Go, Rust, Zig, C#, TypeScript, C++
 Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
 Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
 Cloud: AWS, Azure, Google Cloud, Proxmox
