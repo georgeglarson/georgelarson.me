@@ -95,6 +95,8 @@ Director of Technology, FM Expressions (2018 to Present)
 - Driving adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
 - Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while migrating remote access from VPN to zero-trust policies.
 - Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
+- Built and operated integrations across the print and fulfillment vendor stack (Pace/EFI, Printro, VivX, Fanatics, Alphabroder, SignTronics) plus ecommerce platforms (Shopify, Magento) and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share a coherent data model.
+- Built financial-modeling tools using state-of-the-art AI/ML to analyze company performance and forecast scenarios; presented findings directly to executive leadership to inform strategic decisions during a difficult business period.
 
 Software Developer (2017)
 - Departed after company practices conflicted with professional engineering standards.
@@ -134,7 +136,7 @@ Languages: Python, Go, Rust, Zig, C#, TypeScript, PHP, Perl, C++, Bash, SQL
 Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
 Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
 Cloud: AWS, Azure, Google Cloud, Proxmox
-Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, DefectDojo, OpenVAS, zero-trust network design
+Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, DefectDojo, OpenVAS, zero-trust network design, CCPA/GDPR compliance work
 Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
