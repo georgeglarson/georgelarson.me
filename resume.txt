@@ -82,7 +82,7 @@ wiregraph (Rust, 2026 to Present)
 - GPU-rendered network traffic visualizer. Hosts as nodes, flows as edges, real-time topology view of a live capture session.
 
 WORK EXPERIENCE
-Director of Technology, FM Expressions (2018 to Present)
+Director of Technology, FM Expressions (2018 to April 2026)
 - Led technology strategy for a mid-size manufacturing company serving ecommerce channels.
 - Improved database performance by 93 percent while driving critical systems to 99 percent uptime; cut MySQL slow-query volume by 96 percent to accelerate incident response.
 - Built a knowledge management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) that captures production logs, transcripts, and operator notes so teams can search, surface, and act on institutional knowledge in real time.
