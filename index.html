@@ -192,7 +192,6 @@
       <p>Looking for hands-on technical leadership. Director, VP, or senior engineering roles in manufacturing, ecommerce, security, or platform teams.</p>
       <p>I also help small businesses automate the work nobody has time for. <a href="https://larson.help" target="_blank" rel="noopener">larson.help</a></p>
       <p><a href="mailto:george.g.larson@gmail.com">george.g.larson@gmail.com</a> / <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a> / <a href="https://codeberg.org/georgelarson" target="_blank" rel="noopener">codeberg</a> / <a href="https://mastodon.sdf.org/@j0rg3" target="_blank" rel="me noopener">mastodon</a> / Mon Valley, PA</p>
-      <p>or <a href="#" id="chat-link">ask nully on IRC</a> — an AI agent on my own IRC server that knows my work and can look through my repos.</p>
     </section>
     <hr />
     <section class="terminal-wrapper">
@@ -226,7 +225,7 @@
       },
       ls: {
         desc: 'List available pages',
-        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nnetwork-tools.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf\n\nTip: type <span class="terminal-cmd">irc</span> to chat with nully, my AI agent.'
+        exec: () => 'resume.html\nschedule.html\nask.html\nfracture.html\nnetwork-tools.html\nnow.html\nresume.txt\ngeorge-larson-resume.pdf'
       },
       cat: {
         desc: 'Read a file (try: cat resume.txt)',
@@ -293,13 +292,6 @@
           return null;
         }
       },
-      irc: {
-        desc: 'Chat with nully, my AI agent',
-        exec: () => {
-          window.open('/chat/', '_blank');
-          return 'Opening chat with nully in a new tab...';
-        }
-      },
       zen: {
         desc: 'A moment of calm',
         exec: () => {
@@ -357,11 +349,6 @@
         executeCommand(terminalInput.value);
         terminalInput.value = '';
       }
-    });
-
-    document.getElementById('chat-link').addEventListener('click', (e) => {
-      e.preventDefault();
-      window.open('/chat/', '_blank');
     });
 
     terminalToggle.addEventListener('click', () => {
