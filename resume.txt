@@ -17,7 +17,7 @@ KEY METRICS
 CURRENT FOCUS
 - Seeking a full-time technology leadership role where I can build, ship, and lead teams hands-on.
 - Operating a multi-machine agent mesh (Agent Zero with A2A routing across nodes; nullclaw on a hardened perimeter; ironclaw as private agent; automated job-application pipeline as a working production case study) with tiered inference and clear security boundaries.
-- Building in the Venice AI SDK ecosystem — TypeScript, PHP, and Rust SDKs; an MCP server; an AI research tool (deep-research-privacy, 35★) — alongside continued systems work in Rust and Go (netgrep, termshark, wiregraph).
+- Building in the Venice AI SDK ecosystem — TypeScript SDK, PHP SDK, and an AI research tool (deep-research-privacy, 36★) — with continued systems work in Rust and Go (netgrep, termshark, wiregraph).
 - Running larson.help, a small AI consulting practice, in parallel with the job hunt.
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
@@ -45,12 +45,10 @@ Data Engineering and Automation
 OPEN SOURCE PROJECTS
 
 Venice AI Ecosystem (2025 to Present)
-- deep-research-privacy (35 stars, TypeScript) — Privacy-first AI research tool using Venice's uncensored mode; iterative search and synthesis pipeline that runs end-to-end against a local or self-hosted endpoint.
-- venice-dev-tools (14 stars, TypeScript) — Comprehensive SDK for the Venice AI API; widely-installed npm package powering downstream tools.
+- deep-research-privacy (36 stars, TypeScript) — Privacy-first AI research tool using Venice's uncensored mode; iterative search and synthesis pipeline that runs end-to-end against a local or self-hosted endpoint.
+- venice-dev-tools (14 stars, TypeScript) — Comprehensive TypeScript SDK for the Venice AI API; published on npm.
 - venice-ai-php (7 stars, PHP) — Drop-in OpenAI-compatible PHP SDK for Venice.
 - venicecode (5 stars, TypeScript) — AI-powered development tool integrating Venice into the editor workflow.
-- venice-mcp (4 stars, TypeScript) — Model Context Protocol server exposing Venice models to MCP-aware clients (Claude Desktop, Cline, Cursor).
-- venice-ai-api-sdk-rust, venice-ai-client, venice-cache-monitor — Rust SDK, lightweight TypeScript client, and a cache-behavior test harness.
 
 LLM Showdown (2026 to Present)
 - llm-showdown-data — Companion dataset for the blog series benchmarking 15+ free coding models on a $25 VPS using opencode and a ralph-wiggum-style iterative loop.
@@ -141,7 +139,7 @@ Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptP
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
-AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP/Rust SDKs), LiteLLM, multi-provider model routing (Anthropic, Z.AI GLM, Venice, MiniMax, Groq, Featherless), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks
+AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing (Anthropic, Z.AI GLM, Venice, MiniMax, Groq, Featherless), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 

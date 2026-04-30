@@ -89,7 +89,7 @@ This is what using AI well actually looks like. 25 years of knowing what good ar
 
 All five backend exercises run as live panels in the dashboard. Visit [codetest.georgelarson.me](https://codetest.georgelarson.me).
 
-Source code: [GitHub](https://github.com/georgeglarson/codetest) | [Codeberg](https://codeberg.org/georgelarson/codetest).
+Source code: [GitHub](https://github.com/georgeglarson/codetest).
 
 ---
 
