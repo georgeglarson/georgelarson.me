@@ -208,7 +208,7 @@ def parse_resume(text: str) -> str:
     return "\n".join(parts)
 
 
-def generate_pdf(output_path: Path) -> None:
+def generate_pdf(output_path: Path, input_path: Path = RESUME_PATH) -> None:
     try:
         from weasyprint import CSS, HTML
     except ImportError:
@@ -216,10 +216,10 @@ def generate_pdf(output_path: Path) -> None:
             "weasyprint is not installed. Install it with: pip install weasyprint"
         )
 
-    if not RESUME_PATH.exists():
-        raise FileNotFoundError(f"Missing resume source: {RESUME_PATH}")
+    if not input_path.exists():
+        raise FileNotFoundError(f"Missing resume source: {input_path}")
 
-    text = RESUME_PATH.read_text(encoding="utf-8")
+    text = input_path.read_text(encoding="utf-8")
     body_html = parse_resume(text)
 
     full_html = f"""<!doctype html>
@@ -236,15 +236,21 @@ def generate_pdf(output_path: Path) -> None:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate PDF resume from resume.txt")
+    parser = argparse.ArgumentParser(description="Generate PDF resume from a resume.txt")
     parser.add_argument(
         "--output",
         type=Path,
         default=DEFAULT_OUTPUT,
         help=f"Output PDF path (default: {DEFAULT_OUTPUT.name})",
     )
+    parser.add_argument(
+        "--input",
+        type=Path,
+        default=RESUME_PATH,
+        help=f"Input resume.txt path (default: {RESUME_PATH})",
+    )
     args = parser.parse_args()
-    generate_pdf(args.output)
+    generate_pdf(args.output, args.input)
 
 
 if __name__ == "__main__":
