@@ -112,29 +112,32 @@ Software Developer (2017)
 - Departed after company practices conflicted with professional engineering standards.
 
 Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
-- Helped scale the company from a 50 person startup to a national leader in medical billing.
-- Designed EDI frameworks, ACH processing, ERP integrations, and a medical payer portal.
+- Helped scale the company from a 50 person startup to a national leader in medical billing (Inc 5000, ranked #34 in Health and #503 overall).
+- Designed the EDI framework, ACH transmission, ERP integration, payer portal, Gold Standard Review, and recovery analytics layers of the platform.
 - Led internal and offshore teams across development and Linux infrastructure.
-- Acted as security response lead and Linux SME; migrated project management to Redmine with custom plugins.
+- Acted as security response lead, HIPAA/HITECH SME, and Linux SME for the medical billing platform; migrated project management to Redmine with custom plugins.
+- Deployed VMware ESXi covering web, database, DHCP, DNS, and ERP servers across the platform.
 - Built OCR bill entry validation that reduced errors and sped turnaround.
 
 Software Engineer and Team Manager, Sony Electronics (2004 to 2009)
-- Directed software development, logistics, and technical operations for the Pittsburgh Customer Satisfaction Center.
+- Joined a service operation that was effectively bare shelves at start; directed software development, logistics, and technical operations for the Pittsburgh Customer Satisfaction Center from there.
 - Designed and ran the TiVo firmware upgrade station for the United States market.
 - Built hardware testing suites for CD drives, set-top boxes, PCBs, televisions, cameras, and MP3 players.
 - Created an AS/400 parts ordering interface that saved millions in operational spend.
-- Managed more than 50 combined technical and non-technical staff.
+- Front-end software work delivered roughly 30 percent productivity gain and 12 percent expense reduction.
+- Managed more than 50 combined technical and non-technical staff, including roughly 30 contracted personnel.
 - Developed a VT-52 terminal emulation system used for inventory management.
 
 Maintenance and Automation Technician, T. Marzetti Company (2000 to 2004)
 - Led second shift maintenance for robotics, conveyors, and packaging machinery.
-- Programmed PLCs and tuned sensors, actuators, and industrial controls on the production line.
+- Programmed PLCs and Adept V++ robotics in-house, tuned sensors, actuators, and industrial controls on the production line, and kept robotics development internal to limit vendor cost.
 
 Earlier Career Highlights (1990s to 2000s)
 - Software developer and webmaster for non-profit organizations.
 - Engineer for The Sounding Board, a psychotherapeutic BBS in Columbus, Ohio; built custom C++ modules for Major BBS and kept one of the first internet-connected BBS systems alive.
 - Contract developer for Daifuku USA working on material handling support systems.
-- Two-time Business Professionals of America chapter president; regional competitor in extemporaneous speech.
+- Paid programming and database work 1994 to 2000 via Pacific Judgment Recovery (Brice, OH), AGL Personnel (Grove City, OH), and a Remedy Staffing CNC contract.
+- Two-time Business Professionals of America Chapter 13 president; state and regional wins in Computer Programming, Team Mathematics, and Extemporaneous Speech.
 
 VOLUNTEER WORK
 - Systems administrator for a volunteer Linux community, digital radio station, and open shell environment.
