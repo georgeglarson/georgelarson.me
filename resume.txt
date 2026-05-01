@@ -4,10 +4,13 @@ Phone: 412-945-0101
 Location: Pittsburgh, PA
 
 SUMMARY
-_Updated 2026-04_
-Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships — multi-agent infrastructure, MCP servers, model-routing pipelines, and SDKs in the Venice AI ecosystem.
+_Updated 2026-05_
+Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now landing surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
 
-KEY METRICS
+RECOGNITION
+- Top 1% TypeScript engineers globally per Algora (1,239 contributions in the past year, 3.3 commits/day, active weekends).
+
+KEY METRICS (FM Expressions, at separation April 2026)
 - 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
 - 36 active GitLab projects (11 users, 2 groups), 2,204 merge requests, 739 CI pipelines (avg 565 successes / 58 fails) and 16 managed SSH keys.
 - Mattermost workspace with 7 teams, 40 channels, ~1.0M lifetime posts, 313 calls, and alert channels wired to uptime, upgrade, helpdesk, GitLab, and web-critical events.
@@ -16,14 +19,15 @@ KEY METRICS
 
 CURRENT FOCUS
 - Seeking a full-time technology leadership role where I can build, ship, and lead teams hands-on.
-- Operating a multi-machine agent mesh (Agent Zero with A2A routing across nodes; nullclaw on a hardened perimeter; ironclaw as private agent; automated job-application pipeline as a working production case study) with tiered inference and clear security boundaries.
-- Building in the Venice AI SDK ecosystem — TypeScript SDK, PHP SDK, and an AI research tool (deep-research-privacy, 36★) — with continued systems work in Rust and Go (netgrep, termshark, wiregraph).
+- Operating a personal AI lab as ongoing R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across thirteen authenticated providers with deliberate routing for cost, latency, and capability.
+- Shipping surgical bug fixes upstream as ongoing public-record evidence of the operational style. In the past two weeks: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and the IronClaw agent platform.
+- Building in the Venice AI SDK ecosystem (TypeScript SDK, PHP SDK, deep-research-privacy at 36★) with continued systems work in Rust, Go, and Zig (netgrep, termshark, wiregraph, rust-connect, nullclaw).
 - Running larson.help, a small AI consulting practice, in parallel with the job hunt.
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
 CORE STRENGTHS
 Software Development and Engineering
-- Full stack delivery across PHP, Perl, SQL, Python, Go, Rust, C#, TypeScript, C++ — PHP and Perl have been the career staples; the rest sit alongside.
+- Full stack delivery across PHP, Perl, SQL, Python, Go, Rust, C#, TypeScript, C++. PHP and Perl have been the career staples; the rest sit alongside.
 - Code review, automated testing, and performance tuning for legacy and greenfield systems.
 
 DevOps and Infrastructure Automation
@@ -40,30 +44,38 @@ Security and Privacy
 
 Data Engineering and Automation
 - OCR digitization, ETL pipelines, semantic search, and knowledge-base design.
-- Workflow automation using scripting, open models, and RAG pipelines where they deliver measurable ROI.
+- Workflow automation using scripting, open models, and RAG pipelines where the payoff is real.
 
 OPEN SOURCE PROJECTS
 
+Recent Upstream Contributions (April-May 2026)
+- mitmproxy/mitmproxy #8199 (+23/-0): Flow.kill() resume-event fix so proxy teardown closes the client connection (PR open).
+- mitmproxy/mitmproxy #8200: KillInjected event so Flow.kill() actually disconnects in-transit flows (PR open).
+- n8n-io/n8n #29516 (+288/-2 across 6 files, 48 jest tests passing): per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s. Maintainer-accepted into Linear (PR open).
+- charmbracelet/crush #2749 (+50) and #2750 (+180): LSP score-based client selection and SingleFileSupport handling so single-file servers start without root markers (PRs open, both labeled area: lsp).
+- Comfy-Org/ComfyUI_frontend #11682 (graph-traversal cycle guards) and #11686 (keybindings respecting Reka DismissableLayer): both checks-passing, standing.
+- nearai/ironclaw #2390: vision-detail default fix for OpenAI-compatible providers across the agent platform.
+
 Venice AI Ecosystem (2025 to Present)
-- deep-research-privacy (36 stars, TypeScript) — Privacy-first AI research tool using Venice's uncensored mode; iterative search and synthesis pipeline that runs end-to-end against a local or self-hosted endpoint.
-- venice-dev-tools (14 stars, TypeScript) — Comprehensive TypeScript SDK for the Venice AI API; published on npm.
-- venice-ai-php (7 stars, PHP) — Drop-in OpenAI-compatible PHP SDK for Venice.
-- venicecode (5 stars, TypeScript) — AI-powered development tool integrating Venice into the editor workflow.
+- deep-research-privacy (36 stars, TypeScript). Privacy-first AI research tool using Venice's uncensored mode; iterative search and synthesis pipeline that runs end-to-end against a local or self-hosted endpoint.
+- venice-dev-tools (14 stars, TypeScript). Full TypeScript SDK for the Venice AI API, published on npm.
+- venice-ai-php (7 stars, PHP). Drop-in OpenAI-compatible PHP SDK for Venice.
+- venicecode (5 stars, TypeScript). AI-powered development tool integrating Venice into the editor workflow.
 
 LLM Showdown (2026 to Present)
-- llm-showdown-data — Companion dataset for the blog series benchmarking 15+ free coding models on a $25 VPS using opencode and a ralph-wiggum-style iterative loop.
-- Designed and runs the evaluation harness; publishes per-round results comparing model behavior on real coding tasks.
+- llm-showdown-data. Companion dataset for the blog series benchmarking 15+ free coding models on a $25 VPS using opencode and a ralph-wiggum-style iterative loop.
+- Designed and runs the evaluation rig; publishes per-round results comparing model behavior on real coding tasks.
 
 Job Search Agent (2026 to Present)
 - Multi-machine agent pipeline: laptop scraper feeds an Agent Zero task on a remote node that scores LinkedIn and Built In job postings against a structured profile, drafts cover letters under voice and revision rules, and emits a structured queue.
 - Companion laptop processor mutates the application tracker, builds PDFs, commits to git, and posts a Mattermost digest. Inbox-sweep classifier reads Gmail replies via Composio and routes rejections through the same tracker convention.
-- Demonstrates the production shape — source adapter, scoring profile, draft+scrub pass, audited tracker — that generalizes to client lead-monitoring agents.
+- Demonstrates the production shape (source adapter, scoring profile, draft+scrub pass, audited tracker) that generalizes to client lead-monitoring agents.
 
-Fracture (2 stars, TypeScript) — Modernization Case Study (2026)
+Fracture (2 stars, TypeScript), Modernization Case Study (2026)
 - Modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services: RAG, semantic search, agent-driven triage, and content moderation.
 - Live demo at fracture.georgelarson.me. The case study itself is the deliverable: how to take a frozen reference codebase from a major vendor and bring it forward without rewriting from scratch.
 
-nullclaw + ironclaw — Agent Mesh (Zig + Rust, 2026 to Present)
+nullclaw + ironclaw, Agent Mesh (Zig + Rust, 2026 to Present)
 - nullclaw: public-facing AI concierge ("Nully") on a hardened perimeter box. Tiered inference (Haiku for conversational triage, Sonnet for code analysis). Full self-hosted comms stack (Ergo IRC, gamja web client, Cloudflare-proxied WebSocket, Let's Encrypt TLS).
 - ironclaw: private personal agent on a separate system with distinct security boundaries. Agent-to-agent routing between the two.
 - Now extended into a multi-node Agent Zero mesh with A2A routing, dedicated chat and utility models, and per-node project isolation.
@@ -86,15 +98,15 @@ Director of Technology, FM Expressions (2018 to April 2026)
 - Built a knowledge management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) that captures production logs, transcripts, and operator notes so teams can search, surface, and act on institutional knowledge in real time.
 - Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep safety and operations guidance consistent.
 - Reduced a 1.03 GB legacy software repository (4,656 binary artifacts) to a clean, LFS-ready codebase, eliminating clone failures and enabling sustainable development practices.
-- Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, HostedScan/OWASP ZAP sweeps across 36 public assets, and Red Sift OnDMARC (p=reject, 1.5M emails/month at 99.48% compliance) to keep critical/high findings at zero and close 33 issues in the past 60 days.
-- Run GitLab (36 projects, 11 users, 739 CI pipelines) and Mattermost (7 teams, 40 channels, ~1M posts) as the collaboration core tied into Redmine (22 cross-functional projects), Zammad (~200 tickets/month with 68% closed inside 24 hours), and Uptime Kuma (31 monitors feeding alert channels).
+- Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, HostedScan/OWASP ZAP sweeps across 36 public assets, and Red Sift OnDMARC (p=reject, 1.5M emails/month at 99.48% compliance) to keep critical/high findings at zero; closed 33 issues in the 60 days prior to separation.
+- Ran GitLab (36 projects, 11 users, 739 CI pipelines) and Mattermost (7 teams, 40 channels, ~1M posts) as the collaboration core tied into Redmine (22 cross-functional projects), Zammad (~200 tickets/month with 68% closed inside 24 hours), and Uptime Kuma (31 monitors feeding alert channels).
 - Maintained high-availability platforms: dual MySQL replicas, VMware ESXi with Datto backups, Active Directory, Cisco Meraki switching, SonicWall/pfSense firewalls, and a staged CDN migration from self-hosted edges to Contabo and Cloudflare.
 - Built the Mashy internal dashboard plus tooling such as Psono vault, PrivateBin, phpMyAdmin/Adminer, DBeaver, knowledge mining utilities, and status pages so teams access credentials, data stores, and observability in one click.
-- Driving adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
+- Drove adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
 - Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while migrating remote access from VPN to zero-trust policies.
 - Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
 - Built and operated integrations across the print and fulfillment vendor stack (Pace/EFI, Printro, VivX, Fanatics, Alphabroder, SignTronics) plus ecommerce platforms (Shopify, Magento) and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share a coherent data model.
-- Built financial-modeling tools using state-of-the-art AI/ML to analyze company performance and forecast scenarios; presented findings directly to executive leadership to inform strategic decisions during a difficult business period.
+- Built financial-modeling tools using AI/ML to analyze company performance and forecast scenarios; presented findings directly to executive leadership to inform strategic decisions during a difficult business period.
 
 Software Developer (2017)
 - Departed after company practices conflicted with professional engineering standards.
@@ -139,12 +151,12 @@ Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptP
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
-AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing (Anthropic, Z.AI GLM, Venice, MiniMax, Groq, Featherless), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks
+AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing across 13 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Venice, Airouter, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks. Operational fluency across ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack.
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
 EDUCATION AND PROFESSIONAL DEVELOPMENT
 - Self-taught from C++ books as a teenager; built BBS modules in production before attending college.
 - Continuous learner across hundreds of online courses, lectures, and certifications (see LinkedIn for details).
-- Currently studying: Stanford CS336 — Language Modeling from Scratch (2025).
+- Currently studying: Stanford CS336, Language Modeling from Scratch (2025).
 - Additional coursework spanning systems engineering, network security, database internals, and cloud architecture through platforms including Coursera, MIT OpenCourseWare, and vendor certification programs.
