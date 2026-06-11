@@ -1,0 +1,93 @@
+GEORGE LARSON
+Email: george.g.larson@gmail.com
+Phone: 412-945-0101
+Location: Pittsburgh, PA
+
+SUMMARY
+Director of Technology with 25+ years leading software teams in manufacturing, logistics, and ecommerce operations. Built and scaled platforms handling production-floor integrations, warehouse management, ERP systems, and fulfillment pipelines across print, ecommerce, and medical billing industries. Hands-on with C#, .NET Core, SQL, and RESTful APIs throughout my career — not just directing, but writing the code that connects production systems to business outcomes. Led teams from 10 to 50+ across internal, offshore, and vendor resources.
+
+CORE STRENGTHS
+Technology Leadership
+- Strategic roadmaps that connect executive goals to team-level delivery.
+- Calm stewardship for blended internal, offshore, and vendor teams (Sony, USC, FM Expressions).
+- Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
+
+Software Development
+- Full stack delivery in C#, .NET Core, SQL Server, MySQL, PostgreSQL, RESTful APIs, React, TypeScript, PHP, Python, and Go.
+- Code review, automated testing, and performance tuning for legacy and greenfield systems.
+- ERP and WMS integration: wrote software that directly interfaces with warehouse management, inventory, and order fulfillment systems.
+
+Operations and Logistics
+- Production-floor system integration: print-head control software, PLC programming, conveyor and packaging automation.
+- Fulfillment vendor stack integration (Pace/EFI, Printro, VivX, Fanatics, Alphabroder, SignTronics) with ecommerce platforms (Shopify, Magento).
+- Parts ordering, inventory management, and supply-chain tooling (AS/400, VT-52 terminal emulation, logistics operations at Sony).
+- OCR digitization, ETL pipelines, and knowledge-base design for operational data.
+
+DevOps and Infrastructure
+- CI/CD design, infrastructure as code, container orchestration, and repeatable releases.
+- Observability, incident response, high-availability design (replication, backups, CDN), and SLO tracking.
+- Database performance tuning: improved query performance by 93%, cut slow-query volume by 96%.
+
+Security and Compliance
+- Network hardening, IAM, zero-trust rollouts, and automated vulnerability assessment loops.
+- HIPAA/HITECH compliance (medical billing), CCPA/GDPR compliance work, regulated-data guardrails.
+
+WORK EXPERIENCE
+
+Director of Technology, FM Expressions (2018 to 2026)
+- Led technology strategy for a mid-size manufacturing company serving ecommerce channels, overseeing all software development, infrastructure, and vendor integrations.
+- Built and operated the print-head control software in C#/.NET Core, including network traffic capture and protocol analysis to secure industrial print systems and debug production-line issues.
+- Developed Printro integrations in C#/.NET Core connecting the production floor to the order pipeline, enabling real-time fulfillment across multiple vendor channels.
+- Built and operated integrations across the full print and fulfillment vendor stack (Pace/EFI, Printro, VivX, Fanatics, Alphabroder, SignTronics) plus ecommerce platforms (Shopify, Magento) and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share a coherent data model.
+- Oversaw ERP and WMS solutions: wrote software that directly interfaced with warehouse management, inventory, and order fulfillment systems, driving the production floor's data model from order intake through shipping.
+- Improved database performance by 93% while driving critical systems to 99% uptime; cut MySQL slow-query volume by 96% to accelerate incident response.
+- Captured Meteor print-head PCAPs and tuned security assessments to secure industrial protocols while migrating remote access from VPN to zero-trust policies.
+- Built financial-modeling tools using AI/ML to analyze company performance and forecast scenarios; presented findings directly to executive leadership.
+- Managed all DevOps, CI/CD, infrastructure, and security operations: GitLab (36 projects, 739 CI pipelines), high-availability platforms (dual MySQL replicas, VMware ESXi, Datto backups), and security hardening (36 public assets scanned, zero critical/high issues in backlog).
+- Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
+
+Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
+- Helped scale the company from a 50-person startup to a national leader in medical billing (Inc 5000, ranked #34 in Health and #503 overall).
+- Designed the EDI framework, ACH transmission, ERP integration, payer portal, Gold Standard Review, and recovery analytics layers of the platform.
+- Led internal and offshore teams across development and Linux infrastructure.
+- Acted as security response lead, HIPAA/HITECH SME, and Linux SME for the medical billing platform.
+- Deployed VMware ESXi covering web, database, DHCP, DNS, and ERP servers across the platform.
+- Built OCR bill entry validation that reduced errors and sped turnaround.
+
+Software Engineer and Team Manager, Sony Electronics (2004 to 2009)
+- Directed software development, logistics, and technical operations for the Pittsburgh Customer Satisfaction Center — joined a service operation that was effectively bare shelves at start and built it into a functioning logistics hub.
+- Managed all inbound and outbound logistics: parts ordering, inventory management, repair tracking, and shipping across the US market.
+- Created an AS/400 parts ordering interface that saved millions in operational spend by streamlining the supply chain from order to delivery.
+- Developed a VT-52 terminal emulation system used for inventory management across the warehouse.
+- Designed and ran the TiVo firmware upgrade station for the United States market — a logistics operation at national scale.
+- Built hardware testing suites for CD drives, set-top boxes, PCBs, televisions, cameras, and MP3 players.
+- Front-end software work delivered roughly 30% productivity gain and 12% expense reduction.
+- Managed more than 50 combined technical and non-technical staff, including roughly 30 contracted personnel.
+
+Maintenance and Automation Technician, T. Marzetti Company (2000 to 2004)
+- Led second shift maintenance for robotics, conveyors, and packaging machinery.
+- Programmed PLCs and Adept V++ robotics in-house, tuned sensors, actuators, and industrial controls on the production line.
+- Kept robotics development internal to limit vendor cost.
+
+Earlier Career Highlights (1990s to 2000s)
+- Contract developer for Daifuku USA working on material handling support systems.
+- Software developer and webmaster for non-profit organizations.
+- Engineer for The Sounding Board, a psychotherapeutic BBS in Columbus, Ohio; built custom C++ modules for Major BBS.
+- Paid programming and database work 1994 to 2000 via Pacific Judgment Recovery, AGL Personnel, and Remedy Staffing CNC contract.
+
+TECHNICAL SKILLS
+Languages: C#, .NET Core, SQL, TypeScript, React, PHP, Python, Go, Rust, Bash, C++
+Databases: SQL Server, MySQL, PostgreSQL
+Web and APIs: RESTful APIs, ASP.NET, Node.js, GraphQL
+Infrastructure: Linux, Windows Server, IIS, Nginx, Caddy, Kubernetes, VMware ESXi, Datto backups
+Cloud: AWS, Azure, Google Cloud
+DevOps: GitLab CI/CD, GitHub Actions, Docker, infrastructure as code
+Security: Authentik, HashiCorp Vault, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, zero-trust network design, HIPAA/HITECH, CCPA/GDPR
+Ecommerce and Operations: Shopify, Magento, ERP integration, WMS integration, fulfillment vendor integrations, Power BI, HubSpot
+Manufacturing: PLC programming, industrial controls, print-head control software, conveyor and packaging automation, production-floor system integration
+Monitoring: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy
+
+EDUCATION AND PROFESSIONAL DEVELOPMENT
+- Self-taught from C++ books as a teenager; built BBS modules in production before attending college.
+- Continuous learner across hundreds of online courses, lectures, and certifications (see LinkedIn for details).
+- Additional coursework spanning systems engineering, network security, database internals, and cloud architecture through platforms including Coursera, MIT OpenCourseWare, and vendor certification programs.
