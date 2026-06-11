@@ -4,7 +4,7 @@ Phone: 412-945-0101
 Location: Pittsburgh, PA
 
 SUMMARY
-_Updated 2026-05_
+_Updated 2026-06_
 Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now landing surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
 
 RECOGNITION
@@ -13,15 +13,15 @@ RECOGNITION
 KEY METRICS (FM Expressions, at separation April 2026)
 - 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
 - 36 active GitLab projects (11 users, 2 groups), 2,204 merge requests, 739 CI pipelines (avg 565 successes / 58 fails) and 16 managed SSH keys.
-- Mattermost workspace with 7 teams, 40 channels, ~1.0M lifetime posts, 313 calls, and alert channels wired to uptime, upgrade, helpdesk, GitLab, and web-critical events.
+- Mattermost workspace (retired 2026) with 7 teams, 40 channels, ~1.0M lifetime posts, 313 calls, and alert channels wired to uptime, upgrade, helpdesk, GitLab, and web-critical events.
 - Zammad helpdesk processed 1,487 tickets YTD (~150–206/month in Jun–Aug) with ≥97% close rate, 68% resolved inside 24 hours (56% inside 8 hours), zero reopen events.
-- Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding Mattermost.
+- Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding alert channels.
 
 CURRENT FOCUS
 - Seeking a full-time technology leadership role where I can build, ship, and lead teams hands-on.
 - Operating a personal AI lab as ongoing R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across thirteen authenticated providers with deliberate routing for cost, latency, and capability.
-- Shipping surgical bug fixes upstream as ongoing public-record evidence of the operational style. In the past two weeks: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and the IronClaw agent platform.
-- Building in the Venice AI SDK ecosystem (TypeScript SDK, PHP SDK, deep-research-privacy at 36★) with continued systems work in Rust, Go, and Zig (netgrep, termshark, wiregraph, rust-connect, nullclaw).
+- Shipping surgical bug fixes upstream as public-record evidence of the operational style: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and the IronClaw agent platform.
+- Building in the Venice AI SDK ecosystem (TypeScript SDK, PHP SDK, deep-research-privacy at 36★) with continued systems work in Rust, Go, and Zig (netgrep, termshark, wiregraph, rust-connect).
 - Running larson.help, a small AI consulting practice, in parallel with the job hunt.
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
@@ -68,17 +68,17 @@ LLM Showdown (2026 to Present)
 
 Job Search Agent (2026 to Present)
 - Multi-machine agent pipeline: laptop scraper feeds an Agent Zero task on a remote node that scores LinkedIn and Built In job postings against a structured profile, drafts cover letters under voice and revision rules, and emits a structured queue.
-- Companion laptop processor mutates the application tracker, builds PDFs, commits to git, and posts a Mattermost digest. Inbox-sweep classifier reads Gmail replies via Composio and routes rejections through the same tracker convention.
+- Companion laptop processor mutates the application tracker, builds PDFs, commits to git, and posts a digest. Inbox-sweep classifier reads Gmail replies via Composio and routes rejections through the same tracker convention.
 - Demonstrates the production shape (source adapter, scoring profile, draft+scrub pass, audited tracker) that generalizes to client lead-monitoring agents.
 
 Fracture (2 stars, TypeScript), Modernization Case Study (2026)
 - Modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services: RAG, semantic search, agent-driven triage, and content moderation.
 - Live demo at fracture.georgelarson.me. The case study itself is the deliverable: how to take a frozen reference codebase from a major vendor and bring it forward without rewriting from scratch.
 
-nullclaw + ironclaw, Agent Mesh (Zig + Rust, 2026 to Present)
-- nullclaw: public-facing AI concierge ("Nully") on a hardened perimeter box. Tiered inference (Haiku for conversational triage, Sonnet for code analysis). Full self-hosted comms stack (Ergo IRC, gamja web client, Cloudflare-proxied WebSocket, Let's Encrypt TLS).
+nullclaw + ironclaw, Agent Mesh (Zig + Rust, 2026)
+- nullclaw: public-facing AI concierge ("Nully") on a hardened perimeter box. Tiered inference (Haiku for conversational triage, Sonnet for code analysis). Ran a full self-hosted comms stack (Ergo IRC, gamja web client, Cloudflare-proxied WebSocket, Let's Encrypt TLS) before transitioning to a static-site origin.
 - ironclaw: private personal agent on a separate system with distinct security boundaries. Agent-to-agent routing between the two.
-- Now extended into a multi-node Agent Zero mesh with A2A routing, dedicated chat and utility models, and per-node project isolation.
+- Extended into a multi-node Agent Zero mesh with A2A routing, dedicated chat and utility models, and per-node project isolation.
 
 netgrep (Rust), Creator and Maintainer (2026 to Present)
 - Modern replacement for ngrep: live packet capture and pcap analysis with TCP stream reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, and an interactive terminal UI.
@@ -99,7 +99,7 @@ Director of Technology, FM Expressions (2018 to April 2026)
 - Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep safety and operations guidance consistent.
 - Reduced a 1.03 GB legacy software repository (4,656 binary artifacts) to a clean, LFS-ready codebase, eliminating clone failures and enabling sustainable development practices.
 - Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, HostedScan/OWASP ZAP sweeps across 36 public assets, and Red Sift OnDMARC (p=reject, 1.5M emails/month at 99.48% compliance) to keep critical/high findings at zero; closed 33 issues in the 60 days prior to separation.
-- Ran GitLab (36 projects, 11 users, 739 CI pipelines) and Mattermost (7 teams, 40 channels, ~1M posts) as the collaboration core tied into Redmine (22 cross-functional projects), Zammad (~200 tickets/month with 68% closed inside 24 hours), and Uptime Kuma (31 monitors feeding alert channels).
+- Ran GitLab (36 projects, 11 users, 739 CI pipelines) and Mattermost (7 teams, 40 channels, ~1M posts, retired 2026) as the collaboration core tied into Redmine (22 cross-functional projects), Zammad (~200 tickets/month with 68% closed inside 24 hours), and Uptime Kuma (31 monitors feeding alert channels).
 - Maintained high-availability platforms: dual MySQL replicas, VMware ESXi with Datto backups, Active Directory, Cisco Meraki switching, SonicWall/pfSense firewalls, and a staged CDN migration from self-hosted edges to Contabo and Cloudflare.
 - Built the Mashy internal dashboard plus tooling such as Psono vault, PrivateBin, phpMyAdmin/Adminer, DBeaver, knowledge mining utilities, and status pages so teams access credentials, data stores, and observability in one click.
 - Drove adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
@@ -150,7 +150,7 @@ Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
 Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
 Cloud: AWS, Azure, Google Cloud, Proxmox
 Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, DefectDojo, OpenVAS, zero-trust network design, CCPA/GDPR compliance work
-Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, Mattermost, CryptPad
+Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
