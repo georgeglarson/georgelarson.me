@@ -8,7 +8,7 @@ _Updated 2026-06_
 Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now landing surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
 
 RECOGNITION
-- Top 1% TypeScript engineers globally per Algora (1,239 contributions in the past year, 3.3 commits/day, active weekends).
+- Top 1% of TypeScript engineers globally (Algora, 1,200+ contributions over the past year).
 
 KEY METRICS (FM Expressions, at separation April 2026)
 - 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
@@ -18,11 +18,9 @@ KEY METRICS (FM Expressions, at separation April 2026)
 - Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding alert channels.
 
 CURRENT FOCUS
-- Seeking a full-time technology leadership role where I can build, ship, and lead teams hands-on.
-- Operating a personal AI lab as ongoing R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across thirteen authenticated providers with deliberate routing for cost, latency, and capability.
+- Independent AI-systems R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across thirteen authenticated providers routed for cost, latency, and capability.
 - Shipping surgical bug fixes upstream as public-record evidence of the operational style: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and the IronClaw agent platform.
 - Building in the Venice AI SDK ecosystem (TypeScript SDK, PHP SDK, deep-research-privacy at 36★) with continued systems work in Rust, Go, and Zig (netgrep, termshark, wiregraph, rust-connect).
-- Running larson.help, a small AI consulting practice, in parallel with the job hunt.
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
 CORE STRENGTHS
@@ -56,20 +54,12 @@ Recent Upstream Contributions (April-May 2026)
 - Comfy-Org/ComfyUI_frontend #11682 (graph-traversal cycle guards) and #11686 (keybindings respecting Reka DismissableLayer): both checks-passing, standing.
 - nearai/ironclaw #2390: vision-detail default fix for OpenAI-compatible providers across the agent platform.
 
-Venice AI Ecosystem (2025 to Present)
-- deep-research-privacy (36 stars, TypeScript). Privacy-first AI research tool using Venice's uncensored mode; iterative search and synthesis pipeline that runs end-to-end against a local or self-hosted endpoint.
-- venice-dev-tools (14 stars, TypeScript). Full TypeScript SDK for the Venice AI API, published on npm.
-- venice-ai-php (7 stars, PHP). Drop-in OpenAI-compatible PHP SDK for Venice.
-- venicecode (5 stars, TypeScript). AI-powered development tool integrating Venice into the editor workflow.
+Venice AI SDKs (2025 to Present)
+- deep-research-privacy (36 stars, TypeScript): privacy-first AI research tool with an iterative search-and-synthesis pipeline, plus published TypeScript and PHP SDKs (venice-dev-tools, venice-ai-php) for the Venice API.
 
 LLM Showdown (2026 to Present)
 - llm-showdown-data. Companion dataset for the blog series benchmarking 15+ free coding models on a $25 VPS using opencode and a ralph-wiggum-style iterative loop.
 - Designed and runs the evaluation rig; publishes per-round results comparing model behavior on real coding tasks.
-
-Job Search Agent (2026 to Present)
-- Multi-machine agent pipeline: laptop scraper feeds an Agent Zero task on a remote node that scores LinkedIn and Built In job postings against a structured profile, drafts cover letters under voice and revision rules, and emits a structured queue.
-- Companion laptop processor mutates the application tracker, builds PDFs, commits to git, and posts a digest. Inbox-sweep classifier reads Gmail replies via Composio and routes rejections through the same tracker convention.
-- Demonstrates the production shape (source adapter, scoring profile, draft+scrub pass, audited tracker) that generalizes to client lead-monitoring agents.
 
 Fracture (2 stars, TypeScript), Modernization Case Study (2026)
 - Modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services: RAG, semantic search, agent-driven triage, and content moderation.
@@ -95,6 +85,7 @@ WORK EXPERIENCE
 Director of Technology, FM Expressions (2018 to April 2026)
 - Led technology strategy for a mid-size manufacturing company serving ecommerce channels.
 - Absorbed the infrastructure team and its full stack when the role was eliminated during a downturn, running technology and infrastructure together with no added headcount.
+- Shipped production AI inside the business from 2023: a customer-facing DALL-E design assistant for custom heat transfers, an OpenAI/Pythagora code-generation tool on MongoDB, an AI knowledge platform (wiki.fmx.ink), a customer-service AI/BI integration, and a Python/FastAPI templating system bridging the Fanatics and VivX vendor pipelines.
 - Improved database performance by 93 percent while driving critical systems to 99 percent uptime; cut MySQL slow-query volume by 96 percent to accelerate incident response.
 - Built a knowledge management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) that captures production logs, transcripts, and operator notes so teams can search, surface, and act on institutional knowledge in real time.
 - Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep safety and operations guidance consistent.
@@ -110,9 +101,6 @@ Director of Technology, FM Expressions (2018 to April 2026)
 - Built and operated integrations across the print and fulfillment vendor stack (Pace/EFI, Printro, VivX, Fanatics, Alphabroder, SignTronics) plus ecommerce platforms (Shopify, Magento) and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share a coherent data model.
 - Administered the prepress production stack (Esko, Prinergy, RIP workflows) and 3PL logistics integrations that kept the manufacturing floor running.
 - Built financial-modeling tools using AI/ML to analyze company performance and forecast scenarios; presented findings directly to executive leadership to inform strategic decisions during a difficult business period.
-
-Software Developer (2017)
-- Departed after company practices conflicted with professional engineering standards.
 
 Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
 - Helped scale the company from a 50 person startup to a national leader in medical billing (Inc 5000, ranked #34 in Health and #503 overall).
