@@ -94,18 +94,21 @@ wiregraph (Rust, 2026 to Present)
 WORK EXPERIENCE
 Director of Technology, FM Expressions (2018 to April 2026)
 - Led technology strategy for a mid-size manufacturing company serving ecommerce channels.
+- Absorbed the infrastructure team and its full stack when the role was eliminated during a downturn, running technology and infrastructure together with no added headcount.
 - Improved database performance by 93 percent while driving critical systems to 99 percent uptime; cut MySQL slow-query volume by 96 percent to accelerate incident response.
 - Built a knowledge management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) that captures production logs, transcripts, and operator notes so teams can search, surface, and act on institutional knowledge in real time.
 - Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep safety and operations guidance consistent.
 - Reduced a 1.03 GB legacy software repository (4,656 binary artifacts) to a clean, LFS-ready codebase, eliminating clone failures and enabling sustainable development practices.
 - Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, HostedScan/OWASP ZAP sweeps across 36 public assets, and Red Sift OnDMARC (p=reject, 1.5M emails/month at 99.48% compliance) to keep critical/high findings at zero; closed 33 issues in the 60 days prior to separation.
+- Ran the security program's people-and-email layer: Mimecast email security, a KnowBe4 security-awareness and phishing-simulation program, and live response to an active production compromise.
 - Ran GitLab (36 projects, 11 users, 739 CI pipelines) and Mattermost (7 teams, 40 channels, ~1M posts, retired 2026) as the collaboration core tied into Redmine (22 cross-functional projects), Zammad (~200 tickets/month with 68% closed inside 24 hours), and Uptime Kuma (31 monitors feeding alert channels).
-- Maintained high-availability platforms: dual MySQL replicas, VMware ESXi with Datto backups, Active Directory, Cisco Meraki switching, SonicWall/pfSense firewalls, and a staged CDN migration from self-hosted edges to Contabo and Cloudflare.
+- Maintained high-availability platforms across a heterogeneous Windows-and-Linux estate: a high-availability MySQL cluster and MSSQL, VMware ESXi with Datto backups, on-prem Active Directory with Entra ID hybrid identity (Group Policy, PowerShell), multi-vendor firewalls (Cisco, SonicWall, pfSense), Cisco Meraki switching, OpenVPN, and a staged CDN migration from self-hosted edges to Contabo and Cloudflare; led countless OS and database migrations.
 - Built the Mashy internal dashboard plus tooling such as Psono vault, PrivateBin, phpMyAdmin/Adminer, DBeaver, knowledge mining utilities, and status pages so teams access credentials, data stores, and observability in one click.
 - Drove adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
-- Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while migrating remote access from VPN to zero-trust policies.
+- Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while leading the move from VPN toward zero-trust access.
 - Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
 - Built and operated integrations across the print and fulfillment vendor stack (Pace/EFI, Printro, VivX, Fanatics, Alphabroder, SignTronics) plus ecommerce platforms (Shopify, Magento) and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share a coherent data model.
+- Administered the prepress production stack (Esko, Prinergy, RIP workflows) and 3PL logistics integrations that kept the manufacturing floor running.
 - Built financial-modeling tools using AI/ML to analyze company performance and forecast scenarios; presented findings directly to executive leadership to inform strategic decisions during a difficult business period.
 
 Software Developer (2017)
@@ -146,16 +149,16 @@ VOLUNTEER WORK
 
 TECHNICAL SKILLS
 Languages: PHP, Perl, SQL, Bash, Python, Go, Rust, Zig, C#, TypeScript, C++
-Web and Data: MySQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
-Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
+Web and Data: MySQL, MSSQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
+Infrastructure: Linux, Active Directory, Entra ID, Group Policy, PowerShell, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco firewalls, Cisco Meraki, SonicWall, pfSense, OpenVPN, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
 Cloud: AWS, Azure, Google Cloud, Proxmox
-Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, DefectDojo, OpenVAS, zero-trust network design, CCPA/GDPR compliance work
+Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, Mimecast, KnowBe4, DefectDojo, OpenVAS, zero-trust network design, incident response, CCPA/GDPR compliance work
 Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
 AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing across 13 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Venice, Airouter, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks. Operational fluency across ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack.
-Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, IRC server administration
+Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, prepress production (Esko, Prinergy, RIP workflows), IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
 EDUCATION AND PROFESSIONAL DEVELOPMENT
