@@ -115,7 +115,19 @@ Phase 1: Type Safety - Add typed imports to world.ts</code></pre></div>
     <p>These were the first commits. No features. Just contracts.</p>
     <h3>2. Decompose by responsibility</h3>
     <p>The <code>Player</code> class had grown to 1,742 lines handling over a dozen concerns. I extracted each into its own module:</p>
-    <p>| Module       | Responsibility                                             | | --------------| ------------------------------------------------------------| | <code>combat/</code>    | Aggro policy, combat tracker, kill streaks, nemesis system | | <code>player/</code>    | MessageRouter + 14 handler modules                         | | <code>world/</code>     | Spatial manager, spawn manager, game loop                  | | <code>storage/</code>   | SQLite persistence layer                                   | | <code>inventory/</code> | Item management and serialization                          | | <code>zones/</code>     | Zone boundaries, bonuses, level scaling                    | | <code>party/</code>     | Invite, XP sharing, proximity tracking                     | | <code>rifts/</code>     | Endgame dungeons with stacking modifiers                   |</p>
+    <table>
+      <thead><tr><th>Module</th><th>Responsibility</th></tr></thead>
+      <tbody>
+        <tr><td><code>combat/</code></td><td>Aggro policy, combat tracker, kill streaks, nemesis system</td></tr>
+        <tr><td><code>player/</code></td><td>MessageRouter + 14 handler modules</td></tr>
+        <tr><td><code>world/</code></td><td>Spatial manager, spawn manager, game loop</td></tr>
+        <tr><td><code>storage/</code></td><td>SQLite persistence layer</td></tr>
+        <tr><td><code>inventory/</code></td><td>Item management and serialization</td></tr>
+        <tr><td><code>zones/</code></td><td>Zone boundaries, bonuses, level scaling</td></tr>
+        <tr><td><code>party/</code></td><td>Invite, XP sharing, proximity tracking</td></tr>
+        <tr><td><code>rifts/</code></td><td>Endgame dungeons with stacking modifiers</td></tr>
+      </tbody>
+    </table>
     <p>Post-refactor, <code>Player</code> is 726 lines. Every module has one job.</p>
     <h3>3. Event-driven architecture</h3>
     <p>Systems communicate through a typed <code>EventBus</code>, not direct method calls. Combat doesn't know about achievements. The narrator doesn't know about inventory. They publish events; interested systems subscribe.</p>
@@ -161,7 +173,18 @@ const span = tracer.startSpan('ai.venice');</code></pre></div>
 
     <section>
     <h2>The stack</h2>
-    <p>| Layer         | Technology                                       | | ---------------| --------------------------------------------------| | Client        | HTML5 Canvas, TypeScript 5.8, Webpack 5          | | Server        | Node.js, TypeScript 5.8, Socket.IO 4             | | Database      | SQLite (better-sqlite3)                          | | AI            | Venice AI (llama-3.3-70b), Fish Audio TTS        | | Observability | OpenTelemetry, Pino, SigNoz, Grafana, ClickHouse | | Testing       | Vitest 4, v8 coverage, CI on Node 20 + 22        | | Production    | nginx, Let's Encrypt SSL, Docker Compose         |</p>
+    <table>
+      <thead><tr><th>Layer</th><th>Technology</th></tr></thead>
+      <tbody>
+        <tr><td>Client</td><td>HTML5 Canvas, TypeScript 5.8, Webpack 5</td></tr>
+        <tr><td>Server</td><td>Node.js, TypeScript 5.8, Socket.IO 4</td></tr>
+        <tr><td>Database</td><td>SQLite (better-sqlite3)</td></tr>
+        <tr><td>AI</td><td>Venice AI (llama-3.3-70b), Fish Audio TTS</td></tr>
+        <tr><td>Observability</td><td>OpenTelemetry, Pino, SigNoz, Grafana, ClickHouse</td></tr>
+        <tr><td>Testing</td><td>Vitest 4, v8 coverage, CI on Node 20 + 22</td></tr>
+        <tr><td>Production</td><td>nginx, Let's Encrypt SSL, Docker Compose</td></tr>
+      </tbody>
+    </table>
     <p>~215 TypeScript source files. 280 including tests. 105 WebSocket message types. 50 levels, 7 zones, 6 roaming bosses, a nemesis system where mobs track grudges and power up against players who've killed them before.</p>
     </section>
 
