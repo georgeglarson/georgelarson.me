@@ -214,6 +214,7 @@ md_to_html() {
   local in_ol=0
   local in_section=0
   local paragraph=""
+  local table_buf=()
 
   flush_paragraph() {
     if [[ -n "$paragraph" ]]; then
@@ -240,6 +241,49 @@ md_to_html() {
     fi
   }
 
+  # Split one "| a | b |" row into "<tag>a</tag><tag>b</tag>" (cells run through inline md)
+  emit_table_cells() {
+    local row="$1" tag="$2" out=""
+    row="${row#"${row%%[![:space:]]*}"}"; row="${row%"${row##*[![:space:]]}"}"
+    row="${row#|}"; row="${row%|}"
+    local oldifs="$IFS"; IFS='|'; local -a parts=(); read -ra parts <<< "$row"; IFS="$oldifs"
+    local cell
+    for cell in "${parts[@]}"; do
+      cell="${cell#"${cell%%[![:space:]]*}"}"; cell="${cell%"${cell##*[![:space:]]}"}"
+      cell=$(apply_inline_sed "$cell")
+      out+="<${tag}>${cell}</${tag}>"
+    done
+    printf '%s' "$out"
+  }
+
+  # Emit an accumulated GFM table; fall back to paragraph if it isn't a valid table
+  flush_table() {
+    local n=${#table_buf[@]}
+    [[ $n -eq 0 ]] && return
+    if [[ $n -ge 2 ]] \
+       && echo "${table_buf[1]}" | grep -qE '^[[:space:]]*\|?[-:|[:space:]]+\|?[[:space:]]*$' \
+       && echo "${table_buf[1]}" | grep -q -- '-'; then
+      local cells i
+      output+="    <table>"$'\n'
+      cells=$(emit_table_cells "${table_buf[0]}" "th")
+      output+="      <thead><tr>${cells}</tr></thead>"$'\n'
+      output+="      <tbody>"$'\n'
+      for ((i = 2; i < n; i++)); do
+        cells=$(emit_table_cells "${table_buf[i]}" "td")
+        output+="        <tr>${cells}</tr>"$'\n'
+      done
+      output+="      </tbody>"$'\n'
+      output+="    </table>"$'\n'
+    else
+      local l
+      for l in "${table_buf[@]}"; do
+        if [[ -n "$paragraph" ]]; then paragraph+=" $l"; else paragraph="$l"; fi
+      done
+      flush_paragraph
+    fi
+    table_buf=()
+  }
+
   # Trim leading blank lines
   input=$(echo "$input" | sed '/./,$!d')
 
@@ -247,6 +291,7 @@ md_to_html() {
     # Code blocks
     if echo "$line" | grep -q '^```'; then
       if [[ $in_code_block -eq 0 ]]; then
+        flush_table
         flush_paragraph
         close_list
         in_code_block=1
@@ -265,6 +310,18 @@ md_to_html() {
     if [[ $in_code_block -eq 1 ]]; then
       code_content+="$line"$'\n'
       continue
+    fi
+
+    # Table row: accumulate consecutive pipe-delimited lines
+    if echo "$line" | grep -qE '^[[:space:]]*\|.*\|[[:space:]]*$'; then
+      flush_paragraph
+      close_list
+      table_buf+=("$line")
+      continue
+    fi
+    # A non-table line ends any table currently accumulating
+    if [[ ${#table_buf[@]} -gt 0 ]]; then
+      flush_table
     fi
 
     # Horizontal rule (markdown ---) -> section break
@@ -367,6 +424,7 @@ md_to_html() {
 
   done <<< "$input"
 
+  flush_table
   flush_paragraph
   close_list
 

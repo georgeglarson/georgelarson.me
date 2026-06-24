@@ -892,3 +892,30 @@ kbd {
   }
 }
 
+
+/* Markdown tables (added 2026-06-24 with table support in publish.sh) */
+.page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.page th,
+.page td {
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.page thead th {
+  color: var(--fg-strong);
+  background: rgba(22, 245, 166, 0.1);
+  font-weight: 600;
+}
+.page tbody tr:last-child td {
+  border-bottom: none;
+}
