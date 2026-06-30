@@ -1,0 +1,19 @@
+index.html
+  s_ec4fbb90ecd564::t_adc8f3b79c5c2b 43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "8a1842207b278dfccf66eae01f54d209ba492382",
+  "prompts": {},
+  "sessions": {
+    "s_ec4fbb90ecd564": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "945e315a-9c05-45d8-8583-7859b9cdc6f0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
