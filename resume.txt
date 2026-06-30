@@ -18,8 +18,8 @@ KEY METRICS (FM Expressions, at separation April 2026)
 - Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding alert channels.
 
 CURRENT FOCUS
-- Independent AI-systems R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across thirteen authenticated providers routed for cost, latency, and capability.
-- Shipping surgical bug fixes upstream as public-record evidence of the operational style: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and the IronClaw agent platform.
+- Independent AI-systems R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across twelve authenticated providers routed for cost, latency, and capability.
+- Shipping surgical bug fixes upstream as public-record evidence of the operational style: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and nearai/ironclaw.
 - Building in the Venice AI SDK ecosystem (TypeScript SDK, PHP SDK, deep-research-privacy at 36★) with continued systems work in Rust, Go, and Zig (netgrep, termshark, wiregraph, rust-connect).
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
@@ -77,7 +77,7 @@ Fracture (2 stars, TypeScript), Modernization Case Study (2026)
 
 nullclaw + ironclaw, Agent Mesh (Zig + Rust, 2026)
 - nullclaw: public-facing AI concierge ("Nully") on a hardened perimeter box. Tiered inference (Haiku for conversational triage, Sonnet for code analysis). Ran a full self-hosted comms stack (Ergo IRC, gamja web client, Cloudflare-proxied WebSocket, Let's Encrypt TLS) before transitioning to a static-site origin.
-- ironclaw: private personal agent on a separate system with distinct security boundaries. Agent-to-agent routing between the two.
+- ironclaw: private personal agent on a separate system with distinct security boundaries; agent-to-agent routing ran between the two until the daemon stack was retired June 2026.
 - Extended into a multi-node Agent Zero mesh with A2A routing, dedicated chat and utility models, and per-node project isolation.
 
 netgrep (Rust), Creator and Maintainer (2026 to Present)
@@ -155,7 +155,7 @@ Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
-AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing across 13 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Venice, Airouter, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks. Operational fluency across ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack.
+AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing across 12 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Airouter, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks. Operational fluency across ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack.
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, prepress production (Esko, Prinergy, RIP workflows), IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
