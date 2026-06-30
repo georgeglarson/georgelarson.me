@@ -1,0 +1,22 @@
+resume.txt
+  s_143a3f307af23c::t_e097bb581a6ba6 21
+  s_143a3f307af23c::t_f14b4e6e8a66a0 158
+  s_143a3f307af23c::t_f6953434493231 80
+  s_143a3f307af23c::t_d6b638c2464807 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "e9e43b3d57a6bc990391b5356eed988b0127f18c",
+  "prompts": {},
+  "sessions": {
+    "s_143a3f307af23c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "862bcd53-2798-4fdd-ade8-4821de615880",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
