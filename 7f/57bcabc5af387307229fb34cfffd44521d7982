@@ -1,0 +1,20 @@
+network-tools.html
+  s_ec4fbb90ecd564::t_178c75cf884ffd 100
+  s_ec4fbb90ecd564::t_1d7a646710720b 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "7f57bcabc5af387307229fb34cfffd44521d7982",
+  "prompts": {},
+  "sessions": {
+    "s_ec4fbb90ecd564": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "945e315a-9c05-45d8-8583-7859b9cdc6f0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
