@@ -1,0 +1,21 @@
+writing/2026-03-23-nullclaw-doorman/story.md
+  s_143a3f307af23c::t_5c955fc55fa427 203,205
+writing/2026-03-23-nullclaw-doorman/devto.md
+  s_143a3f307af23c::t_b76a4438d60e2f 170,172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "dc4a3ec6c04c831a998350ed14f28ec2ddb9b262",
+  "prompts": {},
+  "sessions": {
+    "s_143a3f307af23c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "862bcd53-2798-4fdd-ade8-4821de615880",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
