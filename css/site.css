@@ -158,9 +158,10 @@ h1.title {
   margin: 0 0 0.5rem;
 }
 
-/* section blocks: mono label + serif prose. label is an <h2> for outline/SR. */
+/* section blocks: mono label + serif prose. label is an <h2> for outline/SR.
+   .label is global (used by case-study sections and landing sections alike). */
 .block { margin-block: 2.4rem; }
-.block > .label {
+.label {
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: 0.74rem;
@@ -173,12 +174,13 @@ h1.title {
   gap: 0.6rem;
   margin: 0 0 0.85rem;
 }
-.block > .label::before {
+.label::before {
   content: "";
   width: 1.4rem;
   height: 1px;
   background: var(--accent);
   opacity: 0.7;
+  flex: none;
 }
 .block p { margin: 0 0 1rem; }
 .block p:last-child { margin-bottom: 0; }
@@ -260,6 +262,73 @@ strong { font-weight: 600; color: var(--ink); }
 }
 .back:hover { color: var(--accent); }
 .back .caret { color: var(--accent); }
+
+/* ---- landing ---- */
+main > section { margin-block: 2.6rem; }
+.hero { padding-block: 1.5rem 0.25rem; }
+.hero-title {
+  font-size: clamp(2rem, 1.45rem + 2.7vw, 3.05rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  max-width: 20ch;
+  margin-bottom: 1.7rem;
+}
+.hero .prose p { margin: 0 0 1.1rem; }
+
+.receipts { list-style: none; margin: 1.3rem 0 0; padding: 0; }
+.receipts li { border-top: 1px solid var(--accent-lo); }
+.receipts li:last-child { border-bottom: 1px solid var(--accent-lo); }
+.receipts a {
+  display: block;
+  padding: 1.15rem 0;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 0;
+  transition: padding-left .2s ease;
+}
+.receipts a:hover, .receipts a:focus-visible { padding-left: .55rem; }
+.receipts .r-name {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: .96rem;
+  color: var(--ink);
+  transition: color .18s ease;
+}
+.receipts a:hover .r-name { color: var(--accent); }
+.receipts .r-gloss { display: block; color: var(--ink-soft); margin-top: .4rem; }
+.mono-link { font-family: var(--font-mono); font-size: .85rem; letter-spacing: .01em; }
+.more-link { margin-top: 1.5rem; }
+
+/* ---- who-is-george / voice page ---- */
+.voice p { margin: 0 0 1.15rem; }
+.lede-line {
+  font-size: 1.18em;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 1.9rem 0;
+}
+/* line-grouped thought clusters — a single thought per line, set off by a
+   thin accent rule. Preserves the writing's grouping without chrome. */
+.cluster {
+  border-left: 1px solid var(--accent-lo);
+  padding-left: 1.15rem;
+  color: var(--ink);
+  margin: 2rem 0;
+}
+.wins { list-style: none; margin: 1rem 0 0; padding: 0; }
+.wins li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.95rem;
+}
+.wins li:last-child { margin-bottom: 0; }
+.wins li::before {
+  content: "→";
+  position: absolute;
+  left: 0; top: 0;
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
 
 /* ---- footer ---- */
 .site-foot {

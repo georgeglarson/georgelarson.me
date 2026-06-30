@@ -1,430 +1,96 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>fracture - george larson</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="Fracture: a case study in legacy modernization. Taking Mozilla's 2012 BrowserQuest and systematically modernizing it into a production-grade multiplayer RPG with AI integration, observability, and 3,161 tests." />
-  <meta property="og:title" content="fracture - george larson" />
-  <meta property="og:description" content="Taking a 2012 HTML5 demo and modernizing it the way I've modernized enterprise systems for 25 years." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://georgelarson.me/fracture.html" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="fracture - george larson" />
-  <meta name="twitter:description" content="Legacy modernization case study: BrowserQuest (2012) → Fracture (2025). 217 source files, 3,161 tests, 8 AI services, production observability." />
-  <style>
-    .fracture-hero {
-      padding: 2.75rem 2rem;
-      margin-bottom: 2.5rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: rgba(8, 18, 28, 0.75);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fracture · George Larson</title>
+<meta name="description" content="A 2012 Mozilla BrowserQuest demo rebuilt into a production multiplayer game that runs today, with 3,161 passing tests behind it.">
 
-    .fracture-hero .lead {
-      margin-bottom: 1.5rem;
-      max-width: 60ch;
-    }
+<link rel="icon" href="/favicon.svg">
 
-    .fracture-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fracture · George Larson">
+<meta property="og:description" content="A 2012 Mozilla BrowserQuest demo rebuilt into a production multiplayer game that runs today, with 3,161 passing tests behind it.">
+<meta property="og:url" content="https://georgelarson.me/fracture">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fracture · George Larson">
+<meta name="twitter:description" content="A 2012 Mozilla BrowserQuest demo rebuilt into a production multiplayer game that runs today, with 3,161 passing tests behind it.">
 
-    .section-label {
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      color: var(--accent-dark);
-      margin: 0 0 0.85rem 0;
-      display: block;
-    }
-
-    .genesis p {
-      margin: 0 0 1rem 0;
-    }
-
-    .genesis p:last-child {
-      margin-bottom: 0;
-      color: var(--fg-strong);
-    }
-
-    .comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-
-    .comparison-col {
-      padding: 1.5rem 1.25rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.22);
-      background: rgba(5, 12, 18, 0.75);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
-    }
-
-    .comparison-col h3 {
-      margin: 0 0 1rem 0;
-      font-size: 0.95rem;
-    }
-
-    .comparison-col.col-before {
-      border-color: rgba(255, 100, 100, 0.2);
-    }
-
-    .comparison-col.col-before h3 {
-      color: rgba(255, 140, 140, 0.85);
-    }
-
-    .comparison-col.col-after {
-      border-color: rgba(22, 245, 166, 0.35);
-    }
-
-    .comparison-col.col-after h3 {
-      color: var(--accent);
-    }
-
-    .comparison-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .comparison-col li {
-      padding: 0.3rem 0;
-      color: var(--fg-muted);
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-
-    .comparison-col li::before {
-      margin-right: 0.5rem;
-      font-size: 0.8rem;
-    }
-
-    .col-before li::before {
-      content: "\2212";
-      color: rgba(255, 140, 140, 0.6);
-    }
-
-    .col-after li::before {
-      content: "+";
-      color: var(--accent-dark);
-    }
-
-    .steps {
-      display: grid;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .step {
-      padding: 1.25rem 1.5rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.15);
-      background: rgba(5, 12, 18, 0.6);
-      display: grid;
-      grid-template-columns: 2.5rem 1fr;
-      gap: 0.75rem;
-      align-items: baseline;
-    }
-
-    .step-num {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      line-height: 1;
-      padding-top: 0.15rem;
-    }
-
-    .step h3 {
-      margin: 0 0 0.35rem 0;
-      font-size: 0.95rem;
-    }
-
-    .step p {
-      margin: 0;
-      color: var(--fg-muted);
-      font-size: 0.92rem;
-    }
-
-    .ai-grid {
-      display: grid;
-      gap: 1.25rem;
-      margin-top: 1.75rem;
-    }
-
-    .ai-card {
-      padding: 1.5rem 1.25rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.22);
-      background: rgba(5, 12, 18, 0.75);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
-    }
-
-    .ai-card h3 {
-      margin: 0 0 0.75rem 0;
-      font-size: 1rem;
-      letter-spacing: 0.06em;
-    }
-
-    .ai-card p {
-      margin: 0;
-      color: var(--fg-muted);
-      line-height: 1.6;
-    }
-
-    .section-space {
-      margin-top: 3rem;
-    }
-
-    .other-ai li {
-      padding: 0.35rem 0;
-    }
-
-    .other-ai li strong {
-      color: var(--fg-strong);
-    }
-
-    @media (max-width: 720px) {
-      .fracture-hero {
-        padding: 2.2rem 1.5rem;
-      }
-
-      .comparison {
-        grid-template-columns: 1fr;
-      }
-
-      .step {
-        grid-template-columns: 2rem 1fr;
-        padding: 1rem 1.15rem;
-      }
-
-      .step-num {
-        font-size: 1.2rem;
-      }
-    }
-  </style>
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-  <main class="page page-wide">
 
-    <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
-    <header class="fracture-hero">
-      <h1>fracture<span class="caret" aria-hidden="true"></span></h1>
-      <p class="lead">taking a 2012 html5 demo and modernizing it the way i've modernized enterprise systems for 25 years</p>
-      <nav class="fracture-nav" aria-label="project links">
-        <a class="pill-link" href="https://fracture.georgelarson.me" target="_blank" rel="noopener">play it live</a>
-        <a class="pill-link" href="https://github.com/georgeglarson/Fracture" target="_blank" rel="noopener">source code</a>
-        <a class="pill-link" href="/index.html">back to home</a>
-      </nav>
-    </header>
+<header class="shell site-head">
+  <a class="wordmark" href="/"><span class="caret">$</span> george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/#contact">contact</a>
+  </nav>
+</header>
 
-    <!-- ================================================================ -->
-    <!-- GENESIS STORY                                                     -->
-    <!-- ================================================================ -->
+<main class="shell">
+  <article class="measure">
 
-    <section class="panel genesis">
-      <span class="section-label">the genesis</span>
-      <p>In 2012, Mozilla shipped <a href="https://github.com/mozilla/BrowserQuest" target="_blank" rel="noopener">BrowserQuest</a> &mdash; an HTML5 technology demo. A multiplayer RPG running in the browser, built to prove that the web could handle real-time games. It worked. Then Mozilla archived it.</p>
-      <p>It was a vertical slice: just enough code to prove the concept. No persistence beyond localStorage. No tests. No security. No observability. No separation of concerns. The kind of prototype that ships to prove a point, not to run in production.</p>
-      <p>That's the same starting point as most legacy enterprise systems I've worked on. Something that worked once, never got the supporting infrastructure it needed, and now needs to scale. So I built those systems.</p>
-    </section>
+    <p class="reveal"><a class="back" href="/#work"><span class="caret">←</span> work</a></p>
 
-    <!-- ================================================================ -->
-    <!-- BEFORE / AFTER                                                    -->
-    <!-- ================================================================ -->
+    <p class="kicker reveal">Case study · Fracture</p>
+    <h1 class="title reveal">Fracture: modernizing a fourteen-year-old demo</h1>
 
-    <div class="comparison">
-      <div class="comparison-col col-before">
-        <h3>2012 browserquest</h3>
-        <ul>
-          <li>JavaScript, no types</li>
-          <li>0 tests</li>
-          <li>Vertical slice prototype, no supporting systems</li>
-          <li>No persistence (localStorage only)</li>
-          <li>All message handling in one file</li>
-          <li>console.log debugging</li>
-          <li>No security, no rate limiting</li>
-        </ul>
-      </div>
-      <div class="comparison-col col-after">
-        <h3>2025 fracture</h3>
-        <ul>
-          <li>217 TypeScript source files (52k LOC)</li>
-          <li>3,161 tests across 65 test files</li>
-          <li>19 handler/service modules (SRP)</li>
-          <li>SQLite persistence with auto-save</li>
-          <li>MessageRouter + 13 dedicated handlers</li>
-          <li>OpenTelemetry tracing, Pino structured logging</li>
-          <li>Rate limiting, spawn protection, anti-exploit validation</li>
-        </ul>
-      </div>
-    </div>
-
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- THE APPROACH                                                      -->
-    <!-- ================================================================ -->
-
-    <section class="section-space">
-      <h2>the approach</h2>
-      <p class="hint">The same process that works on enterprise software. It works on games too.</p>
-
-      <div class="steps">
-        <article class="step">
-          <span class="step-num">1</span>
-          <div>
-            <h3>understand before changing</h3>
-            <p>Read every file. Map the dependency graph. Identify what the prototype does and what it's missing. The original had no module boundaries, no error handling, and no separation between game logic and transport. Figure out what production systems it needs before writing any code.</p>
-          </div>
-        </article>
-        <article class="step">
-          <span class="step-num">2</span>
-          <div>
-            <h3>safety net first</h3>
-            <p>3,161 tests before refactoring anything. When I extracted the combat system, every interaction was verified. When I built the aggro policy engine, tests caught edge cases I'd have shipped as bugs.</p>
-          </div>
-        </article>
-        <article class="step">
-          <span class="step-num">3</span>
-          <div>
-            <h3>refactor incrementally</h3>
-            <p>No big rewrites. Extract a module, test it, ship it. The MessageRouter was one change. Each handler module was one change. The CombatTracker was one change. At every step the game kept running.</p>
-          </div>
-        </article>
-        <article class="step">
-          <span class="step-num">4</span>
-          <div>
-            <h3>make the architecture earn its keep</h3>
-            <p>Every abstraction solved a real problem. The SpatialManager exists because the aggro tick was O(n&times;m) and needed spatial partitioning. The AggroPolicy exists because safe zones, density caps, and level scaling were scattered across three files. The EventBus exists because mob death needed to notify five decoupled systems.</p>
-          </div>
-        </article>
+    <section class="block reveal">
+      <h2 class="label">The problem</h2>
+      <div class="prose">
+        <p>Mozilla's 2012 BrowserQuest was a beautiful proof that a browser could run a live
+        multiplayer game. Then it sat. A modernization could go two ways: a shallow reskin that demos
+        well and rots, or a real revival that someone could actually play and you could actually
+        extend.</p>
       </div>
     </section>
 
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- AI INTEGRATION                                                    -->
-    <!-- ================================================================ -->
-
-    <section class="section-space">
-      <h2>ai as infrastructure, not gimmick</h2>
-      <p class="hint">Three layers of AI integration that demonstrate contemporary understanding &mdash; not just using AI, but engineering systems around it.</p>
-
-      <div class="ai-grid">
-        <article class="ai-card">
-          <h3>ai-augmented development</h3>
-          <p>Built with Claude as a development partner. Not copy-paste from ChatGPT &mdash; iterative architectural discussion, test-driven extraction, incremental refactoring with an AI that understands the full codebase context. This is how AI changes software engineering: not by replacing engineers, but by making one engineer ship what used to take a team.</p>
-        </article>
-        <article class="ai-card">
-          <h3>ai as product feature</h3>
-          <p>8 specialized AI services power the game world. NPCs generate contextual dialogue through Venice AI (llama-3.3-70b). A narrator system provides voice-synthesized commentary via Fish Audio TTS. Mobs have ambient thought bubbles. Quests are generated dynamically. A Town Crier reports world events. The AI layer is fully decoupled &mdash; the game runs fine without API keys.</p>
-        </article>
-        <article class="ai-card">
-          <h3>ai infrastructure</h3>
-          <p>Production AI integration means handling failure gracefully. Circuit breaker pattern (closed &rarr; open after 5 failures &rarr; half-open recovery). Retry with exponential backoff. Error classification (timeout, auth, rate_limit, server_error, network). Latency histogram with sliding window. The game survives API outages without players noticing.</p>
-        </article>
+    <section class="block reveal">
+      <h2 class="label">The framing</h2>
+      <div class="prose">
+        <p>Legacy modernization is judged on what holds up after the demo. A rewrite that loses the
+        original's working multiplayer core is a regression dressed as progress. The goal was a
+        running game on a current stack with a test wall thick enough to change things without fear,
+        not a screenshot.</p>
       </div>
     </section>
 
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- SYSTEMS AT A GLANCE                                               -->
-    <!-- ================================================================ -->
-
-    <section class="section-space">
-      <h2>systems at a glance</h2>
-
-      <div class="metrics-grid">
-        <article class="metric-card">
-          <h3>combat system</h3>
-          <p>Hate-based aggro ranking, party XP sharing, kill streaks, 4 skills (phase shift, power strike, war cry, whirlwind), stun mechanics, leash distance.</p>
-        </article>
-        <article class="metric-card">
-          <h3>zone progression</h3>
-          <p>6 zones from village safe haven to endgame lava fields. Per-zone loot modifiers, rarity scaling, level-gated difficulty. 172&times;314 tile map.</p>
-        </article>
-        <article class="metric-card">
-          <h3>fracture rifts</h3>
-          <p>Endgame infinite-depth dungeon runs. 8 stacking modifiers (fortified, empowered, cursed&hellip;). Dynamic difficulty scaling. 100-entry leaderboard.</p>
-        </article>
-        <article class="metric-card">
-          <h3>observability</h3>
-          <p>Pino structured logging (50 modules). OpenTelemetry traces on message routing, persistence, AI calls. SigNoz + Grafana dashboards. Log-trace correlation.</p>
-        </article>
-        <article class="metric-card">
-          <h3>multiplayer infra</h3>
-          <p>Socket.IO with 105 message types. Spatial partitioning for zone broadcasting. Per-message rate limiting. SQLite persistence with 60s auto-save.</p>
-        </article>
-        <article class="metric-card">
-          <h3>test discipline</h3>
-          <p>3,161 tests, 65 test files. Vitest with v8 coverage. Tests written before refactors. Coverage thresholds enforced.</p>
-        </article>
+    <section class="block reveal">
+      <h2 class="label">The fix</h2>
+      <div class="prose">
+        <p>Rebuilt on TypeScript, Node, React, SQLite, and Socket.IO. Zone-based combat, a party
+        system, rifts as endgame dungeons, leaderboards, player persistence. AI-driven NPCs. A full
+        observability stack and a production deployment behind nginx and SSL. 215 TypeScript source
+        files, 65 test files.</p>
       </div>
     </section>
 
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- TECH STACK                                                        -->
-    <!-- ================================================================ -->
-
-    <section class="section-space">
-      <h2>tech stack</h2>
-      <div class="tag-list">
-        <span class="tag">TypeScript 5.8</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Socket.IO 4</span>
-        <span class="tag">SQLite</span>
-        <span class="tag">Venice AI (llama-3.3-70b)</span>
-        <span class="tag">Fish Audio TTS</span>
-        <span class="tag">OpenTelemetry</span>
-        <span class="tag">Pino</span>
-        <span class="tag">SigNoz</span>
-        <span class="tag">Grafana</span>
-        <span class="tag">Vitest</span>
-        <span class="tag">nginx</span>
-        <span class="tag">Docker Compose</span>
+    <section class="block reveal">
+      <h2 class="label">The outcome</h2>
+      <div class="prose">
+        <p>Playable right now at
+        <a class="lnk" href="https://fracture.georgelarson.me">fracture.georgelarson.me</a>, with
+        3,161 passing tests behind it. A fourteen-year-old demo that runs as a live game today, and a
+        codebase you can keep building on.</p>
       </div>
+      <p class="sources">
+        <a href="https://fracture.georgelarson.me">play it</a> ·
+        <a href="https://github.com/georgeglarson/Fracture">source</a>
+      </p>
     </section>
 
-    <hr />
+  </article>
+</main>
 
-    <!-- ================================================================ -->
-    <!-- OTHER AI WORK                                                     -->
-    <!-- ================================================================ -->
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span><span style="color:var(--accent)">$</span> george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a></span>
+</footer>
 
-    <section class="section-space">
-      <h2>fracture isn't an isolated experiment</h2>
-      <p class="hint">A pattern of AI-related projects, not a one-off.</p>
-
-      <div class="panel other-ai">
-        <ul class="plain-list">
-          <li><strong>venice-dev-tools</strong> &mdash; SDK for Venice AI API</li>
-          <li><strong>deep-research-privacy</strong> &mdash; privacy-first AI research combining Venice AI with Brave private search</li>
-          <li><strong>ai lens</strong> <a href="/resume.html#lens-tools">(on this site)</a> &mdash; resume page that uses AI to reframe experience for different audiences</li>
-          <li><strong><a href="https://codetest.georgelarson.me" target="_blank" rel="noopener">codetest</a></strong> &mdash; 968 tests across Rust, Zig, Go, Perl, Python, and TypeScript/React, each exercise matched to the language that fits the problem (<a href="https://github.com/georgeglarson/codetest" target="_blank" rel="noopener">source</a>)</li>
-          <li><strong>emergent, venicecrush</strong> &mdash; terminal-based autonomous coding agents</li>
-          <li><strong>Venice AI ecosystem work</strong> &mdash; SDKs and research tools across TypeScript, PHP, and Rust</li>
-        </ul>
-      </div>
-    </section>
-
-    <footer>
-      <hr />
-      <span>return to <a href="/index.html">home</a> / <a href="/resume.html">resume</a> / <a href="/schedule.html">schedule time</a> / <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a> / <a href="https://github.com/georgeglarson" target="_blank" rel="noopener">github</a></span>
-    </footer>
-
-  </main>
 </body>
 </html>

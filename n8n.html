@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The n8n stuck-channel hunt · George Larson</title>
+<meta name="description" content="A silent n8n task-runner failure that passed every health check. The fix drops detection from hours to about six seconds. Submitted upstream as PR #29516.">
+
+<link rel="icon" href="/favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="The n8n stuck-channel hunt · George Larson">
+<meta property="og:description" content="A silent n8n task-runner failure that passed every health check. The fix drops detection from hours to about six seconds.">
+<meta property="og:url" content="https://georgelarson.me/n8n">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The n8n stuck-channel hunt · George Larson">
+<meta name="twitter:description" content="A silent n8n task-runner failure that passed every health check. The fix drops detection from hours to about six seconds.">
+
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+<header class="shell site-head">
+  <a class="wordmark" href="/"><span class="caret">$</span> george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/#contact">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/#work"><span class="caret">←</span> work</a></p>
+
+    <p class="kicker reveal">Case study · n8n</p>
+    <h1 class="title reveal">The n8n stuck-channel hunt</h1>
+
+    <section class="block reveal">
+      <h2 class="label">The problem</h2>
+      <div class="prose">
+        <p>n8n's external task-runner mode had a failure nobody could see. The broker and the runner
+        kept a healthy WebSocket (<code>/healthz</code> returned 200, ping/pong passed) while the
+        application-level message channel was dead. Every task request timed out at 60 seconds,
+        forever. The issue (<a class="lnk" href="https://github.com/n8n-io/n8n/issues/29372">#29372</a>)
+        documented stuck windows of ten to thirty-seven hours. Every monitor said the system was
+        fine. It wasn't.</p>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">The framing</h2>
+      <div class="prose">
+        <p>The broker already knew. It threw a <code>TaskRunnerAcceptTimeoutError</code> every time a
+        runner failed to acknowledge a task, then logged it and dropped it on the floor. No
+        per-runner failure tracking, no line connecting "this runner stopped answering" to the
+        recovery machinery that already existed. The signal was there. Nothing listened to the
+        pattern.</p>
+        <p>The right fix wasn't a new monitoring system; it was teaching the broker to hear what it
+        was already saying. Same shape the maintainers had accepted before, in
+        <a class="lnk" href="https://github.com/n8n-io/n8n/pull/25959">#25959</a>: surface real
+        health on existing signals, don't bolt on a parallel watcher.</p>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">The fix</h2>
+      <div class="prose">
+        <p>Count consecutive accept-timeouts per runner. After three in a row (about six seconds at
+        the default two-second accept timeout), emit a <code>runner:unresponsive</code> event with
+        the offending runner's id. The WebSocket server disconnects that one runner through the
+        existing <code>removeConnection()</code> path, and the launcher restarts it the same way it
+        does after any connection loss. Attribution is per-runner, so in a multi-runner deployment
+        only the stuck one drops; healthy peers are untouched. Six new unit tests cover the
+        threshold, the per-runner isolation, and clean unsubscribe on stop.</p>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">The outcome</h2>
+      <div class="prose">
+        <p>Detection of that failure mode drops from hours to about six seconds. Submitted to n8n as
+        <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">PR #29516</a>, in review. The
+        diagnosis is grounded in the code path line by line; the manual repro needs a sustained cloud
+        deployment, which is named as a boundary in the PR rather than glossed over. The scope is
+        honest about what it doesn't catch: a runner that goes quiet without ever accepting an offer
+        never trips the counter, flagged as a follow-up, not hidden.</p>
+      </div>
+      <p class="sources">
+        <a href="https://github.com/n8n-io/n8n/pull/29516">PR #29516</a> ·
+        <a href="https://github.com/n8n-io/n8n/issues/29372">issue #29372</a>
+      </p>
+    </section>
+
+  </article>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span><span style="color:var(--accent)">$</span> george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a></span>
+</footer>
+
+</body>
+</html>
