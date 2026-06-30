@@ -1,0 +1,24 @@
+css/site.css
+  s_ec4fbb90ecd564::t_f0cd8e503ae3bb 42
+  s_ec4fbb90ecd564::t_aaf48a3a356b92 161,165,167
+network-tools.html
+  s_ec4fbb90ecd564::t_67bd2e05e846ee 43,54,67,92,108
+  s_ec4fbb90ecd564::t_e2f11407d239d3 9-21
+  s_ec4fbb90ecd564::t_cbae7757e40b6b 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "9d29d591a9112c58b2b77da1a4b05b7c7deb1be3",
+  "prompts": {},
+  "sessions": {
+    "s_ec4fbb90ecd564": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "945e315a-9c05-45d8-8583-7859b9cdc6f0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
