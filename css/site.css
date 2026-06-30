@@ -307,13 +307,12 @@ main > section { margin-block: 2.6rem; }
   line-height: 1.4;
   margin: 1.9rem 0;
 }
-/* line-grouped thought clusters — a single thought per line, set off by a
-   thin accent rule. Preserves the writing's grouping without chrome. */
+/* line-grouped thought clusters — a single thought per line. Flush-left like
+   the rest of the prose; the line grouping itself is the only distinction.
+   No border/indent — these are assertions, not quotations. */
 .cluster {
-  border-left: 1px solid var(--accent-lo);
-  padding-left: 1.15rem;
   color: var(--ink);
-  margin: 2rem 0;
+  margin: 1.7rem 0;
 }
 .wins { list-style: none; margin: 1rem 0 0; padding: 0; }
 .wins li {
