@@ -1,0 +1,29 @@
+css/site.css
+  s_ec4fbb90ecd564::t_b884a568c6488b 266-301
+  s_ec4fbb90ecd564::t_6912bac2db8261 302-332
+  s_ec4fbb90ecd564::t_350da65eb67d93 161-162,164,177,183
+fracture.html
+  s_ec4fbb90ecd564::t_ca8f9957787798 4-21,25-48,52-58,62-68,72-78,80-83,86-87,89-93
+index.html
+  s_ec4fbb90ecd564::t_4021ce26873777 4-21,25-76,78,80-89,91,93-97
+who-is-george.html
+  s_ec4fbb90ecd564::t_f0389206a47efc 1-104
+n8n.html
+  s_ec4fbb90ecd564::t_fe9b068d6fb9ce 1-108
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "cdca8cb7783fa4fd974c1c2132fc9fd51fddef89",
+  "prompts": {},
+  "sessions": {
+    "s_ec4fbb90ecd564": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "945e315a-9c05-45d8-8583-7859b9cdc6f0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
