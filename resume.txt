@@ -5,7 +5,7 @@ Location: Pittsburgh, PA
 
 SUMMARY
 _Updated 2026-06_
-Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now landing surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
+Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now shipping surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
 
 RECOGNITION
 - Top 1% of TypeScript engineers globally (Algora, 1,200+ contributions over the past year).
@@ -18,8 +18,8 @@ KEY METRICS (FM Expressions, at separation April 2026)
 - Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding alert channels.
 
 CURRENT FOCUS
-- Independent AI-systems R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across thirteen authenticated providers routed for cost, latency, and capability.
-- Shipping surgical bug fixes upstream as public-record evidence of the operational style: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and the IronClaw agent platform.
+- Independent AI-systems R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across twelve authenticated providers routed for cost, latency, and capability.
+- Shipping surgical bug fixes upstream as public-record evidence of the operational style: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and nearai/ironclaw.
 - Building in the Venice AI SDK ecosystem (TypeScript SDK, PHP SDK, deep-research-privacy at 36★) with continued systems work in Rust, Go, and Zig (netgrep, termshark, wiregraph, rust-connect).
 - Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
 
@@ -46,13 +46,23 @@ Data Engineering and Automation
 
 OPEN SOURCE PROJECTS
 
-Recent Upstream Contributions (April-May 2026)
-- mitmproxy/mitmproxy #8199 (+23/-0): Flow.kill() resume-event fix so proxy teardown closes the client connection (PR open).
-- mitmproxy/mitmproxy #8200: KillInjected event so Flow.kill() actually disconnects in-transit flows (PR open).
-- n8n-io/n8n #29516 (+288/-2 across 6 files, 48 jest tests passing): per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s. Maintainer-accepted into Linear (PR open).
-- charmbracelet/crush #2749 (+50) and #2750 (+180): LSP score-based client selection and SingleFileSupport handling so single-file servers start without root markers (PRs open, both labeled area: lsp).
-- Comfy-Org/ComfyUI_frontend #11682 (graph-traversal cycle guards) and #11686 (keybindings respecting Reka DismissableLayer): both checks-passing, standing.
-- nearai/ironclaw #2390: vision-detail default fix for OpenAI-compatible providers across the agent platform.
+Recent Upstream Contributions
+Merged
+- OpenHands/agent-canvas #1434: example acp-docker config inherits the agent-server image from config/defaults.json instead of pinning a version below the Canvas compatibility floor. Merged June 2026.
+- anomalyco/opencode #4748: documented the Venice.ai provider for the opencode coding agent. Merged Nov 2025.
+- anomalyco/models.dev #475: added Claude Opus 4.5 to the Venice provider catalog. Merged Dec 2025.
+- mvanhorn/last30days-skill #564: pass(1) credential source, a Linux/Unix analog of the macOS Keychain integration. Merged June 2026.
+
+In review
+- mitmproxy/mitmproxy #8199 (+23/-0): Flow.kill() resume-event fix so proxy teardown closes the client connection.
+- mitmproxy/mitmproxy #8200: KillInjected event so Flow.kill() actually disconnects in-transit flows.
+- n8n-io/n8n #29516 (+288/-2 across 6 files, 48 jest tests passing): per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s. Maintainer-accepted into Linear.
+- charmbracelet/crush #2749 (+50) and #2750 (+180): LSP score-based client selection and SingleFileSupport handling so single-file servers start without root markers, both labeled area: lsp.
+- Comfy-Org/ComfyUI_frontend #11686: keybindings respecting Reka DismissableLayer for Escape.
+
+Submitted (not merged)
+- Comfy-Org/ComfyUI_frontend #11682: graph-traversal cycle guards and minimap callback chain-wrap survival.
+- nearai/ironclaw #2390: vision-detail default fix for OpenAI-compatible providers.
 
 Venice AI SDKs (2025 to Present)
 - deep-research-privacy (36 stars, TypeScript): privacy-first AI research tool with an iterative search-and-synthesis pipeline, plus published TypeScript and PHP SDKs (venice-dev-tools, venice-ai-php) for the Venice API.
@@ -67,7 +77,7 @@ Fracture (2 stars, TypeScript), Modernization Case Study (2026)
 
 nullclaw + ironclaw, Agent Mesh (Zig + Rust, 2026)
 - nullclaw: public-facing AI concierge ("Nully") on a hardened perimeter box. Tiered inference (Haiku for conversational triage, Sonnet for code analysis). Ran a full self-hosted comms stack (Ergo IRC, gamja web client, Cloudflare-proxied WebSocket, Let's Encrypt TLS) before transitioning to a static-site origin.
-- ironclaw: private personal agent on a separate system with distinct security boundaries. Agent-to-agent routing between the two.
+- ironclaw: private personal agent on a separate system with distinct security boundaries; agent-to-agent routing ran between the two until the daemon stack was retired June 2026.
 - Extended into a multi-node Agent Zero mesh with A2A routing, dedicated chat and utility models, and per-node project isolation.
 
 netgrep (Rust), Creator and Maintainer (2026 to Present)
@@ -145,7 +155,7 @@ Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
-AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing across 13 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Venice, Airouter, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks. Operational fluency across ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack.
+AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing across 12 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Airouter, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks. Operational fluency across ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack.
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, prepress production (Esko, Prinergy, RIP workflows), IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
