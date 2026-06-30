@@ -46,13 +46,23 @@ Data Engineering and Automation
 
 OPEN SOURCE PROJECTS
 
-Recent Upstream Contributions (April-May 2026)
-- mitmproxy/mitmproxy #8199 (+23/-0): Flow.kill() resume-event fix so proxy teardown closes the client connection (PR open).
-- mitmproxy/mitmproxy #8200: KillInjected event so Flow.kill() actually disconnects in-transit flows (PR open).
-- n8n-io/n8n #29516 (+288/-2 across 6 files, 48 jest tests passing): per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s. Maintainer-accepted into Linear (PR open).
-- charmbracelet/crush #2749 (+50) and #2750 (+180): LSP score-based client selection and SingleFileSupport handling so single-file servers start without root markers (PRs open, both labeled area: lsp).
-- Comfy-Org/ComfyUI_frontend #11682 (graph-traversal cycle guards) and #11686 (keybindings respecting Reka DismissableLayer): both checks-passing, standing.
-- nearai/ironclaw #2390: vision-detail default fix for OpenAI-compatible providers across the agent platform.
+Recent Upstream Contributions
+Merged
+- OpenHands/agent-canvas #1434: example acp-docker config inherits the agent-server image from config/defaults.json instead of pinning a version below the Canvas compatibility floor. Merged June 2026.
+- anomalyco/opencode #4748: documented the Venice.ai provider for the opencode coding agent. Merged Nov 2025.
+- anomalyco/models.dev #475: added Claude Opus 4.5 to the Venice provider catalog. Merged Dec 2025.
+- mvanhorn/last30days-skill #564: pass(1) credential source, a Linux/Unix analog of the macOS Keychain integration. Merged June 2026.
+
+In review
+- mitmproxy/mitmproxy #8199 (+23/-0): Flow.kill() resume-event fix so proxy teardown closes the client connection.
+- mitmproxy/mitmproxy #8200: KillInjected event so Flow.kill() actually disconnects in-transit flows.
+- n8n-io/n8n #29516 (+288/-2 across 6 files, 48 jest tests passing): per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s. Maintainer-accepted into Linear.
+- charmbracelet/crush #2749 (+50) and #2750 (+180): LSP score-based client selection and SingleFileSupport handling so single-file servers start without root markers, both labeled area: lsp.
+- Comfy-Org/ComfyUI_frontend #11686: keybindings respecting Reka DismissableLayer for Escape.
+
+Submitted (not merged)
+- Comfy-Org/ComfyUI_frontend #11682: graph-traversal cycle guards and minimap callback chain-wrap survival.
+- nearai/ironclaw #2390: vision-detail default fix for OpenAI-compatible providers.
 
 Venice AI SDKs (2025 to Present)
 - deep-research-privacy (36 stars, TypeScript): privacy-first AI research tool with an iterative search-and-synthesis pipeline, plus published TypeScript and PHP SDKs (venice-dev-tools, venice-ai-php) for the Venice API.
