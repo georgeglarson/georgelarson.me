@@ -300,6 +300,8 @@ main > section { margin-block: 2.6rem; }
 .receipts .r-gloss { display: block; color: var(--ink-soft); margin-top: .4rem; }
 .mono-link { font-family: var(--font-mono); font-size: .85rem; letter-spacing: .01em; }
 .more-link { margin-top: 1.5rem; }
+/* a secondary receipts label within a section (deep receipts, then breadth) */
+.label--sub { margin-top: 2.4rem; }
 
 /* ---- who-is-george / voice page ---- */
 .voice p { margin: 0 0 1.15rem; }
@@ -316,6 +318,126 @@ main > section { margin-block: 2.6rem; }
   color: var(--ink);
   margin: 1.7rem 0;
 }
+
+/* ---- generated long-form article (writing/) ----
+   The blog pipeline (scripts/publish.sh) renders story.md into bare
+   <section>/<h2>/<p> markup wrapped in .article-body. Serif headings for
+   long-form reading, mono h3 + accents for the engineer fingerprint. */
+.article-body { margin-top: 1.5rem; }
+.article-body section { margin-block: 1.9rem; }
+.article-body h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.24rem, 1.08rem + 0.7vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.95rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--accent-lo);
+}
+.article-body section:first-of-type h2 { padding-top: 0; border-top: 0; }
+.article-body h3 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  margin: 1.6rem 0 0.7rem;
+}
+.article-body p { margin: 0 0 1.1rem; }
+.article-body :is(p, li, td) a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-lo);
+  transition: border-color .18s ease;
+}
+.article-body :is(p, li, td) a:hover { border-color: var(--accent); }
+.article-body ul, .article-body ol { margin: 0 0 1.2rem; padding-left: 1.3rem; }
+.article-body li { margin: 0 0 0.5rem; }
+.article-body li::marker { color: var(--accent); }
+.article-body .code-block {
+  margin: 0 0 1.3rem;
+  background: var(--bg-inset);
+  border: 1px solid var(--accent-lo);
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.article-body .code-block pre { margin: 0; padding: 0.95rem 1.1rem; }
+.article-body .code-block code {
+  background: none;
+  padding: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.article-body .screenshot { margin: 1.5rem 0; }
+.article-body .screenshot img {
+  display: block;
+  border: 1px solid var(--accent-lo);
+  border-radius: 4px;
+}
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.4rem;
+  font-size: 0.92em;
+}
+.article-body th, .article-body td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--accent-lo);
+  vertical-align: top;
+}
+.article-body th {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+.article-body hr {
+  border: 0;
+  border-top: 1px solid var(--accent-lo);
+  margin: 2rem 0;
+}
+
+/* ---- writing index ---- */
+.writing-list { list-style: none; margin: 1.4rem 0 0; padding: 0; }
+.writing-list li { border-top: 1px solid var(--accent-lo); }
+.writing-list li:last-child { border-bottom: 1px solid var(--accent-lo); }
+.writing-list a {
+  display: block;
+  padding: 1.1rem 0;
+  text-decoration: none;
+  color: var(--ink);
+  transition: padding-left .2s ease;
+}
+.writing-list a:hover, .writing-list a:focus-visible { padding-left: .55rem; }
+.writing-list .w-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.writing-list .w-title {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: .94rem;
+  color: var(--ink);
+  transition: color .18s ease;
+}
+.writing-list a:hover .w-title { color: var(--accent); }
+.writing-list .w-date {
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  color: var(--ink-faint);
+  letter-spacing: .02em;
+  flex: none;
+}
+.writing-list .w-gloss { display: block; color: var(--ink-soft); margin-top: .4rem; }
+
 /* ---- footer ---- */
 .site-foot {
   font-family: var(--font-mono);

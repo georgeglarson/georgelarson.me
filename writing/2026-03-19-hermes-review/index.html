@@ -1,60 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hermes Agent: Honest Review - george larson</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="I paid $10 to test NousResearch's Hermes Agent. The multi-platform gateway is real engineering. The model is a Llama fine-tune. Software engineers can skip." />
-  <meta property="og:title" content="hermes agent: honest review" />
-  <meta property="og:description" content="I paid $10 to test Hermes Agent. Here's what I found under the bonnet." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://georgelarson.me/writing/2026-03-19-hermes-review/" />
-  <style>
-    .verdict {
-      padding: 2rem 1.75rem; margin: 2rem 0; border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.3); background: rgba(5, 12, 18, 0.75);
-    }
-    .verdict h3 { margin: 0 0 0.75rem 0; }
-    .verdict p { margin: 0.4rem 0; color: var(--fg-muted); }
-    .breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
-    .breakdown-card {
-      padding: 1.5rem 1.25rem; border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.22); background: rgba(5, 12, 18, 0.75);
-    }
-    .breakdown-card h3 { margin: 0 0 0.5rem 0; font-size: 0.95rem; }
-    .breakdown-card p { margin: 0; color: var(--fg-muted); font-size: 0.92rem; line-height: 1.5; }
-    .breakdown-card.real { border-color: rgba(22, 245, 166, 0.35); }
-    .breakdown-card.real h3 { color: var(--accent); }
-    .breakdown-card.wrapper { border-color: rgba(255, 200, 100, 0.25); }
-    .breakdown-card.wrapper h3 { color: rgba(255, 200, 100, 0.85); }
-    .code-block {
-      background: rgba(5, 12, 18, 0.9); border: 1px solid rgba(22, 245, 166, 0.15);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.25rem 0;
-      font-size: 0.88rem; line-height: 1.7; overflow-x: auto; color: var(--fg-muted);
-    }
-    .code-block .cmd { color: var(--accent); }
-    .code-block .comment { color: rgba(146, 203, 180, 0.5); }
-    .stack-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-    .stack-tag {
-      padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.82rem;
-      background: rgba(22, 245, 166, 0.1); border: 1px solid rgba(22, 245, 166, 0.2); color: var(--accent);
-    }
-    .screenshot { margin: 2rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-    .screenshot img { width: 100%; display: block; }
-    @media (max-width: 720px) {
-      .breakdown { grid-template-columns: 1fr; }
-    }
-</style></head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hermes Agent: Honest Review · George Larson</title>
+<meta name="description" content="I paid $10 to test NousResearch's Hermes Agent. The multi-platform gateway is real engineering. The model is a Llama fine-tune. Software engineers can skip." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="hermes agent: honest review" />
+<meta property="og:description" content="I paid $10 to test Hermes Agent. Here's what I found under the bonnet." />
+<meta property="og:url" content="https://georgelarson.me/writing/2026-03-19-hermes-review/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="hermes agent: honest review" />
+<meta name="twitter:description" content="I paid $10 to test Hermes Agent. Here's what I found under the bonnet." />
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/site.css" />
+</head>
 <body>
-  <main class="page page-wide">
-    <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
-    <header>
-      <h1>Hermes Agent: Honest Review<span class="caret" aria-hidden="true"></span></h1>
-      <p class="lead">I paid $10 to test NousResearch's Hermes Agent. The marketing is excellent. The engineering is real. The value proposition depends entirely on who you are.</p>
-    </header>
 
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/writing"><span class="caret">←</span> writing</a></p>
+
+    <p class="kicker reveal">Writing · 2026-03-19</p>
+    <h1 class="title reveal">Hermes Agent: Honest Review</h1>
+    <p class="dek reveal">I paid $10 to test NousResearch's Hermes Agent. The marketing is excellent. The engineering is real. The value proposition depends entirely on who you are.</p>
+
+    <div class="article-body reveal">
     <p>Hermes Agent. An agent that grows with you.</p>
     <p>I paid $10 to find out what's actually under the bonnet.</p>
     <section>
@@ -113,10 +97,16 @@
     <p>The "grows with you" and "gets more capable" framing is a stretch for what amounts to structured note-taking, but the underlying implementation is solid. The naming conventions are the same ones the whole industry uses.</p>
     <p>If your use case is "AI agent accessible on messaging platforms," Hermes is the best option I've found. If you primarily work in a terminal, the coding tools will feel familiar, but the gateway alone may be worth exploring.</p>
     </section>
-    <footer>
-      <hr />
-      <span>&copy; george larson</span>
-    </footer>
-  </main>
+    </div>
+
+  </article>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a></span>
+</footer>
+
 </body>
 </html>

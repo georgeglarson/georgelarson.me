@@ -203,30 +203,3 @@ Nully decides what gets escalated and what doesn't.
 ## postscript
 
 This system ran from March to June 2026. The self-hosted IRC stack (Ergo plus the gamja web client) and the Nully agent have since been decommissioned; the host that carried them now serves as a static-site origin. The screenshots above are how it looked while live.
-
-<style>
-    .screenshot { margin: 1.5rem 0; }
-    .screenshot img { max-width: 100%; height: auto; border-radius: var(--radius); border: 1px solid rgba(22, 245, 166, 0.15); }
-    .arch-diagram {
-      background: rgba(5, 12, 18, 0.9); border: 1px solid rgba(22, 245, 166, 0.15);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.25rem 0;
-      font-size: 0.88rem; line-height: 1.7; overflow-x: auto; color: var(--fg-muted);
-      font-family: var(--mono);
-    }
-    .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0; }
-    .decision-card {
-      padding: 1.5rem 1.25rem; border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.22); background: rgba(5, 12, 18, 0.75);
-    }
-    .decision-card h3 { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: var(--accent); }
-    .decision-card p { margin: 0; color: var(--fg-muted); font-size: 0.92rem; line-height: 1.5; }
-    .config-block {
-      background: rgba(5, 12, 18, 0.9); border: 1px solid rgba(22, 245, 166, 0.15);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.25rem 0;
-      font-size: 0.85rem; line-height: 1.6; overflow-x: auto; color: var(--fg-muted);
-      font-family: var(--mono);
-    }
-    @media (max-width: 720px) {
-      .decision-grid { grid-template-columns: 1fr; }
-    }
-</style>

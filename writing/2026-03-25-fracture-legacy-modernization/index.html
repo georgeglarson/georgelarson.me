@@ -1,83 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>I Took a 2012 Mozilla Demo and Turned It Into a Production MMO With AI - george larson</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="How a legacy modernization veteran used Claude as a development partner to transform BrowserQuest into Fracture, a real-time multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests." />
-  <meta property="og:title" content="fracture: legacy modernization with AI" />
-  <meta property="og:description" content="BrowserQuest (2012) to production MMO. 3,161 tests, OpenTelemetry, AI-powered NPCs. One engineer." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://georgelarson.me/writing/2026-03-25-fracture-legacy-modernization/" />
-  <style>
-    .project-hero {
-      padding: 2.75rem 2rem; margin-bottom: 2.5rem; border-radius: var(--radius);
-      border: 1px solid var(--border); background: rgba(8, 18, 28, 0.75);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-    }
-    .project-hero .lead { margin-bottom: 1.5rem; max-width: 60ch; }
-    .project-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
-    .section-label {
-      text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.22em;
-      color: var(--accent-dark); margin: 0 0 0.85rem 0; display: block;
-    }
-    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
-    .comparison-col {
-      padding: 1.5rem 1.25rem; border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.22); background: rgba(5, 12, 18, 0.75);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
-    }
-    .comparison-col h3 { margin: 0 0 1rem 0; font-size: 0.95rem; }
-    .comparison-col.col-before { border-color: rgba(255, 100, 100, 0.2); }
-    .comparison-col.col-before h3 { color: rgba(255, 140, 140, 0.85); }
-    .comparison-col.col-after { border-color: rgba(22, 245, 166, 0.35); }
-    .comparison-col.col-after h3 { color: var(--accent); }
-    .comparison-col ul { list-style: none; padding: 0; margin: 0; }
-    .comparison-col li { padding: 0.3rem 0; color: var(--fg-muted); font-size: 0.92rem; line-height: 1.5; }
-    .comparison-col li::before { margin-right: 0.5rem; font-size: 0.8rem; }
-    .col-before li::before { content: "\2212"; color: rgba(255, 140, 140, 0.6); }
-    .col-after li::before { content: "+"; color: var(--accent-dark); }
-    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
-    .feature-card {
-      padding: 1.5rem 1.25rem; border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.22); background: rgba(5, 12, 18, 0.75);
-    }
-    .feature-card h3 { margin: 0 0 0.5rem 0; font-size: 0.95rem; }
-    .feature-card p { margin: 0; color: var(--fg-muted); font-size: 0.92rem; line-height: 1.5; }
-    .stack-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-    .stack-tag {
-      padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.82rem;
-      background: rgba(22, 245, 166, 0.1); border: 1px solid rgba(22, 245, 166, 0.2); color: var(--accent);
-    }
-    .code-block {
-      background: rgba(5, 12, 18, 0.9); border: 1px solid rgba(22, 245, 166, 0.15);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.25rem 0;
-      font-size: 0.88rem; line-height: 1.7; overflow-x: auto; color: var(--fg-muted);
-    }
-    .code-block .cmd { color: var(--accent); }
-    .code-block .comment { color: rgba(146, 203, 180, 0.5); }
-    .screenshot { margin: 2rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-    .screenshot img { width: 100%; display: block; }
-    .module-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.92rem; }
-    .module-table th, .module-table td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(22, 245, 166, 0.1); }
-    .module-table th { color: var(--accent-dark); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; }
-    .module-table td { color: var(--fg-muted); }
-    .module-table code { color: var(--accent); }
-    @media (max-width: 720px) {
-      .project-hero { padding: 2.2rem 1.5rem; }
-      .comparison, .features { grid-template-columns: 1fr; }
-    }
-</style></head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I Took a 2012 Mozilla Demo and Turned It Into a Production MMO With AI · George Larson</title>
+<meta name="description" content="How a legacy modernization veteran used Claude as a development partner to transform BrowserQuest into Fracture, a real-time multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="fracture: legacy modernization with AI" />
+<meta property="og:description" content="BrowserQuest (2012) to production MMO. 3,161 tests, OpenTelemetry, AI-powered NPCs. One engineer." />
+<meta property="og:url" content="https://georgelarson.me/writing/2026-03-25-fracture-legacy-modernization/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="fracture: legacy modernization with AI" />
+<meta name="twitter:description" content="BrowserQuest (2012) to production MMO. 3,161 tests, OpenTelemetry, AI-powered NPCs. One engineer." />
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/site.css" />
+</head>
 <body>
-  <main class="page page-wide">
-    <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
-    <header>
-      <h1>I Took a 2012 Mozilla Demo and Turned It Into a Production MMO With AI<span class="caret" aria-hidden="true"></span></h1>
-      <p class="lead">I took Mozilla's abandoned 2012 BrowserQuest and turned it into a production multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests.</p>
-    </header>
 
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/writing"><span class="caret">←</span> writing</a></p>
+
+    <p class="kicker reveal">Writing · 2026-03-25</p>
+    <h1 class="title reveal">I Took a 2012 Mozilla Demo and Turned It Into a Production MMO With AI</h1>
+    <p class="dek reveal">I took Mozilla's abandoned 2012 BrowserQuest and turned it into a production multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests.</p>
+
+    <div class="article-body reveal">
     <p>In 2012, Mozilla and Little Workshop released <a href="https://github.com/mozilla/BrowserQuest" target="_blank" rel="noopener">BrowserQuest</a>, an HTML5 multiplayer demo that proved browsers could handle real-time games. It was a tech demo. No types. No tests. No persistence beyond <code>localStorage</code>. No separation of concerns. One massive <code>Player</code> class doing everything from combat to inventory to chat.</p>
     <p>It served its purpose and was abandoned.</p>
     <p>I picked it up and asked a simple question: <strong>what would it take to turn this into something you'd actually ship?</strong></p>
@@ -205,10 +166,16 @@ const span = tracer.startSpan('ai.venice');</code></pre></div>
     <p>The game runs 24/7 on a real server with real observability. Walk around, fight mobs, read their thoughts, talk to NPCs. Everything you see (the combat, the AI dialogue, the persistence, the spatial partitioning) is the result of applying boring enterprise modernization patterns to a fun problem.</p>
     <p>That's the whole point. The strategies transfer. The methodology scales. AI just makes it possible to do it alone.</p>
     </section>
-    <footer>
-      <hr />
-      <span>&copy; george larson</span>
-    </footer>
-  </main>
+    </div>
+
+  </article>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a></span>
+</footer>
+
 </body>
 </html>

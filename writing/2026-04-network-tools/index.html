@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Network Tools Trilogy · George Larson</title>
+<meta name="description" content="Three tools for understanding network traffic, built in Rust and Go. netgrep, termshark, and wiregraph." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Network Tools Trilogy" />
+<meta property="og:description" content="netgrep, termshark, wiregraph. Three tools for understanding network traffic." />
+<meta property="og:url" content="https://georgelarson.me/writing/2026-04-network-tools/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Network Tools Trilogy" />
+<meta name="twitter:description" content="netgrep, termshark, wiregraph. Three tools for understanding network traffic." />
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/writing"><span class="caret">←</span> writing</a></p>
+
+    <p class="kicker reveal">Writing · 2026-04-01</p>
+    <h1 class="title reveal">Network Tools Trilogy</h1>
+    <p class="dek reveal">25 years of network debugging. The tooling still has gaps. So I built what I wanted.</p>
+
+    <div class="article-body reveal">
+    <section>
+    <h2>Three tools for understanding network traffic</h2>
+    <h3>netgrep</h3>
+    <p>Modern packet analyzer in Rust. TCP stream reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, interactive TUI.</p>
+    <p>The tool I always wanted when I was SSHed into a production box trying to figure out why traffic wasn't flowing.</p>
+    <h3>termshark</h3>
+    <p>Forked the terminal Wireshark UI. Refactored the architecture, expanded test coverage, ran a security audit, added an experimental browser-based interface. Go.</p>
+    <h3>wiregraph</h3>
+    <p>Real-time network traffic visualization. Top talkers, connection matrix, protocol breakdown, activity timeline. Color-coded by protocol. Load a pcap or point it at a live interface and watch traffic patterns emerge.</p>
+    <p>One Rust binary with an embedded web dashboard.</p>
+    <p>wiregraph's backend reuses netgrep's packet parsing modules. One binary, no dependencies beyond libpcap. Everything connects.</p>
+    <h3>One problem domain</h3>
+    <p>Three tools. Two languages. Each one built because the previous one wasn't enough. All open source.</p>
+    <p>netgrep: https://github.com/georgeglarson/netgrep termshark: https://github.com/georgeglarson/termshark wiregraph: https://github.com/georgeglarson/wiregraph</p>
+    <p>Full case study: https://georgelarson.me/network-tools.html</p>
+    </section>
+    </div>
+
+  </article>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a></span>
+</footer>
+
+</body>
+</html>
