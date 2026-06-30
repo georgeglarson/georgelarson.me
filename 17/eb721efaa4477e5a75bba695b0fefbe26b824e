@@ -1,0 +1,27 @@
+writing/2026-03-31-codetest/index.html
+  s_143a3f307af23c::t_1e4673224cd717 64
+writing/2026-03-23-nullclaw-doorman/index.html
+  s_143a3f307af23c::t_99873c779e7553 198-199
+writing/2026-03-31-codetest/story.md
+  s_143a3f307af23c::t_1e4673224cd717 92
+resume.html
+  s_143a3f307af23c::t_51c73356dd7e85 33,37
+writing/2026-03-31-codetest/devto.md
+  s_143a3f307af23c::t_1e4673224cd717 60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "17eb721efaa4477e5a75bba695b0fefbe26b824e",
+  "prompts": {},
+  "sessions": {
+    "s_143a3f307af23c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "862bcd53-2798-4fdd-ade8-4821de615880",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
