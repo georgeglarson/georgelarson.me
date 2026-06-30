@@ -57,7 +57,7 @@ The solution models the keyboard layout as a list and an index. The model wrote 
 
 107 tests.
 
-The [Gilded Rose](https://github.com/emilybache/GildedRose) kata is a classic refactoring exercise. You get a messy conditional and need to turn it into something extensible. I chose go because business rules and polymorphism via interfaces is what go does best.
+The [Gilded Rose](https://github.com/emilybache/GildedRose-Refactoring-Kata) kata is a classic refactoring exercise. You get a messy conditional and need to turn it into something extensible. I chose go because business rules and polymorphism via interfaces is what go does best.
 
 I told the model to use the registry pattern: each item category implements a single `Updater` interface with one method. Adding a new item type means creating one file with one struct and one method. No inheritance hierarchies. No abstract base classes. Just a contract and implementations.
 
