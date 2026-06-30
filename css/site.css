@@ -110,8 +110,10 @@ img { max-width: 100%; }
   border-bottom: 1px solid transparent;
   transition: color .18s ease, border-color .18s ease;
 }
-.site-nav a:hover,
-.site-nav a[aria-current="page"] { color: var(--accent); border-color: var(--accent-lo); }
+/* hover only — no persistent active highlight, since the nav mixes a page (who)
+   with section/action links (work, contact) that can't show an active state.
+   aria-current stays on the HTML for screen readers; it just isn't styled. */
+.site-nav a:hover { color: var(--accent); border-color: var(--accent-lo); }
 
 /* ---- top hairline ---- */
 .rule {
