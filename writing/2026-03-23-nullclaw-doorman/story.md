@@ -200,11 +200,9 @@ Nully decides what gets escalated and what doesn't.
 - **Agent-to-agent needs both structure and visibility.** Google's A2A protocol handles the contract (structured tasks, state machines, typed artifacts). A private IRC channel over Tailscale handles the audit trail, where I can watch my agents talk, intervene in real time, and scroll back through history. Use both.
 - **Don't duplicate credentials.** The passthrough pattern, nullclaw borrowing ironclaw's gateway for inference, means one API key, one billing relationship, zero credential sprawl. The agent that owns the key pays for the tokens, no matter who asked.
 
-## try it
+## postscript
 
-Visit [georgelarson.me/chat](https://georgelarson.me/chat/) or type `irc` in the terminal on the homepage. Nully is standing by in #lobby.
-
-If you're technical and prefer a real IRC client: `irc.georgelarson.me` port `6697` (TLS), channel `#lobby`.
+This system ran from March to June 2026. The self-hosted IRC stack (Ergo plus the gamja web client) and the Nully agent have since been decommissioned; the host that carried them now serves as a static-site origin. The screenshots above are how it looked while live.
 
 <style>
     .screenshot { margin: 1.5rem 0; }
