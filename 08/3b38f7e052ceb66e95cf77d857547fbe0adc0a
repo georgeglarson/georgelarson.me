@@ -1,0 +1,19 @@
+who-is-george.html
+  s_ec4fbb90ecd564::t_902751f5216d14 73-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "083b38f7e052ceb66e95cf77d857547fbe0adc0a",
+  "prompts": {},
+  "sessions": {
+    "s_ec4fbb90ecd564": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "945e315a-9c05-45d8-8583-7859b9cdc6f0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
