@@ -5,7 +5,7 @@ Location: Pittsburgh, PA
 
 SUMMARY
 _Updated 2026-06_
-Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now landing surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
+Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now shipping surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
 
 RECOGNITION
 - Top 1% of TypeScript engineers globally (Algora, 1,200+ contributions over the past year).
