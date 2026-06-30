@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open-source contributions · George Larson</title>
+<meta name="description" content="Five fixes merged into other people's projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+
+<link rel="icon" href="/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Open-source contributions · George Larson">
+<meta property="og:description" content="Five fixes merged into other people's projects, more in review. Every one survives a click.">
+<meta property="og:url" content="https://georgelarson.me/contributions">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Open-source contributions · George Larson">
+<meta name="twitter:description" content="Five fixes merged into other people's projects, more in review. Every one survives a click.">
+
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/"><span class="caret">←</span> home</a></p>
+
+    <p class="kicker reveal">Open source</p>
+    <h1 class="title reveal">Contributions</h1>
+
+    <section class="block reveal">
+      <h2 class="label">Merged</h2>
+      <ul class="tools">
+        <li>
+          <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1434">#1434</a> <span class="tag">merged Jun 2026</span></div>
+          <p class="desc">The acp-docker example inherits its agent-server image from <code>config/defaults.json</code> instead of pinning a version below the Canvas compatibility floor.</p>
+        </li>
+        <li>
+          <div class="name">last30days-skill <a class="lnk" href="https://github.com/mvanhorn/last30days-skill/pull/564">#564</a> <span class="tag">merged Jun 2026</span></div>
+          <p class="desc">A <code>pass(1)</code> credential source: the Linux analog of the macOS Keychain support, so secrets come from <code>pass</code> instead of a <code>.env</code> file.</p>
+        </li>
+        <li>
+          <div class="name">models.dev <a class="lnk" href="https://github.com/anomalyco/models.dev/pull/475">#475</a> <span class="tag">merged Dec 2025</span></div>
+          <p class="desc">Added the Claude Opus 4.5 entry to the model catalog.</p>
+        </li>
+        <li>
+          <div class="name">opencode <a class="lnk" href="https://github.com/anomalyco/opencode/pull/4748">#4748</a> <span class="tag">merged Nov 2025</span></div>
+          <p class="desc">Documented the Venice.ai provider.</p>
+        </li>
+        <li>
+          <div class="name">largo <a class="lnk" href="https://github.com/WPBuddy/largo/pull/164">#164</a> <span class="tag">merged Mar 2014</span></div>
+          <p class="desc">Updated the LESS syntax in <code>mixins.less</code> for the WordPress theme. The long end of the track record.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">In review</h2>
+      <ul class="tools">
+        <li>
+          <div class="name">n8n <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">#29516</a></div>
+          <p class="desc">A per-runner consecutive-timeout counter that detects and recovers stuck task-runner
+          channels, cutting detection from hours to about six seconds.
+          <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
+        </li>
+        <li>
+          <div class="name">mitmproxy <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8199">#8199</a>, <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8200">#8200</a></div>
+          <p class="desc">A <code>Flow.kill()</code> resume-event fix so teardown closes the client connection, plus a KillInjected event so killing a flow disconnects in-transit connections.</p>
+        </li>
+        <li>
+          <div class="name">charmbracelet / crush <a class="lnk" href="https://github.com/charmbracelet/crush/pull/2749">#2749</a>, <a class="lnk" href="https://github.com/charmbracelet/crush/pull/2750">#2750</a></div>
+          <p class="desc">LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1368">#1368</a>, <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1430">#1430</a></div>
+          <p class="desc">Group workspace folders by parent in the dropdown; surface a "credentials configured" banner on Docker and cloud.</p>
+        </li>
+        <li>
+          <div class="name">ComfyUI_frontend <a class="lnk" href="https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686">#11686</a></div>
+          <p class="desc">Respect the Reka DismissableLayer state for the Escape key in keybindings.</p>
+        </li>
+      </ul>
+    </section>
+
+  </article>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a> · <a href="/resume">resume</a></span>
+</footer>
+
+</body>
+</html>

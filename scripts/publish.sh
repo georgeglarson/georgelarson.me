@@ -449,31 +449,56 @@ cat > "$STORY_DIR/index.html" << HTMLEOF
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${FM_TITLE} - george larson</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="${FM_DESCRIPTION}" />
-  <meta property="og:title" content="${FM_OG_TITLE}" />
-  <meta property="og:description" content="${FM_OG_DESCRIPTION}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="${CANONICAL}" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>${FM_TITLE} · George Larson</title>
+<meta name="description" content="${FM_DESCRIPTION}" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="${FM_OG_TITLE}" />
+<meta property="og:description" content="${FM_OG_DESCRIPTION}" />
+<meta property="og:url" content="${CANONICAL}" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="${FM_OG_TITLE}" />
+<meta name="twitter:description" content="${FM_OG_DESCRIPTION}" />
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/site.css" />
 ${STYLE_IN_HEAD}</head>
 <body>
-  <main class="page page-wide">
-    <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
-    <header>
-      <h1>${FM_TITLE}<span class="caret" aria-hidden="true"></span></h1>
-      <p class="lead">${FM_LEAD}</p>
-    </header>
 
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/writing"><span class="caret">←</span> writing</a></p>
+
+    <p class="kicker reveal">Writing · ${FM_DATE}</p>
+    <h1 class="title reveal">${FM_TITLE}</h1>
+    <p class="dek reveal">${FM_LEAD}</p>
+
+    <div class="article-body reveal">
 ${HTML_BODY}
-    <footer>
-      <hr />
-      <span>&copy; george larson</span>
-    </footer>
-  </main>
+    </div>
+
+  </article>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a> · <a href="/resume">resume</a></span>
+</footer>
+
 </body>
 </html>
 HTMLEOF

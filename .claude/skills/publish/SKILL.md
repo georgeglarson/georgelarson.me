@@ -11,7 +11,7 @@ Generate all publishing variants from a single story.md source file, and update 
 
 1. Verify `story.md` exists in the directory
 2. Run `./scripts/publish.sh <directory>` to generate: `index.html`, `devto.md`, `social-mastodon.md`, `social-linkedin.md`, `social-hn.md`
-3. Update the writing section in `index.html` (homepage) to include the new story card if not already listed — insert in reverse chronological order (newest first)
+3. Add the post to `writing/index.html` (the writing index) as the first `<li>` in `<ul class="writing-list">`, newest first. Refresh the landing's WRITING teaser (the `.writing` section in `index.html`) when a newer post should lead.
 4. Report what was generated
 
 ## When scaffolding a new story
@@ -69,22 +69,19 @@ Social posts are written as fenced blocks inside the markdown:
 - `<!-- social:linkedin -->` ... `<!-- /social:linkedin -->` (~1000-1500 chars)
 - `<!-- social:hn -->` ... `<!-- /social:hn -->` (title + one-liner)
 
-The article body is standard markdown with raw HTML blocks for custom layouts (grids, diagrams, tables). Include a `<style>` block anywhere in the body for page-specific CSS.
+The article body is standard markdown; raw HTML blocks (tables, the odd diagram) pass through. Avoid page-specific `<style>` blocks: the mono-editorial system (`/css/site.css`) styles article bodies through `.article-body`, and per-page styles drift from it (the legacy posts' neon `<style>` blocks were stripped in the 2026-06-30 rebuild).
 
-## Homepage update
+## Index + homepage update
 
-When adding a new story card to `index.html`, use this pattern:
+The article HTML renders through the mono-editorial template in `scripts/publish.sh` (`/css/site.css`, `.article-body` wrapper). Two surfaces list posts:
+
+**`writing/index.html`** — the writing index. Add the new post as the first `<li>`, newest first:
 
 ```html
-<a class="project-card" href="/writing/{slug}/">
-  <h3>{lowercase title}</h3>
-  <p>{teaser — 1-2 sentences}</p>
-  <div class="project-meta">
-    <span class="tag">{category}</span>
-    <span class="project-stat">{month year}</span>
-  </div>
-  <span class="project-link">read</span>
-</a>
+<li><a href="/writing/{slug}/">
+  <span class="w-head"><span class="w-title">{title}</span> <span class="w-date">{Mon YYYY}</span></span>
+  <span class="w-gloss">{one- or two-sentence gloss, aiscrubbed}</span>
+</a></li>
 ```
 
-Insert as the first card in the `<div class="project-grid">` under the writing `<h2>`.
+**`index.html`** (landing) — the `.writing` section is a three-post teaser built from `.receipts` items, with an "All writing →" link to `/writing`. Refresh it when a newer post should lead.
