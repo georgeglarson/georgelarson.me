@@ -1,3 +1,10 @@
 scripts/__pycache__/
 master-profile.yaml
 master-profile.yml
+
+# Internal/working artifacts — not for the public CF Pages deploy (audit 2026-06-30)
+.review/
+resume_notes.md
+publishing-pipeline-plan.md
+test-lens-api.html
+*.code-workspace
