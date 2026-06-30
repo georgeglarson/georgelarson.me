@@ -276,9 +276,13 @@ strong { font-weight: 600; color: var(--ink); }
 .site-foot a { color: var(--ink-soft); text-decoration: none; }
 .site-foot a:hover { color: var(--accent); }
 
-/* ---- page-load reveal (one orchestrated stagger, restrained) ---- */
+/* ---- page-load reveal (one orchestrated stagger, restrained) ----
+   Content is visible by default; the animation only enhances. Base state
+   carries no opacity:0, so if the animation never runs (old engine, capture
+   at t=0, animation disabled), the page still shows. fill-mode: both keeps
+   the from-state during the delay and the to-state after. */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal { opacity: 0; transform: translateY(8px); animation: rise .55s cubic-bezier(.2,.6,.2,1) forwards; }
+  .reveal { animation: rise .55s cubic-bezier(.2,.6,.2,1) both; }
   .reveal:nth-child(1) { animation-delay: .02s; }
   .reveal:nth-child(2) { animation-delay: .08s; }
   .reveal:nth-child(3) { animation-delay: .14s; }
@@ -286,7 +290,10 @@ strong { font-weight: 600; color: var(--ink); }
   .reveal:nth-child(5) { animation-delay: .26s; }
   .reveal:nth-child(6) { animation-delay: .32s; }
   .reveal:nth-child(7) { animation-delay: .38s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+  }
 }
 
 /* ---- focus visibility ---- */
