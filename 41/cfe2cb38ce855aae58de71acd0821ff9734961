@@ -1,0 +1,65 @@
+writing/2026-03-19-hermes-review/index.html
+  s_5cc11ff483dca8::t_5e8961cb1d099a 19
+  s_5cc11ff483dca8::t_395209223d1a41 4-18,22-41,100-110
+index.html
+  s_5cc11ff483dca8::t_580c8cf663f786 75-94,100-119
+  s_5cc11ff483dca8::t_242f21d0df2ac2 30
+  s_5cc11ff483dca8::t_a04d181b3f52dc 120-122
+  s_5cc11ff483dca8::t_56d67277b028cc 123
+writing/2026-03-25-fracture-legacy-modernization/index.html
+  s_5cc11ff483dca8::t_5e8961cb1d099a 19
+  s_5cc11ff483dca8::t_c91e4c5556526c 4-18,22-41,169-179
+contributions.html
+  s_5cc11ff483dca8::t_17d7470755d764 30
+writing/2026-03-23-nullclaw-doorman/index.html
+  s_5cc11ff483dca8::t_5e8961cb1d099a 19
+  s_5cc11ff483dca8::t_a92ed441d48f0c 4-18,22-41,195-205
+network-tools.html
+  s_5cc11ff483dca8::t_17d7470755d764 30
+scripts/publish.sh
+  s_5cc11ff483dca8::t_a3b7ce9f42e8c9 452-466,470-489,491-501
+css/site.css
+  s_5cc11ff483dca8::t_41aa9610ba4b7f 303-304
+  s_5cc11ff483dca8::t_d3e3872f26eca2 321-440
+writing/index.html
+  s_5cc11ff483dca8::t_0e0162d8eed75f 1-91
+fracture.html
+  s_5cc11ff483dca8::t_17d7470755d764 30
+who-is-george.html
+  s_5cc11ff483dca8::t_17d7470755d764 30
+n8n.html
+  s_5cc11ff483dca8::t_17d7470755d764 30
+.claude/skills/publish/SKILL.md
+  s_5cc11ff483dca8::t_2e3aa9f3804be3 72,74,76-78,81-84,87
+  s_5cc11ff483dca8::t_a668de61795c65 14
+writing/2026-03-31-codetest/index.html
+  s_5cc11ff483dca8::t_31500430a94a88 4-18,22-41,114-124
+writing/2026-04-03-25-dollar-ai-lab/index.html
+  s_5cc11ff483dca8::t_adb54f5ba7efc4 4-18,22-41,96-106
+writing/2026-04-network-tools/devto.md
+  s_5cc11ff483dca8::t_168229b0328872 1-42
+writing/2026-04-network-tools/index.html
+  s_5cc11ff483dca8::t_ec290015830b8b 1-70
+writing/2026-04-network-tools/social-hn.md
+  s_5cc11ff483dca8::t_6658e72dedb020 1-4
+writing/2026-04-network-tools/social-linkedin.md
+  s_5cc11ff483dca8::t_81b772f4ab84e8 1-17
+writing/2026-04-network-tools/social-mastodon.md
+  s_5cc11ff483dca8::t_76c8af0b868f86 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "41cfe2cb38ce855aae58de71acd0821ff9734961",
+  "prompts": {},
+  "sessions": {
+    "s_5cc11ff483dca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fd0545ad-8337-42f2-a473-78a1d2a2bcc6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
