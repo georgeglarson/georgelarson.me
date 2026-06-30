@@ -39,7 +39,7 @@
   --bg-inset:  #14171c;   /* code wells, rare raised fills */
   --ink:       #e7e4dd;   /* warm off-white — the prose */
   --ink-soft:  #a8a69d;   /* secondary prose */
-  --ink-faint: #6c6b64;   /* captions, meta */
+  --ink-faint: #8b8a81;   /* captions, meta — WCAG AA on --bg (~5.2:1) */
   --accent:    #7cc4a8;   /* desaturated green — heritage, no neon */
   --accent-lo: rgba(124, 196, 168, 0.16);  /* rules, hairlines */
   --accent-bg: rgba(124, 196, 168, 0.08);  /* code tint */
@@ -158,11 +158,13 @@ h1.title {
   margin: 0 0 0.5rem;
 }
 
-/* section blocks: mono label + serif prose */
+/* section blocks: mono label + serif prose. label is an <h2> for outline/SR. */
 .block { margin-block: 2.4rem; }
 .block > .label {
   font-family: var(--font-mono);
+  font-weight: 400;
   font-size: 0.74rem;
+  line-height: 1.3;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);

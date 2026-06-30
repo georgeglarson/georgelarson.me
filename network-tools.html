@@ -6,9 +6,19 @@
 <title>Network tools · George Larson</title>
 <meta name="description" content="A capture, visualize, analyze network-tool suite, built because ngrep, Wireshark, and tshark each quit at the hard part. netgrep, wiregraph, termshark.">
 
-<link rel="preload" href="fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css">
+<link rel="icon" href="/favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network tools · George Larson">
+<meta property="og:description" content="A capture, visualize, analyze network-tool suite, built because ngrep, Wireshark, and tshark each quit at the hard part. netgrep, wiregraph, termshark.">
+<meta property="og:url" content="https://georgelarson.me/network-tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Network tools · George Larson">
+<meta name="twitter:description" content="A capture, visualize, analyze network-tool suite, built because ngrep, Wireshark, and tshark each quit at the hard part.">
+
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 
@@ -16,7 +26,7 @@
   <a class="wordmark" href="/"><span class="caret">$</span> george larson</a>
   <nav class="site-nav" aria-label="primary">
     <a href="/who-is-george">who</a>
-    <a href="/#work" aria-current="page">work</a>
+    <a href="/#work">work</a>
     <a href="/#contact">contact</a>
   </nav>
 </header>
@@ -30,7 +40,7 @@
     <h1 class="title reveal">Network tools: three of them, because the existing ones quit early</h1>
 
     <section class="block reveal">
-      <p class="label">The problem</p>
+      <h2 class="label">The problem</h2>
       <div class="prose">
         <p>Two things at work needed seeing. A vendor changed network configs and crashes started
         around the same time; proving the link meant watching the actual traffic. Separately, a
@@ -41,7 +51,7 @@
     </section>
 
     <section class="block reveal">
-      <p class="label">The framing</p>
+      <h2 class="label">The framing</h2>
       <div class="prose">
         <p>The off-the-shelf tools each quit one step early. ngrep is grep for the network, but it
         hasn't been touched since the 90s and can't read TLS, so today it shows you ciphertext.
@@ -54,7 +64,7 @@
     </section>
 
     <section class="block reveal">
-      <p class="label">The fix</p>
+      <h2 class="label">The fix</h2>
       <p class="pipeline"><b>capture</b> &rarr; <b>visualize</b> &rarr; <b>analyze</b></p>
       <ul class="tools">
         <li>
@@ -79,7 +89,7 @@
     </section>
 
     <section class="block reveal">
-      <p class="label">The outcome</p>
+      <h2 class="label">The outcome</h2>
       <div class="prose">
         <p>A working pipeline that exists because the standard tools stopped at the hard part. All
         public. netgrep and wiregraph are original builds; termshark is a modernized fork of an
@@ -95,7 +105,7 @@
   </article>
 </main>
 
-<hr class="shell rule rule--mono">
+<div class="shell rule rule--mono" role="separator"></div>
 <footer class="shell site-foot">
   <span><span style="color:var(--accent)">$</span> george larson · director of technology</span>
   <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a></span>
