@@ -1,457 +1,105 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>network tools - george larson</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="Three tools for understanding network traffic: netgrep (capture + search), wiregraph (visualize), termshark (analyze). Built in Rust and Go." />
-  <meta property="og:title" content="network tools - george larson" />
-  <meta property="og:description" content="I wanted to understand what was actually happening on a network. So I built the tools to look at it." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://georgelarson.me/network-tools" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="network tools - george larson" />
-  <meta name="twitter:description" content="Three tools for understanding network traffic. netgrep, wiregraph, termshark. Rust and Go." />
-  <style>
-    .hero {
-      padding: 2.75rem 2rem;
-      margin-bottom: 2.5rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: rgba(8, 18, 28, 0.75);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network tools — George Larson</title>
+<meta name="description" content="A capture, visualize, analyze network-tool suite, built because ngrep, Wireshark, and tshark each quit at the hard part. netgrep, wiregraph, termshark.">
 
-    .hero .lead {
-      margin-bottom: 1.5rem;
-      max-width: 60ch;
-    }
-
-    .hero-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-
-    .section-label {
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      color: var(--accent-dark);
-      margin: 0 0 0.85rem 0;
-      display: block;
-    }
-
-    .genesis p {
-      margin: 0 0 1rem 0;
-    }
-
-    .genesis p:last-child {
-      margin-bottom: 0;
-      color: var(--fg-strong);
-    }
-
-    /* workflow pipeline */
-    .workflow {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
-      gap: 0;
-      align-items: stretch;
-      margin-top: 2rem;
-    }
-
-    .workflow-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-dark);
-      font-size: 1.4rem;
-      padding: 0 0.5rem;
-    }
-
-    .tool-card {
-      padding: 1.75rem 1.5rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.22);
-      background: rgba(5, 12, 18, 0.75);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
-      transition: border-color 0.2s;
-    }
-
-    .tool-card:hover {
-      border-color: var(--accent);
-    }
-
-    .tool-card h3 {
-      margin: 0 0 0.25rem 0;
-      font-size: 1.1rem;
-    }
-
-    .tool-card .tool-role {
-      color: var(--accent-dark);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.75rem;
-    }
-
-    .tool-card p {
-      margin: 0 0 0.75rem 0;
-      color: var(--fg-muted);
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-
-    .tool-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1rem 0;
-    }
-
-    .tool-card li {
-      padding: 0.2rem 0;
-      color: var(--fg-muted);
-      font-size: 0.88rem;
-    }
-
-    .tool-card li::before {
-      content: "+";
-      color: var(--accent-dark);
-      margin-right: 0.5rem;
-    }
-
-    .tool-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: auto;
-    }
-
-    .tool-links a {
-      font-size: 0.82rem;
-      color: var(--accent);
-    }
-
-    .tool-tag {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: 3px;
-      font-size: 0.75rem;
-      background: rgba(22, 245, 166, 0.1);
-      border: 1px solid rgba(22, 245, 166, 0.15);
-      color: var(--accent);
-      margin-right: 0.35rem;
-    }
-
-    /* detail sections */
-    .tool-detail {
-      margin-top: 2.5rem;
-    }
-
-    .tool-detail h2 {
-      margin-bottom: 0.25rem;
-    }
-
-    .tool-detail .tool-role {
-      color: var(--accent-dark);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-
-    .feature {
-      padding: 1.25rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(22, 245, 166, 0.12);
-      background: rgba(5, 12, 18, 0.6);
-    }
-
-    .feature h4 {
-      margin: 0 0 0.35rem 0;
-      font-size: 0.9rem;
-      color: var(--fg-strong);
-    }
-
-    .feature p {
-      margin: 0;
-      color: var(--fg-muted);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    .code-block {
-      background: rgba(5, 12, 18, 0.9);
-      border: 1px solid rgba(22, 245, 166, 0.15);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      margin: 1.25rem 0;
-      font-size: 0.85rem;
-      line-height: 1.7;
-      overflow-x: auto;
-      color: var(--fg-muted);
-    }
-
-    .code-block .cmd { color: var(--accent); }
-    .code-block .comment { color: rgba(146, 203, 180, 0.45); }
-
-    .stack-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .stack-tag {
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.82rem;
-      background: rgba(22, 245, 166, 0.1);
-      border: 1px solid rgba(22, 245, 166, 0.2);
-      color: var(--accent);
-    }
-
-    @media (max-width: 720px) {
-      .hero { padding: 2.2rem 1.5rem; }
-      .workflow {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-      .workflow-arrow {
-        transform: rotate(90deg);
-        padding: 0.25rem 0;
-      }
-      .features { grid-template-columns: 1fr; }
-    }
-  </style>
+<link rel="preload" href="fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <main class="page page-wide">
 
-    <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
-    <header class="hero">
-      <h1>network tools<span class="caret" aria-hidden="true"></span></h1>
-      <p class="lead">i wanted to understand what was actually happening on a network. so i built the tools to look at it.</p>
-      <nav class="hero-nav" aria-label="project links">
-        <a class="pill-link" href="https://wiregraph.georgelarson.me" target="_blank" rel="noopener">live demo (wiregraph)</a>
-        <a class="pill-link" href="https://github.com/georgeglarson" target="_blank" rel="noopener">all source (github)</a>
-        <a class="pill-link" href="/index.html">back to home</a>
-      </nav>
-    </header>
+<header class="shell site-head">
+  <a class="wordmark" href="/"><span class="caret">$</span> george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work" aria-current="page">work</a>
+    <a href="/#contact">contact</a>
+  </nav>
+</header>
 
-    <section class="panel genesis">
-      <span class="section-label">the itch</span>
-      <p>Two problems at work pushed me here. A vendor changed network configs and crashes started happening around the same time. I needed to see the traffic to prove the connection. Separately, we inherited hardware and software from a vendor going bankrupt. No licence, no support, no docs. I had questions basic enough that I felt they deserved answers anyway. At one point I was ready to sniff the wire, reverse the protocol, and write a partial open implementation.</p>
-      <p>Wireshark could have done most of it. But ngrep hasn't been updated since the 90s and can't handle TLS. Wireshark needs a display server you don't have over SSH. tshark gives you everything but buries it in noise. I kept wanting tools that didn't quite exist, so I started building them.</p>
-    </section>
+<main class="shell">
+  <article class="measure">
 
-    <!-- ================================================================ -->
-    <!-- WORKFLOW PIPELINE                                                 -->
-    <!-- ================================================================ -->
+    <p class="reveal"><a class="back" href="/#work"><span class="caret">←</span> work</a></p>
 
-    <div class="workflow">
-      <div class="tool-card">
-        <h3>netgrep</h3>
-        <div class="tool-role">capture + search</div>
-        <p>grep for the network. TCP stream reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing.</p>
-        <ul>
-          <li>Stream reassembly before matching</li>
-          <li>Decrypt TLS with SSLKEYLOGFILE</li>
-          <li>HTTP/1.1, HTTP/2, DNS modes</li>
-          <li>Interactive ratatui TUI</li>
-        </ul>
-        <div><span class="tool-tag">rust</span><span class="tool-tag">libpcap</span></div>
-        <div class="tool-links">
-          <a href="https://github.com/georgeglarson/netgrep" target="_blank" rel="noopener">source</a>
-        </div>
-      </div>
+    <p class="kicker reveal">Case study · Network tools</p>
+    <h1 class="title reveal">Network tools: three of them, because the existing ones quit early</h1>
 
-      <div class="workflow-arrow">&rarr;</div>
-
-      <div class="tool-card">
-        <h3>wiregraph</h3>
-        <div class="tool-role">visualize</div>
-        <p>real-time dashboard. topology map, protocol breakdown, packet inspection, conversation analysis.</p>
-        <ul>
-          <li>Live capture or pcap replay</li>
-          <li>Click-to-filter across all panels</li>
-          <li>Stacked per-protocol timeline</li>
-          <li>Rolling window, runs forever</li>
-        </ul>
-        <div><span class="tool-tag">rust</span><span class="tool-tag">vanilla js</span></div>
-        <div class="tool-links">
-          <a href="https://wiregraph.georgelarson.me" target="_blank" rel="noopener">live demo</a> &middot;
-          <a href="https://github.com/georgeglarson/wiregraph" target="_blank" rel="noopener">source</a>
-        </div>
-      </div>
-
-      <div class="workflow-arrow">&rarr;</div>
-
-      <div class="tool-card">
-        <h3>termshark</h3>
-        <div class="tool-role">analyze</div>
-        <p>wireshark for the terminal. three-pane layout, display filters, hex dump. no GUI required.</p>
-        <ul>
-          <li>Full Wireshark filter syntax</li>
-          <li>Packet list + protocol tree + hex</li>
-          <li>TCP/UDP stream reassembly</li>
-          <li>Capture live or read pcap</li>
-        </ul>
-        <div><span class="tool-tag">go</span><span class="tool-tag">tshark</span></div>
-        <div class="tool-links">
-          <a href="https://github.com/georgeglarson/termshark" target="_blank" rel="noopener">source</a>
-        </div>
-      </div>
-    </div>
-
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- NETGREP DETAIL                                                    -->
-    <!-- ================================================================ -->
-
-    <section class="tool-detail">
-      <h2>netgrep</h2>
-      <span class="tool-role">the capture engine</span>
-
-      <p class="hint">ngrep hasn't changed since the 90s. netgrep is what it would look like if it had.</p>
-
-      <div class="code-block">
-        <span class="comment"># decrypt TLS and grep the plaintext</span><br>
-        <span class="cmd">SSLKEYLOGFILE=keys.log sudo netgrep --keylog keys.log "session_token"</span><br><br>
-        <span class="comment"># HTTP-aware mode &mdash; match against headers and bodies</span><br>
-        <span class="cmd">sudo netgrep --http "Authorization"</span><br><br>
-        <span class="comment"># DNS-aware mode &mdash; match against domains</span><br>
-        <span class="cmd">sudo netgrep -F "udp port 53" --dns "suspicious-domain"</span><br><br>
-        <span class="comment"># interactive terminal UI</span><br>
-        <span class="cmd">sudo netgrep --tui</span>
-      </div>
-
-      <div class="features">
-        <div class="feature">
-          <h4>stream reassembly</h4>
-          <p>TCP streams are reassembled bidirectionally before matching. You match against complete application-layer payloads, not raw packets. This is the killer feature.</p>
-        </div>
-        <div class="feature">
-          <h4>TLS decryption</h4>
-          <p>TLS 1.2 and 1.3 via SSLKEYLOGFILE. AES-128-GCM, AES-256-GCM, ChaCha20-Poly1305. ECDHE-ECDSA, ECDHE-RSA, RSA key exchange. In 2025, if you can't read TLS you can't read traffic.</p>
-        </div>
-        <div class="feature">
-          <h4>protocol modes</h4>
-          <p><code>--http</code> parses HTTP/1.1 and HTTP/2 (auto-detected via connection preface). <code>--dns</code> parses queries and responses. Match against headers, domains, record data.</p>
-        </div>
-        <div class="feature">
-          <h4>ngrep-compatible</h4>
-          <p>The flags you know: <code>-i</code>, <code>-v</code>, <code>-x</code>, <code>-q</code>, <code>-n</code>, <code>-d</code>, <code>-I</code>, <code>-F</code>. Drop-in replacement for scripts that already use ngrep, with all the new capabilities available when you need them.</p>
-        </div>
+    <section class="block reveal">
+      <p class="label">The problem</p>
+      <div class="prose">
+        <p>Two things at work needed seeing. A vendor changed network configs and crashes started
+        around the same time; proving the link meant watching the actual traffic. Separately, a
+        bankrupt vendor left behind hardware and software with no license, no support, no docs, and
+        questions basic enough that they deserved answers anyway. The honest plan was to sniff the
+        wire, reverse the protocol, and write a partial open implementation.</p>
       </div>
     </section>
 
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- WIREGRAPH DETAIL                                                  -->
-    <!-- ================================================================ -->
-
-    <section class="tool-detail">
-      <h2>wiregraph</h2>
-      <span class="tool-role">the visualization layer</span>
-
-      <p class="hint">netgrep finds packets. wiregraph shows you the shape of the traffic. <a href="https://wiregraph.georgelarson.me" target="_blank" rel="noopener">see it live</a>.</p>
-
-      <div class="features">
-        <div class="feature">
-          <h4>top talkers + matrix</h4>
-          <p>Hosts ranked by volume. NxN connection matrix colored by protocol and intensity. Click any host to filter all panels to its traffic. Click a matrix cell to see the full A&harr;B conversation.</p>
-        </div>
-        <div class="feature">
-          <h4>protocol toggles + search</h4>
-          <p>Click a protocol bar to isolate it everywhere. Search by IP, CIDR subnet, or port. Everything filters live &mdash; host table, matrix, timeline, packet drawer.</p>
-        </div>
-        <div class="feature">
-          <h4>stacked timeline</h4>
-          <p>Per-protocol bytes/sec as a stacked area chart. Responds to filters. Click a host and the timeline shows just that host's traffic composition changing over time.</p>
-        </div>
-        <div class="feature">
-          <h4>zero-dependency frontend</h4>
-          <p>Single Rust binary. The entire frontend is an embedded HTML string &mdash; no build step, no node_modules, no framework. Vanilla JS + canvas. Polls a JSON API once per second. Rolling window retention so it runs indefinitely without growing memory.</p>
-        </div>
+    <section class="block reveal">
+      <p class="label">The framing</p>
+      <div class="prose">
+        <p>The off-the-shelf tools each quit one step early. ngrep is grep for the network, but it
+        hasn't been touched since the 90s and can't read TLS, so today it shows you ciphertext.
+        Wireshark wants a display server you don't have over an SSH session. tshark hands you
+        everything and buries the signal in it.</p>
+        <p>The gap wasn't a single missing tool but a missing workflow: capture and search the
+        plaintext, see the shape of the traffic, then drill into a single stream. Three jobs, three
+        tools.</p>
       </div>
     </section>
 
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- TERMSHARK DETAIL                                                  -->
-    <!-- ================================================================ -->
-
-    <section class="tool-detail">
-      <h2>termshark</h2>
-      <span class="tool-role">the analysis interface</span>
-
-      <p class="hint">When you're SSH'd into production and need Wireshark but don't have X11.</p>
-
-      <div class="code-block">
-        <span class="comment"># live capture with a display filter</span><br>
-        <span class="cmd">sudo termshark -i eth0 -Y "http.request"</span><br><br>
-        <span class="comment"># read a pcap and filter to a conversation</span><br>
-        <span class="cmd">termshark -r capture.pcap -Y "ip.addr == 10.0.0.1 && tcp.port == 443"</span>
-      </div>
-
-      <div class="features">
-        <div class="feature">
-          <h4>wireshark display filters</h4>
-          <p>Full Wireshark filter syntax via tshark. The same expressions you'd type in Wireshark work here. No new DSL to learn.</p>
-        </div>
-        <div class="feature">
-          <h4>three-pane layout</h4>
-          <p>Packet list, protocol detail tree, hex dump. Navigate with keyboard. Expand/collapse protocol layers. The same mental model as Wireshark, adapted for the terminal.</p>
-        </div>
-      </div>
+    <section class="block reveal">
+      <p class="label">The fix</p>
+      <p class="pipeline"><b>capture</b> &rarr; <b>visualize</b> &rarr; <b>analyze</b></p>
+      <ul class="tools">
+        <li>
+          <div class="name">netgrep <span class="role">· capture &amp; search</span> <span class="tag">Rust · original</span></div>
+          <p class="desc">Bidirectional TCP reassembly, so matches run against complete application
+          payloads, not raw packets. TLS 1.2/1.3 decryption via <code>SSLKEYLOGFILE</code>
+          (AES-128/256-GCM, ChaCha20-Poly1305). HTTP/2 and DNS modes, a ratatui TUI,
+          ngrep-compatible flags. Integration, stress, and fuzz suites under CI.</p>
+        </li>
+        <li>
+          <div class="name">wiregraph <span class="role">· visualize</span> <span class="tag">Rust · original</span></div>
+          <p class="desc">A real-time dashboard: topology map, per-protocol timeline, click-to-filter
+          across every pane, a rolling window that runs forever. Live capture or pcap replay.</p>
+        </li>
+        <li>
+          <div class="name">termshark <span class="role">· analyze</span> <span class="tag">modernized fork</span></div>
+          <p class="desc">Wireshark's depth in a three-pane terminal UI, no GUI required. A modernized
+          fork of the unmaintained <a class="lnk" href="https://github.com/gcla/termshark">termshark</a>:
+          171 commits on top of a tool that had stopped getting them.</p>
+        </li>
+      </ul>
     </section>
 
-    <hr />
-
-    <!-- ================================================================ -->
-    <!-- WHY THIS EXISTS                                                   -->
-    <!-- ================================================================ -->
-
-    <section class="section-space">
-      <h2>why build all three</h2>
-      <div class="panel genesis">
-        <p>netgrep and wiregraph share the same Rust library for packet parsing, protocol classification, and pcap I/O. The protocol labels in wiregraph's dashboard are the same classifiers netgrep uses for filtering. A pcap exported from wiregraph can be loaded into termshark for deep analysis. The tools compose.</p>
-        <p>I just really like looking at network traffic.</p>
+    <section class="block reveal">
+      <p class="label">The outcome</p>
+      <div class="prose">
+        <p>A working pipeline that exists because the standard tools stopped at the hard part. All
+        public. netgrep and wiregraph are original builds; termshark is a modernized fork of an
+        unmaintained predecessor.</p>
       </div>
-
-      <div class="stack-list">
-        <span class="stack-tag">rust</span>
-        <span class="stack-tag">go</span>
-        <span class="stack-tag">libpcap</span>
-        <span class="stack-tag">etherparse</span>
-        <span class="stack-tag">ratatui</span>
-        <span class="stack-tag">tshark</span>
-        <span class="stack-tag">serde</span>
-        <span class="stack-tag">canvas</span>
-        <span class="stack-tag">vanilla js</span>
-      </div>
+      <p class="sources">
+        <a href="https://github.com/georgeglarson/netgrep">netgrep</a> ·
+        <a href="https://github.com/georgeglarson/wiregraph">wiregraph</a> ·
+        <a href="https://github.com/georgeglarson/termshark">termshark</a>
+      </p>
     </section>
 
-    <footer>
-      <hr />
-      <span>return to <a href="/index.html">home</a> / <a href="/fracture.html">fracture</a> / <a href="/resume.html">resume</a> / <a href="/schedule.html">schedule time</a> / <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a> / <a href="https://github.com/georgeglarson" target="_blank" rel="noopener">github</a></span>
-    </footer>
+  </article>
+</main>
 
-  </main>
+<hr class="shell rule rule--mono">
+<footer class="shell site-foot">
+  <span><span style="color:var(--accent)">$</span> george larson — director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a></span>
+</footer>
+
 </body>
 </html>

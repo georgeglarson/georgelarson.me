@@ -1,0 +1,295 @@
+/* ============================================================
+   georgelarson.me — mono-accented editorial
+   Monospace = the engineer fingerprint (nav, labels, code, receipts).
+   Serif     = the reading voice (prose).
+   Dark, flat, one desaturated-green accent. No cards. No glow.
+   The structure is the chrome.
+   ============================================================ */
+
+/* ---- fonts (self-hosted, no CDN) ---- */
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/ibm-plex-mono-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/ibm-plex-mono-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Serif";
+  src: url("../fonts/ibm-plex-serif-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Serif";
+  src: url("../fonts/ibm-plex-serif-400-italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Serif";
+  src: url("../fonts/ibm-plex-serif-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+/* ---- tokens ---- */
+:root {
+  --bg:        #0c0e11;   /* near-black, faintly cool */
+  --bg-inset:  #14171c;   /* code wells, rare raised fills */
+  --ink:       #e7e4dd;   /* warm off-white — the prose */
+  --ink-soft:  #a8a69d;   /* secondary prose */
+  --ink-faint: #6c6b64;   /* captions, meta */
+  --accent:    #7cc4a8;   /* desaturated green — heritage, no neon */
+  --accent-lo: rgba(124, 196, 168, 0.16);  /* rules, hairlines */
+  --accent-bg: rgba(124, 196, 168, 0.08);  /* code tint */
+  --sel:       rgba(124, 196, 168, 0.22);
+
+  --font-mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+
+  --measure: 64ch;
+  --gutter: clamp(1.25rem, 5vw, 2.5rem);
+  --rhythm: 1.7;
+}
+
+/* ---- reset ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.02rem, 0.97rem + 0.25vw, 1.12rem);
+  line-height: var(--rhythm);
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--sel); color: var(--ink); }
+a { color: inherit; }
+img { max-width: 100%; }
+
+/* ---- layout shell ---- */
+.shell {
+  max-width: calc(var(--measure) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---- header / nav (mono) ---- */
+.site-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-block: 2.25rem 0;
+}
+.wordmark {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.wordmark .caret { color: var(--accent); }
+.site-nav {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  display: flex;
+  gap: 1.4rem;
+}
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color .18s ease, border-color .18s ease;
+}
+.site-nav a:hover,
+.site-nav a[aria-current="page"] { color: var(--accent); border-color: var(--accent-lo); }
+
+/* ---- top hairline ---- */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--accent-lo);
+  margin: 2.25rem 0;
+}
+.rule--mono::before {
+  /* a faint mono tick row, the terminal fingerprint as a divider */
+  content: "─────────────────────────────────────────────────────────────────";
+  display: block;
+  font-family: var(--font-mono);
+  color: var(--accent-lo);
+  font-size: 0.8rem;
+  letter-spacing: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.rule--mono { border: 0; margin: 2.25rem 0; }
+
+/* ---- article / case study ---- */
+main { padding-block: 1rem 4rem; }
+.measure { max-width: var(--measure); }
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.9rem;
+}
+h1.title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 1.3rem + 1.9vw, 2.5rem);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.4rem;
+}
+.dek {
+  color: var(--ink-soft);
+  font-size: 1.05em;
+  margin: 0 0 0.5rem;
+}
+
+/* section blocks: mono label + serif prose */
+.block { margin-block: 2.4rem; }
+.block > .label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.85rem;
+}
+.block > .label::before {
+  content: "";
+  width: 1.4rem;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+.block p { margin: 0 0 1rem; }
+.block p:last-child { margin-bottom: 0; }
+
+/* the fix pipeline: mono tool names + serif gloss */
+.tools { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+.tools > li {
+  padding: 1rem 0 1.1rem;
+  border-top: 1px solid var(--accent-lo);
+}
+.tools > li:last-child { border-bottom: 1px solid var(--accent-lo); }
+.tools .name {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.tools .name .tag {
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-left: 0.5rem;
+}
+.tools .name .role {
+  color: var(--accent);
+  font-weight: 400;
+}
+.tools .desc { margin: 0.4rem 0 0; color: var(--ink-soft); font-size: 0.98em; }
+
+/* pipeline arrow caption */
+.pipeline {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  margin: 0.4rem 0 0;
+}
+.pipeline b { color: var(--accent); font-weight: 600; }
+
+/* inline + block code (mono) */
+code, kbd {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--accent-bg);
+  color: var(--ink);
+  padding: 0.1em 0.38em;
+  border-radius: 2px;
+}
+
+/* links in prose */
+.prose a, a.lnk {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-lo);
+  transition: border-color .18s ease;
+}
+.prose a:hover, a.lnk:hover { border-color: var(--accent); }
+
+em, i { font-style: italic; }
+strong { font-weight: 600; color: var(--ink); }
+
+/* outcome footer line of links */
+.sources {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: var(--ink-faint);
+  margin-top: 1.2rem;
+}
+.sources a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-lo); }
+.sources a:hover { border-color: var(--accent); }
+
+/* back link */
+.back {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.back:hover { color: var(--accent); }
+.back .caret { color: var(--accent); }
+
+/* ---- footer ---- */
+.site-foot {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+  padding-block: 1.4rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.site-foot a { color: var(--ink-soft); text-decoration: none; }
+.site-foot a:hover { color: var(--accent); }
+
+/* ---- page-load reveal (one orchestrated stagger, restrained) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(8px); animation: rise .55s cubic-bezier(.2,.6,.2,1) forwards; }
+  .reveal:nth-child(1) { animation-delay: .02s; }
+  .reveal:nth-child(2) { animation-delay: .08s; }
+  .reveal:nth-child(3) { animation-delay: .14s; }
+  .reveal:nth-child(4) { animation-delay: .20s; }
+  .reveal:nth-child(5) { animation-delay: .26s; }
+  .reveal:nth-child(6) { animation-delay: .32s; }
+  .reveal:nth-child(7) { animation-delay: .38s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+}
+
+/* ---- focus visibility ---- */
+a:focus-visible, :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
