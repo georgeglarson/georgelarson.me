@@ -391,71 +391,6 @@ note_linkedin() {
 }
 
 # ---------------------------------------------------------------------------
-# Moltbook (via nully direct message)
-# ---------------------------------------------------------------------------
-notify_nully() {
-  echo -n "  Moltbook (via nully)... "
-
-  local attempt=0
-  local max_attempts=2
-
-  while [[ $attempt -lt $max_attempts ]]; do
-    attempt=$((attempt + 1))
-    if [[ $attempt -gt 1 ]]; then
-      echo -n "    retry ${attempt}/${max_attempts}... "
-    fi
-
-    local response_file
-    response_file=$(mktemp)
-
-    # Send DM to nully directly — no channel join needed
-    {
-      sleep 0.5
-      echo "NICK ironclaw-dist"
-      echo "USER ironclaw-dist 0 * :ironclaw distributor"
-      sleep 1
-      echo "PRIVMSG nully :please write a Moltbook post about George's new article \"${TITLE}\" — published today at ${CANONICAL}. Write something authentic from your perspective."
-      # Stay alive for 25 seconds, responding to PINGs
-      for i in $(seq 1 25); do
-        sleep 1
-        if grep -q "^PING " "$response_file" 2>/dev/null; then
-          local ping_token
-          ping_token=$(grep "^PING " "$response_file" | tail -1 | sed 's/^PING //')
-          echo "PONG :$ping_token"
-        fi
-      done
-      echo "QUIT :done"
-    } | nc 100.125.241.86 6667 > "$response_file" 2>&1
-
-    local irc_result
-    irc_result=$(cat "$response_file" 2>/dev/null)
-    rm -f "$response_file"
-
-    # Check for nully's acknowledgment via DM
-    local nully_reply
-    nully_reply=$(echo "$irc_result" | grep "PRIVMSG" | grep -i "nully" | grep -v "PRIVMSG nully" | tail -1 | sed 's/.*PRIVMSG.*://' | sed 's/\x01.*//' || true)
-
-    if [[ -n "$nully_reply" ]]; then
-      echo "requested"
-      echo "    nully: $nully_reply"
-      echo "| Moltbook  | (requested via nully DM) |" >> "$PUBLISHED_LOG"
-      return
-    fi
-
-    # Check if we at least connected and sent the message
-    if echo "$irc_result" | grep -q "Welcome\|001\|MODE.*ironclaw"; then
-      echo "sent (no ACK received)"
-      echo "| Moltbook  | (sent to nully via DM, no ACK) |" >> "$PUBLISHED_LOG"
-      return
-    fi
-  done
-
-  echo "FAILED: could not connect to IRC"
-  echo "| Moltbook  | FAILED (IRC connection error) |" >> "$PUBLISHED_LOG"
-  ERRORS="${ERRORS}Moltbook: IRC connection failed\n"
-}
-
-# ---------------------------------------------------------------------------
 # Run all
 # ---------------------------------------------------------------------------
 publish_devto
@@ -463,7 +398,6 @@ publish_hashnode
 publish_mastodon
 publish_bluesky
 note_linkedin
-notify_nully
 
 echo ""
 echo "Publish log written to: $PUBLISHED_LOG"
