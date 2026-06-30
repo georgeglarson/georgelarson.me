@@ -1,0 +1,45 @@
+who-is-george.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 91
+writing/2026-03-19-hermes-review/index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 108
+writing/2026-04-03-25-dollar-ai-lab/index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 104
+contributions.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 103
+writing/2026-03-23-nullclaw-doorman/index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 203
+writing/2026-04-network-tools/index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 66
+n8n.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 105
+network-tools.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 112
+writing/2026-03-31-codetest/index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 122
+fracture.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 93
+writing/index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 87
+writing/2026-03-25-fracture-legacy-modernization/index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 177
+index.html
+  s_5cc11ff483dca8::t_44bc7963fb16c7 135
+scripts/publish.sh
+  s_5cc11ff483dca8::t_44bc7963fb16c7 499
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "3199966a2b413e289533951052e131e881d87cf4",
+  "prompts": {},
+  "sessions": {
+    "s_5cc11ff483dca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fd0545ad-8337-42f2-a473-78a1d2a2bcc6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
