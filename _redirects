@@ -1,0 +1,13 @@
+# Retired routes kept alive so old inbound links don't 404 (Cloudflare Pages).
+# The 3 tool pages were superseded by the network-tools case study.
+/netgrep        /network-tools  301
+/netgrep.html   /network-tools  301
+/wiregraph      /network-tools  301
+/wiregraph.html /network-tools  301
+/termshark      /network-tools  301
+/termshark.html /network-tools  301
+# Retired resume sub-tools (search + booking); send to the closest intent.
+/ask            /resume    301
+/ask.html       /resume    301
+/schedule       /#contact  301
+/schedule.html  /#contact  301

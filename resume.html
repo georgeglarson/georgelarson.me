@@ -1,450 +1,86 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>resume - george larson</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="Plain text resume for George Larson, director of technology with 25+ years in software engineering, manufacturing, infrastructure, and calm leadership." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resume · George Larson</title>
+<meta name="description" content="Resume for George Larson, Director of Technology. Twenty-five years across software engineering, infrastructure, and manufacturing. Download the PDF or plain text, or read it inline.">
+
+<link rel="icon" href="/favicon.svg">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Resume · George Larson">
+<meta property="og:description" content="Director of Technology. Twenty-five years across software engineering, infrastructure, and manufacturing. PDF, plain text, or read it inline.">
+<meta property="og:url" content="https://georgelarson.me/resume">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Resume · George Larson">
+<meta name="twitter:description" content="Director of Technology. Twenty-five years across software, infrastructure, and manufacturing.">
+
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<noscript><style>#resume-text { display: none; }</style></noscript>
 </head>
 <body>
-  <main class="page">
-    <p class="breadcrumb"><a href="/index.html">&larr; home</a></p>
-    <header class="resume-hero" id="overview">
-      <div class="hero-heading">
-        <h1>George Larson<span class="caret" aria-hidden="true"></span></h1>
-        <p class="lead">Director of Technology with 25+ years across software engineering, infrastructure, and manufacturing. I ship calm, reliable systems while staying close to the keyboard and the teams that operate them.</p>
-      </div>
-      <nav class="resume-actions" aria-label="download resume">
-        <a class="pill-link" href="/resume.txt" download="george-larson-resume.txt">Download resume (.txt)</a>
-        <a class="pill-link" href="/george-larson-resume.pdf" download="george-larson-resume.pdf">Download resume (.pdf)</a>
-      </nav>
-      <nav class="resume-actions" aria-label="explore resume">
-        <a class="pill-link" href="#ask-search">Search the resume</a>
-        <a class="pill-link" href="#resume">Read the full resume</a>
-        <a class="pill-link" href="#lens-tools">AI lens (experimental)</a>
-      </nav>
-      <nav class="resume-actions" aria-label="external profiles">
-        <a class="pill-link" href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="pill-link" href="https://github.com/georgeglarson" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-      <p class="hint">This page pulls directly from <code>resume.txt</code> below. Diff it, print it, or explore it with the live tools.</p>
-      <p class="hint">Key metrics from FM Expressions, at April 2026 separation.</p>
-      <div class="metrics-grid" aria-label="key metrics">
-        <article class="metric-card">
-          <h3>Security coverage</h3>
-          <p>36 public assets scanned via HostedScan + OWASP ZAP, 33 findings closed in the prior 60 days, zero critical/high issues in backlog.</p>
-        </article>
-        <article class="metric-card">
-          <h3>Platform</h3>
-          <p>36 GitLab projects (11 users, 739 CI pipelines, 2,204 merge requests) with 16 managed SSH keys.</p>
-        </article>
-        <article class="metric-card">
-          <h3>Collaboration</h3>
-          <p>7 Mattermost teams, 40 channels, ~1M lifetime posts, 313 calls, wired to uptime, upgrade, helpdesk, GitLab, and web-critical alerts.</p>
-        </article>
-        <article class="metric-card">
-          <h3>Support velocity</h3>
-          <p>Zammad processed 1,487 tickets YTD (~150–206/month) with ≥97% close rate; 68% resolved inside 24 hours.</p>
-        </article>
-        <article class="metric-card">
-          <h3>Observability</h3>
-          <p>31 Uptime Kuma monitors across GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, and more, feeding Mattermost alert channels.</p>
-        </article>
-      </div>
-    </header>
 
-    <section class="lens-search" id="ask-search" aria-label="search the resume">
-      <h2>Search the resume</h2>
-      <p class="hint">Everything runs locally in your browser. Try queries like <code>zero trust</code>, <code>manufacturing</code>, or <code>OCR</code> to jump to matching paragraphs. Press <kbd>/</kbd> to focus the search box.</p>
-      <div class="searchbox">
-        <input id="ask-query" type="text" placeholder="Find topics across the resume" aria-label="search resume text" />
-        <button id="ask-button" type="button">Search</button>
-      </div>
-      <p class="hint">Tip: multi-word searches rank paragraphs by match count and length so the most relevant sections stay on top.</p>
-      <section id="ask-results" class="ask-results" aria-live="polite"></section>
-    </section>
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/#work">work</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
 
-    <section class="resume-source" id="resume">
-      <h2>Full resume</h2>
-      <p class="hint">Rendered straight from <code>resume.txt</code> for printing, diffing, or quick reference.</p>
-      <pre id="resume-text">loading resume...</pre>
-    </section>
+<main class="shell">
+  <section class="measure">
 
-    <section class="lens" id="lens-tools" aria-label="AI lens explorer">
-      <h2>AI lens (experimental)</h2>
-      <p class="hint">Live summaries run on Cloudflare using the Hugging Face Inference API (token stays server-side). Saved lenses remain available for quick scanning. Try a suggestion or describe your own focus.</p>
+    <p class="kicker reveal">Resume</p>
+    <h1 class="title reveal">George Larson</h1>
+    <p class="dek reveal">Director of Technology. Twenty-five years across software engineering,
+    infrastructure, and manufacturing.</p>
 
-      <div class="lens-live">
-        <h3>Generate a fresh take</h3>
-        <form id="lens-form" class="lens-form">
-          <label class="lens-field">
-            <span>Focus</span>
-            <input id="lens-input" type="text" name="lens" maxlength="240" placeholder="e.g., infrastructure, manufacturing uptime, leadership style" required />
-          </label>
-          <button type="submit" id="lens-submit">Generate summary</button>
-        </form>
-        <p class="hint">Need ideas? These prompts showcase how the tool reacts.</p>
-        <div class="lens-suggestions" id="lens-suggestions" aria-label="Quick lens suggestions"></div>
-        <div id="lens-status" class="hint" role="status" aria-live="polite">Type a focus or tap a prompt, then press Enter to generate your custom summary.</div>
-        <article id="live-detail" class="lens-panel" aria-live="polite">
-          <h3>What you'll see</h3>
-          <p>The live lens rewrites the resume for the focus you provide and points you to the sections worth skimming.</p>
-          <ul class="plain-list">
-            <li>Try a suggestion above or describe the angle you're hiring for.</li>
-            <li>Summaries generate in a few seconds and stay on this page.</li>
-          </ul>
-        </article>
-      </div>
+    <h2 class="label reveal">Download</h2>
+    <ul class="receipts reveal">
+      <li><a href="/george-larson-resume.pdf" download="george-larson-resume.pdf">
+        <span class="r-name">resume.pdf</span>
+        <span class="r-gloss">Typeset PDF, built from the text below.</span>
+      </a></li>
+      <li><a href="/resume.txt" download="george-larson-resume.txt">
+        <span class="r-name">resume.txt</span>
+        <span class="r-gloss">Plain text. Diff it, grep it, paste it into an ATS.</span>
+      </a></li>
+    </ul>
 
-      <div class="lens-saved">
-        <h3>Saved lenses</h3>
-        <div id="lens-menu" class="lens-buttons" role="tablist" aria-label="Available resume lenses"></div>
-        <article id="lens-detail" class="lens-panel" role="tabpanel" tabindex="0" aria-live="polite">
-          <p class="hint">Select a saved lens to see a summary and suggested reading inside the resume.</p>
-        </article>
-      </div>
-    </section>
+    <h2 class="label reveal">Full text</h2>
+    <p class="dek reveal">Rendered straight from <code>resume.txt</code>. Prefer a file? Grab it above.</p>
+    <pre id="resume-text" class="resume-text reveal" aria-label="full resume text">loading resume&hellip;</pre>
+    <noscript><p class="dek">The inline copy needs JavaScript. Grab the
+    <a class="lnk" href="/george-larson-resume.pdf">PDF</a> or
+    <a class="lnk" href="/resume.txt">plain text</a> above.</p></noscript>
 
-    <footer>
-      <hr />
-      <span>return to <a href="/index.html">home</a> / <a href="/schedule.html">schedule time</a> / <a href="https://www.linkedin.com/in/georgelarson/" target="_blank" rel="noopener">linkedin</a> / <a href="https://github.com/georgeglarson" target="_blank" rel="noopener">github</a></span>
-    </footer>
-  </main>
-  <script>
-    const QUICK_LENSES = [
-      { title: "Infrastructure & DevOps", prompt: "Summarise George's infrastructure, DevOps, and Linux experience." },
-      { title: "Manufacturing ops", prompt: "Explain George's manufacturing, PLC, and uptime experience." },
-      { title: "Technology leadership", prompt: "Summarise how George leads teams and ships roadmaps." },
-      { title: "Security posture", prompt: "How does George approach security, zero-trust, and compliance?" },
-      { title: "Software engineering", prompt: "Describe George's software development skills across languages and platforms." }
-    ];
+  </section>
+</main>
 
-    const DEFAULT_MODEL = "@cf/meta/llama-3-8b-instruct";
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a> · <a href="/">home</a></span>
+</footer>
 
-    const state = {
-      resumeText: "",
-      paragraphs: [],
-      lenses: [],
-      selectedLens: null,
-      liveResult: null,
-      loading: false
-    };
-    const DEFAULT_STATUS = "Type a focus or tap a prompt, then press Enter to generate your custom summary.";
-    const ASK_DEFAULT_MESSAGE = "Type a topic to search the resume.";
-
-    function escapeRegExp(str){
-      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+<script>
+  (async () => {
+    const el = document.getElementById("resume-text");
+    try {
+      const res = await fetch("/resume.txt");
+      if (!res.ok) throw new Error("fetch failed");
+      el.textContent = (await res.text()).trim();
+    } catch (err) {
+      el.textContent = "Could not load the resume inline. Download it above: resume.pdf or resume.txt.";
     }
+  })();
+</script>
 
-    function scoreParagraph(text, terms){
-      const lower = text.toLowerCase();
-      let score = 0;
-      terms.forEach(term => {
-        if(!term) return;
-        const re = new RegExp(escapeRegExp(term), "gi");
-        const matches = lower.match(re);
-        if(matches){
-          const weight = term.length >= 3 ? 2 : 1;
-          score += matches.length * weight;
-        }
-      });
-      return score / Math.sqrt(text.length + 1);
-    }
-
-    function renderHighlight(container, text, terms){
-      if(terms.length === 0){
-        container.textContent = text;
-        return;
-      }
-      const pattern = new RegExp("(" + terms.map(escapeRegExp).join("|") + ")", "gi");
-      const lowerTerms = new Set(terms.map(t => t.toLowerCase()));
-      const parts = text.split(pattern);
-      parts.forEach(part => {
-        if(part.length === 0) return;
-        if(lowerTerms.has(part.toLowerCase())){
-          const mark = document.createElement("mark");
-          mark.textContent = part;
-          container.appendChild(mark);
-        }else{
-          container.appendChild(document.createTextNode(part));
-        }
-      });
-    }
-
-    function resetAskResults(message){
-      const output = document.getElementById("ask-results");
-      if(!output) return;
-      output.innerHTML = `<p class="hint">${message || ASK_DEFAULT_MESSAGE}</p>`;
-    }
-
-    function runAskSearch(query){
-      const output = document.getElementById("ask-results");
-      if(!output) return;
-      if(!state.paragraphs.length){
-        resetAskResults("Resume is still loading. Try again in a moment.");
-        return;
-      }
-      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-      if(!terms.length){
-        resetAskResults();
-        return;
-      }
-      const ranked = state.paragraphs
-        .map(text => ({ text, score: scoreParagraph(text, terms) }))
-        .filter(entry => entry.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 6);
-      if(!ranked.length){
-        resetAskResults(`No matches for "${query}". Try different or shorter terms.`);
-        return;
-      }
-      output.innerHTML = "";
-      ranked.forEach(entry => {
-        const wrapper = document.createElement("article");
-        wrapper.className = "result";
-        const meta = document.createElement("div");
-        meta.className = "hint";
-        meta.textContent = "score " + entry.score.toFixed(2);
-        const body = document.createElement("p");
-        renderHighlight(body, entry.text, terms);
-        wrapper.appendChild(meta);
-        wrapper.appendChild(body);
-        output.appendChild(wrapper);
-      });
-    }
-
-    async function loadResume(){
-      const target = document.getElementById("resume-text");
-      try{
-        const res = await fetch("/resume.txt", {cache:"no-store"});
-        if(!res.ok) throw new Error("fetch failed");
-        state.resumeText = (await res.text()).trim();
-        target.textContent = state.resumeText;
-        state.paragraphs = state.resumeText
-          .split(/\n\s*\n/)
-          .map(item => item.replace(/\s+/g, " ").trim())
-          .filter(Boolean);
-        const askInput = document.getElementById("ask-query");
-        if(askInput && askInput.value.trim()){
-          runAskSearch(askInput.value.trim());
-        }
-      }catch(err){
-        target.textContent = "Resume could not be loaded. Please download it directly at /resume.txt.";
-        resetAskResults("Resume could not be loaded. Please download it directly at /resume.txt.");
-      }
-    }
-
-    function renderSavedLens(lens){
-      const detail = document.getElementById("lens-detail");
-      if(!lens){
-        detail.innerHTML = '<p class="hint">Select a saved lens to see a summary and suggested reading inside the resume.</p>';
-        detail.setAttribute("aria-label", "lens summary");
-        return;
-      }
-      const points = lens.key_points || [];
-      const terms = lens.recommended_terms || [];
-      const notes = lens.source_notes || [];
-      detail.setAttribute("aria-label", lens.title + " summary");
-      detail.innerHTML = `
-        <h3>${lens.title}</h3>
-        <p>${lens.summary}</p>
-        ${points.length ? `<ul class="plain-list">${points.map(item => `<li>${item}</li>`).join("")}</ul>` : ""}
-        ${terms.length ? `<p class="hint">jump-start a deeper dive:</p>
-          <div class="tag-list">${terms.map(term => `<a class="tag" href="/ask.html?q=${encodeURIComponent(term)}" title="Search the resume for ${term}">${term}</a>`).join("")}</div>` : ""}
-        ${notes.length ? `<p class="hint">source sections: ${notes.join(", ")}</p>` : ""}
-      `;
-    }
-
-    function renderLive(result){
-      const panel = document.getElementById("live-detail");
-      if(!result){
-        panel.innerHTML = `
-          <h3>What you'll see</h3>
-          <p>The live lens rewrites the resume for the focus you provide and points you to the sections worth skimming.</p>
-          <ul class="plain-list">
-            <li>Try a suggestion above or describe the angle you're hiring for.</li>
-            <li>Summaries generate in a few seconds and stay on this page.</li>
-          </ul>
-        `;
-        return;
-      }
-      const bullets = result.key_points || [];
-      panel.innerHTML = `
-        <h3>Live lens: ${result.lens}</h3>
-        <p>${result.summary}</p>
-        ${bullets.length ? `<ul class="plain-list">${bullets.map(item => `<li>${item}</li>`).join("")}</ul>` : ""}
-        <p class="hint">Generated with ${result.model} at ${new Date(result.generated_at || Date.now()).toLocaleTimeString()}.</p>
-      `;
-      requestAnimationFrame(() => panel.scrollIntoView({ behavior: "smooth", block: "start" }));
-    }
-
-    function mountLensMenu(){
-      const menu = document.getElementById("lens-menu");
-      menu.innerHTML = "";
-      if(!state.lenses.length){
-        menu.innerHTML = '<p class="hint">Saved lenses are unavailable right now.</p>';
-        return;
-      }
-      state.lenses.forEach((lens, index) => {
-        const button = document.createElement("button");
-        button.className = "lens-button";
-        button.type = "button";
-        button.textContent = lens.title;
-        button.setAttribute("role", "tab");
-        const isSelected = state.selectedLens === lens.id;
-        button.setAttribute("aria-selected", isSelected ? "true" : "false");
-        button.setAttribute("tabindex", isSelected ? "0" : "-1");
-        button.addEventListener("click", () => {
-          state.selectedLens = lens.id;
-          renderSavedLens(lens);
-          [...menu.children].forEach(child => {
-            child.setAttribute("aria-selected", child === button ? "true" : "false");
-            child.setAttribute("tabindex", child === button ? "0" : "-1");
-          });
-          button.focus();
-        });
-        menu.appendChild(button);
-        if(index === 0 && !state.selectedLens){
-          state.selectedLens = lens.id;
-          renderSavedLens(lens);
-          button.setAttribute("aria-selected", "true");
-          button.setAttribute("tabindex", "0");
-        }else if(!isSelected){
-          button.setAttribute("aria-selected", "false");
-          button.setAttribute("tabindex", "-1");
-        }
-      });
-    }
-
-    async function loadLenses(){
-      try{
-        const res = await fetch("/data/resume_lenses.json", {cache:"no-store"});
-        if(!res.ok) throw new Error("fetch failed");
-        const data = await res.json();
-        state.lenses = data.lenses || [];
-        state.selectedLens = null;
-      }catch(err){
-        state.lenses = [];
-        const detail = document.getElementById("lens-detail");
-        detail.innerHTML = '<p class="hint">Saved lenses could not be loaded. You can regenerate them with scripts/generate_lenses.py.</p>';
-      }
-      mountLensMenu();
-    }
-
-    function mountSuggestions(){
-      const container = document.getElementById("lens-suggestions");
-      container.innerHTML = "";
-      QUICK_LENSES.forEach(item => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "lens-suggestion";
-        btn.textContent = item.title;
-        btn.addEventListener("click", () => {
-          const input = document.getElementById("lens-input");
-          input.value = item.prompt;
-          input.focus();
-        });
-        container.appendChild(btn);
-      });
-    }
-
-    function setLoading(isLoading, message){
-      state.loading = Boolean(isLoading);
-      const status = document.getElementById("lens-status");
-      status.classList.remove("status-flash");
-      status.textContent = message || DEFAULT_STATUS;
-      const submit = document.getElementById("lens-submit");
-      submit.disabled = state.loading;
-      submit.textContent = state.loading ? "Generating..." : "Generate summary";
-    }
-
-    function showStatus(message){
-      const status = document.getElementById("lens-status");
-      status.classList.remove("status-flash");
-      status.textContent = message || DEFAULT_STATUS;
-    }
-
-    async function handleGeneration(event){
-      event.preventDefault();
-      if(state.loading) return;
-      const input = document.getElementById("lens-input");
-      const lensText = input.value.trim();
-      if(!lensText){
-        showStatus("Please describe the lens you want to explore.");
-        return;
-      }
-      await requestLensSummary(lensText, DEFAULT_MODEL);
-    }
-
-    async function requestLensSummary(lensText, model, attempt = 1){
-      setLoading(true, attempt === 1 ? "Generating your summary..." : `Retrying (attempt ${attempt})...`);
-      try{
-        const response = await fetch("/api/lens-summary", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ lens: lensText, model })
-        });
-        const data = await response.json().catch(()=>({}));
-        if(!response.ok){
-          if(response.status === 503 && attempt < 3){
-            showStatus("Model is waking up (about 10 seconds). We'll retry automatically.");
-            setTimeout(() => requestLensSummary(lensText, model, attempt + 1), 7000);
-            setLoading(false, "");
-            return;
-          }
-          throw new Error(data.error || `Generation failed (status ${response.status}).`);
-        }
-        state.liveResult = data;
-        renderLive(data);
-        setLoading(false, "Summary ready. Scroll down to review the recommended sections.");
-      }catch(err){
-        console.error(err);
-        setLoading(false, "");
-        showStatus(err.message || "Generation failed. Please try again.");
-      }
-    }
-
-    window.addEventListener("DOMContentLoaded", async () => {
-      const askInput = document.getElementById("ask-query");
-      const askButton = document.getElementById("ask-button");
-      mountSuggestions();
-      renderLive(null);
-      document.getElementById("lens-form").addEventListener("submit", handleGeneration);
-      if(askInput){
-        askInput.addEventListener("keydown", event => {
-          if(event.key === "Enter"){
-            event.preventDefault();
-            runAskSearch(askInput.value.trim());
-          }
-        });
-      }
-      if(askButton){
-        askButton.addEventListener("click", () => {
-          const query = askInput ? askInput.value.trim() : "";
-          runAskSearch(query);
-        });
-      }
-      document.addEventListener("keydown", event => {
-        if(event.key === "/" && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)){
-          event.preventDefault();
-          if(askInput){
-            askInput.focus();
-            askInput.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-        }
-      });
-      resetAskResults();
-      const params = new URLSearchParams(window.location.search);
-      const presetQuery = params.get("q");
-      await loadResume();
-      await loadLenses();
-      if(presetQuery && askInput){
-        askInput.value = presetQuery;
-        runAskSearch(presetQuery.trim());
-      }
-    });
-  </script>
 </body>
 </html>

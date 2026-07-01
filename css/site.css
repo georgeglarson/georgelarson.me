@@ -453,6 +453,24 @@ main > section { margin-block: 2.6rem; }
 .site-foot a { color: var(--ink-soft); text-decoration: none; }
 .site-foot a:hover { color: var(--accent); }
 
+/* ---- resume page: the full text, straight from resume.txt ----
+   Mono well, wraps on mobile (no horizontal scroll), preserves the
+   resume's own line breaks. The PDF is the typeset version; this is
+   the grep/diff/paste copy. */
+.resume-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: var(--bg-inset);
+  border: 1px solid var(--accent-lo);
+  border-radius: 4px;
+  padding: 1.2rem 1.3rem;
+  margin: 1.3rem 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
 /* ---- page-load reveal (one orchestrated stagger, restrained) ----
    Content is visible by default; the animation only enhances. Base state
    carries no opacity:0, so if the animation never runs (old engine, capture
@@ -478,4 +496,21 @@ a:focus-visible, :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 1px;
+}
+
+/* ---- print ----
+   The PDF download is the real print artifact, but Ctrl-P on any page
+   (the resume especially) should still come out legible: flip to light,
+   drop the chrome, flatten the mono well. */
+@media print {
+  :root {
+    --bg: #fff; --bg-inset: #fff;
+    --ink: #000; --ink-soft: #222; --ink-faint: #444;
+    --accent: #000; --accent-lo: #bbb; --accent-bg: transparent;
+  }
+  body { background: #fff; color: #000; }
+  .site-head, .site-nav, .site-foot, .rule, .rule--mono { display: none; }
+  a { color: #000; }  /* recolor only; keep prose links' underline affordance on paper */
+  .reveal { animation: none; opacity: 1; transform: none; }  /* never print mid-fade */
+  .resume-text { border: 0; background: #fff; color: #000; padding: 0; font-size: 0.7rem; }
 }
