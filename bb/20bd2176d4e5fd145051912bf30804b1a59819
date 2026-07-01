@@ -1,0 +1,25 @@
+README.md
+  s_2fb09c44b51ffa::t_690e60dfe95874 94
+  s_2fb09c44b51ffa::t_8f08eb719ba349 102
+resume.html
+  s_2fb09c44b51ffa::t_b0f84b5dbd213f 76
+  s_2fb09c44b51ffa::t_1481b01b903726 22
+css/site.css
+  s_2fb09c44b51ffa::t_c6d8b149da7d24 513-514
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "bb20bd2176d4e5fd145051912bf30804b1a59819",
+  "prompts": {},
+  "sessions": {
+    "s_2fb09c44b51ffa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "81d13ae0-f81f-4cfe-a2c9-a4ad9efb74c9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
