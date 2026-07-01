@@ -1,0 +1,21 @@
+resume.html
+  s_2fb09c44b51ffa::t_9e3be68192ca27 4-21,25-76,78-79
+css/site.css
+  s_2fb09c44b51ffa::t_6ee6806ed0270b 456-473
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "874cbfcb5e20a15326ed26d0721cc79ef67f01ce",
+  "prompts": {},
+  "sessions": {
+    "s_2fb09c44b51ffa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "81d13ae0-f81f-4cfe-a2c9-a4ad9efb74c9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
