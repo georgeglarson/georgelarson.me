@@ -1,17 +1,17 @@
 ---
-title: "I Took a 2012 Mozilla Demo and Turned It Into a Production MMO With AI"
+title: "Fracture: a 2012 Mozilla Demo, Rebuilt Into a Live Multiplayer RPG"
 slug: 2026-03-25-fracture-legacy-modernization
 date: 2026-03-25
 description: "How a legacy modernization veteran used Claude as a development partner to transform BrowserQuest into Fracture, a real-time multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests."
 tags: ai, gamedev, typescript, legacy
 og_title: "fracture: legacy modernization with AI"
-og_description: "BrowserQuest (2012) to production MMO. 3,161 tests, OpenTelemetry, AI-powered NPCs. One engineer."
+og_description: "BrowserQuest (2012) to a live multiplayer RPG. 3,161 tests, OpenTelemetry, AI-powered NPCs. One engineer."
 cover_image:
-lead: "I took Mozilla's abandoned 2012 BrowserQuest and turned it into a production multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests."
+lead: "Mozilla's abandoned 2012 BrowserQuest, rebuilt into a live multiplayer RPG with AI-powered NPCs, distributed tracing, and 3,161 tests."
 ---
 
 <!-- social:mastodon -->
-Took Mozilla's abandoned 2012 BrowserQuest and turned it into a production MMO.
+Took Mozilla's abandoned 2012 BrowserQuest and turned it into a live multiplayer RPG.
 
 3,161 tests. TypeScript strict. SRP decomposition. OpenTelemetry tracing. AI-powered NPCs with contextual dialogue and thought bubbles. Circuit breaker so the game runs even if the AI provider dies.
 
@@ -24,7 +24,7 @@ Writeup: https://georgelarson.me/writing/2026-03-25-fracture-legacy-modernizatio
 <!-- social:linkedin -->
 In 2012, Mozilla released BrowserQuest, an HTML5 multiplayer demo. No types, no tests, no persistence. One massive Player class handling everything from combat to chat. It proved browsers could handle games, then was abandoned.
 
-I turned it into a production MMO.
+I turned it into a live multiplayer RPG.
 
 Fracture has 3,161 tests across 65 files. TypeScript strict mode. SRP decomposition that dropped the Player class from 1,742 to 726 lines. Event-driven architecture where combat doesn't know about achievements and the narrator doesn't know about inventory. OpenTelemetry distributed tracing on every message handler, database call, and AI request. Self-hosted SigNoz with public Grafana dashboards.
 
