@@ -1,4 +1,4 @@
-Took Mozilla's abandoned 2012 BrowserQuest and turned it into a production MMO.
+Took Mozilla's abandoned 2012 BrowserQuest and turned it into a live multiplayer RPG.
 
 3,161 tests. TypeScript strict. SRP decomposition. OpenTelemetry tracing. AI-powered NPCs with contextual dialogue and thought bubbles. Circuit breaker so the game runs even if the AI provider dies.
 
