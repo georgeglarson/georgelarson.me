@@ -1,0 +1,21 @@
+wrangler.toml
+  s_2fb09c44b51ffa::t_6553bbb80caa1a 2
+README.md
+  s_2fb09c44b51ffa::t_3cb875b73b6602 1,5-8,10-18,21-28,93,95,97,99,102-106,109-110,113-115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "ba1d8479cd2ad12c4c81285d933c838829e6494d",
+  "prompts": {},
+  "sessions": {
+    "s_2fb09c44b51ffa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "81d13ae0-f81f-4cfe-a2c9-a4ad9efb74c9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
