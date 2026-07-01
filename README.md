@@ -1,19 +1,31 @@
-# georgelarson.me (terminal theme)
+# georgelarson.me (mono-accented editorial)
 
 Static, no-build personal site for George Larson.
 
+Mono-accented editorial: IBM Plex Mono for nav / labels / receipts / code (the engineer
+fingerprint), IBM Plex Serif for prose. Dark, flat, one desaturated-green accent, no chrome.
+Fonts are self-hosted (no CDN). The design system lives in `css/site.css`.
+
 ## Structure
-- `index.html` - intro and navigation hub
-- `resume.html` - renders `resume.txt` with local search and optional AI lens summaries
-- `resume.txt` - plain text source for search, printing, and lens generation
-- `data/resume_lenses.json` - cached lens summaries (regen via script below)
-- `schedule.html` - Cal.com embed for booking sessions
-- `ask.html` - local, private search over the resume text (supports `?q=` links)
-- `style.css` - shared terminal aesthetic
+- `index.html` - landing: the positioning spine and the receipts
+- `who-is-george.html` - the deep story / who's-behind-it page
+- `network-tools.html`, `n8n.html`, `fracture.html` - case studies
+- `contributions.html` - the open-source record (merged + in-review, every PR verified live)
+- `resume.html` - renders `resume.txt` inline; links the PDF and text downloads
+- `resume.txt` - plain-text resume, the source of truth
+- `george-larson-resume.pdf` - typeset PDF (built from `resume.txt`, see below)
+- `css/site.css` - the design system
+- `fonts/` - self-hosted IBM Plex Mono + Serif (woff2)
 - `writing/` - articles, each in a dated directory (see Publishing below)
 - `scripts/publish.sh` - generate all publishing variants from a single story.md
-- `scripts/generate_lenses.py` - optional helper to regenerate lens summaries with the Hugging Face Inference API
-- `functions/api/lens-summary.ts` - Cloudflare Pages Function that proxies Hugging Face Inference for on-demand lens summaries
+- `scripts/generate_pdf.py` + `build-resume.sh` - build the resume PDF from `resume.txt`
+- `scripts/distribute.sh` - push generated article variants to their destinations
+
+## Resume PDF
+
+`resume.txt` is the source of truth. `build-resume.sh` runs `scripts/generate_pdf.py` to
+produce `george-larson-resume.pdf`. `resume.html` fetches `resume.txt` at load and renders it
+inline, so the page, the text download, and the PDF never drift.
 
 ## Publishing
 
@@ -62,20 +74,6 @@ Show HN: Title — one-line description
 ## first section heading
 
 Article body. Standard markdown with images, code blocks, lists.
-
-Raw HTML blocks pass through for custom layouts:
-
-<div class="my-grid">
-  <div class="card"><h3>title</h3><p>content</p></div>
-</div>
-
-<style>
-.my-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-.card {
-  padding: 1.5rem 1.25rem; border-radius: var(--radius);
-  border: 1px solid rgba(22, 245, 166, 0.22); background: rgba(5, 12, 18, 0.75);
-}
-</style>
 ```
 
 ### What publish.sh generates
@@ -92,55 +90,26 @@ Raw HTML blocks pass through for custom layouts:
 
 - **Headings are lowercase.** `## the architecture`, not `## The Architecture`
 - **Social posts are hand-written**, not auto-generated. You write differently for each audience.
-- **Custom layouts use raw HTML + `<style>`.** The `<style>` block can go anywhere in the body — publish.sh extracts it into the HTML `<head>`. Dev.to ignores `<style>` tags, so CSS-dependent visuals render as plain HTML there (acceptable tradeoff).
+- **Articles render through the `.article-body` system** in `css/site.css` (serif headings, mono h3 + accents). Prefer semantic markdown over custom `<style>` blocks so content stays content and the design system does the design.
 - **Images use relative paths** in story.md (`![alt](screenshot.png)`). publish.sh rewrites them to absolute URLs for Dev.to.
-- **After generating**, update the writing section in `index.html` if it's a new story (the `/publish` skill does this automatically).
+- **After generating**, update the writing index (`writing/index.html`) and the landing teaser if it's a new story (the `/publish` skill does this automatically).
 
-### CSS reference for custom blocks
+### Design tokens
 
-The site uses these CSS variables (defined in `style.css`):
+Custom blocks and one-off styling should use the `css/site.css` variables, not hard-coded colors:
 
 ```
---bg: #04060a          --accent: #16f5a6       --radius: 12px
---bg-soft: #08121c     --accent-dark: #0fa375  --border: rgba(22, 245, 166, 0.28)
---fg: #c9f7e6          --fg-muted: #92cbb4     --mono: "Fira Code", ...
---fg-strong: #e9fff7
+--bg: #0c0e11        --ink: #e7e4dd        --accent: #7cc4a8
+--bg-inset: #14171c  --ink-soft: #a8a69d   --accent-lo: rgba(124,196,168,0.16)
+                     --ink-faint: #8b8a81  --accent-bg: rgba(124,196,168,0.08)
+--font-mono: "IBM Plex Mono", ...   --font-serif: "IBM Plex Serif", ...
+--measure: 64ch   --gutter: clamp(1.25rem, 5vw, 2.5rem)   --rhythm: 1.7
 ```
 
-Common patterns from existing stories:
-- **Cards/grids:** `grid-template-columns: 1fr 1fr`, `gap: 1.25rem`, card padding `1.5rem 1.25rem`
-- **Code blocks:** `background: rgba(5, 12, 18, 0.9)`, border `rgba(22, 245, 166, 0.15)`
-- **Screenshots:** `<div class="screenshot"><img src="..." alt="..." loading="lazy" /></div>` (or use `![alt](file.png)` in markdown)
-- **Accent borders:** green at 0.22 opacity (subtle), 0.35 (medium), orange `rgba(255, 200, 100, 0.25)` for contrast
-- **Mobile breakpoint:** `@media (max-width: 720px)` — collapse grids to single column
+No cards, no shadows, no rounded-corner glow, no gradients. Section breaks are thin mono rules
+(`.rule` / `.rule--mono`). The structure is the chrome.
 
 ## Deploy on Cloudflare Pages
-1. Create a GitHub repo and push these files to `main`.
-2. In Cloudflare Pages choose **Create project** and connect the repo.
-   - Build command: (leave blank)
-   - Output directory: `/`
-3. Add your custom domain and follow the DNS instructions.
-
-## Deploy on GitHub Pages
-1. Repo settings -> Pages.
-2. Source: `main` branch, directory `/ (root)`.
-
-## Notes
-- `ask.html` intentionally keeps everything client side. It is a placeholder for a future RAG or on-device LLM workflow while remaining private today.
-- The resume lens feature can be generated live (via `/api/lens-summary`) or by using the cached JSON. The Cloudflare Pages function uses `HF_TOKEN` so your secret never reaches the browser.
-
-## Generate lens summaries (Hugging Face)
-1. Create a Hugging Face access token with Inference API permissions and set it in your shell:
-   - macOS/Linux: `export HF_API_TOKEN=hf_yourtoken`
-   - Windows PowerShell: `$Env:HF_API_TOKEN = "hf_yourtoken"`
-   - Cloudflare Pages build settings: add an environment variable named `HF_TOKEN` (script accepts either name).
-2. (Optional) Override the model by setting `HF_MODEL` (defaults to `mistralai/Mistral-7B-Instruct-v0.3`).
-3. Run `python scripts/generate_lenses.py`.
-   - The script writes `data/resume_lenses.json`. Commit the change to publish new summaries.
-4. If the API returns errors, the script will surface the response body so you can adjust rate limits or prompts.
-
-## Live lens endpoint
-- Path: `POST /api/lens-summary`
-- Body: `{"lens": "How does George handle manufacturing ops?", "model": "mistralai/Mistral-7B-Instruct-v0.3"}`
-- Response: JSON containing `summary`, `key_points`, `model`, `generated_at`
-- The function reads `resume.txt` at request time, so updates deploy instantly without new scripts.
+1. Push to `main`; Cloudflare Pages builds automatically on merge.
+2. Build command: (leave blank). Output directory: `/`.
+3. Custom domain + DNS handled in the Pages dashboard.
