@@ -1,0 +1,25 @@
+css/site.css
+  s_2fb09c44b51ffa::t_d3c3eb62e65864 500-515
+_redirects
+  s_2fb09c44b51ffa::t_d51cd131873e53 1-13
+wrangler.toml
+  s_2fb09c44b51ffa::t_57f4f6d0f39ee5 2
+README.md
+  s_2fb09c44b51ffa::t_3bdda0f284acbe 28-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "760815ccb37f2fa3c37b3c812da6f53d737466dd",
+  "prompts": {},
+  "sessions": {
+    "s_2fb09c44b51ffa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "81d13ae0-f81f-4cfe-a2c9-a4ad9efb74c9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
