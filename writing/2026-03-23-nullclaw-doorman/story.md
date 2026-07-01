@@ -7,7 +7,7 @@ tags: ai, agents, irc, security
 og_title: "building a digital doorman"
 og_description: "A lightweight AI agent that answers questions about my work by reading actual code. Architecture, security, and model selection decisions."
 cover_image: digital-doorman.jpg
-lead: "I put an AI agent on a $7/month VPS, connected it to my own IRC server, and pointed it at my GitHub repos. Visitors can ask it about my work and get answers backed by actual code, not rephrased resume text."
+lead: "An AI agent on a $7/month VPS, wired to my own IRC server and pointed at my GitHub repos. Visitors can ask it about my work and get answers backed by actual code, not rephrased resume text."
 ---
 
 <!-- social:mastodon -->
