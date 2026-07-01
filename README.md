@@ -25,7 +25,8 @@ Fonts are self-hosted (no CDN). The design system lives in `css/site.css`.
 
 `resume.txt` is the source of truth. `build-resume.sh` runs `scripts/generate_pdf.py` to
 produce `george-larson-resume.pdf`. `resume.html` fetches `resume.txt` at load and renders it
-inline, so the page, the text download, and the PDF never drift.
+inline, so the page and the text download never drift. The PDF only tracks after you re-run
+`build-resume.sh` following a `resume.txt` edit.
 
 ## Publishing
 
