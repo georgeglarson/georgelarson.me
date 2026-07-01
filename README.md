@@ -91,7 +91,7 @@ Article body. Standard markdown with images, code blocks, lists.
 
 - **Headings are lowercase.** `## the architecture`, not `## The Architecture`
 - **Social posts are hand-written**, not auto-generated. You write differently for each audience.
-- **Articles render through the `.article-body` system** in `css/site.css` (serif headings, mono h3 + accents). Prefer semantic markdown over custom `<style>` blocks so content stays content and the design system does the design.
+- **Articles render through the `.article-body` system** in `css/site.css` (serif headings, mono h3 + accents). Prefer semantic Markdown over custom `<style>` blocks so content stays content and the design system does the design.
 - **Images use relative paths** in story.md (`![alt](screenshot.png)`). publish.sh rewrites them to absolute URLs for Dev.to.
 - **After generating**, update the writing index (`writing/index.html`) and the landing teaser if it's a new story (the `/publish` skill does this automatically).
 
@@ -99,7 +99,7 @@ Article body. Standard markdown with images, code blocks, lists.
 
 Custom blocks and one-off styling should use the `css/site.css` variables, not hard-coded colors:
 
-```
+```text
 --bg: #0c0e11        --ink: #e7e4dd        --accent: #7cc4a8
 --bg-inset: #14171c  --ink-soft: #a8a69d   --accent-lo: rgba(124,196,168,0.16)
                      --ink-faint: #8b8a81  --accent-bg: rgba(124,196,168,0.08)

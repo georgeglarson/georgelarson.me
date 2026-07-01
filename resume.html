@@ -19,6 +19,7 @@
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
+<noscript><style>#resume-text { display: none; }</style></noscript>
 </head>
 <body>
 
@@ -72,7 +73,7 @@
   (async () => {
     const el = document.getElementById("resume-text");
     try {
-      const res = await fetch("/resume.txt", { cache: "no-store" });
+      const res = await fetch("/resume.txt");
       if (!res.ok) throw new Error("fetch failed");
       el.textContent = (await res.text()).trim();
     } catch (err) {

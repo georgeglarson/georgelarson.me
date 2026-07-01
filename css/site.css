@@ -510,6 +510,7 @@ a:focus-visible, :focus-visible {
   }
   body { background: #fff; color: #000; }
   .site-head, .site-nav, .site-foot, .rule, .rule--mono { display: none; }
-  a { color: #000; border-bottom: 0; }
+  a { color: #000; }  /* recolor only; keep prose links' underline affordance on paper */
+  .reveal { animation: none; opacity: 1; transform: none; }  /* never print mid-fade */
   .resume-text { border: 0; background: #fff; color: #000; padding: 0; font-size: 0.7rem; }
 }
