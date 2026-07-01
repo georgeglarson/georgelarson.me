@@ -453,6 +453,24 @@ main > section { margin-block: 2.6rem; }
 .site-foot a { color: var(--ink-soft); text-decoration: none; }
 .site-foot a:hover { color: var(--accent); }
 
+/* ---- resume page: the full text, straight from resume.txt ----
+   Mono well, wraps on mobile (no horizontal scroll), preserves the
+   resume's own line breaks. The PDF is the typeset version; this is
+   the grep/diff/paste copy. */
+.resume-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: var(--bg-inset);
+  border: 1px solid var(--accent-lo);
+  border-radius: 4px;
+  padding: 1.2rem 1.3rem;
+  margin: 1.3rem 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
 /* ---- page-load reveal (one orchestrated stagger, restrained) ----
    Content is visible by default; the animation only enhances. Base state
    carries no opacity:0, so if the animation never runs (old engine, capture
