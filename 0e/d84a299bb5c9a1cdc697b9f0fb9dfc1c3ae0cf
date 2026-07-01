@@ -1,0 +1,31 @@
+writing/2026-03-25-fracture-legacy-modernization/devto.md
+  s_3d549341742b9b::t_efdec8d4feab0a 2-3
+writing/index.html
+  s_3d549341742b9b::t_c4620078f16046 63
+writing/2026-03-25-fracture-legacy-modernization/social-linkedin.md
+  s_3d549341742b9b::t_efdec8d4feab0a 3
+writing/2026-03-25-fracture-legacy-modernization/social-mastodon.md
+  s_3d549341742b9b::t_efdec8d4feab0a 1
+writing/2026-03-25-fracture-legacy-modernization/story.md
+  s_3d549341742b9b::t_efdec8d4feab0a 2,8,10,14,27
+fracture.html
+  s_3d549341742b9b::t_c4620078f16046 7,13,17
+writing/2026-03-25-fracture-legacy-modernization/index.html
+  s_3d549341742b9b::t_efdec8d4feab0a 6,11,15,38-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "0ed84a299bb5c9a1cdc697b9f0fb9dfc1c3ae0cf",
+  "prompts": {},
+  "sessions": {
+    "s_3d549341742b9b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "369ee7dc-7384-4048-9153-4004b745ecc0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
