@@ -1,0 +1,78 @@
+# OSS contributions curation — authoritative source for /contributions.
+# Consumed by scripts/build_contributions.py.
+#
+# Why a curated file and not pure `gh search`: GitHub's search index has gaps and
+# silently drops some older PRs (opencode 2025-11, models.dev 2025-12, largo 2014
+# are all merged-by-georgeglarson but never appear in `gh search prs --merged`).
+# So this yaml is the display source of truth, and `gh search` is the detection
+# layer that flags drift (a new merge or open PR not yet curated here).
+#
+# Edit this file, run `python3 scripts/build_contributions.py --write`, eyeball
+# the diff, commit. See scripts/AGENTS.md (Contributions page).
+
+# --- Merged receipts (authoritative; the portfolio count draws from this set) ---
+# Generator sorts by `merged` date descending. `merged` = GitHub merge date.
+merged:
+  - {repo: OpenHands/agent-canvas, number: 1368, merged: 2026-07-11, name: "OpenHands / agent-canvas", desc: "Groups workspace folders by parent in the dropdown, so deeply nested paths stay organized instead of flattening into one list."}
+  - {repo: ferriskey/ferriskey, number: 1133, merged: 2026-07-08, name: ferriskey, desc: "Adds the `TokenExchange` grant type and its domain value objects, opening RFC 8693 token exchange in the Rust auth server."}
+  - {repo: juspay/neurolink, number: 1134, merged: 2026-07-08, name: neurolink, desc: "Moves system messages to the AI SDK `generateText` `system` option instead of the `messages` array. Shipped in v9.82.0 on npm."}
+  - {repo: OpenHands/agent-canvas, number: 1434, merged: 2026-06-26, name: "OpenHands / agent-canvas", desc: "The acp-docker example inherits its agent-server image from `config/defaults.json` instead of pinning a version below the Canvas compatibility floor."}
+  - {repo: mvanhorn/last30days-skill, number: 564, merged: 2026-06-17, name: last30days-skill, desc: "A `pass(1)` credential source: the Linux analog of the macOS Keychain support, so secrets come from `pass` instead of a `.env` file."}
+  - {repo: anomalyco/models.dev, number: 475, merged: 2025-12-06, name: models.dev, desc: "Added the Claude Opus 4.5 entry to the model catalog."}
+  - {repo: anomalyco/opencode, number: 4748, merged: 2025-11-26, name: opencode, desc: "Documented the Venice.ai provider."}
+  - {repo: WPBuddy/largo, number: 164, merged: 2014-03-10, name: largo, desc: "Updated the LESS syntax in `mixins.less` for the WordPress theme. The long end of the track record."}
+
+# --- In-review groups (display) ---
+# `gh search --state open` provides liveness; this list provides the prose and
+# grouping. Generator renders one <li> per group. Detection flags any open gh
+# PR whose repo+number isn't covered here, and any number here that's no longer
+# open in gh (it merged or closed).
+in_review:
+  - repo: livekit/agents
+    name: "livekit / agents"
+    numbers: [6280]
+    desc: "A fix so a duplicate same-target handoff tool call in one turn no longer reads as ambiguous and aborts the agent switch."
+  - repo: allenai/open-instruct
+    name: open-instruct
+    numbers: [1751]
+    desc: "A `--launcher` flag so non-Ai2 users can run the training launcher locally without a Beaker cluster account."
+  - repo: stryker-mutator/stryker-net
+    name: stryker-net
+    numbers: [3694]
+    desc: "Extends the array-creation mutator to implicit array creation, a syntax shape it previously had no arm for."
+    draft: true
+  - repo: kputnam/stupidedi
+    name: stupidedi
+    numbers: [288]
+    desc: "Re-enabled the 4010 PO850 transaction set, whose autoload had been off because the segment definitions had outgrown its element lists."
+  - repo: n8n-io/n8n
+    name: n8n
+    numbers: [29516]
+    desc: "A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds."
+    extra: ' <a class="lnk" href="/n8n">The full hunt &rarr;</a>'
+  - repo: mitmproxy/mitmproxy
+    name: mitmproxy
+    numbers: [8199, 8200]
+    desc: "A `Flow.kill()` resume-event fix so teardown closes the client connection, plus a KillInjected event so killing a flow disconnects in-transit connections."
+  - repo: charmbracelet/crush
+    name: "charmbracelet / crush"
+    numbers: [2749, 2750]
+    desc: "LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers."
+  - repo: OpenHands/agent-canvas
+    name: "OpenHands / agent-canvas"
+    numbers: [1430]
+    desc: "Surfaces a \"credentials configured\" banner on Docker and cloud, so the configured state is visible at a glance."
+  - repo: Comfy-Org/ComfyUI_frontend
+    name: ComfyUI_frontend
+    numbers: [11686]
+    desc: "Respect the Reka DismissableLayer state for the Escape key in keybindings."
+
+# --- Exclusions: PRs `gh` might surface that have been consciously decided not to display ---
+# Suppresses detection noise for these. Reasons kept here so the decision is on record.
+exclusions:
+  - {repo: Baidis/veniceBasic, number: 3, reason: "private favor for an individual, not an OSS project"}
+  - {repo: Baidis/crypto-data-pipeline, number: 1, reason: "private favor for an individual, not an OSS project"}
+  - {repo: TrueFit/CashRegister, number: 99, reason: "interview take-home, not a contribution"}
+
+# Headline framing on the page + meta tags. {fixes} and {projects} are filled from `merged`.
+headline_template: "{fixes} fixes merged across {projects} projects, more in review. Every one survives a click."

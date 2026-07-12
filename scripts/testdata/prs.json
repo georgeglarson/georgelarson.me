@@ -1,0 +1,4356 @@
+[
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-27T13:15:50Z",
+    "isDraft": false,
+    "number": 11686,
+    "repository": {
+      "name": "ComfyUI_frontend",
+      "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
+    },
+    "state": "open",
+    "title": "fix(keybindings): respect Reka DismissableLayer state for Escape",
+    "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686",
+    "status": "open"
+  },
+  {
+    "closedAt": "2026-07-11T15:37:11Z",
+    "createdAt": "2026-06-15T18:03:27Z",
+    "isDraft": false,
+    "number": 1368,
+    "repository": {
+      "name": "agent-canvas",
+      "nameWithOwner": "OpenHands/agent-canvas"
+    },
+    "state": "merged",
+    "title": "feat(home): group workspace folders by parent in the dropdown (#129)",
+    "url": "https://github.com/OpenHands/agent-canvas/pull/1368",
+    "status": "merged"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-06-19T12:40:58Z",
+    "isDraft": false,
+    "number": 1430,
+    "repository": {
+      "name": "agent-canvas",
+      "nameWithOwner": "OpenHands/agent-canvas"
+    },
+    "state": "open",
+    "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#1244)",
+    "url": "https://github.com/OpenHands/agent-canvas/pull/1430",
+    "status": "open"
+  },
+  {
+    "closedAt": "2026-06-26T23:21:33Z",
+    "createdAt": "2026-06-19T17:36:04Z",
+    "isDraft": false,
+    "number": 1434,
+    "repository": {
+      "name": "agent-canvas",
+      "nameWithOwner": "OpenHands/agent-canvas"
+    },
+    "state": "merged",
+    "title": "fix(examples): inherit acp-docker image from config/defaults.json",
+    "url": "https://github.com/OpenHands/agent-canvas/pull/1434",
+    "status": "merged"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-03T19:57:38Z",
+    "isDraft": false,
+    "number": 1751,
+    "repository": {
+      "name": "open-instruct",
+      "nameWithOwner": "allenai/open-instruct"
+    },
+    "state": "open",
+    "title": "Add --launcher flag to mason.py so non-Ai2 users can run without Beaker",
+    "url": "https://github.com/allenai/open-instruct/pull/1751",
+    "status": "open"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T06:46:32Z",
+    "isDraft": false,
+    "number": 2749,
+    "repository": {
+      "name": "crush",
+      "nameWithOwner": "charmbracelet/crush"
+    },
+    "state": "open",
+    "title": "fix(lsp): respect SingleFileSupport so single-file servers start without root markers",
+    "url": "https://github.com/charmbracelet/crush/pull/2749",
+    "status": "open"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T07:01:35Z",
+    "isDraft": false,
+    "number": 2750,
+    "repository": {
+      "name": "crush",
+      "nameWithOwner": "charmbracelet/crush"
+    },
+    "state": "open",
+    "title": "fix(lsp): score-based client selection so catch-all LSPs don't steal files",
+    "url": "https://github.com/charmbracelet/crush/pull/2750",
+    "status": "open"
+  },
+  {
+    "closedAt": "2026-07-08T19:50:47Z",
+    "createdAt": "2026-07-05T02:51:11Z",
+    "isDraft": false,
+    "number": 1133,
+    "repository": {
+      "name": "ferriskey",
+      "nameWithOwner": "ferriskey/ferriskey"
+    },
+    "state": "merged",
+    "title": "feat(token-exchange): add GrantType::TokenExchange and domain value objects",
+    "url": "https://github.com/ferriskey/ferriskey/pull/1133",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T16:16:24Z",
+    "createdAt": "2026-05-21T16:04:16Z",
+    "isDraft": false,
+    "number": 26,
+    "repository": {
+      "name": "coverletters",
+      "nameWithOwner": "georgeglarson/coverletters"
+    },
+    "state": "merged",
+    "title": "fix(tailor): point model defaults at Kilo Anthropic instead of capped Venice",
+    "url": "https://github.com/georgeglarson/coverletters/pull/26",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-30T15:38:13Z",
+    "createdAt": "2026-06-30T08:51:11Z",
+    "isDraft": false,
+    "number": 27,
+    "repository": {
+      "name": "coverletters",
+      "nameWithOwner": "georgeglarson/coverletters"
+    },
+    "state": "merged",
+    "title": "chore(resume): refresh IC-variant OSS section to verified PR states",
+    "url": "https://github.com/georgeglarson/coverletters/pull/27",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-09T13:33:11Z",
+    "createdAt": "2026-07-09T13:31:44Z",
+    "isDraft": false,
+    "number": 28,
+    "repository": {
+      "name": "coverletters",
+      "nameWithOwner": "georgeglarson/coverletters"
+    },
+    "state": "merged",
+    "title": "Best-fit shift: retarget findleads to top-3 wedges + log Rivet",
+    "url": "https://github.com/georgeglarson/coverletters/pull/28",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T14:54:45Z",
+    "createdAt": "2026-07-12T14:54:23Z",
+    "isDraft": false,
+    "number": 29,
+    "repository": {
+      "name": "coverletters",
+      "nameWithOwner": "georgeglarson/coverletters"
+    },
+    "state": "merged",
+    "title": "fix(app-history): demarcate detail log out of ## Closed (vk #836)",
+    "url": "https://github.com/georgeglarson/coverletters/pull/29",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T15:08:30Z",
+    "createdAt": "2026-07-12T15:08:24Z",
+    "isDraft": false,
+    "number": 30,
+    "repository": {
+      "name": "coverletters",
+      "nameWithOwner": "georgeglarson/coverletters"
+    },
+    "state": "merged",
+    "title": "chore(app-history): commit to one live format; freeze the derived views (vk #836)",
+    "url": "https://github.com/georgeglarson/coverletters/pull/30",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T15:35:01Z",
+    "createdAt": "2026-07-12T15:34:54Z",
+    "isDraft": false,
+    "number": 31,
+    "repository": {
+      "name": "coverletters",
+      "nameWithOwner": "georgeglarson/coverletters"
+    },
+    "state": "merged",
+    "title": "chore(app-history): Path B — one-liner index canonical; revert inverted #30 (vk #836)",
+    "url": "https://github.com/georgeglarson/coverletters/pull/31",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T16:19:13Z",
+    "createdAt": "2026-07-12T16:19:04Z",
+    "isDraft": false,
+    "number": 32,
+    "repository": {
+      "name": "coverletters",
+      "nameWithOwner": "georgeglarson/coverletters"
+    },
+    "state": "merged",
+    "title": "chore(app-history): backfill index one-liners for legacy-only apps (vk #836)",
+    "url": "https://github.com/georgeglarson/coverletters/pull/32",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-29T16:47:28Z",
+    "createdAt": "2026-05-29T16:29:55Z",
+    "isDraft": false,
+    "number": 1,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "feat(voices): restore paid-sub coverage — deepseek, grok, qwen-alibaba",
+    "url": "https://github.com/georgeglarson/cypher/pull/1",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-17T20:59:24Z",
+    "createdAt": "2026-06-17T17:47:47Z",
+    "isDraft": false,
+    "number": 10,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "preflight: transient voice tier (+ qwen claude-transport migration, gemini arg fix)",
+    "url": "https://github.com/georgeglarson/cypher/pull/10",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-17T23:00:43Z",
+    "createdAt": "2026-06-17T22:45:44Z",
+    "isDraft": false,
+    "number": 11,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "fix(preflight): inflection-tolerant nonce admission",
+    "url": "https://github.com/georgeglarson/cypher/pull/11",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-28T03:41:21Z",
+    "createdAt": "2026-06-28T02:40:42Z",
+    "isDraft": false,
+    "number": 12,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "fix(voices): repair roster to 11/11 green + current flagships",
+    "url": "https://github.com/georgeglarson/cypher/pull/12",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-28T14:11:56Z",
+    "createdAt": "2026-06-28T10:44:27Z",
+    "isDraft": false,
+    "number": 13,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "cypher reliability: raw-capture + de-Anthropic panel + PTY transport (fix grok & gemini, add mistral & llama)",
+    "url": "https://github.com/georgeglarson/cypher/pull/13",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-28T15:36:33Z",
+    "createdAt": "2026-06-28T15:31:57Z",
+    "isDraft": false,
+    "number": 14,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "preflight: verbatim JSON-echo nonce probe (fix inflection false-rejects)",
+    "url": "https://github.com/georgeglarson/cypher/pull/14",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-28T20:21:02Z",
+    "createdAt": "2026-06-28T20:11:59Z",
+    "isDraft": false,
+    "number": 15,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "kilo lane: capture tool-output, serialize the lane, swap roster (grok→stepfun, llama→hunyuan)",
+    "url": "https://github.com/georgeglarson/cypher/pull/15",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-28T20:36:12Z",
+    "createdAt": "2026-06-28T20:36:02Z",
+    "isDraft": false,
+    "number": 16,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "docs: spec parity for kilo-lane (capture tool-content, preflight serialize)",
+    "url": "https://github.com/georgeglarson/cypher/pull/16",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-30T23:51:07Z",
+    "createdAt": "2026-06-30T23:50:27Z",
+    "isDraft": false,
+    "number": 17,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "voices: mark Google/agy lane transient (Gemini 3.1 Pro outage)",
+    "url": "https://github.com/georgeglarson/cypher/pull/17",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-02T22:24:13Z",
+    "createdAt": "2026-07-02T22:00:26Z",
+    "isDraft": false,
+    "number": 18,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "fix(monitor): stop false-positive stuck-kills of honest reviewers",
+    "url": "https://github.com/georgeglarson/cypher/pull/18",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T01:35:48Z",
+    "createdAt": "2026-06-11T00:29:13Z",
+    "isDraft": false,
+    "number": 2,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Preflight gate: per-session liveness + capture check (target 1)",
+    "url": "https://github.com/georgeglarson/cypher/pull/2",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-04T08:12:45Z",
+    "createdAt": "2026-07-04T08:12:35Z",
+    "isDraft": false,
+    "number": 21,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "panel headcount — PARTIAL status + skip-on-dark + alert incidents",
+    "url": "https://github.com/georgeglarson/cypher/pull/21",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-04T08:15:42Z",
+    "createdAt": "2026-07-04T08:15:08Z",
+    "isDraft": false,
+    "number": 22,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "container voices — free reign inside walls",
+    "url": "https://github.com/georgeglarson/cypher/pull/22",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-04T11:57:52Z",
+    "createdAt": "2026-07-04T11:44:33Z",
+    "isDraft": false,
+    "number": 24,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "feat: CYPHER_ONLY roster filter — make the PARTIAL rerun hint real",
+    "url": "https://github.com/georgeglarson/cypher/pull/24",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-04T14:37:53Z",
+    "createdAt": "2026-07-04T14:22:49Z",
+    "isDraft": false,
+    "number": 25,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Revive the 5 dark container-voices (vk #803)",
+    "url": "https://github.com/georgeglarson/cypher/pull/25",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-04T17:43:43Z",
+    "createdAt": "2026-07-04T15:01:53Z",
+    "isDraft": false,
+    "number": 26,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Drop kilo concurrency_group — per-container kilo.db (post-#803)",
+    "url": "https://github.com/georgeglarson/cypher/pull/26",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-04T23:47:18Z",
+    "createdAt": "2026-07-04T23:03:57Z",
+    "isDraft": false,
+    "number": 27,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Restore opencode transport for kilo-gateway voices (mistral-large swap + seed-16)",
+    "url": "https://github.com/georgeglarson/cypher/pull/27",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-07T02:03:46Z",
+    "createdAt": "2026-07-07T01:06:51Z",
+    "isDraft": false,
+    "number": 28,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Resilience: expose the per-voice scalpel + capture workspace delivery",
+    "url": "https://github.com/georgeglarson/cypher/pull/28",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-07T16:05:20Z",
+    "createdAt": "2026-07-07T15:55:30Z",
+    "isDraft": false,
+    "number": 29,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "fix(voices): opencode launch — real path + node_modules mount",
+    "url": "https://github.com/georgeglarson/cypher/pull/29",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T01:56:25Z",
+    "createdAt": "2026-06-11T01:47:57Z",
+    "isDraft": false,
+    "number": 3,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Restore MiniMax + MiMo voices (vk #600) + roster floor test",
+    "url": "https://github.com/georgeglarson/cypher/pull/3",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-09T17:10:13Z",
+    "createdAt": "2026-07-09T11:33:41Z",
+    "isDraft": false,
+    "number": 30,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "fix(voices): gemini-31-pro dark — drop pty, wrap stderr to side log, ~/.gemini rw",
+    "url": "https://github.com/georgeglarson/cypher/pull/30",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-09T17:10:17Z",
+    "createdAt": "2026-07-09T17:02:19Z",
+    "isDraft": false,
+    "number": 31,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "feat: verdict sanity — surface Done-with-garbage (Suspect disposition)",
+    "url": "https://github.com/georgeglarson/cypher/pull/31",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T14:00:24Z",
+    "createdAt": "2026-07-10T13:44:11Z",
+    "isDraft": false,
+    "number": 32,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "fix(voices): gemini-31-pro — isolated in-container keyring + agy 1.1.1 prompt-arg",
+    "url": "https://github.com/georgeglarson/cypher/pull/32",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T15:31:18Z",
+    "createdAt": "2026-07-10T15:29:16Z",
+    "isDraft": false,
+    "number": 33,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "fix(voices): portable opencode mount (standalone binary fleet-wide)",
+    "url": "https://github.com/georgeglarson/cypher/pull/33",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T22:43:22Z",
+    "createdAt": "2026-07-11T22:33:15Z",
+    "isDraft": false,
+    "number": 34,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "feat: runs prune + worktree self-heal (vk #815)",
+    "url": "https://github.com/georgeglarson/cypher/pull/34",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T18:10:37Z",
+    "createdAt": "2026-07-12T17:57:15Z",
+    "isDraft": false,
+    "number": 35,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "audit-remediation Phase 0+1: five fail-closed guards + docs",
+    "url": "https://github.com/georgeglarson/cypher/pull/35",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T19:54:51Z",
+    "createdAt": "2026-07-12T19:27:10Z",
+    "isDraft": false,
+    "number": 36,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "audit-remediation Phase 2: RepeatedLineSignal consecutive streak (kill-bar A1)",
+    "url": "https://github.com/georgeglarson/cypher/pull/36",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T22:06:17Z",
+    "createdAt": "2026-07-12T21:48:26Z",
+    "isDraft": false,
+    "number": 37,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "audit-remediation Phase 3: schema (origin, prompt_via, thin receipts)",
+    "url": "https://github.com/georgeglarson/cypher/pull/37",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T22:23:36Z",
+    "createdAt": "2026-07-12T22:20:38Z",
+    "isDraft": false,
+    "number": 38,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Align {prompt} token scope + centralize PROMPT_TOKEN/utf8_len (review follow-ups)",
+    "url": "https://github.com/georgeglarson/cypher/pull/38",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T09:35:05Z",
+    "createdAt": "2026-06-11T08:54:59Z",
+    "isDraft": false,
+    "number": 4,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Capture contract: per-CLI final-message adapters (target 2, vk #712)",
+    "url": "https://github.com/georgeglarson/cypher/pull/4",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T11:18:58Z",
+    "createdAt": "2026-06-11T10:10:51Z",
+    "isDraft": false,
+    "number": 5,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "Dispatch kill policy (clocks flag, evidence kills) + CC-default transport migration",
+    "url": "https://github.com/georgeglarson/cypher/pull/5",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T20:43:15Z",
+    "createdAt": "2026-06-11T12:54:50Z",
+    "isDraft": false,
+    "number": 6,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "docs(specs): reconcile spec docs with merged reality (coherence audit)",
+    "url": "https://github.com/georgeglarson/cypher/pull/6",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T00:02:29Z",
+    "createdAt": "2026-06-12T00:01:17Z",
+    "isDraft": false,
+    "number": 7,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "docs(plan): reconcile §14 closure-check parity gaps (vk #725)",
+    "url": "https://github.com/georgeglarson/cypher/pull/7",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T00:37:35Z",
+    "createdAt": "2026-06-12T00:35:46Z",
+    "isDraft": false,
+    "number": 8,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "docs+config: editable-install-only + restore roster naming (vk #726)",
+    "url": "https://github.com/georgeglarson/cypher/pull/8",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-13T21:57:22Z",
+    "createdAt": "2026-06-13T21:56:56Z",
+    "isDraft": false,
+    "number": 9,
+    "repository": {
+      "name": "cypher",
+      "nameWithOwner": "georgeglarson/cypher"
+    },
+    "state": "merged",
+    "title": "chore: bump GLM voice glm-51 → glm-52 (Z.AI 1M-ctx flagship)",
+    "url": "https://github.com/georgeglarson/cypher/pull/9",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T17:04:09Z",
+    "createdAt": "2026-06-03T16:45:15Z",
+    "isDraft": false,
+    "number": 10,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "feat(systemd): bring dr-heartbeat + vault-log-rotate timers into chezmoi",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/10",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-04T11:47:07Z",
+    "createdAt": "2026-06-04T11:42:54Z",
+    "isDraft": false,
+    "number": 11,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "Add ghostty config",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/11",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T10:42:37Z",
+    "createdAt": "2026-06-08T10:38:39Z",
+    "isDraft": false,
+    "number": 12,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "chore: rename nullclaw→showbiz in chezmoi host conditionals",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/12",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T08:11:30Z",
+    "createdAt": "2026-06-11T02:37:46Z",
+    "isDraft": false,
+    "number": 13,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "chore: retire gh-pr-panel.sh, add .review/ to global gitignore",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/13",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-13T19:39:21Z",
+    "createdAt": "2026-06-13T19:39:01Z",
+    "isDraft": false,
+    "number": 14,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "opencode: restore zai provider + default to GLM-5.2 (1M ctx)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/14",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-15T11:14:05Z",
+    "createdAt": "2026-06-15T11:11:51Z",
+    "isDraft": false,
+    "number": 15,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "fix(chezmoi): --force the apply service so installer scribbles auto-revert",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/15",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-15T12:25:22Z",
+    "createdAt": "2026-06-15T11:43:33Z",
+    "isDraft": false,
+    "number": 16,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "feat(chezmoi): daemon-reload hook so unit changes activate on apply",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/16",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-16T06:14:26Z",
+    "createdAt": "2026-06-16T06:13:53Z",
+    "isDraft": false,
+    "number": 17,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "fix(chezmoi): absolute chezmoi path in reload-hook hashing (unwedge apply)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/17",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-17T13:10:44Z",
+    "createdAt": "2026-06-17T13:03:18Z",
+    "isDraft": false,
+    "number": 18,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "feat(git-hooks): distribute pre-push review hook via chezmoi",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/18",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-18T10:58:28Z",
+    "createdAt": "2026-06-18T10:31:50Z",
+    "isDraft": false,
+    "number": 19,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "fix(git-hooks): stop pre-push hook blocking the vault DR mirror",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/19",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-02T14:37:02Z",
+    "createdAt": "2026-07-02T14:32:44Z",
+    "isDraft": false,
+    "number": 20,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "sway: force pixman render to dodge wlroots SIGABRT crash",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/20",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-02T15:53:23Z",
+    "createdAt": "2026-07-02T15:53:12Z",
+    "isDraft": false,
+    "number": 21,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "sway: drop pixman render override (wrong diagnosis)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/21",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T12:44:34Z",
+    "createdAt": "2026-07-05T12:41:25Z",
+    "isDraft": false,
+    "number": 22,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "fix(systemd): opencode-serve must not auto-arm (system-audit #1)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/22",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T13:27:49Z",
+    "createdAt": "2026-07-05T13:27:29Z",
+    "isDraft": false,
+    "number": 23,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "fix(pre-push): diagnose set-but-wrong GIT_REVIEW_OVERRIDE (audit #9, vk #810)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/23",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-06T01:15:19Z",
+    "createdAt": "2026-07-06T01:13:13Z",
+    "isDraft": false,
+    "number": 24,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "chore(opencode): remove dead airouter provider (sub cancelled 2026-06-30)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/24",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-25T12:47:07Z",
+    "createdAt": "2026-05-25T11:16:42Z",
+    "isDraft": false,
+    "number": 4,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "feat: launchd plist for opencode-serve on macOS (vk #428)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/4",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-25T21:04:45Z",
+    "createdAt": "2026-05-25T19:59:46Z",
+    "isDraft": false,
+    "number": 5,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "feat: gh pr create shell function intercept (vk #272)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/5",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T11:20:29Z",
+    "createdAt": "2026-05-29T18:19:06Z",
+    "isDraft": false,
+    "number": 6,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "feat(bashrc.d): default gh repo create to --private",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/6",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T11:20:29Z",
+    "createdAt": "2026-05-30T16:44:18Z",
+    "isDraft": false,
+    "number": 7,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "Templatize .bashrc + .gitconfig (per-host migration allowlist)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/7",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T12:36:46Z",
+    "createdAt": "2026-06-02T12:33:52Z",
+    "isDraft": false,
+    "number": 8,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "chore(#608): remove gh bash function (replaced by ~/bin/gh wrapper)",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/8",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T13:02:58Z",
+    "createdAt": "2026-06-02T12:55:11Z",
+    "isDraft": false,
+    "number": 9,
+    "repository": {
+      "name": "dotfiles",
+      "nameWithOwner": "georgeglarson/dotfiles"
+    },
+    "state": "merged",
+    "title": "fix(#608): ~/bin must win on PATH so gh default-private wrapper fires",
+    "url": "https://github.com/georgeglarson/dotfiles/pull/9",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-18T12:08:47Z",
+    "createdAt": "2026-06-18T12:06:21Z",
+    "isDraft": false,
+    "number": 100,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-infra-drift): harden fail-count reducer (PR #99 review follow-ups)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/100",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-18T15:13:58Z",
+    "createdAt": "2026-06-18T15:05:11Z",
+    "isDraft": false,
+    "number": 101,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(cal): structured create, surface API errors, gdate portability",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/101",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-19T18:13:07Z",
+    "createdAt": "2026-06-19T17:47:18Z",
+    "isDraft": false,
+    "number": 102,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(cli-review-panel): plan-discipline leg — plan↔code parity (#727)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/102",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T15:28:08Z",
+    "createdAt": "2026-06-20T15:05:33Z",
+    "isDraft": false,
+    "number": 103,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-lint): repoint fleet-audit consumer + add staleness guard",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/103",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T21:00:45Z",
+    "createdAt": "2026-06-20T20:30:45Z",
+    "isDraft": false,
+    "number": 104,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: add runway wrapper (#700)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/104",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-21T12:28:40Z",
+    "createdAt": "2026-06-21T12:28:19Z",
+    "isDraft": false,
+    "number": 105,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-lint): route lint findings to the board, not George's phone",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/105",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-22T16:00:54Z",
+    "createdAt": "2026-06-22T15:46:54Z",
+    "isDraft": false,
+    "number": 106,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: job-pull wrapper for the job-discovery CLI",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/106",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-23T16:11:49Z",
+    "createdAt": "2026-06-23T16:11:33Z",
+    "isDraft": false,
+    "number": 107,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: add claude-glm wrapper (run Claude Code on Z.AI GLM)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/107",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-23T16:18:41Z",
+    "createdAt": "2026-06-23T16:18:32Z",
+    "isDraft": false,
+    "number": 108,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix: claude-glm — take only first line of pass output",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/108",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-23T22:26:33Z",
+    "createdAt": "2026-06-23T22:24:37Z",
+    "isDraft": false,
+    "number": 109,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: add claude-m3 wrapper (Claude Code → MiniMax-M3)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/109",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-26T16:29:28Z",
+    "createdAt": "2026-06-26T16:29:11Z",
+    "isDraft": false,
+    "number": 110,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(waiting-on-you): scope gh-dangling to own-repos; denylist all-hands-bot",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/110",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-27T13:18:24Z",
+    "createdAt": "2026-06-27T12:55:59Z",
+    "isDraft": false,
+    "number": 111,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(notif): restore silence as the second disposition (the deleted ack primitive)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/111",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-27T13:33:42Z",
+    "createdAt": "2026-06-27T13:33:29Z",
+    "isDraft": false,
+    "number": 112,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(board-status): comment says resolve/silence (follow-up to #111)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/112",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-03T12:03:30Z",
+    "createdAt": "2026-07-03T11:49:54Z",
+    "isDraft": false,
+    "number": 113,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(gh-pr-activity): surface maintainer replies on issues I filed",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/113",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-03T11:51:16Z",
+    "createdAt": "2026-07-03T11:50:52Z",
+    "isDraft": false,
+    "number": 114,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(preflight): check standalone lint/format tools",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/114",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-03T20:55:35Z",
+    "createdAt": "2026-07-03T20:54:14Z",
+    "isDraft": false,
+    "number": 115,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(claude-glm): enable GLM-5.2 1M context",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/115",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-04T22:43:16Z",
+    "createdAt": "2026-07-04T22:28:10Z",
+    "isDraft": false,
+    "number": 116,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(pollers): oss-ticket-hunter — on-demand Hunt-runbook Phase-1 enumerator (vk #806)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/116",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T09:31:29Z",
+    "createdAt": "2026-07-05T09:11:05Z",
+    "isDraft": false,
+    "number": 117,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(cli-review-panel): kimi lane for kimi-code 0.20.1 (-p + stream-json)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/117",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T12:40:36Z",
+    "createdAt": "2026-07-05T12:38:35Z",
+    "isDraft": false,
+    "number": 118,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-bin): system-audit 2026-07-05 batch (help-guards, dead-flag, stale-path, broken-symlink)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/118",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T13:32:01Z",
+    "createdAt": "2026-07-05T13:24:57Z",
+    "isDraft": false,
+    "number": 119,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(gh-pr-activity): surface failing CI + review decisions",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/119",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T13:39:09Z",
+    "createdAt": "2026-07-05T13:35:56Z",
+    "isDraft": false,
+    "number": 120,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-lint): escalate to board only on canonical host (audit #6, vk #811)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/120",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T14:51:18Z",
+    "createdAt": "2026-07-05T14:48:36Z",
+    "isDraft": false,
+    "number": 121,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(fleet-drift): monitor laptop with apply-disabled carve-out (audit #11, vk #812)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/121",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T15:12:20Z",
+    "createdAt": "2026-07-05T15:11:00Z",
+    "isDraft": false,
+    "number": 122,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(daily-audit): prune lint/ at 14d, matching daily-audits",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/122",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T16:48:51Z",
+    "createdAt": "2026-07-05T16:42:48Z",
+    "isDraft": false,
+    "number": 123,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(fleetlint): drift checks — status-dead-not-archived + oversized-docs",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/123",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T17:13:42Z",
+    "createdAt": "2026-07-05T16:49:41Z",
+    "isDraft": false,
+    "number": 124,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(fleet-lint): 5 deterministic weekly checks (#817)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/124",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-05T17:20:34Z",
+    "createdAt": "2026-07-05T17:20:14Z",
+    "isDraft": false,
+    "number": 125,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(fleetlint): status-dead-not-archived → report-only",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/125",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-06T01:09:38Z",
+    "createdAt": "2026-07-06T01:06:19Z",
+    "isDraft": false,
+    "number": 126,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(audit): migrate local+daily audit LLM airouter to MiMo v2.5 Pro",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/126",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-06T18:31:13Z",
+    "createdAt": "2026-07-06T18:28:13Z",
+    "isDraft": false,
+    "number": 127,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "docs(gh-pr-activity): correct stale cron docstring to hourly",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/127",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-07T21:28:14Z",
+    "createdAt": "2026-07-07T21:13:36Z",
+    "isDraft": false,
+    "number": 128,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(review-panel): BLOCKING authority + concurrent lanes (vk #826)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/128",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-07T22:34:49Z",
+    "createdAt": "2026-07-07T22:25:55Z",
+    "isDraft": false,
+    "number": 129,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(review-panel): claude lane orchestrator-independent + doctor aligned",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/129",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-08T18:48:56Z",
+    "createdAt": "2026-07-08T18:42:07Z",
+    "isDraft": false,
+    "number": 130,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(gh-pr-activity): surface participated-not-authored (mentions + review-requested + reviewed-by)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/130",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-08T22:05:25Z",
+    "createdAt": "2026-07-08T21:46:05Z",
+    "isDraft": false,
+    "number": 131,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(composio-api): schema-aware wrapper — validate args before execute (vk #831)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/131",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-09T19:00:09Z",
+    "createdAt": "2026-07-09T17:41:53Z",
+    "isDraft": false,
+    "number": 132,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(cli-review-panel): grounding preamble to cut false positives (vk #838)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/132",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-09T19:04:57Z",
+    "createdAt": "2026-07-09T18:17:08Z",
+    "isDraft": false,
+    "number": 133,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(cli-review-panel): supply-chain fresh-dependency lane (vk #839)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/133",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T20:52:25Z",
+    "createdAt": "2026-07-10T20:49:14Z",
+    "isDraft": false,
+    "number": 134,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(board-status): legacy fold-in honors resolve/silence acks",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/134",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T21:42:30Z",
+    "createdAt": "2026-07-10T21:35:44Z",
+    "isDraft": false,
+    "number": 135,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(gh-pr-activity): a clean APPROVE on a foreign PR isn't ball-in-court",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/135",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T22:01:22Z",
+    "createdAt": "2026-07-10T22:01:06Z",
+    "isDraft": false,
+    "number": 136,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Revert \"fix(gh-pr-activity): a clean APPROVE on a foreign PR isn't ball-in-court\" (#135)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/136",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T09:44:55Z",
+    "createdAt": "2026-07-11T09:34:09Z",
+    "isDraft": false,
+    "number": 137,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(gh-pr-activity): merge-state-aware \"waiting on you\" verdict",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/137",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T16:32:52Z",
+    "createdAt": "2026-07-11T16:11:45Z",
+    "isDraft": false,
+    "number": 138,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(logstore): per-entry log storage helpers (log-write + vault-log-recent)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/138",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T18:26:20Z",
+    "createdAt": "2026-07-11T17:49:38Z",
+    "isDraft": false,
+    "number": 139,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(fleetlint): AgingUndated vk-timewaster check (undated + P≥3 + 30d)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/139",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T18:46:41Z",
+    "createdAt": "2026-07-11T18:41:33Z",
+    "isDraft": false,
+    "number": 140,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(gh-pr-activity): non-action merge-states leave the waiting-on-you rung",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/140",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T20:50:35Z",
+    "createdAt": "2026-07-11T20:35:06Z",
+    "isDraft": false,
+    "number": 141,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(gh-pr-activity): content-checksum keys + terminal-auto-clear",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/141",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T22:01:01Z",
+    "createdAt": "2026-07-11T22:00:39Z",
+    "isDraft": false,
+    "number": 142,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(audit): fix stale glitch + showdown ROLE baselines",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/142",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T22:36:28Z",
+    "createdAt": "2026-07-11T22:36:20Z",
+    "isDraft": false,
+    "number": 143,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(fleetlint): exclude archive/ from vault lint scan",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/143",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T23:31:42Z",
+    "createdAt": "2026-07-11T23:21:21Z",
+    "isDraft": false,
+    "number": 144,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: board-status honors remedy- clears + fleet-lint emits them (vk #846)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/144",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T23:49:30Z",
+    "createdAt": "2026-07-11T23:44:09Z",
+    "isDraft": false,
+    "number": 145,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(fleet-backup-status): emit remedy- on recovery (vk #846 follow-up)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/145",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-12T13:56:09Z",
+    "createdAt": "2026-07-12T13:50:53Z",
+    "isDraft": false,
+    "number": 146,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(staleness): is-stale + stale-sweep for npm/uvx upgrade cadence",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/146",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T00:01:39Z",
+    "createdAt": "2026-05-20T23:49:02Z",
+    "isDraft": false,
+    "number": 21,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: timewaster-lint (mirror of laptop-scripts)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/21",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T07:36:59Z",
+    "createdAt": "2026-05-21T00:31:56Z",
+    "isDraft": false,
+    "number": 22,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: ack-notif — sticky suppression for fleet alarm-board entries",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/22",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T08:08:44Z",
+    "createdAt": "2026-05-21T08:04:20Z",
+    "isDraft": false,
+    "number": 23,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(ack-notif): reject empty <match> argument",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/23",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T11:10:13Z",
+    "createdAt": "2026-05-21T11:07:46Z",
+    "isDraft": false,
+    "number": 24,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore: retire pollers/algora-bounties.sh",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/24",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T21:16:57Z",
+    "createdAt": "2026-05-21T18:56:34Z",
+    "isDraft": false,
+    "number": 25,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: split B2-push alarm from rsync-staleness alarm (vk #470)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/25",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T22:01:14Z",
+    "createdAt": "2026-05-21T21:31:06Z",
+    "isDraft": false,
+    "number": 26,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-drift): vk_all_tasks fails loud on curl/parse error (vk #461)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/26",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-25T00:09:04Z",
+    "createdAt": "2026-05-24T23:18:00Z",
+    "isDraft": false,
+    "number": 27,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Add PR-review bot-only archive pass to inbox-triage (vk #375)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/27",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-25T20:11:22Z",
+    "createdAt": "2026-05-25T13:43:37Z",
+    "isDraft": false,
+    "number": 28,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: composio-api wrapper, swap CLI runtime to direct REST (vk #542)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/28",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-25T16:07:35Z",
+    "createdAt": "2026-05-25T14:38:54Z",
+    "isDraft": false,
+    "number": 29,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-infra-drift): init FINDINGS=() to avoid set -u unbound (vk #504)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/29",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-25T21:04:32Z",
+    "createdAt": "2026-05-25T19:59:31Z",
+    "isDraft": false,
+    "number": 30,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: cli-review-panel auto-fire wrapper for gh pr create (vk #272)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/30",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-29T16:45:04Z",
+    "createdAt": "2026-05-29T13:02:43Z",
+    "isDraft": false,
+    "number": 31,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore: point ~/bin/cypher at V1 venv (Python rewrite)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/31",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-29T19:43:46Z",
+    "createdAt": "2026-05-29T19:43:10Z",
+    "isDraft": false,
+    "number": 32,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(fleet-bin): consolidate per-host bin repos into shared fleet-bin",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/32",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-30T14:33:56Z",
+    "createdAt": "2026-05-30T13:50:04Z",
+    "isDraft": false,
+    "number": 33,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(vault-lint): scope find_orphans to wikilink-driven content",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/33",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-30T15:40:29Z",
+    "createdAt": "2026-05-30T14:58:21Z",
+    "isDraft": false,
+    "number": 34,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "add: memory-quote-fix.py — fix YAML-unparseable memory frontmatter",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/34",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-30T19:53:37Z",
+    "createdAt": "2026-05-30T18:54:47Z",
+    "isDraft": false,
+    "number": 35,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(pollers): point jobs-gmail.sh at composio-api (closes vk #621)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/35",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-01T15:08:20Z",
+    "createdAt": "2026-06-01T14:51:47Z",
+    "isDraft": false,
+    "number": 36,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(gmail): restore inbox labeling + failure-only alarm squawk",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/36",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-01T16:22:48Z",
+    "createdAt": "2026-06-01T16:15:02Z",
+    "isDraft": false,
+    "number": 37,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(jobs-poller): restore agent/job-alerts intake (dead-CLI swap)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/37",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-01T17:26:45Z",
+    "createdAt": "2026-06-01T17:08:08Z",
+    "isDraft": false,
+    "number": 38,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(bookmarks-poller): dead-CLI swap (feature vendor-blocked, vk #640)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/38",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T16:19:13Z",
+    "createdAt": "2026-06-02T16:19:10Z",
+    "isDraft": false,
+    "number": 39,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore: retire fleet-dispatch + agent-out helper scripts",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/39",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T16:52:49Z",
+    "createdAt": "2026-06-02T16:46:26Z",
+    "isDraft": false,
+    "number": 40,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(651): explicit-ack alarm board — move-to-history + append-on-change",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/40",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T18:14:16Z",
+    "createdAt": "2026-06-02T18:09:23Z",
+    "isDraft": false,
+    "number": 41,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(506): state-derived idempotency_key for log_alert (extract to fleet-lib)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/41",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T18:45:22Z",
+    "createdAt": "2026-06-03T17:59:24Z",
+    "isDraft": false,
+    "number": 42,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(mattermost): retire MM integration + dead daemon wrappers",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/42",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T20:09:24Z",
+    "createdAt": "2026-06-03T20:04:16Z",
+    "isDraft": false,
+    "number": 43,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(job-agent): recover job pipeline from orphan branch, cleaned (vk #665)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/43",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T21:28:33Z",
+    "createdAt": "2026-06-03T20:32:40Z",
+    "isDraft": false,
+    "number": 44,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(job-agent): gate curator active->closed move behind --dry-run (vk #665)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/44",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T21:10:52Z",
+    "createdAt": "2026-06-03T21:06:22Z",
+    "isDraft": false,
+    "number": 45,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore: retire the legacy inbox shell pipeline (vk #662)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/45",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T22:00:24Z",
+    "createdAt": "2026-06-03T21:48:54Z",
+    "isDraft": false,
+    "number": 46,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(security): pass API keys via env not argv in composio-api + cal (vk #554)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/46",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T23:25:56Z",
+    "createdAt": "2026-06-03T23:19:30Z",
+    "isDraft": false,
+    "number": 47,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore: retire Venice provider references (sub dropped; sweep never ran)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/47",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-04T11:57:08Z",
+    "createdAt": "2026-06-04T11:54:24Z",
+    "isDraft": false,
+    "number": 48,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix: audit scripts → Qwen3.6 (airouter dropped qwen3.5 from key)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/48",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-04T14:13:47Z",
+    "createdAt": "2026-06-04T13:41:15Z",
+    "isDraft": false,
+    "number": 49,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: board-status — deterministic alarm-board reducer for /shikiri",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/49",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-04T18:27:30Z",
+    "createdAt": "2026-06-04T18:16:22Z",
+    "isDraft": false,
+    "number": 50,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Rename Needs Triage -> Passed; review tier gets tracker line only",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/50",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-04T19:20:13Z",
+    "createdAt": "2026-06-04T19:03:40Z",
+    "isDraft": false,
+    "number": 51,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Clear Mattermost residue: delete dead fleet-status-digest.sh, fix stale comments + vacuous assertion",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/51",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-05T18:20:44Z",
+    "createdAt": "2026-06-05T18:13:46Z",
+    "isDraft": false,
+    "number": 52,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Extract source-agnostic job-search config primitive",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/52",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-05T19:30:38Z",
+    "createdAt": "2026-06-05T19:21:45Z",
+    "isDraft": false,
+    "number": 53,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Demote job pipeline to ranked plausibility list + deterministic gates",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/53",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-05T19:47:37Z",
+    "createdAt": "2026-06-05T19:39:10Z",
+    "isDraft": false,
+    "number": 54,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Refine location gate: drivable hybrid passes flagged, not killed",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/54",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-05T21:48:15Z",
+    "createdAt": "2026-06-05T19:52:20Z",
+    "isDraft": false,
+    "number": 55,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(email): purge zombie poller stack + revive gmail-cleanup",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/55",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-05T20:54:32Z",
+    "createdAt": "2026-06-05T20:51:31Z",
+    "isDraft": false,
+    "number": 56,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Add Indiana PA (the town) to drivable region",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/56",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-05T21:44:36Z",
+    "createdAt": "2026-06-05T21:40:45Z",
+    "isDraft": false,
+    "number": 57,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Tighten drivable radius to ~45min of 15033 (George ruling)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/57",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-06T16:56:55Z",
+    "createdAt": "2026-06-06T16:27:49Z",
+    "isDraft": false,
+    "number": 58,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fleet-infra-drift: probe extraction + Python reducer (kills false-ALARM/false-negative class)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/58",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-06T18:54:42Z",
+    "createdAt": "2026-06-06T18:48:50Z",
+    "isDraft": false,
+    "number": 59,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(dr-heartbeat): gate postgres probe on the system user existing",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/59",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T12:17:55Z",
+    "createdAt": "2026-06-07T12:04:10Z",
+    "isDraft": false,
+    "number": 60,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(audit): stop paging P5 on ALARM section headers over 'None' bodies",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/60",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T14:20:53Z",
+    "createdAt": "2026-06-07T14:11:43Z",
+    "isDraft": false,
+    "number": 61,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: memory-lint — hourly memory-store consistency watchdog",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/61",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T16:36:58Z",
+    "createdAt": "2026-06-07T16:27:52Z",
+    "isDraft": false,
+    "number": 62,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore(job-agent-push): stop shipping the 5 unused letter inputs (post-#682)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/62",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T17:51:43Z",
+    "createdAt": "2026-06-07T17:39:56Z",
+    "isDraft": false,
+    "number": 63,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: extract log_alert into ~/bin/log-alert CLI (fleet-lint step 0)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/63",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T18:31:24Z",
+    "createdAt": "2026-06-07T18:08:57Z",
+    "isDraft": false,
+    "number": 64,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: fleetlint package + runner; port vault-lint.py (fleet-lint step 1)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/64",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T19:17:37Z",
+    "createdAt": "2026-06-07T18:59:41Z",
+    "isDraft": false,
+    "number": 65,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: memory check group — merge memory-lint.py + .sh (fleet-lint step 2)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/65",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T19:46:30Z",
+    "createdAt": "2026-06-07T19:30:05Z",
+    "isDraft": false,
+    "number": 66,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: vk check group + CheckError path — merge vk-timewaster-lint.py (fleet-lint step 3)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/66",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T09:44:34Z",
+    "createdAt": "2026-06-08T08:41:03Z",
+    "isDraft": false,
+    "number": 67,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: weekly housekeeping aggregate — fleet-lint step 4 (vk #692)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/67",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T10:42:33Z",
+    "createdAt": "2026-06-08T10:37:53Z",
+    "isDraft": false,
+    "number": 68,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "chore: rename nullclaw→showbiz across fleet-bin host references",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/68",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T12:55:46Z",
+    "createdAt": "2026-06-08T11:15:09Z",
+    "isDraft": false,
+    "number": 69,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: LLM judgment tier — memory-contradiction check (fleet-lint step 5, vk #692)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/69",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T12:18:39Z",
+    "createdAt": "2026-06-08T12:11:01Z",
+    "isDraft": false,
+    "number": 70,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: block-remote-exec hook — gate inline-code/chains through ssh pipes",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/70",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T12:36:25Z",
+    "createdAt": "2026-06-08T12:23:48Z",
+    "isDraft": false,
+    "number": 71,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix: don't analyze heredoc bodies in block-remote-exec (false-positive)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/71",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T13:00:08Z",
+    "createdAt": "2026-06-08T12:50:48Z",
+    "isDraft": false,
+    "number": 72,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat: fleet-distribute the Claude Code Bash safety-hook chain",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/72",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T13:38:06Z",
+    "createdAt": "2026-06-08T13:12:28Z",
+    "isDraft": false,
+    "number": 73,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(llm-tier): swap to 1M-context MiMo; drop dated \"long-context\" framing",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/73",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T13:31:13Z",
+    "createdAt": "2026-06-08T13:16:38Z",
+    "isDraft": false,
+    "number": 74,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix: quote-aware segmentation + heredoc check (stop over-blocking chained probes)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/74",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T16:08:03Z",
+    "createdAt": "2026-06-08T15:39:38Z",
+    "isDraft": false,
+    "number": 75,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(fleet-lint): semantic-TODO LLM check; kill semantic-merge",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/75",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T13:09:13Z",
+    "createdAt": "2026-06-09T13:05:08Z",
+    "isDraft": false,
+    "number": 76,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "vault-log-rotate: link monthly archives from log.md (kill orphan flags)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/76",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-10T12:25:38Z",
+    "createdAt": "2026-06-10T12:04:09Z",
+    "isDraft": false,
+    "number": 77,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(notif): replace ack-notif with resolve-notif/track-notif disposition verbs",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/77",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T08:31:34Z",
+    "createdAt": "2026-06-11T02:35:36Z",
+    "isDraft": false,
+    "number": 78,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(review-panel): repair lanes + advisory gh-pr-create firing (v4: Claude Code as primary client)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/78",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T09:10:19Z",
+    "createdAt": "2026-06-11T09:08:54Z",
+    "isDraft": false,
+    "number": 79,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "review-panel: kill the time budget — no clocks on the work (D9 reversed)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/79",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T10:19:50Z",
+    "createdAt": "2026-06-11T10:12:09Z",
+    "isDraft": false,
+    "number": 80,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(nightly-snapshot): push canonical (vps) on sync-daemon repos, not the mirror",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/80",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-11T20:13:02Z",
+    "createdAt": "2026-06-11T18:41:52Z",
+    "isDraft": false,
+    "number": 81,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(coherence-gate): blocking plan-doc presence + advisory drift judge at gh pr create",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/81",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T00:52:39Z",
+    "createdAt": "2026-06-12T00:51:24Z",
+    "isDraft": false,
+    "number": 82,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(cli-review-panel): count blockers from verdict (stdout), not stderr trace",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/82",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T18:09:31Z",
+    "createdAt": "2026-06-12T17:50:20Z",
+    "isDraft": false,
+    "number": 83,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Rewrite fleet gate hooks as tested Python (fleetgates package) (#721)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/83",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T18:54:16Z",
+    "createdAt": "2026-06-12T18:32:14Z",
+    "isDraft": false,
+    "number": 84,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "Port block-dangerous-git into fleetgates — third gate (#721)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/84",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T19:42:33Z",
+    "createdAt": "2026-06-12T19:38:40Z",
+    "isDraft": false,
+    "number": 85,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "board-status: surface occurrence count on recurring alarms",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/85",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-13T00:08:48Z",
+    "createdAt": "2026-06-12T23:58:58Z",
+    "isDraft": false,
+    "number": 86,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix: add 14-day retention to daily-audit reports (#663)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/86",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-13T00:45:29Z",
+    "createdAt": "2026-06-13T00:43:17Z",
+    "isDraft": false,
+    "number": 87,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix: fleet-lint honors @paused in vk-timewaster checks",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/87",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-13T19:39:18Z",
+    "createdAt": "2026-06-13T19:38:40Z",
+    "isDraft": false,
+    "number": 88,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "glm: bump GLM-5.1 → GLM-5.2 (1M ctx) in panel + oh",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/88",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-13T23:51:01Z",
+    "createdAt": "2026-06-13T23:37:16Z",
+    "isDraft": false,
+    "number": 89,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fleetlint: respect supersede annotations in memory-contradiction check (vk #733)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/89",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-14T15:26:56Z",
+    "createdAt": "2026-06-14T15:20:10Z",
+    "isDraft": false,
+    "number": 90,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "pass-sync daemon + de-pin secret consumers from svc store",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/90",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-15T12:25:27Z",
+    "createdAt": "2026-06-15T11:53:19Z",
+    "isDraft": false,
+    "number": 91,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(daily-audit): name the failing subject in the alarm, not just the probe",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/91",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-15T16:57:29Z",
+    "createdAt": "2026-06-15T15:05:47Z",
+    "isDraft": false,
+    "number": 92,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fleet-lint: live-checkout-drift sensor (detect-only)",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/92",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-15T21:47:16Z",
+    "createdAt": "2026-06-15T21:32:50Z",
+    "isDraft": false,
+    "number": 93,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-lint): exclude projects/bootstrap/ from stale-projects",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/93",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-16T05:59:58Z",
+    "createdAt": "2026-06-16T05:56:38Z",
+    "isDraft": false,
+    "number": 94,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(cal): --cal flag for bills/ynab calendars + fix find parsing",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/94",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-17T11:49:28Z",
+    "createdAt": "2026-06-17T10:43:23Z",
+    "isDraft": false,
+    "number": 95,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(gh-pr-activity): surface maintainer responses on open PRs",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/95",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-17T13:03:49Z",
+    "createdAt": "2026-06-17T12:58:10Z",
+    "isDraft": false,
+    "number": 96,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(gh-pr-activity): emit warn so /shikiri surfaces maintainer events; retry transient 5xx",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/96",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-17T23:35:51Z",
+    "createdAt": "2026-06-17T23:14:10Z",
+    "isDraft": false,
+    "number": 97,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(pollers): UC work-search satisfaction toggle for vk #131",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/97",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-18T09:26:26Z",
+    "createdAt": "2026-06-18T09:25:59Z",
+    "isDraft": false,
+    "number": 98,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "feat(gh-pr-activity): detect non-me commit pushes to open PRs",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/98",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-18T11:13:27Z",
+    "createdAt": "2026-06-18T11:12:34Z",
+    "isDraft": false,
+    "number": 99,
+    "repository": {
+      "name": "fleet-bin",
+      "nameWithOwner": "georgeglarson/fleet-bin"
+    },
+    "state": "merged",
+    "title": "fix(fleet-infra-drift): surface vps-fail-count alongside origin-fail-count",
+    "url": "https://github.com/georgeglarson/fleet-bin/pull/99",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-24T20:55:06Z",
+    "createdAt": "2026-06-24T20:52:32Z",
+    "isDraft": false,
+    "number": 1,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "fix(publish): render GFM tables in md_to_html",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/1",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-01T23:09:58Z",
+    "createdAt": "2026-07-01T22:29:32Z",
+    "isDraft": false,
+    "number": 10,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "Rebuild resume page in mono-editorial; retire the terminal-style island",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/10",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-30T15:38:09Z",
+    "createdAt": "2026-06-30T08:50:51Z",
+    "isDraft": false,
+    "number": 2,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "chore(resume): refresh OSS section to verified PR states",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/2",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-30T15:38:06Z",
+    "createdAt": "2026-06-30T09:48:11Z",
+    "isDraft": false,
+    "number": 3,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "chore(site): freshness audit — exposure, stale content, broken links",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/3",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-30T21:55:14Z",
+    "createdAt": "2026-06-30T16:18:20Z",
+    "isDraft": false,
+    "number": 4,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "Rebuild: mono-accented editorial site (landing + who-is-george + 3 case studies)",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/4",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-01T18:16:50Z",
+    "createdAt": "2026-07-01T18:16:40Z",
+    "isDraft": false,
+    "number": 5,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "network-tools: drop the false 'ngrep untouched since the 90s' line",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/5",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-01T18:50:30Z",
+    "createdAt": "2026-07-01T18:50:18Z",
+    "isDraft": false,
+    "number": 6,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "landing + who-is-george: surface the FM-era production AI (2023)",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/6",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-01T19:07:18Z",
+    "createdAt": "2026-07-01T19:07:06Z",
+    "isDraft": false,
+    "number": 7,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "who-is-george: ground the Director-title claim + stop dismissing the site's receipts",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/7",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-01T19:57:12Z",
+    "createdAt": "2026-07-01T19:51:35Z",
+    "isDraft": false,
+    "number": 8,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "fracture: reframe 'production MMO' → live multiplayer RPG, de-I the article title",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/8",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-01T20:19:03Z",
+    "createdAt": "2026-07-01T20:18:12Z",
+    "isDraft": false,
+    "number": 9,
+    "repository": {
+      "name": "georgelarson.me",
+      "nameWithOwner": "georgeglarson/georgelarson.me"
+    },
+    "state": "merged",
+    "title": "copy tail from cypher review (#5 #7 #8 + doorman lead)",
+    "url": "https://github.com/georgeglarson/georgelarson.me/pull/9",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-22T12:14:25Z",
+    "createdAt": "2026-06-22T12:11:58Z",
+    "isDraft": false,
+    "number": 1,
+    "repository": {
+      "name": "job-discovery",
+      "nameWithOwner": "georgeglarson/job-discovery"
+    },
+    "state": "merged",
+    "title": "Build /job v4 discovery board: retained dataset + view-time lenses (#728)",
+    "url": "https://github.com/georgeglarson/job-discovery/pull/1",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-22T14:12:23Z",
+    "createdAt": "2026-06-22T14:01:13Z",
+    "isDraft": false,
+    "number": 2,
+    "repository": {
+      "name": "job-discovery",
+      "nameWithOwner": "georgeglarson/job-discovery"
+    },
+    "state": "merged",
+    "title": "Enrich /job v4: populate the inert lens tags + panel/hardening backlog",
+    "url": "https://github.com/georgeglarson/job-discovery/pull/2",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-22T15:58:54Z",
+    "createdAt": "2026-06-22T15:33:46Z",
+    "isDraft": false,
+    "number": 3,
+    "repository": {
+      "name": "job-discovery",
+      "nameWithOwner": "georgeglarson/job-discovery"
+    },
+    "state": "merged",
+    "title": "feat: job-pull command layer over the corpus library",
+    "url": "https://github.com/georgeglarson/job-discovery/pull/3",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T00:01:36Z",
+    "createdAt": "2026-05-20T23:49:00Z",
+    "isDraft": false,
+    "number": 2,
+    "repository": {
+      "name": "laptop-scripts-legacy",
+      "nameWithOwner": "georgeglarson/laptop-scripts-legacy"
+    },
+    "state": "merged",
+    "title": "feat: timewaster-lint (busywork-lint generalization) + 4 new checks",
+    "url": "https://github.com/georgeglarson/laptop-scripts-legacy/pull/2",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T08:08:40Z",
+    "createdAt": "2026-05-21T07:40:00Z",
+    "isDraft": false,
+    "number": 3,
+    "repository": {
+      "name": "laptop-scripts-legacy",
+      "nameWithOwner": "georgeglarson/laptop-scripts-legacy"
+    },
+    "state": "merged",
+    "title": "feat: ack-notif (mirror of ironclaw-scripts#22)",
+    "url": "https://github.com/georgeglarson/laptop-scripts-legacy/pull/3",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-23T10:10:59Z",
+    "createdAt": "2026-05-23T02:21:57Z",
+    "isDraft": false,
+    "number": 4,
+    "repository": {
+      "name": "laptop-scripts-legacy",
+      "nameWithOwner": "georgeglarson/laptop-scripts-legacy"
+    },
+    "state": "merged",
+    "title": "fix(memory-lint): accept type under metadata: block",
+    "url": "https://github.com/georgeglarson/laptop-scripts-legacy/pull/4",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-28T08:46:51Z",
+    "createdAt": "2026-05-28T08:45:09Z",
+    "isDraft": false,
+    "number": 5,
+    "repository": {
+      "name": "laptop-scripts-legacy",
+      "nameWithOwner": "georgeglarson/laptop-scripts-legacy"
+    },
+    "state": "merged",
+    "title": "job-agent: per-job score+reason run-log + --dry-run kill-switch",
+    "url": "https://github.com/georgeglarson/laptop-scripts-legacy/pull/5",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-28T09:09:48Z",
+    "createdAt": "2026-05-28T09:09:21Z",
+    "isDraft": false,
+    "number": 6,
+    "repository": {
+      "name": "laptop-scripts-legacy",
+      "nameWithOwner": "georgeglarson/laptop-scripts-legacy"
+    },
+    "state": "merged",
+    "title": "lint: Δ tracking + 3 new checks (vault/memory/timewaster)",
+    "url": "https://github.com/georgeglarson/laptop-scripts-legacy/pull/6",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-30T00:09:37Z",
+    "createdAt": "2026-05-28T12:38:06Z",
+    "isDraft": false,
+    "number": 7,
+    "repository": {
+      "name": "laptop-scripts-legacy",
+      "nameWithOwner": "georgeglarson/laptop-scripts-legacy"
+    },
+    "state": "merged",
+    "title": "feat(composio-api): propagate bash REST wrapper to laptop",
+    "url": "https://github.com/georgeglarson/laptop-scripts-legacy/pull/7",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-24T18:57:06Z",
+    "createdAt": "2026-05-24T16:48:16Z",
+    "isDraft": false,
+    "number": 10,
+    "repository": {
+      "name": "larson.help",
+      "nameWithOwner": "georgeglarson/larson.help"
+    },
+    "state": "merged",
+    "title": "n8n: fix Code node mode in quo-response-loop (vk #373 / PR #7 follow-up)",
+    "url": "https://github.com/georgeglarson/larson.help/pull/10",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T07:38:44Z",
+    "createdAt": "2026-06-09T01:41:17Z",
+    "isDraft": false,
+    "number": 1,
+    "repository": {
+      "name": "lead-engine",
+      "nameWithOwner": "georgeglarson/lead-engine"
+    },
+    "state": "merged",
+    "title": "lead-engine slice 1: engine core (vk #247/#701)",
+    "url": "https://github.com/georgeglarson/lead-engine/pull/1",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T15:06:08Z",
+    "createdAt": "2026-06-09T14:11:39Z",
+    "isDraft": false,
+    "number": 2,
+    "repository": {
+      "name": "lead-engine",
+      "nameWithOwner": "georgeglarson/lead-engine"
+    },
+    "state": "merged",
+    "title": "Region-confirm (slice 2 step 1): never-drop town-less leads + region disposition",
+    "url": "https://github.com/georgeglarson/lead-engine/pull/2",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T18:51:32Z",
+    "createdAt": "2026-06-09T16:40:19Z",
+    "isDraft": false,
+    "number": 3,
+    "repository": {
+      "name": "lead-engine",
+      "nameWithOwner": "georgeglarson/lead-engine"
+    },
+    "state": "merged",
+    "title": "OSM Overpass enumerator (slice 2 step 2): census growth from OpenStreetMap",
+    "url": "https://github.com/georgeglarson/lead-engine/pull/3",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T21:18:26Z",
+    "createdAt": "2026-06-09T19:00:48Z",
+    "isDraft": false,
+    "number": 4,
+    "repository": {
+      "name": "lead-engine",
+      "nameWithOwner": "georgeglarson/lead-engine"
+    },
+    "state": "merged",
+    "title": "Reference Solutions CSV importer (slice 2 step 2b): library-export census backbone",
+    "url": "https://github.com/georgeglarson/lead-engine/pull/4",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T22:17:12Z",
+    "createdAt": "2026-06-09T21:59:12Z",
+    "isDraft": false,
+    "number": 5,
+    "repository": {
+      "name": "lead-engine",
+      "nameWithOwner": "georgeglarson/lead-engine"
+    },
+    "state": "merged",
+    "title": "fix grade-failures + regrade recovery (slice 2 step 3a)",
+    "url": "https://github.com/georgeglarson/lead-engine/pull/5",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T22:36:44Z",
+    "createdAt": "2026-06-09T22:25:10Z",
+    "isDraft": false,
+    "number": 6,
+    "repository": {
+      "name": "lead-engine",
+      "nameWithOwner": "georgeglarson/lead-engine"
+    },
+    "state": "merged",
+    "title": "store: atomic write + lock against concurrent clobber (slice 2 step 3b)",
+    "url": "https://github.com/georgeglarson/lead-engine/pull/6",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-09T22:51:04Z",
+    "createdAt": "2026-06-09T22:37:49Z",
+    "isDraft": false,
+    "number": 7,
+    "repository": {
+      "name": "lead-engine",
+      "nameWithOwner": "georgeglarson/lead-engine"
+    },
+    "state": "merged",
+    "title": "presence_check: pin validated IP to close DNS-rebind SSRF (slice 2 step 3c)",
+    "url": "https://github.com/georgeglarson/lead-engine/pull/7",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-20T23:27:16Z",
+    "createdAt": "2026-05-20T23:15:43Z",
+    "isDraft": false,
+    "number": 16,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch): cycle 0 scaffold for Vigil Step 4",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/16",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T00:00:23Z",
+    "createdAt": "2026-05-20T23:49:21Z",
+    "isDraft": false,
+    "number": 17,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch): cycle 1 — snapshot envelope + adapter contract",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/17",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T00:57:12Z",
+    "createdAt": "2026-05-21T00:37:09Z",
+    "isDraft": false,
+    "number": 18,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch/store): cycle 2 — SQLite store with WAL + canonical-hash diff",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/18",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T01:37:39Z",
+    "createdAt": "2026-05-21T01:24:25Z",
+    "isDraft": false,
+    "number": 19,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch/publisher): cycle 3 — atomic vault writer with semantic idempotency",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/19",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T02:10:48Z",
+    "createdAt": "2026-05-21T01:43:52Z",
+    "isDraft": false,
+    "number": 20,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch): cycle 4 — runtimemode + FakeAdapter (selftest seam)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/20",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T03:10:34Z",
+    "createdAt": "2026-05-21T02:44:20Z",
+    "isDraft": false,
+    "number": 21,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch/evaluator): cycle 5 — tick orchestration (substrate spine)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/21",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T03:42:23Z",
+    "createdAt": "2026-05-21T03:25:10Z",
+    "isDraft": false,
+    "number": 22,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(cmd/watch): cycle 6 — CLI surface (tick, status, selftest)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/22",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T07:35:08Z",
+    "createdAt": "2026-05-21T03:54:55Z",
+    "isDraft": false,
+    "number": 23,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch): cycle 7 — watchdog with error-class escalation + vault alert writes",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/23",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T08:24:50Z",
+    "createdAt": "2026-05-21T08:06:51Z",
+    "isDraft": false,
+    "number": 24,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch/adapter/ynab): cycle 8 — real YNAB adapter",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/24",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T15:59:16Z",
+    "createdAt": "2026-05-21T13:22:14Z",
+    "isDraft": false,
+    "number": 25,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(dashboard): cycle 9 — VaultReader, SQLiteReader, FallthroughReader",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/25",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T17:38:58Z",
+    "createdAt": "2026-05-21T16:51:31Z",
+    "isDraft": false,
+    "number": 26,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(cmd/finance-status): cycle 10 — first dashboard consumer",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/26",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-21T21:16:56Z",
+    "createdAt": "2026-05-21T18:59:24Z",
+    "isDraft": false,
+    "number": 27,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(deploy): cycle 11 — systemd-user templates for watch tick + watchdog",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/27",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-22T12:06:14Z",
+    "createdAt": "2026-05-22T11:53:15Z",
+    "isDraft": false,
+    "number": 29,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch/adapter/gcal): cycle 1 — typed State + DecodeState",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/29",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-22T12:26:26Z",
+    "createdAt": "2026-05-22T12:26:20Z",
+    "isDraft": false,
+    "number": 30,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch/adapter/gcal): cycle 2 — HTTP client + token + errors",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/30",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-22T13:19:45Z",
+    "createdAt": "2026-05-22T13:19:32Z",
+    "isDraft": false,
+    "number": 31,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(watch/adapter/gcal): cycle 3 — Adapter + registration",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/31",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-22T13:59:57Z",
+    "createdAt": "2026-05-22T13:59:50Z",
+    "isDraft": false,
+    "number": 32,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(cmd/bills-status): cycle 4 — bills consumer + MM post",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/32",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-23T01:32:59Z",
+    "createdAt": "2026-05-22T23:49:24Z",
+    "isDraft": false,
+    "number": 33,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(watch): cycle 5 cleanup — parser leniency + snapshot-coverage caveat",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/33",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-23T10:15:46Z",
+    "createdAt": "2026-05-23T02:22:32Z",
+    "isDraft": false,
+    "number": 34,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(watch): persist Type+AdapterVersion in SQLite state table",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/34",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-23T12:33:56Z",
+    "createdAt": "2026-05-23T11:08:37Z",
+    "isDraft": false,
+    "number": 35,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "docs(superpowers): land gcal v0.1 spec + 5 cycle plans",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/35",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T00:33:25Z",
+    "createdAt": "2026-05-23T16:21:48Z",
+    "isDraft": false,
+    "number": 36,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "docs(gcal-spec): document static project key fragility",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/36",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-24T16:08:28Z",
+    "createdAt": "2026-05-24T15:58:32Z",
+    "isDraft": false,
+    "number": 37,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(watch): split publisher writes to watch.<host>.jsonl (#532)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/37",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-24T16:36:16Z",
+    "createdAt": "2026-05-24T16:22:46Z",
+    "isDraft": false,
+    "number": 38,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "chore(test): add legacy-path NoFileExists to second writer test",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/38",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-05-31T17:57:13Z",
+    "createdAt": "2026-05-31T08:31:57Z",
+    "isDraft": false,
+    "number": 39,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(heartbeat): correct stale Alert.StaleSince comment",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/39",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-01T21:27:50Z",
+    "createdAt": "2026-06-01T21:09:09Z",
+    "isDraft": false,
+    "number": 40,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(watch): selftest stubs all referenced adapter types (vk #502)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/40",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T07:58:53Z",
+    "createdAt": "2026-06-02T07:58:15Z",
+    "isDraft": false,
+    "number": 41,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "docs(readme): reflect built-not-deployed state",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/41",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-02T18:24:39Z",
+    "createdAt": "2026-06-02T18:22:23Z",
+    "isDraft": false,
+    "number": 42,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(watch): state-derived idempotency_key for heartbeat alerts (vk #506)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/42",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T08:36:13Z",
+    "createdAt": "2026-06-02T23:07:55Z",
+    "isDraft": false,
+    "number": 43,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(watch): status reads fresher of vault/DB (quiet-period false staleness)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/43",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T10:18:49Z",
+    "createdAt": "2026-06-03T10:08:10Z",
+    "isDraft": false,
+    "number": 44,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "fix(watch): watchdog reads host-local DB, not the deduped vault snapshot",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/44",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-17T23:34:23Z",
+    "createdAt": "2026-06-17T23:27:28Z",
+    "isDraft": false,
+    "number": 45,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "chore(deploy): make deploy + manifest; retire dormant vk-gcal-sync",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/45",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-21T19:08:35Z",
+    "createdAt": "2026-06-21T19:08:33Z",
+    "isDraft": false,
+    "number": 46,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "docs: recurrence + obligation substrate (design + PLAN.md contract)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/46",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-21T20:22:34Z",
+    "createdAt": "2026-06-21T19:48:45Z",
+    "isDraft": false,
+    "number": 47,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(uc-1): attestation witness + filed command",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/47",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-21T21:41:21Z",
+    "createdAt": "2026-06-21T21:17:46Z",
+    "isDraft": false,
+    "number": 48,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(uc-2): live fleetboard channel (resolves D1)",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/48",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-22T10:27:06Z",
+    "createdAt": "2026-06-22T10:05:34Z",
+    "isDraft": false,
+    "number": 49,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(uc-3): tick subcommand + systemd-user timer",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/49",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-22T13:26:29Z",
+    "createdAt": "2026-06-22T12:59:00Z",
+    "isDraft": false,
+    "number": 50,
+    "repository": {
+      "name": "obligation-engine",
+      "nameWithOwner": "georgeglarson/obligation-engine"
+    },
+    "state": "merged",
+    "title": "feat(uc-4): Klaxon temperament + UC obligation config",
+    "url": "https://github.com/georgeglarson/obligation-engine/pull/50",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T14:37:28Z",
+    "createdAt": "2026-06-03T13:08:00Z",
+    "isDraft": false,
+    "number": 1,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(io_ynab): tested YnabClient — read+write YNAB domain + scheduled txns",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/1",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-06T18:43:18Z",
+    "createdAt": "2026-06-06T18:24:37Z",
+    "isDraft": false,
+    "number": 10,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(inbox-triage): date-stamp job-reply classifier alert key",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/10",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-07T11:07:22Z",
+    "createdAt": "2026-06-07T11:06:07Z",
+    "isDraft": false,
+    "number": 11,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(run-poller): preserve failure log across runs",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/11",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T09:07:14Z",
+    "createdAt": "2026-06-08T08:25:31Z",
+    "isDraft": false,
+    "number": 12,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(autopay-verify): match transfer-modeled loan autopays (Greensky/Sunlight)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/12",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T11:37:24Z",
+    "createdAt": "2026-06-08T11:29:07Z",
+    "isDraft": false,
+    "number": 13,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(inbox): classify GitLab notification mail",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/13",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T15:28:56Z",
+    "createdAt": "2026-06-08T15:28:39Z",
+    "isDraft": false,
+    "number": 14,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(inbox): archive GitLab pipeline mail (noise, not signal)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/14",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T15:53:16Z",
+    "createdAt": "2026-06-08T15:53:09Z",
+    "isDraft": false,
+    "number": 15,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(inbox): resolution-aware GitLab pipeline mail (keep failures until fixed)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/15",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-08T15:57:37Z",
+    "createdAt": "2026-06-08T15:57:28Z",
+    "isDraft": false,
+    "number": 16,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(inbox): scope pipeline reach-back to project+branch (Gmail pipe over-match)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/16",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T19:42:36Z",
+    "createdAt": "2026-06-12T19:10:51Z",
+    "isDraft": false,
+    "number": 17,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(io_gmail): retry connect-phase Composio failures with backoff",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/17",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-12T19:48:51Z",
+    "createdAt": "2026-06-12T19:45:28Z",
+    "isDraft": false,
+    "number": 18,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(job-reply): harden classifier for self-hosted MLX-7B (#730)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/18",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-13T00:46:38Z",
+    "createdAt": "2026-06-13T00:39:46Z",
+    "isDraft": false,
+    "number": 19,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "Deterministic phrase scorer replaces LLM job-reply classifier (#730 follow-up)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/19",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T15:59:13Z",
+    "createdAt": "2026-06-03T15:31:00Z",
+    "isDraft": false,
+    "number": 2,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "autopay-verify poller (#459 Piece 3)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/2",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-15T14:07:29Z",
+    "createdAt": "2026-06-15T13:46:54Z",
+    "isDraft": false,
+    "number": 20,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "Archive GitHub mail on PR-completion, not sender pattern",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/20",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-15T17:20:57Z",
+    "createdAt": "2026-06-15T15:06:57Z",
+    "isDraft": false,
+    "number": 21,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "State-convergence primitive + job-tracker matcher on events",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/21",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-16T11:30:15Z",
+    "createdAt": "2026-06-16T11:16:55Z",
+    "isDraft": false,
+    "number": 22,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(inbox): sweep merged-PR orphans + ATS acks the green suite missed",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/22",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-18T16:45:16Z",
+    "createdAt": "2026-06-18T16:37:39Z",
+    "isDraft": false,
+    "number": 23,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(bill-due): trailing-actual electric estimate placeholder (#748 L1)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/23",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-18T17:27:07Z",
+    "createdAt": "2026-06-18T17:24:41Z",
+    "isDraft": false,
+    "number": 24,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(bill-due): parse FirstEnergy electric statement email (#748 L2)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/24",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-19T22:42:31Z",
+    "createdAt": "2026-06-19T18:41:14Z",
+    "isDraft": false,
+    "number": 25,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(bill-due): 1a parsers for Discover, Sunlight, water + sewage (#753)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/25",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-19T22:42:39Z",
+    "createdAt": "2026-06-19T18:52:52Z",
+    "isDraft": false,
+    "number": 26,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(bill-paid): payment-confirmation parsers for Speedpay + MuniciPay (#753)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/26",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-19T22:44:46Z",
+    "createdAt": "2026-06-19T22:44:31Z",
+    "isDraft": false,
+    "number": 28,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(bill-paid): paid-signal consumer — match, RRULE-safe calendar mark, poller (#753)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/28",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T02:14:56Z",
+    "createdAt": "2026-06-20T02:14:44Z",
+    "isDraft": false,
+    "number": 29,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(fin-classify): positive-ID classifier + shadow coverage poller (#753 step 3)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/29",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T19:49:32Z",
+    "createdAt": "2026-06-03T18:55:21Z",
+    "isDraft": false,
+    "number": 3,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "inbox-triage poller: corrected-architecture rewrite of inbox-triage.sh (vk #662)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/3",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T02:37:56Z",
+    "createdAt": "2026-06-20T02:37:44Z",
+    "isDraft": false,
+    "number": 30,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(pollers): robustness hardening from self-audit (#753)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/30",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T16:00:27Z",
+    "createdAt": "2026-06-20T15:32:20Z",
+    "isDraft": false,
+    "number": 31,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "status-KPI engine + /status command (jobs/finance/larson, one engine two faces)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/31",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T20:11:29Z",
+    "createdAt": "2026-06-20T20:08:41Z",
+    "isDraft": false,
+    "number": 32,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(autopay): strip leading bank-descriptor tags so FirstEnergy matches (vk #747)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/32",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T21:00:28Z",
+    "createdAt": "2026-06-20T20:41:35Z",
+    "isDraft": false,
+    "number": 33,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(runway): layered burn rebuild + cadence-aware income (#700)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/33",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T21:41:33Z",
+    "createdAt": "2026-06-20T21:34:58Z",
+    "isDraft": false,
+    "number": 34,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(bill-paid): short [PAID] prefix so the bill name stays visible (vk #764)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/34",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-20T22:08:40Z",
+    "createdAt": "2026-06-20T22:06:51Z",
+    "isDraft": false,
+    "number": 35,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "chore(runway): remove superseded burn probe scripts (#700)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/35",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-23T16:56:56Z",
+    "createdAt": "2026-06-23T16:40:29Z",
+    "isDraft": false,
+    "number": 36,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(board): orientation board aggregator (board.json producer)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/36",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-24T14:21:53Z",
+    "createdAt": "2026-06-24T14:02:53Z",
+    "isDraft": false,
+    "number": 37,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(bill-paid): Synchrony/CareCredit scheduled-payment confirmation",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/37",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-25T20:50:00Z",
+    "createdAt": "2026-06-25T20:38:13Z",
+    "isDraft": false,
+    "number": 38,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "Match PNC card payments by last-4, fail-closed (fixes 2026-06-25 missed-payment cause)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/38",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-28T12:52:08Z",
+    "createdAt": "2026-06-28T12:30:22Z",
+    "isDraft": false,
+    "number": 39,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(ynab-import): trigger YNAB Direct Import daily + staleness guard",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/39",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-03T20:54:53Z",
+    "createdAt": "2026-06-03T20:29:49Z",
+    "isDraft": false,
+    "number": 4,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "inbox-triage: direct paginated Gmail fetch — snapshot middleman retired (vk #662)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/4",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-28T13:37:36Z",
+    "createdAt": "2026-06-28T13:32:00Z",
+    "isDraft": false,
+    "number": 40,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(status): Face 2 periodic dashboard page (#758)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/40",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-07T15:44:00Z",
+    "createdAt": "2026-07-07T15:43:03Z",
+    "isDraft": false,
+    "number": 41,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(autopay-verify): widen miss grace 2d -> 4d",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/41",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T16:38:41Z",
+    "createdAt": "2026-07-10T16:14:43Z",
+    "isDraft": false,
+    "number": 42,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(runway): trustable liquid + burn (vk #837)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/42",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T17:08:08Z",
+    "createdAt": "2026-07-10T16:53:11Z",
+    "isDraft": false,
+    "number": 43,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(runway): scenario subcommand — forward cash-flow model (vk #837)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/43",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-10T18:26:04Z",
+    "createdAt": "2026-07-10T18:24:26Z",
+    "isDraft": false,
+    "number": 44,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "docs(runway): fix data_quality_warns docstring framing — not a phantom",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/44",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-11T22:57:06Z",
+    "createdAt": "2026-07-11T22:55:35Z",
+    "isDraft": false,
+    "number": 45,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(candidates): gate bill candidates on last-seen recency (#710)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/45",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-04T08:42:52Z",
+    "createdAt": "2026-06-04T00:13:39Z",
+    "isDraft": false,
+    "number": 5,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "Job-reply detection folded into inbox-triage poller (vk #669)",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/5",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-05T22:28:41Z",
+    "createdAt": "2026-06-05T22:16:23Z",
+    "isDraft": false,
+    "number": 6,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(inbox): archive review-bot PR replies + LinkedIn job-alert digests",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/6",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-06T00:10:30Z",
+    "createdAt": "2026-06-05T23:50:05Z",
+    "isDraft": false,
+    "number": 7,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(inbox): expected financial mail catchers + bill-due parse handler",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/7",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-06T01:19:47Z",
+    "createdAt": "2026-06-06T01:15:40Z",
+    "isDraft": false,
+    "number": 8,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "feat(inbox): archive Sunnyside ads with agent/coupons label",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/8",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-06T01:50:07Z",
+    "createdAt": "2026-06-06T01:42:22Z",
+    "isDraft": false,
+    "number": 9,
+    "repository": {
+      "name": "personal-ops-pollers",
+      "nameWithOwner": "georgeglarson/personal-ops-pollers"
+    },
+    "state": "merged",
+    "title": "fix(inbox): never truncate From; expected-mail rename; USPS + Beyond Imogen catchers",
+    "url": "https://github.com/georgeglarson/personal-ops-pollers/pull/9",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-06-06T18:43:15Z",
+    "createdAt": "2026-05-29T18:03:08Z",
+    "isDraft": false,
+    "number": 7,
+    "repository": {
+      "name": "robotto-deploy",
+      "nameWithOwner": "georgeglarson/robotto-deploy"
+    },
+    "state": "merged",
+    "title": "feat(provision-client): per-customer Composio project provisioning",
+    "url": "https://github.com/georgeglarson/robotto-deploy/pull/7",
+    "status": "merged"
+  },
+  {
+    "closedAt": "2026-07-08T02:36:04Z",
+    "createdAt": "2026-07-06T00:27:16Z",
+    "isDraft": false,
+    "number": 1134,
+    "repository": {
+      "name": "neurolink",
+      "nameWithOwner": "juspay/neurolink"
+    },
+    "state": "merged",
+    "title": "fix(core): pass system messages via generateText system option, not messages array",
+    "url": "https://github.com/juspay/neurolink/pull/1134",
+    "status": "merged"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-09T19:41:18Z",
+    "isDraft": false,
+    "number": 288,
+    "repository": {
+      "name": "stupidedi",
+      "nameWithOwner": "kputnam/stupidedi"
+    },
+    "state": "open",
+    "title": "Re-enable the 4010 PO850 transaction set",
+    "url": "https://github.com/kputnam/stupidedi/pull/288",
+    "status": "open"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-01T01:10:37Z",
+    "isDraft": false,
+    "number": 6280,
+    "repository": {
+      "name": "agents",
+      "nameWithOwner": "livekit/agents"
+    },
+    "state": "open",
+    "title": "fix(voice): collapse duplicate same-target handoff tool calls",
+    "url": "https://github.com/livekit/agents/pull/6280",
+    "status": "open"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T19:53:23Z",
+    "isDraft": false,
+    "number": 8199,
+    "repository": {
+      "name": "mitmproxy",
+      "nameWithOwner": "mitmproxy/mitmproxy"
+    },
+    "state": "open",
+    "title": "fix(flow): kill() wakes wait_for_resume so proxy teardown closes the client connection",
+    "url": "https://github.com/mitmproxy/mitmproxy/pull/8199",
+    "status": "open"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T22:32:53Z",
+    "isDraft": false,
+    "number": 8200,
+    "repository": {
+      "name": "mitmproxy",
+      "nameWithOwner": "mitmproxy/mitmproxy"
+    },
+    "state": "open",
+    "title": "Make Flow.kill() actually disconnect in-transit flows (KillInjected event)",
+    "url": "https://github.com/mitmproxy/mitmproxy/pull/8200",
+    "status": "open"
+  },
+  {
+    "closedAt": "2026-06-17T06:46:01Z",
+    "createdAt": "2026-06-14T20:33:12Z",
+    "isDraft": false,
+    "number": 564,
+    "repository": {
+      "name": "last30days-skill",
+      "nameWithOwner": "mvanhorn/last30days-skill"
+    },
+    "state": "merged",
+    "title": "feat(env): add a pass(1) credential source (Linux/Unix analog of Keychain)",
+    "url": "https://github.com/mvanhorn/last30days-skill/pull/564",
+    "status": "merged"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T13:48:45Z",
+    "isDraft": false,
+    "number": 29516,
+    "repository": {
+      "name": "n8n",
+      "nameWithOwner": "n8n-io/n8n"
+    },
+    "state": "open",
+    "title": "fix(core): Detect and recover from stuck task-runner channels",
+    "url": "https://github.com/n8n-io/n8n/pull/29516",
+    "status": "open"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-07T13:54:01Z",
+    "isDraft": false,
+    "number": 3694,
+    "repository": {
+      "name": "stryker-net",
+      "nameWithOwner": "stryker-mutator/stryker-net"
+    },
+    "state": "open",
+    "title": "fix(mutator): mutate implicit array creation expressions",
+    "url": "https://github.com/stryker-mutator/stryker-net/pull/3694",
+    "status": "open"
+  }
+]
