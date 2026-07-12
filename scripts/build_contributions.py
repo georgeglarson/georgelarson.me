@@ -124,7 +124,7 @@ def render_merged_html(curation):
             f'          <div class="name">{escape(e["name"])} '
             f'<a class="lnk" href="{_pr_url(repo, num)}">#{num}</a> '
             f'<span class="tag">merged {mon_yr}</span></div>\n'
-            f'          <p class="desc">{_code_tags(e["desc"])}</p>\n'
+            f'          <p class="desc">{_code_tags(e["desc"])}{e.get("extra", "")}</p>\n'
             "        </li>"
         )
     return "\n".join(lines)
@@ -253,8 +253,9 @@ def regenerate_html(html, curation):
     isr, ire = _MARKERS["inreview"]
     html = _replace_between(html, ms, me, render_merged_html(curation))
     html = _replace_between(html, isr, ire, render_inreview_html(curation))
-    # headline surfaces: meta description, og, twitter (the index line is handled in main()).
-    html = _rewrite_headlines(html, n_fixes, n_projects)
+    # headline surfaces: meta description, og, twitter — all three must match, else
+    # one could drift stale silently. (index receipt line handled in main().)
+    html = _rewrite_headlines(html, n_fixes, n_projects, expected_min=3)
     return html, sentence
 
 
@@ -286,18 +287,21 @@ def main(argv=None):
     new_html, sentence = regenerate_html(html, curation)
 
     if args.write:
-        with open(args.page, "w") as f:
-            f.write(new_html)
-        # index.html receipt line carries the same headline shape
+        # Compute the index rewrite before writing either file, so a raise leaves
+        # both un-written rather than contributions.html updated but index.html stale.
+        idx_new, write_index = None, False
         try:
             with open("index.html") as f:
                 idx = f.read()
-            idx_new = _rewrite_headlines(idx, *headline(curation)[:2])
-            if idx_new != idx:
-                with open("index.html", "w") as f:
-                    f.write(idx_new)
+            idx_new = _rewrite_headlines(idx, *headline(curation)[:2], expected_min=1)
+            write_index = idx_new != idx
         except FileNotFoundError:
             pass
+        with open(args.page, "w") as f:
+            f.write(new_html)
+        if write_index:
+            with open("index.html", "w") as f:
+                f.write(idx_new)
         print(f"wrote {args.page} + index.html; headline: {sentence}", file=sys.stderr)
     else:
         sys.stdout.write(new_html)

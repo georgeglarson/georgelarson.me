@@ -203,5 +203,22 @@ class HeadlineRewriteTests(unittest.TestCase):
             bc._rewrite_headlines("nothing here matches", 10, 8)
 
 
+class MergedExtraTests(unittest.TestCase):
+    """A merged entry's `extra` (e.g. a deep-dive link) must render, symmetric with in_review."""
+
+    def test_merged_extra_rendered(self):
+        cur = {
+            "merged": [{
+                "repo": "foo/bar", "number": 1, "merged": "2026-07-01",
+                "name": "foo", "desc": "a fix",
+                "extra": " <a class=\"lnk\" href=\"/deep\">the write-up</a>",
+            }],
+            "in_review": [], "exclusions": [],
+        }
+        html = bc.render_merged_html(cur)
+        self.assertIn('href="/deep"', html)
+        self.assertIn("write-up", html)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
