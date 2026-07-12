@@ -116,7 +116,7 @@ and the headline count in the meta tags + `index.html` receipt line.
   Add it to `merged:` (and write its `desc`).
 - `new open PR` — an open external PR not covered by any `in_review:` group.
   Add a group (or extend an existing one) with a `desc`.
-- `stale review` — an `in_review:` number that has since merged. Move it to `merged:`.
+- `stale review` — an `in_review:` number that merged (move it up to `merged:`) or was closed without merging (remove the group / number).
 
 ## Curation rules
 

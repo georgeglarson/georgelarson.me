@@ -148,6 +148,19 @@ class DriftDetectionTests(unittest.TestCase):
         self.assertTrue(any("1430" in m for m in drift["new_merges"]))
         self.assertTrue(any("1430" in s for s in drift["stale_inreview"]))
 
+    def test_flags_closed_unmerged_inreview(self):
+        # An in_review PR closed WITHOUT merging disappears from both --state open
+        # and --merged; it must still be flagged so it doesn't linger as "in review".
+        prs = [{
+            "repository": {"nameWithOwner": "mitmproxy/mitmproxy"},
+            "number": 8199, "state": "CLOSED", "status": "closed",
+            "url": "https://github.com/mitmproxy/mitmproxy/pull/8199",
+        }]
+        cur = bc.load_curation(YAML)
+        drift = bc.detect_drift(prs, cur)
+        self.assertTrue(any("8199" in s for s in drift["stale_inreview"]),
+                        f"closed-unmerged in-review should be stale: {drift}")
+
 
 class CodeTagTests(unittest.TestCase):
     """Backticks in descriptions render as <code> tags, not literal backticks."""

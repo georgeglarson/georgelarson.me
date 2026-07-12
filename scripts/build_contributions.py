@@ -43,19 +43,25 @@ def load_prs_json(path):
 
 
 def fetch_gh_prs():
-    """Live: merge `gh search prs --merged` + `--state open`, tagged by status."""
+    """Live: capture merged + open + closed-unmerged, tagged by status."""
     fields = "repository,number,title,url,state,closedAt,createdAt,isDraft"
     merged = json.loads(_gh(["search", "prs", "--author", "georgeglarson",
                              "--merged", "--limit", "300", "--json", fields]))
     opened = json.loads(_gh(["search", "prs", "--author", "georgeglarson",
                              "--state", "open", "--limit", "300", "--json", fields]))
+    closed = json.loads(_gh(["search", "prs", "--author", "georgeglarson",
+                             "--state", "closed", "--limit", "300", "--json", fields]))
+    merged_urls = {p["url"] for p in merged}
     for p in merged:
         p["status"] = "merged"
     for p in opened:
         p["status"] = "open"
+    for p in closed:  # closed-but-not-merged = rejected; merged PRs are also closed, so skip those
+        if p["url"] not in merged_urls:
+            p["status"] = "closed"
     seen = set()
     out = []
-    for p in merged + opened:
+    for p in merged + opened + closed:
         url = p.get("url")
         if url in seen:
             continue
@@ -170,6 +176,7 @@ def detect_drift(prs, curation):
 
     open_keys = set()
     merged_in_prs = {}  # (repo, num) -> record
+    closed_in_prs = {}  # closed without merge (rejected)
     new_merges, new_open, stale_inreview = [], [], []
 
     for p in prs:
@@ -189,10 +196,14 @@ def detect_drift(prs, curation):
             if key not in merged_set and key not in exclusion_set:
                 closed = (p.get("closedAt") or "")[:10]
                 new_merges.append(f"{repo}#{num} merged {closed}".rstrip())
+        elif status == "closed":
+            closed_in_prs[key] = p
 
     for key in inreview_set:
         if key in merged_in_prs:
             stale_inreview.append(f"{key[0]}#{key[1]} merged -> move up")
+        elif key in closed_in_prs:
+            stale_inreview.append(f"{key[0]}#{key[1]} closed without merge -> remove")
 
     return {"new_merges": new_merges, "new_open": new_open, "stale_inreview": stale_inreview}
 
