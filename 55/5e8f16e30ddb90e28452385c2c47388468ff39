@@ -1,0 +1,23 @@
+scripts/build_contributions.py
+  s_d09b499f213db1::t_ae8607a1e78176 290-292,296-297,300-304
+  s_d09b499f213db1::t_c65a5cbcb61fbe 127
+  s_d09b499f213db1::t_92af75b9e18fb2 256-258
+scripts/test_build_contributions.py
+  s_d09b499f213db1::t_df9d76f1506ac9 206-222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "555e8f16e30ddb90e28452385c2c47388468ff39",
+  "prompts": {},
+  "sessions": {
+    "s_d09b499f213db1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e53a32c-6ce3-4a7f-948e-3a5cc7836768",
+        "model": "glm-5.2"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
