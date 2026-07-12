@@ -1,0 +1,41 @@
+AGENTS.md
+  s_d09b499f213db1::t_be21fbac4655b6 82-137
+scripts/contributions.yaml
+  s_d09b499f213db1::t_7eb9af44a15f6d 1-51,53-78
+  s_d09b499f213db1::t_d4c9518a3edb7b 52
+scripts/testdata/prs.json
+  s_d09b499f213db1::t_727dfb5193eb64 1-4356
+scripts/test_build_contributions.py
+  s_d09b499f213db1::t_06e4aa1820e4e1 152-168
+  s_d09b499f213db1::t_b2179920448f69 87-92
+  s_d09b499f213db1::t_e0ea16cdaad4b3 1-86,93-151,169-170
+scripts/build_contributions.py
+  s_d09b499f213db1::t_c899eb619f3972 87-91
+  s_d09b499f213db1::t_a00427f8035695 1-86,92-120,122-137,139-282
+  s_d09b499f213db1::t_14931ad5bcc65a 121
+  s_d09b499f213db1::t_116306becc853c 138
+index.html
+  s_d09b499f213db1::t_c55f716db49e69 72
+contributions.html
+  s_d09b499f213db1::t_ba16739b895417 86
+  s_d09b499f213db1::t_93f2bfb4566ca2 105
+  s_d09b499f213db1::t_b9dbd4cf63c732 46
+  s_d09b499f213db1::t_97ffe9258b40ba 53,57,93,117
+  s_d09b499f213db1::t_c55f716db49e69 7,13,17,47-52,54-56,58,79,87-92,94-102,116,123
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "28804e6f2ebe7b920aba0e98991cb583f00c8828",
+  "prompts": {},
+  "sessions": {
+    "s_d09b499f213db1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e53a32c-6ce3-4a7f-948e-3a5cc7836768",
+        "model": "glm-5.2"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
