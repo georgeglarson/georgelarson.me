@@ -181,7 +181,6 @@ def detect_drift(prs, curation):
         for n in g["numbers"]:
             inreview_set.add((g["repo"], int(n)))
 
-    open_keys = set()
     merged_in_prs = {}  # (repo, num) -> record
     closed_in_prs = {}  # closed without merge (rejected)
     new_merges, new_open, stale_inreview = [], [], []
@@ -195,7 +194,6 @@ def detect_drift(prs, curation):
         status = p.get("status") or ("merged" if p.get("state") == "MERGED"
                                      else "open" if p.get("state") == "OPEN" else "closed")
         if status == "open":
-            open_keys.add(key)
             if key not in inreview_set and key not in exclusion_set:
                 new_open.append(f"{repo}#{num}")
         elif status == "merged":
