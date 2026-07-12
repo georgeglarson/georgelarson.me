@@ -101,6 +101,7 @@ appear in `gh search prs --merged`). So the yaml is the display authority, and
 ## How
 
 ```
+python3 -m pip install --user -r scripts/requirements.txt  # PyYAML (one-time)
 python3 scripts/build_contributions.py --write            # uses live gh
 python3 scripts/build_contributions.py --write --fixture scripts/testdata/prs.json  # offline
 python3 scripts/test_build_contributions.py               # tests

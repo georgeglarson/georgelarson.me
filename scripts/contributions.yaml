@@ -73,6 +73,3 @@ exclusions:
   - {repo: Baidis/veniceBasic, number: 3, reason: "private favor for an individual, not an OSS project"}
   - {repo: Baidis/crypto-data-pipeline, number: 1, reason: "private favor for an individual, not an OSS project"}
   - {repo: TrueFit/CashRegister, number: 99, reason: "interview take-home, not a contribution"}
-
-# Headline framing on the page + meta tags. {fixes} and {projects} are filled from `merged`.
-headline_template: "{fixes} fixes merged across {projects} projects, more in review. Every one survives a click."

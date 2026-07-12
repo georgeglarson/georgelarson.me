@@ -166,5 +166,29 @@ class CodeTagTests(unittest.TestCase):
         self.assertNotIn("`--launcher`", html)
 
 
+class HeadlineRewriteTests(unittest.TestCase):
+    """The headline rewrite must keep matching as the count grows past eight."""
+
+    def test_pattern_matches_any_spelled_number(self):
+        for word in ("Eight", "Nine", "Ten", "Eleven", "Twelve",
+                     "Fifteen", "Twenty", "20", "13"):
+            text = f"{word} fixes merged across seven projects"
+            self.assertTrue(
+                bc._OLD_HEADLINE_RE.search(text),
+                f"headline pattern should match: {text!r}",
+            )
+
+    def test_rewrite_handles_growth_past_eight(self):
+        html = ('<meta name="description" content="'
+                'Nine fixes merged across eight projects, more in review.">')
+        out = bc._rewrite_headlines(html, 10, 8)
+        self.assertIn("Ten fixes merged across eight projects", out)
+        self.assertNotIn("Nine fixes", out)
+
+    def test_rewrite_raises_if_no_headline_present(self):
+        with self.assertRaises(RuntimeError):
+            bc._rewrite_headlines("nothing here matches", 10, 8)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

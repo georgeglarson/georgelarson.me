@@ -141,16 +141,17 @@ def render_inreview_html(curation):
     return "\n".join(lines)
 
 
+_HEADLINE_SENTENCE = (
+    "{fixes} fixes merged across {projects} projects, more in review. "
+    "Every one survives a click."
+)
+
+
 def headline(curation):
     merged = curation["merged"]
     n_fixes = len(merged)
     n_projects = len({e["repo"] for e in merged})
-    tmpl = curation.get(
-        "headline_template",
-        "{fixes} fixes merged across {projects} projects, more in review. "
-        "Every one survives a click.",
-    )
-    sentence = tmpl.format(
+    sentence = _HEADLINE_SENTENCE.format(
         fixes=_numword(n_fixes, cap=True),
         projects=_numword(n_projects, cap=False),
     )
@@ -204,16 +205,35 @@ _MARKERS = {
 }
 
 _OLD_HEADLINE_RE = re.compile(
-    r"(?i)\b(?:eight|seven|six|five|four|three|two|one|\d+) fixes merged "
-    r"(?:into other people's projects|across (?:eight|seven|six|five|four|three|two|one|\d+) projects)"
+    r"(?i)\b\w+ fixes merged "
+    r"(?:into other people's projects|across \w+ projects)"
 )
+
+
+def _rewrite_headlines(html, n_fixes, n_projects, expected_min=1):
+    """Replace every 'X fixes merged ... Y projects' surface with the current count.
+
+    Matches any number-word (or digit) so it keeps working as the count grows past
+    the spelled-out range. Raises if nothing matched — a silent no-op here would
+    leave the headline stale while the rendered list advances, which is exactly
+    the drift this tool exists to prevent.
+    """
+    repl = (f"{_numword(n_fixes, cap=True)} fixes merged across "
+            f"{_numword(n_projects)} projects")
+    new_html, n = _OLD_HEADLINE_RE.subn(lambda m: repl, html)
+    if n < expected_min:
+        raise RuntimeError(
+            f"headline pattern not found ({n} matches, expected >= {expected_min}) "
+            f"— expected 'X fixes merged across Y projects' in the page"
+        )
+    return new_html
 
 
 def _replace_between(text, start, end, content):
     pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
     if not pattern.search(text):
         raise RuntimeError(f"markers not found: {start} … {end}")
-    return pattern.sub(f"{start}\n{content}\n      {end}", text, count=1)
+    return pattern.sub(lambda m: f"{start}\n{content}\n      {end}", text, count=1)
 
 
 def regenerate_html(html, curation):
@@ -222,11 +242,8 @@ def regenerate_html(html, curation):
     isr, ire = _MARKERS["inreview"]
     html = _replace_between(html, ms, me, render_merged_html(curation))
     html = _replace_between(html, isr, ire, render_inreview_html(curation))
-    # headline surfaces: meta descriptions, og, twitter, and index receipt line.
-    html = _OLD_HEADLINE_RE.sub(
-        lambda m: f"{_numword(n_fixes, cap=True)} fixes merged across {_numword(n_projects)} projects",
-        html,
-    )
+    # headline surfaces: meta description, og, twitter (the index line is handled in main()).
+    html = _rewrite_headlines(html, n_fixes, n_projects)
     return html, sentence
 
 
@@ -264,10 +281,7 @@ def main(argv=None):
         try:
             with open("index.html") as f:
                 idx = f.read()
-            n_fixes, n_projects, _ = headline(curation)
-            repl = (f"{_numword(n_fixes, cap=True)} fixes merged across "
-                    f"{_numword(n_projects)} projects")
-            idx_new = _OLD_HEADLINE_RE.sub(repl, idx, count=1)
+            idx_new = _rewrite_headlines(idx, *headline(curation)[:2])
             if idx_new != idx:
                 with open("index.html", "w") as f:
                     f.write(idx_new)
