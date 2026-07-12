@@ -10,7 +10,7 @@ that merged).
 
 Usage:
   python3 scripts/build_contributions.py            # render to stdout + print drift
-  python3 scripts/build_contributions.py --write     # rewrite contributions.html in place
+  python3 scripts/build_contributions.py --write     # rewrite contributions.html + index.html headline
   python3 scripts/build_contributions.py --write --fixture scripts/testdata/prs.json
 """
 import argparse
@@ -42,15 +42,22 @@ def load_prs_json(path):
         return json.load(f)
 
 
+_GH_LIMIT = 1000  # gh search caps at 1000; warn if a bucket saturates it.
+
+
 def fetch_gh_prs():
     """Live: capture merged + open + closed-unmerged, tagged by status."""
     fields = "repository,number,title,url,state,closedAt,createdAt,isDraft"
     merged = json.loads(_gh(["search", "prs", "--author", "georgeglarson",
-                             "--merged", "--limit", "300", "--json", fields]))
+                             "--merged", "--limit", str(_GH_LIMIT), "--json", fields]))
     opened = json.loads(_gh(["search", "prs", "--author", "georgeglarson",
-                             "--state", "open", "--limit", "300", "--json", fields]))
+                             "--state", "open", "--limit", str(_GH_LIMIT), "--json", fields]))
     closed = json.loads(_gh(["search", "prs", "--author", "georgeglarson",
-                             "--state", "closed", "--limit", "300", "--json", fields]))
+                             "--state", "closed", "--limit", str(_GH_LIMIT), "--json", fields]))
+    for name, bucket in (("merged", merged), ("open", opened), ("closed", closed)):
+        if len(bucket) >= _GH_LIMIT:
+            print(f"warning: gh search '{name}' bucket hit the {_GH_LIMIT} cap; "
+                  f"results may be truncated — re-run or page manually", file=sys.stderr)
     merged_urls = {p["url"] for p in merged}
     for p in merged:
         p["status"] = "merged"
@@ -217,7 +224,7 @@ _MARKERS = {
 
 _OLD_HEADLINE_RE = re.compile(
     r"(?i)\b\w+ fixes merged "
-    r"(?:into other people's projects|across \w+ projects)"
+    r"(?:into other people's projects|across \w+ projects)\b"
 )
 
 
@@ -266,7 +273,8 @@ def main(argv=None):
     ap.add_argument("--yaml", default="scripts/contributions.yaml")
     ap.add_argument("--page", default="contributions.html")
     ap.add_argument("--fixture", help="use a gh-response fixture instead of live gh")
-    ap.add_argument("--write", action="store_true", help="rewrite the page in place")
+    ap.add_argument("--write", action="store_true",
+                    help="rewrite contributions.html + the index.html headline in place")
     args = ap.parse_args(argv)
 
     curation = load_curation(args.yaml)
@@ -302,7 +310,8 @@ def main(argv=None):
         if write_index:
             with open("index.html", "w") as f:
                 f.write(idx_new)
-        print(f"wrote {args.page} + index.html; headline: {sentence}", file=sys.stderr)
+        where = f"{args.page} + index.html" if write_index else args.page
+        print(f"wrote {where}; headline: {sentence}", file=sys.stderr)
     else:
         sys.stdout.write(new_html)
 

@@ -8,7 +8,7 @@
 # layer that flags drift (a new merge or open PR not yet curated here).
 #
 # Edit this file, run `python3 scripts/build_contributions.py --write`, eyeball
-# the diff, commit. See scripts/AGENTS.md (Contributions page).
+# the diff, commit. See AGENTS.md (Contributions page).
 
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.

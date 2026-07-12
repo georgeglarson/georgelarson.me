@@ -101,6 +101,7 @@ class DriftDetectionTests(unittest.TestCase):
         drift = bc.detect_drift(prs, cur)
         self.assertEqual(drift["new_merges"], [], f"unexpected new merges: {drift['new_merges']}")
         self.assertEqual(drift["new_open"], [], f"unexpected new open: {drift['new_open']}")
+        self.assertEqual(drift["stale_inreview"], [], f"unexpected stale in-review: {drift['stale_inreview']}")
 
     def test_flags_uncurated_merge(self):
         # A merged external PR that isn't in the yaml and isn't excluded -> flagged.
