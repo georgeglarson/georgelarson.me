@@ -126,7 +126,7 @@ and the headline count in the meta tags + `index.html` receipt line.
   into `<code>` tags. Don't hand-write `<code>`.
 - `extra` (optional) is raw HTML appended inside the `<p class="desc">` — used for
   deep-dive links like n8n's `/n8n` hunt write-up.
-- `draft: true` renders a `<span class="tag">draft</span>`.
+- Draft status is sourced live from gh `isDraft` — a draft PR renders `<span class="tag">draft</span>` automatically. Don't set draft in the yaml (it's live state, not curation).
 - `exclusions:` suppresses drift noise for PRs consciously not displayed
   (interview take-homes, private favors). Keep the `reason`.
 

@@ -40,7 +40,6 @@ in_review:
     name: stryker-net
     numbers: [3694]
     desc: "Extends the array-creation mutator to implicit array creation, a syntax shape it previously had no arm for."
-    draft: true
   - repo: kputnam/stupidedi
     name: stupidedi
     numbers: [288]

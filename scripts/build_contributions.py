@@ -137,14 +137,23 @@ def render_merged_html(curation):
     return "\n".join(lines)
 
 
-def render_inreview_html(curation):
+def drafts_from_prs(prs):
+    """Set of (repo, number) for PRs currently marked draft — live state from gh."""
+    return {
+        (p["repository"]["nameWithOwner"], int(p["number"]))
+        for p in prs if p.get("isDraft")
+    }
+
+
+def render_inreview_html(curation, drafts=None):
+    drafts = drafts or set()
     lines = []
     for g in curation["in_review"]:
         numbers = [int(n) for n in g["numbers"]]
         links = ", ".join(
             f'<a class="lnk" href="{_pr_url(g["repo"], n)}">#{n}</a>' for n in numbers
         )
-        draft = ' <span class="tag">draft</span>' if g.get("draft") else ""
+        draft = ' <span class="tag">draft</span>' if any((g["repo"], n) in drafts for n in numbers) else ""
         lines.append(
             "        <li>\n"
             f'          <div class="name">{escape(g["name"])} {links}{draft}</div>\n'
@@ -252,12 +261,12 @@ def _replace_between(text, start, end, content):
     return pattern.sub(lambda m: f"{start}\n{content}\n      {end}", text, count=1)
 
 
-def regenerate_html(html, curation):
+def regenerate_html(html, curation, drafts=None):
     n_fixes, n_projects, sentence = headline(curation)
     ms, me = _MARKERS["merged"]
     isr, ire = _MARKERS["inreview"]
     html = _replace_between(html, ms, me, render_merged_html(curation))
-    html = _replace_between(html, isr, ire, render_inreview_html(curation))
+    html = _replace_between(html, isr, ire, render_inreview_html(curation, drafts))
     # headline surfaces: meta description, og, twitter — all three must match, else
     # one could drift stale silently. (index receipt line handled in main().)
     html = _rewrite_headlines(html, n_fixes, n_projects, expected_min=3)
@@ -277,6 +286,7 @@ def main(argv=None):
 
     curation = load_curation(args.yaml)
     prs = load_prs_json(args.fixture) if args.fixture else fetch_gh_prs()
+    drafts = drafts_from_prs(prs)
 
     drift = detect_drift(prs, curation)
     if any(drift.values()):
@@ -290,7 +300,7 @@ def main(argv=None):
 
     with open(args.page) as f:
         html = f.read()
-    new_html, sentence = regenerate_html(html, curation)
+    new_html, sentence = regenerate_html(html, curation, drafts)
 
     if args.write:
         # Compute the index rewrite before writing either file, so a raise leaves
