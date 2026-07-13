@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions · George Larson</title>
-<meta name="description" content="Five fixes merged into other people's projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+<meta name="description" content="Eight fixes merged across seven projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
 
 <link rel="icon" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open-source contributions · George Larson">
-<meta property="og:description" content="Five fixes merged into other people's projects, more in review. Every one survives a click.">
+<meta property="og:description" content="Eight fixes merged across seven projects, more in review. Every one survives a click.">
 <meta property="og:url" content="https://georgelarson.me/contributions">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open-source contributions · George Larson">
-<meta name="twitter:description" content="Five fixes merged into other people's projects, more in review. Every one survives a click.">
+<meta name="twitter:description" content="Eight fixes merged across seven projects, more in review. Every one survives a click.">
 
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -43,6 +43,19 @@
     <section class="block reveal">
       <h2 class="label">Merged</h2>
       <ul class="tools">
+<!-- contributions:merged:start -->
+        <li>
+          <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1368">#1368</a> <span class="tag">merged Jul 2026</span></div>
+          <p class="desc">Groups workspace folders by parent in the dropdown, so deeply nested paths stay organized instead of flattening into one list.</p>
+        </li>
+        <li>
+          <div class="name">ferriskey <a class="lnk" href="https://github.com/ferriskey/ferriskey/pull/1133">#1133</a> <span class="tag">merged Jul 2026</span></div>
+          <p class="desc">Adds the <code>TokenExchange</code> grant type and its domain value objects, opening RFC 8693 token exchange in the Rust auth server.</p>
+        </li>
+        <li>
+          <div class="name">neurolink <a class="lnk" href="https://github.com/juspay/neurolink/pull/1134">#1134</a> <span class="tag">merged Jul 2026</span></div>
+          <p class="desc">Moves system messages to the AI SDK <code>generateText</code> <code>system</code> option instead of the <code>messages</code> array. Shipped in v9.82.0 on npm.</p>
+        </li>
         <li>
           <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1434">#1434</a> <span class="tag">merged Jun 2026</span></div>
           <p class="desc">The acp-docker example inherits its agent-server image from <code>config/defaults.json</code> instead of pinning a version below the Canvas compatibility floor.</p>
@@ -63,17 +76,33 @@
           <div class="name">largo <a class="lnk" href="https://github.com/WPBuddy/largo/pull/164">#164</a> <span class="tag">merged Mar 2014</span></div>
           <p class="desc">Updated the LESS syntax in <code>mixins.less</code> for the WordPress theme. The long end of the track record.</p>
         </li>
+      <!-- contributions:merged:end -->
       </ul>
     </section>
 
     <section class="block reveal">
       <h2 class="label">In review</h2>
       <ul class="tools">
+<!-- contributions:inreview:start -->
+        <li>
+          <div class="name">livekit / agents <a class="lnk" href="https://github.com/livekit/agents/pull/6280">#6280</a></div>
+          <p class="desc">A fix so a duplicate same-target handoff tool call in one turn no longer reads as ambiguous and aborts the agent switch.</p>
+        </li>
+        <li>
+          <div class="name">open-instruct <a class="lnk" href="https://github.com/allenai/open-instruct/pull/1751">#1751</a></div>
+          <p class="desc">A <code>--launcher</code> flag so non-Ai2 users can run the training launcher locally without a Beaker cluster account.</p>
+        </li>
+        <li>
+          <div class="name">stryker-net <a class="lnk" href="https://github.com/stryker-mutator/stryker-net/pull/3694">#3694</a> <span class="tag">draft</span></div>
+          <p class="desc">Extends the array-creation mutator to implicit array creation, a syntax shape it previously had no arm for.</p>
+        </li>
+        <li>
+          <div class="name">stupidedi <a class="lnk" href="https://github.com/kputnam/stupidedi/pull/288">#288</a></div>
+          <p class="desc">Re-enabled the 4010 PO850 transaction set, whose autoload had been off because the segment definitions had outgrown its element lists.</p>
+        </li>
         <li>
           <div class="name">n8n <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">#29516</a></div>
-          <p class="desc">A per-runner consecutive-timeout counter that detects and recovers stuck task-runner
-          channels, cutting detection from hours to about six seconds.
-          <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
+          <p class="desc">A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds. <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
         </li>
         <li>
           <div class="name">mitmproxy <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8199">#8199</a>, <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8200">#8200</a></div>
@@ -84,13 +113,14 @@
           <p class="desc">LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers.</p>
         </li>
         <li>
-          <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1368">#1368</a>, <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1430">#1430</a></div>
-          <p class="desc">Group workspace folders by parent in the dropdown; surface a "credentials configured" banner on Docker and cloud.</p>
+          <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1430">#1430</a></div>
+          <p class="desc">Surfaces a &quot;credentials configured&quot; banner on Docker and cloud, so the configured state is visible at a glance.</p>
         </li>
         <li>
           <div class="name">ComfyUI_frontend <a class="lnk" href="https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686">#11686</a></div>
           <p class="desc">Respect the Reka DismissableLayer state for the Escape key in keybindings.</p>
         </li>
+      <!-- contributions:inreview:end -->
       </ul>
     </section>
 

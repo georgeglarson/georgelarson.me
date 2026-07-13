@@ -79,3 +79,60 @@ LLM Showdown blog series, round 2 or 3. Candidate topics from early project cont
 - "Bug comments don't matter" (Round 4 vs 4.5)
 
 Source: `JOURNAL.md` lines 42-78, `FINDINGS.md` relevant sections.
+
+# Contributions page
+
+`/contributions` is generated, not hand-edited. The source of truth is
+`scripts/contributions.yaml`; `scripts/build_contributions.py` renders it into
+`contributions.html` and flags drift against live GitHub.
+
+## Why a curated yaml and not pure `gh search`
+
+GitHub's search index has gaps and silently drops some older merged PRs (opencode
+2025-11, models.dev 2025-12, largo 2014 are all merged-by-georgeglarson but never
+appear in `gh search prs --merged`). So the yaml is the display authority, and
+`gh search` is the detection layer that surfaces anything not yet curated.
+
+## When to regenerate
+
+- A PR merged, opened, or closed.
+- Before deploying (the page should never ship stale).
+
+## How
+
+```
+python3 -m pip install --user -r scripts/requirements.txt  # PyYAML (one-time)
+python3 scripts/build_contributions.py --write            # uses live gh
+python3 scripts/build_contributions.py --write --fixture scripts/testdata/prs.json  # offline
+python3 scripts/test_build_contributions.py               # tests
+```
+
+`--write` rewrites the `<li>` blocks between the `<!-- contributions:* -->` markers
+and the headline count in the meta tags + `index.html` receipt line.
+
+## Drift report (stderr)
+
+- `new merge` — a merged external PR not in `merged:` and not in `exclusions:`.
+  Add it to `merged:` (and write its `desc`).
+- `new open PR` — an open external PR not covered by any `in_review:` group.
+  Add a group (or extend an existing one) with a `desc`.
+- `stale review` — an `in_review:` number that merged (move it up to `merged:`) or was closed without merging (remove the group / number).
+
+## Curation rules
+
+- `merged:` is authoritative for the count and the Merged section. Sort is by
+  `merged` date descending (handled by the generator).
+- `desc` uses backticks for code spans (`like this`) — the generator turns them
+  into `<code>` tags. Don't hand-write `<code>`.
+- `extra` (optional) is raw HTML appended inside the `<p class="desc">` — used for
+  deep-dive links like n8n's `/n8n` hunt write-up.
+- `draft: true` renders a `<span class="tag">draft</span>`.
+- `exclusions:` suppresses drift noise for PRs consciously not displayed
+  (interview take-homes, private favors). Keep the `reason`.
+
+## Excluded on purpose (do not re-add via drift)
+
+Interview take-homes, private favors, and closed-unmerged PRs are not receipts.
+The closed-unmerged ones never trigger drift (detection only fires on merged or
+open). The `exclusions:` list covers the rest.
+
