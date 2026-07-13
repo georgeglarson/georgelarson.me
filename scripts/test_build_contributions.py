@@ -78,11 +78,21 @@ class InReviewTests(unittest.TestCase):
         ):
             self.assertIn(repo, html)
 
-    def test_draft_gets_tag(self):
-        html = bc.render_inreview_html(self.cur)
-        # stryker #3694 is draft -> rendered with a draft tag span
-        self.assertIn("#3694", html)
-        self.assertIn("draft", html)
+    def test_draft_tag_sourced_from_live_isdraft(self):
+        # draft status is live state from gh, NOT a yaml field — driven by the
+        # `drafts` set passed in (so it stays correct when a PR is marked ready).
+        with_tag = bc.render_inreview_html(self.cur, drafts={("stryker-mutator/stryker-net", 3694)})
+        self.assertIn('<span class="tag">draft</span>', with_tag)
+        without = bc.render_inreview_html(self.cur, drafts=set())
+        self.assertNotIn('<span class="tag">draft</span>', without)
+
+    def test_drafts_extracted_from_prs(self):
+        prs = [
+            {"repository": {"nameWithOwner": "a/b"}, "number": 1, "isDraft": True},
+            {"repository": {"nameWithOwner": "a/b"}, "number": 2, "isDraft": False},
+            {"repository": {"nameWithOwner": "a/b"}, "number": 3},  # missing isDraft
+        ]
+        self.assertEqual(bc.drafts_from_prs(prs), {("a/b", 1)})
 
     def test_extra_deep_dive_link_preserved(self):
         # n8n has a /n8n hunt write-up; its `extra` link must survive generation.
