@@ -1,0 +1,32 @@
+index.html
+  s_ca6d7304f8c792::t_da16e739806687 72
+scripts/test_build_contributions.py
+  s_ca6d7304f8c792::t_00d1935d126853 48
+  s_ca6d7304f8c792::t_a4eb0fd4894ca5 37
+  s_ca6d7304f8c792::t_225a33bf66770e 42
+  s_ca6d7304f8c792::t_6c0650b3a34cd2 57-58,62-63
+  s_ca6d7304f8c792::t_8b5e3c05303d16 30,32
+scripts/testdata/prs.json
+  s_ca6d7304f8c792::t_8d886b625ca2e7 73,81,84-97
+scripts/contributions.yaml
+  s_ca6d7304f8c792::t_ac580c8a29b7e3 16
+  s_ca6d7304f8c792::t_8cc73e01d11e9d 46-47
+contributions.html
+  s_ca6d7304f8c792::t_da16e739806687 7,13,17,47-50,104-105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c70983247a45546ee742cc57199e8a2fe47b7d1b",
+  "prompts": {},
+  "sessions": {
+    "s_ca6d7304f8c792": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e7150929-d623-46d6-aff5-a38773b0c82f",
+        "model": "glm-5.2"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
