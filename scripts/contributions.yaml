@@ -13,6 +13,7 @@
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.
 merged:
+  - {repo: kputnam/stupidedi, number: 288, merged: 2026-07-13, name: stupidedi, desc: "Re-enabled the 4010 PO850 transaction set, whose autoload had been off because the segment definitions had outgrown its element lists."}
   - {repo: OpenHands/agent-canvas, number: 1368, merged: 2026-07-11, name: "OpenHands / agent-canvas", desc: "Groups workspace folders by parent in the dropdown, so deeply nested paths stay organized instead of flattening into one list."}
   - {repo: ferriskey/ferriskey, number: 1133, merged: 2026-07-08, name: ferriskey, desc: "Adds the `TokenExchange` grant type and its domain value objects, opening RFC 8693 token exchange in the Rust auth server."}
   - {repo: juspay/neurolink, number: 1134, merged: 2026-07-08, name: neurolink, desc: "Moves system messages to the AI SDK `generateText` `system` option instead of the `messages` array. Shipped in v9.82.0 on npm."}
@@ -42,8 +43,8 @@ in_review:
     desc: "Extends the array-creation mutator to implicit array creation, a syntax shape it previously had no arm for."
   - repo: kputnam/stupidedi
     name: stupidedi
-    numbers: [288]
-    desc: "Re-enabled the 4010 PO850 transaction set, whose autoload had been off because the segment definitions had outgrown its element lists."
+    numbers: [289]
+    desc: "Re-enabled the 4010 AR943 and RE944 transaction sets (warehouse stock-transfer shipment and receipt advice), whose autoload had been off on the same outgrown segment-element lists as PO850."
   - repo: n8n-io/n8n
     name: n8n
     numbers: [29516]

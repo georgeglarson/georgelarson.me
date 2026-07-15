@@ -70,7 +70,7 @@
   "status": "merged"
  },
  {
-  "closedAt": "0001-01-01T00:00:00Z",
+  "closedAt": "2026-07-13T07:40:39Z",
   "createdAt": "2026-07-09T19:41:18Z",
   "isDraft": false,
   "number": 288,
@@ -78,9 +78,23 @@
    "name": "stupidedi",
    "nameWithOwner": "kputnam/stupidedi"
   },
-  "state": "open",
+  "state": "merged",
   "title": "Re-enable the 4010 PO850 transaction set",
   "url": "https://github.com/kputnam/stupidedi/pull/288",
+  "status": "merged"
+ },
+ {
+  "closedAt": "0001-01-01T00:00:00Z",
+  "createdAt": "2026-07-15T02:24:17Z",
+  "isDraft": false,
+  "number": 289,
+  "repository": {
+   "name": "stupidedi",
+   "nameWithOwner": "kputnam/stupidedi"
+  },
+  "state": "open",
+  "title": "Re-enable the 4010 AR943 and RE944 transaction sets",
+  "url": "https://github.com/kputnam/stupidedi/pull/289",
   "status": "open"
  },
  {
