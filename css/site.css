@@ -498,6 +498,22 @@ a:focus-visible, :focus-visible {
   border-radius: 1px;
 }
 
+/* ---- small screens: keep the nav from overflowing the viewport ----
+   The six-item nav is a single flex row. On a phone it's wider than the
+   screen, which made the whole page drag sideways. Stack the header and let
+   the nav wrap, so the links flow onto a second row instead of overflowing. */
+@media (max-width: 600px) {
+  .site-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .site-nav {
+    flex-wrap: wrap;
+    gap: 0.7rem 1.3rem;
+  }
+}
+
 /* ---- print ----
    The PDF download is the real print artifact, but Ctrl-P on any page
    (the resume especially) should still come out legible: flip to light,
