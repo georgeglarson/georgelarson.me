@@ -4,24 +4,8 @@ Phone: 412-945-0101
 Location: Pittsburgh, PA
 
 SUMMARY
-_Updated 2026-06_
-Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, SDKs in the Venice AI ecosystem, and a personal review methodology now shipping surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
-
-RECOGNITION
-- Top 1% of TypeScript engineers globally (Algora, 1,200+ contributions over the past year).
-
-KEY METRICS (FM Expressions, at separation April 2026)
-- 36 public assets scanned continuously via HostedScan + OWASP ZAP with 33 findings closed in the past 60 days and zero critical/high issues in backlog.
-- 36 active GitLab projects (11 users, 2 groups), 2,204 merge requests, 739 CI pipelines (avg 565 successes / 58 fails) and 16 managed SSH keys.
-- Mattermost workspace (retired 2026) with 7 teams, 40 channels, ~1.0M lifetime posts, 313 calls, and alert channels wired to uptime, upgrade, helpdesk, GitLab, and web-critical events.
-- Zammad helpdesk processed 1,487 tickets YTD (~150–206/month in Jun–Aug) with ≥97% close rate, 68% resolved inside 24 hours (56% inside 8 hours), zero reopen events.
-- Uptime Kuma monitors 31 services (GitLab, Helpdesk, Shopify APIs, FTP, chat, docs, etc.) as part of 24×7 observability feeding alert channels.
-
-CURRENT FOCUS
-- Independent AI-systems R&D: a four-node Tailscale mesh, ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code), and tiered inference across twelve authenticated providers routed for cost, latency, and capability.
-- Shipping surgical bug fixes upstream as public-record evidence of the operational style: mitmproxy, n8n, charmbracelet/crush, ComfyUI, and nearai/ironclaw.
-- Building in the Venice AI SDK ecosystem (TypeScript SDK, PHP SDK, deep-research-privacy at 36★) with continued systems work in Rust, Go, and Zig (netgrep, termshark, wiregraph, rust-connect).
-- Strengthening security programs, compliance boundaries, and knowledge management systems that keep data and people protected.
+_Updated 2026-07_
+Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, and a personal review methodology now shipping surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
 
 CORE STRENGTHS
 Software Development and Engineering
@@ -103,7 +87,7 @@ Director of Technology, FM Expressions (2018 to April 2026)
 - Reduced a 1.03 GB legacy software repository (4,656 binary artifacts) to a clean, LFS-ready codebase, eliminating clone failures and enabling sustainable development practices.
 - Hardened hybrid infrastructure with Authentik SSO, HashiCorp Vault, automated TLS renewal, firewall hardening (iptables, UFW, CrowdSec, fail2ban), DMARC/SPF/DKIM enforcement, HostedScan/OWASP ZAP sweeps across 36 public assets, and Red Sift OnDMARC (p=reject, 1.5M emails/month at 99.48% compliance) to keep critical/high findings at zero; closed 33 issues in the 60 days prior to separation.
 - Ran the security program's people-and-email layer: Mimecast email security, a KnowBe4 security-awareness and phishing-simulation program, and live response to an active production compromise.
-- Ran GitLab (36 projects, 11 users, 739 CI pipelines) and Mattermost (7 teams, 40 channels, ~1M posts, retired 2026) as the collaboration core tied into Redmine (22 cross-functional projects), Zammad (~200 tickets/month with 68% closed inside 24 hours), and Uptime Kuma (31 monitors feeding alert channels).
+- Ran the collaboration and operations core: self-hosted GitLab CI/CD, Mattermost team comms (retired 2026), Redmine project tracking, a Zammad helpdesk clearing ~200 tickets/month with 68% closed inside 24 hours, and Uptime Kuma monitoring feeding alert channels.
 - Maintained high-availability platforms across a heterogeneous Windows-and-Linux estate: a high-availability MySQL cluster and MSSQL, VMware ESXi with Datto backups, on-prem Active Directory with Entra ID hybrid identity (Group Policy, PowerShell), multi-vendor firewalls (Cisco, SonicWall, pfSense), Cisco Meraki switching, OpenVPN, and a staged CDN migration from self-hosted edges to Contabo and Cloudflare; led countless OS and database migrations.
 - Built the Mashy internal dashboard plus tooling such as Psono vault, PrivateBin, phpMyAdmin/Adminer, DBeaver, knowledge mining utilities, and status pages so teams access credentials, data stores, and observability in one click.
 - Drove adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
