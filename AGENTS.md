@@ -132,7 +132,7 @@ and the headline count in the meta tags + `index.html` receipt line.
 
 ## Excluded on purpose (do not re-add via drift)
 
-Interview take-homes, private favors, and closed-unmerged PRs are not receipts.
+Interview take-homes, private favors, and closed-unmerged PRs do not count as portfolio projects.
 The closed-unmerged ones never trigger drift (detection only fires on merged or
 open). The `exclusions:` list covers the rest.
 

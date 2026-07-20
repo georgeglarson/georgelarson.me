@@ -2,12 +2,12 @@
 
 Static, no-build personal site for George Larson.
 
-Mono-accented editorial: IBM Plex Mono for nav / labels / receipts / code (the engineer
+Mono-accented editorial: IBM Plex Mono for nav / labels / projects / code (the engineer
 fingerprint), IBM Plex Serif for prose. Dark, flat, one desaturated-green accent, no chrome.
 Fonts are self-hosted (no CDN). The design system lives in `css/site.css`.
 
 ## Structure
-- `index.html` - landing: the positioning spine and the receipts
+- `index.html` - landing: the positioning spine and the projects
 - `who-is-george.html` - the deep story / who's-behind-it page
 - `network-tools.html`, `n8n.html`, `fracture.html` - case studies
 - `contributions.html` - the open-source record (merged + in-review, every PR verified live)
