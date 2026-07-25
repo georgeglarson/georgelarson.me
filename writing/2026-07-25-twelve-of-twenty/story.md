@@ -10,11 +10,13 @@ cover_image: TODO.webp
 lead: "Every published figure had to re-execute from its own stored query. That check caught the sentence I wrote, and then it caught the machine that wrote the rest."
 ---
 
-Aetna pays $2,848.00 for a knee MRI at UPMC Magee. Across town at AHN West Penn, the same scan under the same insurer is $397.67. UnitedHealthcare goes the other direction and pays more at West Penn. Hospitals publish these numbers because federal law requires it. Reading them is straightforward enough, and the tool I built generates findings like that one across five Pittsburgh hospital files. Every published number then has to re-execute from its own stored query against the live database before it counts.
+Cigna pays $693.20 for a comprehensive metabolic panel at UPMC Magee, on a commercial plan. Across town at AHN West Penn, the same panel under the same insurer and the same plan is $10.07. Hospitals publish these numbers because federal law requires it. Reading them is straightforward enough, and the tool I built generates findings like that one across five Pittsburgh hospital files. Every published number then has to re-execute from its own stored query against the live database before it counts.
 
 Twelve of the twenty failed.
 
 Here is the whole list of what almost shipped, including one I found last week while writing this post.
+
+A note before the list, for anyone who counts. The corpus on the page today is not the corpus this post describes. It has been regenerated twice since these events, as the data underneath it was corrected, and the findings it shows now are not the twenty that failed then. The list below is what happened; the page is what is true now.
 
 ## what the tool is
 
@@ -24,7 +26,7 @@ Five Pittsburgh files, from UPMC, AHN, St. Clair and Heritage Valley. 4,553,421 
 
 On top of that sits a small query grammar instead of a REST API. You send a question, and the answer comes back with its provenance attached: which hospitals and payers contributed rows, how many, from which file, plus a canonical hash so the exact question runs again. The thing being served is a citable answer. REST would have been easier and would have said less.
 
-Here is the sort of thing it says. One knee MRI, HCPCS 73721, outpatient. Aetna pays $2,848.00 at UPMC Magee and $397.67 at AHN West Penn. Same scan, same city, same insurer. UnitedHealthcare runs the other way and pays more at West Penn, and so does AmeriHealth Caritas. Of 22 payers that disclose a rate at either hospital, only 8 disclose at both.
+Here is the sort of thing it says. One knee MRI, HCPCS 73721, outpatient, commercial plans. Cigna pays $2,848.00 at UPMC Magee and $323.46 at AHN West Penn. Same scan, same city, same insurer, same plan. Of 13 commercial payers that disclose a rate at either hospital, only 4 disclose at both.
 
 ## the rule that made the rest of this post possible
 
@@ -36,7 +38,7 @@ That rule is annoying to honor and it is the only reason I know what follows.
 
 The flagship finding originally quoted a median that its own stored query could not produce.
 
-There are two different medians in this data. One is the per-payer median, taken for each payer and then compared across hospitals. The other pools every disclosed row regardless of payer. They answer different questions and they are different numbers: $2,421.99 against $241.84 for the pooled version, versus Aetna's $2,848.00 against $397.67.
+There are two different medians in this data. One is the per-payer median, taken for each payer and then compared across hospitals. The other pools every disclosed row regardless of payer. They answer different questions and they are different numbers: $2,421.99 against $241.84 for the pooled version, versus Cigna's $2,848.00 against $323.46 on commercial plans.
 
 The prose quoted one and the chart drew the other. Both numbers were real. The sentence was still false, because it claimed the chart showed something it did not.
 
@@ -64,7 +66,7 @@ West Penn does not list a knee MRI at $1,540.50. It publishes two chargemaster l
 
 The obvious fix is wrong, which is why it is worth telling. Swapping to the discrete percentile picks $180.00, and $180.00 sits below almost every negotiated rate at that hospital, which would flip a claim the chart makes elsewhere about rates sitting below list. The aggregate was never the question. There is no single list price to draw, so now the chart draws a tick only where a hospital publishes exactly one, and West Penn simply has none. Showing nothing is the honest answer when the source has no answer.
 
-The negotiated rates were fine, and I checked rather than assumed: the two chargemaster lines carry near-identical negotiated medians, $239.98 and $257.88.
+The negotiated rates were fine, and I checked rather than assumed: the two chargemaster lines carry the same negotiated median, $257.88.
 
 ## the rest of the list
 
