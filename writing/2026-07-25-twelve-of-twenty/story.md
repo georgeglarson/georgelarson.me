@@ -10,29 +10,22 @@ cover_image: TODO.webp
 lead: "Every published figure had to re-execute from its own stored query. That check caught the sentence I wrote, and then it caught the machine that wrote the rest."
 ---
 
-Some honest accounting first, because the reason this exists shapes what it is.
+Aetna pays $2,848.00 for a knee MRI at UPMC Magee. Across town at AHN West Penn,
+the same scan under the same insurer is $397.67. UnitedHealthcare goes the other
+way and pays more at West Penn. Both hospitals publish these numbers because
+federal law requires it, in files nobody is expected to read.
 
-Seven years of my career were medical billing. Universal SmartComp, 2009 to 2016,
-later consumed by One Call Medical. The EDI framework was mine to own while the
-company went from about fifty people to national reach. Payer portal, ACH
-transmission, ERP integration, recovery analytics. HIPAA and HITECH. X12 in my
-sleep, and recently again in public: a couple of patches upstream in stupidedi that
-re-enabled the 4010 PO850, AR943 and RE944 transaction sets, merged this month.
+Reading them is straightforward enough, and the tool I built generates twenty
+findings like that one across five Pittsburgh hospital files. Every published
+number then has to re-execute from its own stored query against the live database
+before it counts.
 
-Then years of manufacturing, and a job market that is currently brutal.
+Twelve of the twenty failed.
 
-So I went looking for something that would keep the education current. A job
-listing gave me the shape of it: the interview process included a pricing data
-visualization exercise. Rather than wait to be handed that under a clock, and
-compromise the way you always compromise under a clock, I built the thing ahead of
-time and took as long as it needed. The stack came from the same listing, which is
-why this is Go, Vue and Postgres. The same work would look much the same in Rust or
-Python or C#. The language was never the interesting part.
+Here is the whole list of what almost shipped, including one I found last week
+while writing this post.
 
-That particular employer may never get in touch. The project is good anyway, so
-here it is.
-
-## what it is
+## what the tool is
 
 Every US hospital has been required since 2021 to publish a machine readable file
 listing its standard charges. Gross charge, discounted cash price, and the
@@ -186,6 +179,21 @@ one decision paying out.
 If I had shipped fast and trusted the output, all of it would be live right now.
 Reading well and being true are different properties, and only one of them shows
 up in a screenshot.
+
+## why this exists at all
+
+Seven years of my career were medical billing. Universal SmartComp, 2009 to 2016,
+later consumed by One Call Medical, where the EDI framework was mine to own while
+the company went from about fifty people to national reach. Payer portal, ACH
+transmission, ERP integration, recovery analytics, HIPAA and HITECH. X12 again
+recently and in public: a couple of patches upstream in stupidedi re-enabling the
+4010 PO850, AR943 and RE944 transaction sets, merged this month.
+
+A job listing supplied the shape of this one. Its interview process included a
+pricing data visualization exercise, and building that ahead of time beats
+building it under a clock. The stack came from the same listing, which is why this
+is Go, Vue and Postgres. The same work would look much the same in Rust or Python
+or C#, and the language was never the interesting part.
 
 ## the tool
 
