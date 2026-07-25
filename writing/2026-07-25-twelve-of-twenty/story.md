@@ -24,7 +24,7 @@ Five Pittsburgh files, from UPMC, AHN, St. Clair and Heritage Valley. 4,553,421 
 
 On top of that sits a small query grammar instead of a REST API. You send a question, and the answer comes back with its provenance attached: which hospitals and payers contributed rows, how many, from which file, plus a canonical hash so the exact question runs again. The thing being served is a citable answer. REST would have been easier and would have said less.
 
-Here is the sort of thing it says. One knee MRI, HCPCS 73721, outpatient. Aetna pays $2,848.00 at UPMC Magee and $397.67 at AHN West Penn. Same scan, same city, same insurer. UnitedHealthcare runs the other way and pays more at West Penn. Of 24 payers that disclose a rate at either hospital, only 6 disclose at both.
+Here is the sort of thing it says. One knee MRI, HCPCS 73721, outpatient. Aetna pays $2,848.00 at UPMC Magee and $397.67 at AHN West Penn. Same scan, same city, same insurer. UnitedHealthcare runs the other way and pays more at West Penn, and so does AmeriHealth Caritas. Of 22 payers that disclose a rate at either hospital, only 8 disclose at both.
 
 ## the rule that made the rest of this post possible
 
