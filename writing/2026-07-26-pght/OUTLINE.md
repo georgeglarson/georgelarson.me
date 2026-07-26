@@ -41,16 +41,23 @@ models, or process — safe to lift prose from.
 - Fix: percentile_disc everywhere (always an actual filed rate) + tripwire
   that re-executes every published figure against the live DB.
 
-### 3. The anchor nobody published (vk #907)
+### 3. The anchor nobody published (vk #907, upgraded by vk #933 2026-07-26)
 - West Penn lists 73721 twice: $180.00 and $2,901.00, 55 rows each. Midpoint
   $1,540.50 was drawn as the chargemaster tick. Magee lists one: $7,120.
 - The naive fix (discrete median = $180.00) is ALSO wrong: it flips the
   "rates below list" claim elsewhere.
-- Actual fix: `sole` aggregate; tick drawn only where exactly one list price
-  exists. West Penn gets none. "Showing nothing is the honest answer."
-- Bonus detail if wanted: the two lines now carry the SAME negotiated
-  median, $257.88 (they converged after the payer corrections; pre-#920 it
-  was $239.98 / $257.88).
+- SHIPPED BEHAVIOR after #933: the envelope reports the cohort's sticker set
+  per cohort — none / sole(value) / multiple(all values, cap 12) / many
+  (min,max,count) — and the chart draws one tick per published sticker.
+  West Penn now shows BOTH ticks with a "2 list prices published" caption.
+  The disagreement is rendered as data, not converted to absence.
+- The payoff fact for the article: the two lines carry the SAME negotiated
+  median, $257.88 — stickers 16x apart, real rates ignoring both. The list
+  price is theater at that hospital; the negotiated rate is the only honest
+  number. (Pre-#920 it was $239.98 / $257.88; they converged.)
+- Bonus honesty beat (renderer): the "every negotiated rate sits below list"
+  claim is now stated only when every cohort has a sole sticker — against a
+  split sticker the sentence has no single referent, so it is withheld.
 
 ### 4. The payer identity repairs (vk #917/#919/#920)
 - 145,004 rows re-canonicalized. The three shapes: subsidiary filed under
