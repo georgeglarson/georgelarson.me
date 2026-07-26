@@ -2,6 +2,10 @@ GEORGE LARSON
 Email: george.g.larson@gmail.com
 Phone: 412-945-0101
 Location: Pittsburgh, PA
+Portfolio: <https://georgelarson.me>
+Contributions: <https://georgelarson.me/contributions>
+GitHub: <https://github.com/georgeglarson>
+LinkedIn: <https://www.linkedin.com/in/georgelarson>
 
 SUMMARY
 _Updated 2026-07_
