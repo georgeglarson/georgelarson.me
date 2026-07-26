@@ -32,7 +32,7 @@ li { margin: 0.5px 0; }
 p { margin: 1.5px 0; }
 CSS
 
-pandoc "$md" --from markdown --to html5 --standalone --metadata title="" --css "$css" -o "$html"
+pandoc "$md" --from markdown+autolink_bare_uris --to html5 --standalone --metadata title="" --css "$css" -o "$html"
 wkhtmltopdf --quiet --enable-local-file-access \
   --margin-top 11mm --margin-bottom 11mm --margin-left 14mm --margin-right 14mm \
   --page-size Letter "$html" "$out"
