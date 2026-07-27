@@ -6,7 +6,7 @@ description: "US hospital price data has been documented as hostile for years. T
 tags: healthcare, data, go, verification
 og_title: "Four traps in hospital price data"
 og_description: "The parsers are free; nobody reconciles the payers. Four traps from building a reconciled hospital price tool, and what not falling into them costs."
-cover_image: TODO.webp
+cover_image: cover.webp
 lead: "The data does not lie loudly. It lies in four quiet ways, and each one survives a casual read."
 ---
 
