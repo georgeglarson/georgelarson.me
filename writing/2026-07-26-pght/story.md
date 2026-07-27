@@ -24,6 +24,8 @@ Schema parsers are free and plentiful but there is still a need to reconcile wha
 
 Here is what building that layer over one metro actually required, and the four traps it survived.
 
+![The tool's hero finding: one metabolic panel, priced per payer — $10.07 at West Penn against $693.20 at Magee under Cigna, with the provenance footer every result carries](cover.webp)
+
 **Invented numbers.** Postgres offers two medians. The continuous one, over an even number of values, averages the two middle rows. That average is nobody's rate. It appears in no contract, on no bill, and it renders beautifully. A dashboard full of interpolated medians looks identical to a dashboard full of real prices. This is not rare. The first time a check ran against my generated findings, twelve of twenty stated a dollar figure the data could never return. 
 The findings corpus computes only the discrete median, which is always a rate somebody actually filed; the interactive grammar offers both medians deliberately, because the middle of a distribution is a fair question and the continuous median is its honest answer. Every published figure re-executes against the live database before it counts. The corpus is also audited against the field's documented artifacts: no placeholder rates, no non-positive prices, and the sub-dollar and seven-figure rates that do exist are examined, documented in docs/data-quality.md, and kept out of the analytical surface by a tested sweep floor.
 
