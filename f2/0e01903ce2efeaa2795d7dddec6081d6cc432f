@@ -1,0 +1,21 @@
+scripts/contributions.yaml
+  s_c2dc45504951dd::t_f2035cda7c7176 48-49
+  s_c2dc45504951dd::t_c2b72c7e595a39 16-17
+  s_c2dc45504951dd::t_67cb0282cc59d8 63-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "f20e01903ce2efeaa2795d7dddec6081d6cc432f",
+  "prompts": {},
+  "sessions": {
+    "s_c2dc45504951dd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "251b64ce-0c9b-44b2-bb7c-10351c730446",
+        "model": "glm-5.2"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
