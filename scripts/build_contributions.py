@@ -309,8 +309,16 @@ def main(argv=None):
         try:
             with open("index.html") as f:
                 idx = f.read()
-            idx_new = _rewrite_headlines(idx, *headline(curation)[:2], expected_min=1)
-            write_index = idx_new != idx
+            if _OLD_HEADLINE_RE.search(idx):
+                # index.html carries the fixes-merged headline, so keep its count
+                # in step — same silent-drift guard as the contributions.html leg.
+                idx_new = _rewrite_headlines(idx, *headline(curation)[:2], expected_min=1)
+                write_index = idx_new != idx
+            else:
+                # index.html links to /contributions without a count headline
+                # (homepage simplified to drop it). Nothing to rewrite; don't crash.
+                print("note: index.html has no fixes-merged headline; skipped index rewrite",
+                      file=sys.stderr)
         except FileNotFoundError:
             pass
         with open(args.page, "w") as f:
