@@ -1,8 +1,7 @@
-US hospitals must publish their prices. What's inside those files: ghost codes, placeholder rates, one procedure described 490 ways. The parsers are free; nobody reconciles the payers.
+US hospitals must publish their prices. Inside: ghost codes, placeholder rates, one procedure described 490 ways. Parsers are free; nobody reconciles the payers.
 
-I built the reconciliation layer for Pittsburgh — 4.5M rows, five hospital files — and every published figure re-executes from its own stored query before it counts.
+I built that layer for Pittsburgh — 4.5M rows, five files. Every figure re-executes from its own stored query.
 
-Four traps it survived: interpolated medians that are nobody's rate (12 of 20 findings failed this on the first check), payer identities that moved 145,004 rows when corrected, corrections that manufacture the next bug, and commercial-vs-Medicaid comparisons that no correctness check can see.
+Four traps: interpolated medians (12 of 20 findings failed), 145,004 mislabeled rows, corrections that manufacture the next bug, comparisons no correctness check can see.
 
-Tool: https://prices.georgelarson.me
-Writeup: https://georgelarson.me/writing/2026-07-26-pght/
+https://georgelarson.me/writing/2026-07-26-pght/
