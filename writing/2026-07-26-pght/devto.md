@@ -1,10 +1,10 @@
 ---
-title: "the four traps under hospital price data"
+title: "Four traps in hospital price data"
 published: false
 description: "US hospital price data has been documented as hostile for years. The schema parsers are free. Nobody publishes the layer that reconciles what is inside. What building that layer over one metro actually required."
 tags: healthcare, data, go, verification
 canonical_url: https://georgelarson.me/writing/2026-07-26-pght/
-cover_image: TODO.webp
+cover_image: cover.webp
 ---
 
 This tool (pght) compares what Pittsburgh hospitals charge for the same procedure. 
@@ -20,6 +20,8 @@ The Peterson-KFF Health System Tracker keeps a [running catalog](https://www.hea
 Schema parsers are free and plentiful but there is still a need to reconcile what is inside. 
 
 Here is what building that layer over one metro actually required, and the four traps it survived.
+
+![The tool's hero finding: one metabolic panel, priced per payer — $10.07 at West Penn against $693.20 at Magee under Cigna, with the provenance footer every result carries](https://georgelarson.me/writing/2026-07-26-pght/cover.webp)
 
 **Invented numbers.** Postgres offers two medians. The continuous one, over an even number of values, averages the two middle rows. That average is nobody's rate. It appears in no contract, on no bill, and it renders beautifully. A dashboard full of interpolated medians looks identical to a dashboard full of real prices. This is not rare. The first time a check ran against my generated findings, twelve of twenty stated a dollar figure the data could never return. 
 The findings corpus computes only the discrete median, which is always a rate somebody actually filed; the interactive grammar offers both medians deliberately, because the middle of a distribution is a fair question and the continuous median is its honest answer. Every published figure re-executes against the live database before it counts. The corpus is also audited against the field's documented artifacts: no placeholder rates, no non-positive prices, and the sub-dollar and seven-figure rates that do exist are examined, documented in docs/data-quality.md, and kept out of the analytical surface by a tested sweep floor.
