@@ -27,25 +27,25 @@ class MergedSectionTests(unittest.TestCase):
     def setUp(self):
         self.cur = bc.load_curation(YAML)
 
-    def test_nine_merged_entries(self):
+    def test_eleven_merged_entries(self):
         html = bc.render_merged_html(self.cur)
-        self.assertEqual(html.count("<li>"), 9)
+        self.assertEqual(html.count("<li>"), 11)
 
     def test_sorted_newest_first(self):
         numbers = bc.merged_numbers_in_order(self.cur)
         self.assertEqual(
-            numbers, [288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164]
+            numbers, [1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164]
         )
 
     def test_every_receipt_present(self):
         html = bc.render_merged_html(self.cur)
-        for n in (288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
+        for n in (1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
             self.assertIn(f"#{n}", html)
 
     def test_first_entry_is_newest(self):
         html = bc.render_merged_html(self.cur)
         first = html.split("<li>", 1)[1]
-        self.assertIn("#288", first)
+        self.assertIn("#1844", first)
 
 
 class HeadlineTests(unittest.TestCase):
@@ -54,12 +54,12 @@ class HeadlineTests(unittest.TestCase):
 
     def test_counts(self):
         n_fixes, n_projects, sentence = bc.headline(self.cur)
-        self.assertEqual(n_fixes, 9)
+        self.assertEqual(n_fixes, 11)
         self.assertEqual(n_projects, 8)
 
     def test_sentence_spelled_out(self):
         _, _, sentence = bc.headline(self.cur)
-        self.assertIn("Nine", sentence)
+        self.assertIn("Eleven", sentence)
         self.assertIn("eight", sentence)
 
 
@@ -74,7 +74,7 @@ class InReviewTests(unittest.TestCase):
         for repo in (
             "livekit/agents", "allenai/open-instruct", "stryker-mutator/stryker-net",
             "kputnam/stupidedi", "n8n-io/n8n", "mitmproxy/mitmproxy",
-            "charmbracelet/crush", "OpenHands/agent-canvas", "Comfy-Org/ComfyUI_frontend",
+            "charmbracelet/crush", "OpenHands/software-agent-sdk", "Comfy-Org/ComfyUI_frontend",
         ):
             self.assertIn(repo, html)
 
@@ -148,16 +148,16 @@ class DriftDetectionTests(unittest.TestCase):
     def test_flags_stale_inreview_group(self):
         # An in_review number that has since merged -> flagged so it can move up.
         prs = [{
-            "repository": {"nameWithOwner": "OpenHands/agent-canvas"},
-            "number": 1430, "state": "CLOSED", "status": "merged",
+            "repository": {"nameWithOwner": "Comfy-Org/ComfyUI_frontend"},
+            "number": 11686, "state": "CLOSED", "status": "merged",
             "closedAt": "2026-07-15T00:00:00Z",
-            "url": "https://github.com/OpenHands/agent-canvas/pull/1430",
+            "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686",
         }]
         cur = bc.load_curation(YAML)
         drift = bc.detect_drift(prs, cur)
-        # #1430 merged -> it's a new merge to curate AND the in_review group is now stale
-        self.assertTrue(any("1430" in m for m in drift["new_merges"]))
-        self.assertTrue(any("1430" in s for s in drift["stale_inreview"]))
+        # #11686 merged -> it's a new merge to curate AND the in_review group is now stale
+        self.assertTrue(any("11686" in m for m in drift["new_merges"]))
+        self.assertTrue(any("11686" in s for s in drift["stale_inreview"]))
 
     def test_flags_closed_unmerged_inreview(self):
         # An in_review PR closed WITHOUT merging disappears from both --state open

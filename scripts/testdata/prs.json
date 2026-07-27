@@ -84,7 +84,7 @@
   "status": "merged"
  },
  {
-  "closedAt": "0001-01-01T00:00:00Z",
+  "closedAt": "2026-07-16T02:08:39Z",
   "createdAt": "2026-07-15T02:24:17Z",
   "isDraft": false,
   "number": 289,
@@ -92,10 +92,10 @@
    "name": "stupidedi",
    "nameWithOwner": "kputnam/stupidedi"
   },
-  "state": "open",
+  "state": "merged",
   "title": "Re-enable the 4010 AR943 and RE944 transaction sets",
   "url": "https://github.com/kputnam/stupidedi/pull/289",
-  "status": "open"
+  "status": "merged"
  },
  {
   "closedAt": "0001-01-01T00:00:00Z",
@@ -140,7 +140,7 @@
   "status": "open"
  },
  {
-  "closedAt": "0001-01-01T00:00:00Z",
+  "closedAt": "2026-07-27T15:01:59Z",
   "createdAt": "2026-06-19T12:40:58Z",
   "isDraft": false,
   "number": 1430,
@@ -148,10 +148,10 @@
    "name": "agent-canvas",
    "nameWithOwner": "OpenHands/agent-canvas"
   },
-  "state": "open",
+  "state": "closed",
   "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#1244)",
   "url": "https://github.com/OpenHands/agent-canvas/pull/1430",
-  "status": "open"
+  "status": "closed"
  },
  {
   "closedAt": "0001-01-01T00:00:00Z",
@@ -250,5 +250,61 @@
   "title": "Add buffer_offset method to TextBuffer",
   "url": "https://github.com/erikjuhani/basalt/pull/546",
   "status": "closed"
+ },
+ {
+  "closedAt": "2026-07-18T17:50:29Z",
+  "createdAt": "2026-07-18T14:30:26Z",
+  "isDraft": false,
+  "number": 1844,
+  "repository": {
+   "name": "agent-canvas",
+   "nameWithOwner": "OpenHands/agent-canvas"
+  },
+  "state": "merged",
+  "title": "feat(llm): add Kimi Code membership as a first-class Moonshot option",
+  "url": "https://github.com/OpenHands/agent-canvas/pull/1844",
+  "status": "merged"
+ },
+ {
+  "closedAt": "0001-01-01T00:00:00Z",
+  "createdAt": "2026-07-17T07:28:01Z",
+  "isDraft": false,
+  "number": 292,
+  "repository": {
+   "name": "stupidedi",
+   "nameWithOwner": "kputnam/stupidedi"
+  },
+  "state": "open",
+  "title": "Re-enable the 4010 SM204 transaction set",
+  "url": "https://github.com/kputnam/stupidedi/pull/292",
+  "status": "open"
+ },
+ {
+  "closedAt": "0001-01-01T00:00:00Z",
+  "createdAt": "2026-07-18T23:16:30Z",
+  "isDraft": false,
+  "number": 293,
+  "repository": {
+   "name": "stupidedi",
+   "nameWithOwner": "kputnam/stupidedi"
+  },
+  "state": "open",
+  "title": "Re-enable the 4010 SH856 transaction set",
+  "url": "https://github.com/kputnam/stupidedi/pull/293",
+  "status": "open"
+ },
+ {
+  "closedAt": "0001-01-01T00:00:00Z",
+  "createdAt": "2026-07-18T14:31:00Z",
+  "isDraft": false,
+  "number": 4150,
+  "repository": {
+   "name": "software-agent-sdk",
+   "nameWithOwner": "OpenHands/software-agent-sdk"
+  },
+  "state": "open",
+  "title": "feat(llm): verify kimi-for-coding (Kimi Code membership)",
+  "url": "https://github.com/OpenHands/software-agent-sdk/pull/4150",
+  "status": "open"
  }
 ]
