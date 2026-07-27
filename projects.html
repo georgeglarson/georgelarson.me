@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · George Larson</title>
+<meta name="description" content="Tools that run and case studies that survive a click: hospital price transparency, a multiplayer game, a network-capture suite, and the open-source record.">
+
+<link rel="icon" href="/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects · George Larson">
+<meta property="og:description" content="Tools that run and case studies that survive a click: hospital price transparency, a multiplayer game, a network-capture suite, and the open-source record.">
+<meta property="og:url" content="https://georgelarson.me/projects">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Projects · George Larson">
+<meta name="twitter:description" content="Tools that run and case studies that survive a click: hospital price transparency, a multiplayer game, a network-capture suite, and the open-source record.">
+
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/projects">projects</a>
+    <a href="/contributions">contributions</a>
+    <a href="/resume">resume</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/"><span class="caret">←</span> home</a></p>
+
+    <p class="kicker reveal">Work</p>
+    <h1 class="title reveal">Projects</h1>
+
+    <section class="block reveal">
+      <h2 class="label">Running today</h2>
+      <ul class="receipts">
+        <li><a href="https://prices.georgelarson.me">
+          <span class="r-name">pght — Pittsburgh hospital price transparency</span>
+          <span class="r-gloss">Five hospital files, 4.5 million rows, reconciled into a tool
+          where every published figure re-executes from its own stored query against the live
+          data. The four traps that required are <a class="lnk" href="/writing/2026-07-26-pght/">their
+          own writeup</a>. <a class="lnk" href="https://github.com/georgeglarson/pgh-hospital-prices">Public repo</a>.</span>
+        </a></li>
+        <li><a href="/fracture">
+          <span class="r-name">Fracture</span>
+          <span class="r-gloss">A 2012 Mozilla demo rebuilt into a multiplayer game that runs today,
+          3,161 tests behind it.</span>
+        </a></li>
+        <li><a href="/network-tools">
+          <span class="r-name">Network tools</span>
+          <span class="r-gloss">A capture &rarr; visualize &rarr; analyze suite, built because ngrep,
+          Wireshark, and tshark each quit at the hard part. netgrep + wiregraph (original, Rust),
+          termshark (modernized fork). All public.</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">Case studies</h2>
+      <ul class="receipts">
+        <li><a href="/n8n">
+          <span class="r-name">The n8n stuck-channel hunt</span>
+          <span class="r-gloss">A silent failure that passed every health check. The fix drops detection
+          from hours to about six seconds. <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">PR #29516</a>
+          in review upstream.</span>
+        </a></li>
+        <li><a href="/contributions">
+          <span class="r-name">Open-source contributions</span>
+          <span class="r-gloss">The full record: ten fixes merged across eight projects, more in review.
+          Every one survives a click.</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">More, on GitHub</h2>
+      <ul class="receipts">
+        <li><a href="https://github.com/georgeglarson/venice-dev-tools">
+          <span class="r-name">venice-dev-tools</span>
+          <span class="r-gloss">A TypeScript SDK for the Venice AI API: streaming, rate limiting, retries,
+          a zero-retention pipeline. 1,100+ tests across 39 files.</span>
+        </a></li>
+        <li><a href="https://github.com/georgeglarson/codetest">
+          <span class="r-name">codetest</span>
+          <span class="r-gloss">Six coding exercises in six languages, Rust through TypeScript, 968 tests.
+          Language picked for fit, not comfort.</span>
+        </a></li>
+        <li><a href="https://github.com/georgeglarson/deep-research-privacy">
+          <span class="r-name">deep-research-privacy</span>
+          <span class="r-gloss">A privacy-first research tool: Venice plus Brave Search, zero data
+          collection, parallel queries with cited output.</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <p class="reveal more-link"><a class="lnk mono-link" href="/writing">Writing &rarr;</a></p>
+
+  </article>
+</main>
+
+</body>
+</html>

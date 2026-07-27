@@ -471,7 +471,7 @@ ${STYLE_IN_HEAD}</head>
   <a class="wordmark" href="/">george larson</a>
   <nav class="site-nav" aria-label="primary">
     <a href="/who-is-george">who</a>
-    <a href="/#work">work</a>
+    <a href="/projects">projects</a>
     <a href="/writing">writing</a>
     <a href="mailto:george.g.larson@gmail.com">contact</a>
   </nav>
