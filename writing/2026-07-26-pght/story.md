@@ -1,10 +1,10 @@
 ---
-title: "the four traps under hospital price data"
+title: "Four traps in hospital price data"
 slug: 2026-07-26-pght
 date: 2026-07-26
 description: "US hospital price data has been documented as hostile for years. The schema parsers are free. Nobody publishes the layer that reconciles what is inside. What building that layer over one metro actually required."
 tags: healthcare, data, go, verification
-og_title: "the four traps under hospital price data"
+og_title: "Four traps in hospital price data"
 og_description: "The parsers are free; nobody reconciles the payers. Four traps from building a reconciled hospital price tool, and what not falling into them costs."
 cover_image: TODO.webp
 lead: "The data does not lie loudly. It lies in four quiet ways, and each one survives a casual read."
