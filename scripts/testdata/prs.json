@@ -294,7 +294,7 @@
   "status": "open"
  },
  {
-  "closedAt": "0001-01-01T00:00:00Z",
+  "closedAt": "2026-07-30T14:23:00Z",
   "createdAt": "2026-07-18T14:31:00Z",
   "isDraft": false,
   "number": 4150,
@@ -302,9 +302,9 @@
    "name": "software-agent-sdk",
    "nameWithOwner": "OpenHands/software-agent-sdk"
   },
-  "state": "open",
+  "state": "merged",
   "title": "feat(llm): verify kimi-for-coding (Kimi Code membership)",
   "url": "https://github.com/OpenHands/software-agent-sdk/pull/4150",
-  "status": "open"
+  "status": "merged"
  }
 ]

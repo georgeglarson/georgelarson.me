@@ -27,25 +27,25 @@ class MergedSectionTests(unittest.TestCase):
     def setUp(self):
         self.cur = bc.load_curation(YAML)
 
-    def test_eleven_merged_entries(self):
+    def test_twelve_merged_entries(self):
         html = bc.render_merged_html(self.cur)
-        self.assertEqual(html.count("<li>"), 11)
+        self.assertEqual(html.count("<li>"), 12)
 
     def test_sorted_newest_first(self):
         numbers = bc.merged_numbers_in_order(self.cur)
         self.assertEqual(
-            numbers, [1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164]
+            numbers, [4150, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164]
         )
 
     def test_every_receipt_present(self):
         html = bc.render_merged_html(self.cur)
-        for n in (1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
+        for n in (4150, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
             self.assertIn(f"#{n}", html)
 
     def test_first_entry_is_newest(self):
         html = bc.render_merged_html(self.cur)
         first = html.split("<li>", 1)[1]
-        self.assertIn("#1844", first)
+        self.assertIn("#4150", first)
 
 
 class HeadlineTests(unittest.TestCase):
@@ -54,13 +54,13 @@ class HeadlineTests(unittest.TestCase):
 
     def test_counts(self):
         n_fixes, n_projects, sentence = bc.headline(self.cur)
-        self.assertEqual(n_fixes, 11)
-        self.assertEqual(n_projects, 8)
+        self.assertEqual(n_fixes, 12)
+        self.assertEqual(n_projects, 9)
 
     def test_sentence_spelled_out(self):
         _, _, sentence = bc.headline(self.cur)
-        self.assertIn("Eleven", sentence)
-        self.assertIn("eight", sentence)
+        self.assertIn("Twelve", sentence)
+        self.assertIn("nine", sentence)
 
 
 class InReviewTests(unittest.TestCase):
@@ -69,12 +69,12 @@ class InReviewTests(unittest.TestCase):
 
     def test_renders_all_groups(self):
         html = bc.render_inreview_html(self.cur)
-        # one <li> per in_review group (9 groups in the yaml)
+        # one <li> per in_review group (8 groups in the yaml)
         self.assertEqual(html.count("<li>"), len(self.cur["in_review"]))
         for repo in (
             "livekit/agents", "allenai/open-instruct", "stryker-mutator/stryker-net",
             "kputnam/stupidedi", "n8n-io/n8n", "mitmproxy/mitmproxy",
-            "charmbracelet/crush", "OpenHands/software-agent-sdk", "Comfy-Org/ComfyUI_frontend",
+            "charmbracelet/crush", "Comfy-Org/ComfyUI_frontend",
         ):
             self.assertIn(repo, html)
 

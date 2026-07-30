@@ -13,6 +13,7 @@
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.
 merged:
+  - {repo: OpenHands/software-agent-sdk, number: 4150, merged: 2026-07-30, name: "OpenHands / software-agent-sdk", desc: "Verifies the `kimi-for-coding` model id against Moonshot's Kimi Code membership endpoint, so it appears in the agent-canvas model picker with a Verified badge instead of free-typed entry. Companion to agent-canvas #1844."}
   - {repo: OpenHands/agent-canvas, number: 1844, merged: 2026-07-18, name: "OpenHands / agent-canvas", desc: "Adds Moonshot's Kimi Code membership as a first-class provider option, so a Console API key against api.kimi.com/coding/v1 works without free-typing the base URL. Companion to software-agent-sdk #4150, which earns the model its Verified badge."}
   - {repo: kputnam/stupidedi, number: 289, merged: 2026-07-16, name: stupidedi, desc: "Re-enabled the 4010 AR943 and RE944 transaction sets (warehouse stock-transfer shipment and receipt advice), whose autoload had been off on the same outgrown segment-element lists as PO850."}
   - {repo: kputnam/stupidedi, number: 288, merged: 2026-07-13, name: stupidedi, desc: "Re-enabled the 4010 PO850 transaction set, whose autoload had been off because the segment definitions had outgrown its element lists."}
@@ -60,10 +61,6 @@ in_review:
     name: "charmbracelet / crush"
     numbers: [2749, 2750]
     desc: "LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers."
-  - repo: OpenHands/software-agent-sdk
-    name: "OpenHands / software-agent-sdk"
-    numbers: [4150]
-    desc: "Verifies the `kimi-for-coding` model id against Moonshot's Kimi Code membership endpoint, so it appears in the agent-canvas model picker with a Verified badge instead of free-typed entry. Companion to agent-canvas #1844."
   - repo: Comfy-Org/ComfyUI_frontend
     name: ComfyUI_frontend
     numbers: [11686]
