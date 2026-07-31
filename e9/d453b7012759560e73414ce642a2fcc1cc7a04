@@ -1,0 +1,23 @@
+scripts/contributions.yaml
+  s_906acdb6175fa5::t_924c27954d8097 74-83
+scripts/test_build_contributions.py
+  s_906acdb6175fa5::t_dc2119f8a9898d 117-148
+scripts/testdata/prs.json
+  s_906acdb6175fa5::t_c8013140340778 309-336
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "e9d453b7012759560e73414ce642a2fcc1cc7a04",
+  "prompts": {},
+  "sessions": {
+    "s_906acdb6175fa5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4277658a-f78d-4c96-ab6a-941b60541a0c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
