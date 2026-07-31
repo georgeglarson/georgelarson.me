@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions · George Larson</title>
-<meta name="description" content="Twelve fixes merged across nine projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+<meta name="description" content="Thirteen fixes merged across ten projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
 
 <link rel="icon" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open-source contributions · George Larson">
-<meta property="og:description" content="Twelve fixes merged across nine projects, more in review. Every one survives a click.">
+<meta property="og:description" content="Thirteen fixes merged across ten projects, more in review. Every one survives a click.">
 <meta property="og:url" content="https://georgelarson.me/contributions">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open-source contributions · George Larson">
-<meta name="twitter:description" content="Twelve fixes merged across nine projects, more in review. Every one survives a click.">
+<meta name="twitter:description" content="Thirteen fixes merged across ten projects, more in review. Every one survives a click.">
 
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -49,6 +49,10 @@
         <li>
           <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4150">#4150</a> <span class="tag">merged Jul 2026</span></div>
           <p class="desc">Verifies the <code>kimi-for-coding</code> model id against Moonshot&#x27;s Kimi Code membership endpoint, so it appears in the agent-canvas model picker with a Verified badge instead of free-typed entry. Companion to agent-canvas #1844.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16152">#16152</a> <span class="tag">merged Jul 2026</span></div>
+          <p class="desc">The mock-LLM end-to-end stack now shuts down gracefully, so a test run stops leaving six orphaned processes and four bound ports behind after Playwright exits.</p>
         </li>
         <li>
           <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1844">#1844</a> <span class="tag">merged Jul 2026</span></div>
@@ -102,6 +106,10 @@
       <h2 class="label">In review</h2>
       <ul class="tools">
 <!-- contributions:inreview:start -->
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16145">#16145</a></div>
+          <p class="desc">A saved-but-not-signed-in ACP credential reads as &#x27;configured&#x27; instead of raising the green &#x27;signed in&#x27; banner, which on Docker and cloud installs claimed a login that hadn&#x27;t happened. Re-landed here after agent-canvas moved into this repo.</p>
+        </li>
         <li>
           <div class="name">livekit / agents <a class="lnk" href="https://github.com/livekit/agents/pull/6280">#6280</a></div>
           <p class="desc">A fix so a duplicate same-target handoff tool call in one turn no longer reads as ambiguous and aborts the agent switch.</p>

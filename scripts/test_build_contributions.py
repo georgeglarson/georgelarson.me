@@ -27,19 +27,20 @@ class MergedSectionTests(unittest.TestCase):
     def setUp(self):
         self.cur = bc.load_curation(YAML)
 
-    def test_twelve_merged_entries(self):
+    def test_thirteen_merged_entries(self):
         html = bc.render_merged_html(self.cur)
-        self.assertEqual(html.count("<li>"), 12)
+        self.assertEqual(html.count("<li>"), 13)
 
     def test_sorted_newest_first(self):
         numbers = bc.merged_numbers_in_order(self.cur)
         self.assertEqual(
-            numbers, [4150, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164]
+            numbers,
+            [4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164],
         )
 
     def test_every_receipt_present(self):
         html = bc.render_merged_html(self.cur)
-        for n in (4150, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
+        for n in (4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
             self.assertIn(f"#{n}", html)
 
     def test_first_entry_is_newest(self):
@@ -54,13 +55,13 @@ class HeadlineTests(unittest.TestCase):
 
     def test_counts(self):
         n_fixes, n_projects, sentence = bc.headline(self.cur)
-        self.assertEqual(n_fixes, 12)
-        self.assertEqual(n_projects, 9)
+        self.assertEqual(n_fixes, 13)
+        self.assertEqual(n_projects, 10)
 
     def test_sentence_spelled_out(self):
         _, _, sentence = bc.headline(self.cur)
-        self.assertIn("Twelve", sentence)
-        self.assertIn("nine", sentence)
+        self.assertIn("Thirteen", sentence)
+        self.assertIn("ten", sentence)
 
 
 class InReviewTests(unittest.TestCase):
