@@ -1,0 +1,19 @@
+scripts/test_build_contributions.py
+  s_906acdb6175fa5::t_fc8b41a3e5b396 73,75-76,78-80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "d8031cb2e2b3290afa476725467cb1a559fd5c88",
+  "prompts": {},
+  "sessions": {
+    "s_906acdb6175fa5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4277658a-f78d-4c96-ab6a-941b60541a0c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
