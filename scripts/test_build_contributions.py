@@ -70,12 +70,14 @@ class InReviewTests(unittest.TestCase):
 
     def test_renders_all_groups(self):
         html = bc.render_inreview_html(self.cur)
-        # one <li> per in_review group (8 groups in the yaml)
+        # one <li> per in_review group (9 groups in the yaml)
         self.assertEqual(html.count("<li>"), len(self.cur["in_review"]))
+        # every group named explicitly: the count assertion above is dynamic, so
+        # it alone would keep passing while a newly-curated group went unchecked
         for repo in (
-            "livekit/agents", "allenai/open-instruct", "stryker-mutator/stryker-net",
-            "kputnam/stupidedi", "n8n-io/n8n", "mitmproxy/mitmproxy",
-            "charmbracelet/crush", "Comfy-Org/ComfyUI_frontend",
+            "OpenHands/OpenHands", "livekit/agents", "allenai/open-instruct",
+            "stryker-mutator/stryker-net", "kputnam/stupidedi", "n8n-io/n8n",
+            "mitmproxy/mitmproxy", "charmbracelet/crush", "Comfy-Org/ComfyUI_frontend",
         ):
             self.assertIn(repo, html)
 
