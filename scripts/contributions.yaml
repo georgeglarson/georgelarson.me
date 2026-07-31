@@ -13,6 +13,8 @@
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.
 merged:
+  - {repo: OpenHands/software-agent-sdk, number: 4150, merged: 2026-07-30, name: "OpenHands / software-agent-sdk", desc: "Verifies the `kimi-for-coding` model id against Moonshot's Kimi Code membership endpoint, so it appears in the agent-canvas model picker with a Verified badge instead of free-typed entry. Companion to agent-canvas #1844."}
+  - {repo: OpenHands/OpenHands, number: 16152, merged: 2026-07-29, name: OpenHands, desc: "The mock-LLM end-to-end stack now shuts down gracefully, so a test run stops leaving six orphaned processes and four bound ports behind after Playwright exits."}
   - {repo: OpenHands/agent-canvas, number: 1844, merged: 2026-07-18, name: "OpenHands / agent-canvas", desc: "Adds Moonshot's Kimi Code membership as a first-class provider option, so a Console API key against api.kimi.com/coding/v1 works without free-typing the base URL. Companion to software-agent-sdk #4150, which earns the model its Verified badge."}
   - {repo: kputnam/stupidedi, number: 289, merged: 2026-07-16, name: stupidedi, desc: "Re-enabled the 4010 AR943 and RE944 transaction sets (warehouse stock-transfer shipment and receipt advice), whose autoload had been off on the same outgrown segment-element lists as PO850."}
   - {repo: kputnam/stupidedi, number: 288, merged: 2026-07-13, name: stupidedi, desc: "Re-enabled the 4010 PO850 transaction set, whose autoload had been off because the segment definitions had outgrown its element lists."}
@@ -31,6 +33,10 @@ merged:
 # PR whose repo+number isn't covered here, and any number here that's no longer
 # open in gh (it merged or closed).
 in_review:
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16145]
+    desc: "A saved-but-not-signed-in ACP credential reads as 'configured' instead of raising the green 'signed in' banner, which on Docker and cloud installs claimed a login that hadn't happened. Re-landed here after agent-canvas moved into this repo."
   - repo: livekit/agents
     name: "livekit / agents"
     numbers: [6280]
@@ -60,14 +66,20 @@ in_review:
     name: "charmbracelet / crush"
     numbers: [2749, 2750]
     desc: "LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers."
-  - repo: OpenHands/software-agent-sdk
-    name: "OpenHands / software-agent-sdk"
-    numbers: [4150]
-    desc: "Verifies the `kimi-for-coding` model id against Moonshot's Kimi Code membership endpoint, so it appears in the agent-canvas model picker with a Verified badge instead of free-typed entry. Companion to agent-canvas #1844."
   - repo: Comfy-Org/ComfyUI_frontend
     name: ComfyUI_frontend
     numbers: [11686]
     desc: "Respect the Reka DismissableLayer state for the Escape key in keybindings."
+
+# --- Search-index gaps: curated PRs that `gh search` genuinely never returns ---
+# The header explains why these exist; this list makes it machine-checkable, so
+# `test_fixture_covers_every_curated_entry` can demand fixture coverage for
+# everything else without false-flagging these three. If a future gh index fixes
+# one of these, delete its line and add it to scripts/testdata/prs.json.
+search_index_gaps:
+  - {repo: anomalyco/models.dev, number: 475, reason: "merged 2025-12; absent from `gh search prs --merged` output"}
+  - {repo: anomalyco/opencode, number: 4748, reason: "merged 2025-11; absent from `gh search prs --merged` output"}
+  - {repo: WPBuddy/largo, number: 164, reason: "merged 2014; absent from `gh search prs --merged` output"}
 
 # --- Exclusions: PRs `gh` might surface that have been consciously decided not to display ---
 # Suppresses detection noise for these. Reasons kept here so the decision is on record.

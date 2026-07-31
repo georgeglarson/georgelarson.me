@@ -27,25 +27,26 @@ class MergedSectionTests(unittest.TestCase):
     def setUp(self):
         self.cur = bc.load_curation(YAML)
 
-    def test_eleven_merged_entries(self):
+    def test_thirteen_merged_entries(self):
         html = bc.render_merged_html(self.cur)
-        self.assertEqual(html.count("<li>"), 11)
+        self.assertEqual(html.count("<li>"), 13)
 
     def test_sorted_newest_first(self):
         numbers = bc.merged_numbers_in_order(self.cur)
         self.assertEqual(
-            numbers, [1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164]
+            numbers,
+            [4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164],
         )
 
     def test_every_receipt_present(self):
         html = bc.render_merged_html(self.cur)
-        for n in (1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
+        for n in (4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
             self.assertIn(f"#{n}", html)
 
     def test_first_entry_is_newest(self):
         html = bc.render_merged_html(self.cur)
         first = html.split("<li>", 1)[1]
-        self.assertIn("#1844", first)
+        self.assertIn("#4150", first)
 
 
 class HeadlineTests(unittest.TestCase):
@@ -54,13 +55,13 @@ class HeadlineTests(unittest.TestCase):
 
     def test_counts(self):
         n_fixes, n_projects, sentence = bc.headline(self.cur)
-        self.assertEqual(n_fixes, 11)
-        self.assertEqual(n_projects, 8)
+        self.assertEqual(n_fixes, 13)
+        self.assertEqual(n_projects, 10)
 
     def test_sentence_spelled_out(self):
         _, _, sentence = bc.headline(self.cur)
-        self.assertIn("Eleven", sentence)
-        self.assertIn("eight", sentence)
+        self.assertIn("Thirteen", sentence)
+        self.assertIn("ten", sentence)
 
 
 class InReviewTests(unittest.TestCase):
@@ -71,10 +72,12 @@ class InReviewTests(unittest.TestCase):
         html = bc.render_inreview_html(self.cur)
         # one <li> per in_review group (9 groups in the yaml)
         self.assertEqual(html.count("<li>"), len(self.cur["in_review"]))
+        # every group named explicitly: the count assertion above is dynamic, so
+        # it alone would keep passing while a newly-curated group went unchecked
         for repo in (
-            "livekit/agents", "allenai/open-instruct", "stryker-mutator/stryker-net",
-            "kputnam/stupidedi", "n8n-io/n8n", "mitmproxy/mitmproxy",
-            "charmbracelet/crush", "OpenHands/software-agent-sdk", "Comfy-Org/ComfyUI_frontend",
+            "OpenHands/OpenHands", "livekit/agents", "allenai/open-instruct",
+            "stryker-mutator/stryker-net", "kputnam/stupidedi", "n8n-io/n8n",
+            "mitmproxy/mitmproxy", "charmbracelet/crush", "Comfy-Org/ComfyUI_frontend",
         ):
             self.assertIn(repo, html)
 
@@ -112,6 +115,38 @@ class DriftDetectionTests(unittest.TestCase):
         self.assertEqual(drift["new_merges"], [], f"unexpected new merges: {drift['new_merges']}")
         self.assertEqual(drift["new_open"], [], f"unexpected new open: {drift['new_open']}")
         self.assertEqual(drift["stale_inreview"], [], f"unexpected stale in-review: {drift['stale_inreview']}")
+
+    def test_fixture_covers_every_curated_entry(self):
+        # The clean-against-curation test above asserts drift is EMPTY, so a
+        # curated entry the fixture never heard of makes it pass vacuously —
+        # detect_drift only flags an in_review number that is present-and-closed,
+        # never one that is absent. Curating without updating the fixture
+        # therefore shrinks offline coverage silently. Caught by the review panel
+        # 2026-07-31 on the OpenHands #16145/#16152 curation, which added both to
+        # the yaml and neither here.
+        prs = _load_fixture()
+        known = {(p["repository"]["nameWithOwner"], int(p["number"])) for p in prs}
+        cur = bc.load_curation(YAML)
+        # The three PRs gh's search index silently drops can't be in a fixture
+        # that mirrors gh output. They're declared in the yaml so this stays a
+        # checked invariant rather than a comment.
+        known |= {(g["repo"], int(g["number"])) for g in cur.get("search_index_gaps", [])}
+        missing = [
+            f"{e['repo']}#{e['number']}"
+            for e in cur["merged"]
+            if (e["repo"], int(e["number"])) not in known
+        ] + [
+            f"{g['repo']}#{n}"
+            for g in cur["in_review"]
+            for n in g["numbers"]
+            if (g["repo"], int(n)) not in known
+        ]
+        self.assertEqual(
+            missing, [],
+            f"curated but absent from scripts/testdata/prs.json: {missing}. "
+            f"Add them (fields: number, title, url, state, status, createdAt, "
+            f"closedAt, isDraft, repository) so the offline path covers them.",
+        )
 
     def test_flags_uncurated_merge(self):
         # A merged external PR that isn't in the yaml and isn't excluded -> flagged.
