@@ -114,6 +114,38 @@ class DriftDetectionTests(unittest.TestCase):
         self.assertEqual(drift["new_open"], [], f"unexpected new open: {drift['new_open']}")
         self.assertEqual(drift["stale_inreview"], [], f"unexpected stale in-review: {drift['stale_inreview']}")
 
+    def test_fixture_covers_every_curated_entry(self):
+        # The clean-against-curation test above asserts drift is EMPTY, so a
+        # curated entry the fixture never heard of makes it pass vacuously —
+        # detect_drift only flags an in_review number that is present-and-closed,
+        # never one that is absent. Curating without updating the fixture
+        # therefore shrinks offline coverage silently. Caught by the review panel
+        # 2026-07-31 on the OpenHands #16145/#16152 curation, which added both to
+        # the yaml and neither here.
+        prs = _load_fixture()
+        known = {(p["repository"]["nameWithOwner"], int(p["number"])) for p in prs}
+        cur = bc.load_curation(YAML)
+        # The three PRs gh's search index silently drops can't be in a fixture
+        # that mirrors gh output. They're declared in the yaml so this stays a
+        # checked invariant rather than a comment.
+        known |= {(g["repo"], int(g["number"])) for g in cur.get("search_index_gaps", [])}
+        missing = [
+            f"{e['repo']}#{e['number']}"
+            for e in cur["merged"]
+            if (e["repo"], int(e["number"])) not in known
+        ] + [
+            f"{g['repo']}#{n}"
+            for g in cur["in_review"]
+            for n in g["numbers"]
+            if (g["repo"], int(n)) not in known
+        ]
+        self.assertEqual(
+            missing, [],
+            f"curated but absent from scripts/testdata/prs.json: {missing}. "
+            f"Add them (fields: number, title, url, state, status, createdAt, "
+            f"closedAt, isDraft, repository) so the offline path covers them.",
+        )
+
     def test_flags_uncurated_merge(self):
         # A merged external PR that isn't in the yaml and isn't excluded -> flagged.
         prs = [{

@@ -306,5 +306,33 @@
   "title": "feat(llm): verify kimi-for-coding (Kimi Code membership)",
   "url": "https://github.com/OpenHands/software-agent-sdk/pull/4150",
   "status": "merged"
+ },
+ {
+  "closedAt": "2026-07-29T12:21:20Z",
+  "createdAt": "2026-07-29T10:57:41Z",
+  "isDraft": false,
+  "number": 16152,
+  "repository": {
+   "name": "OpenHands",
+   "nameWithOwner": "OpenHands/OpenHands"
+  },
+  "state": "merged",
+  "title": "fix(e2e): shut the mock-LLM stack down gracefully so it stops leaking processes",
+  "url": "https://github.com/OpenHands/OpenHands/pull/16152",
+  "status": "merged"
+ },
+ {
+  "closedAt": "0001-01-01T00:00:00Z",
+  "createdAt": "2026-07-28T21:50:17Z",
+  "isDraft": false,
+  "number": 16145,
+  "repository": {
+   "name": "OpenHands",
+   "nameWithOwner": "OpenHands/OpenHands"
+  },
+  "state": "open",
+  "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#15643)",
+  "url": "https://github.com/OpenHands/OpenHands/pull/16145",
+  "status": "open"
  }
 ]

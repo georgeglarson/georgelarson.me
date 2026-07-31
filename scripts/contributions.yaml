@@ -71,6 +71,16 @@ in_review:
     numbers: [11686]
     desc: "Respect the Reka DismissableLayer state for the Escape key in keybindings."
 
+# --- Search-index gaps: curated PRs that `gh search` genuinely never returns ---
+# The header explains why these exist; this list makes it machine-checkable, so
+# `test_fixture_covers_every_curated_entry` can demand fixture coverage for
+# everything else without false-flagging these three. If a future gh index fixes
+# one of these, delete its line and add it to scripts/testdata/prs.json.
+search_index_gaps:
+  - {repo: anomalyco/models.dev, number: 475, reason: "merged 2025-12; absent from `gh search prs --merged` output"}
+  - {repo: anomalyco/opencode, number: 4748, reason: "merged 2025-11; absent from `gh search prs --merged` output"}
+  - {repo: WPBuddy/largo, number: 164, reason: "merged 2014; absent from `gh search prs --merged` output"}
+
 # --- Exclusions: PRs `gh` might surface that have been consciously decided not to display ---
 # Suppresses detection noise for these. Reasons kept here so the decision is on record.
 exclusions:
