@@ -163,6 +163,33 @@ def render_inreview_html(curation, drafts=None):
     return "\n".join(lines)
 
 
+def render_credited_html(curation):
+    """Work whose idea shipped under someone else's commit.
+
+    Deliberately its own section. These PRs are closed-unmerged, so they cannot
+    sit in `in_review`, and the commit that landed upstream is not George's, so
+    they must never reach `merged` or the headline count. Each entry links both
+    the closed PR and the merged one that carries the credit, because the claim
+    is only worth making if a reader can click through to the maintainer's own
+    words.
+    """
+    lines = []
+    for e in curation.get("credited", []):
+        repo, num = e["repo"], int(e["number"])
+        shipped = int(e["shipped_in"])
+        lines.append(
+            "        <li>\n"
+            f'          <div class="name">{escape(e["name"])} '
+            f'<a class="lnk" href="{_pr_url(repo, num)}">#{num}</a> '
+            f'<span class="tag">shipped in '
+            f'<a class="lnk" href="{_pr_url(e.get("shipped_in_repo", repo), shipped)}">'
+            f'#{shipped}</a></span></div>\n'
+            f'          <p class="desc">{_code_tags(e["desc"])}{e.get("extra", "")}</p>\n'
+            "        </li>"
+        )
+    return "\n".join(lines)
+
+
 _HEADLINE_SENTENCE = (
     "{fixes} fixes merged across {projects} projects, more in review. "
     "Every one survives a click."
@@ -189,10 +216,14 @@ def detect_drift(prs, curation):
     for g in curation["in_review"]:
         for n in g["numbers"]:
             inreview_set.add((g["repo"], int(n)))
+    # Credited entries are closed-unmerged, the one status this detector is
+    # otherwise blind to. Track them so a reopen or a late merge can't leave the
+    # page asserting "closed in favour of" about a PR that is neither.
+    credited_set = {_merged_key(e) for e in curation.get("credited", [])}
 
     merged_in_prs = {}  # (repo, num) -> record
     closed_in_prs = {}  # closed without merge (rejected)
-    new_merges, new_open, stale_inreview = [], [], []
+    new_merges, new_open, stale_inreview, stale_credited = [], [], [], []
 
     for p in prs:
         repo = p["repository"]["nameWithOwner"]
@@ -203,9 +234,13 @@ def detect_drift(prs, curation):
         status = p.get("status") or ("merged" if p.get("state") == "MERGED"
                                      else "open" if p.get("state") == "OPEN" else "closed")
         if status == "open":
-            if key not in inreview_set and key not in exclusion_set:
+            if key in credited_set:
+                stale_credited.append(f"{repo}#{num} reopened -> it is in review again, not credited")
+            elif key not in inreview_set and key not in exclusion_set:
                 new_open.append(f"{repo}#{num}")
         elif status == "merged":
+            if key in credited_set:
+                stale_credited.append(f"{repo}#{num} merged after all -> move it up to merged:")
             merged_in_prs[key] = p
             if key not in merged_set and key not in exclusion_set:
                 closed = (p.get("closedAt") or "")[:10]
@@ -219,7 +254,8 @@ def detect_drift(prs, curation):
         elif key in closed_in_prs:
             stale_inreview.append(f"{key[0]}#{key[1]} closed without merge -> remove")
 
-    return {"new_merges": new_merges, "new_open": new_open, "stale_inreview": stale_inreview}
+    return {"new_merges": new_merges, "new_open": new_open,
+            "stale_inreview": stale_inreview, "stale_credited": stale_credited}
 
 
 # --- writing into the page ---------------------------------------------------
@@ -227,6 +263,7 @@ def detect_drift(prs, curation):
 _MARKERS = {
     "merged": ("<!-- contributions:merged:start -->", "<!-- contributions:merged:end -->"),
     "inreview": ("<!-- contributions:inreview:start -->", "<!-- contributions:inreview:end -->"),
+    "credited": ("<!-- contributions:credited:start -->", "<!-- contributions:credited:end -->"),
 }
 
 _OLD_HEADLINE_RE = re.compile(
@@ -267,6 +304,9 @@ def regenerate_html(html, curation, drafts=None):
     isr, ire = _MARKERS["inreview"]
     html = _replace_between(html, ms, me, render_merged_html(curation))
     html = _replace_between(html, isr, ire, render_inreview_html(curation, drafts))
+    if curation.get("credited"):
+        cs, ce = _MARKERS["credited"]
+        html = _replace_between(html, cs, ce, render_credited_html(curation))
     # headline surfaces: meta description, og, twitter — all three must match, else
     # one could drift stale silently. (index receipt line handled in main().)
     html = _rewrite_headlines(html, n_fixes, n_projects, expected_min=3)
@@ -297,6 +337,8 @@ def main(argv=None):
             print(f"  + new open PR:   {o}", file=sys.stderr)
         for s in drift["stale_inreview"]:
             print(f"  ~ stale review:  {s}", file=sys.stderr)
+        for s in drift["stale_credited"]:
+            print(f"  ~ stale credit:  {s}", file=sys.stderr)
 
     with open(args.page) as f:
         html = f.read()

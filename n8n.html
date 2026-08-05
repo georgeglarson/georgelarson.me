@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The n8n stuck-channel hunt · George Larson</title>
-<meta name="description" content="A silent n8n task-runner failure that passed every health check. The fix drops detection from hours to about six seconds. Submitted upstream as PR #29516.">
+<meta name="description" content="A silent n8n task-runner failure that passed every health check. The fix drops detection from hours to about six seconds. Submitted upstream as PR #29516, shipped in PR #35456.">
 
 <link rel="icon" href="/favicon.svg">
 
@@ -86,14 +86,23 @@
       <h2 class="label">The outcome</h2>
       <div class="prose">
         <p>Detection of that failure mode drops from hours to about six seconds. Submitted to n8n as
-        <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">PR #29516</a>, in review. The
-        diagnosis is grounded in the code path line by line; the manual repro needs a sustained cloud
-        deployment, which is named as a boundary in the PR rather than glossed over. The scope is
-        honest about what it doesn't catch: a runner that goes quiet without ever accepting an offer
-        never trips the counter, flagged as a follow-up, not hidden.</p>
+        <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">PR #29516</a>. The diagnosis is
+        grounded in the code path line by line; the manual repro needs a sustained cloud deployment,
+        which is named as a boundary in the PR rather than glossed over. The scope is honest about
+        what it doesn't catch: a runner that goes quiet without ever accepting an offer never trips
+        the counter, flagged as a follow-up, not hidden.</p>
+        <p>Three months on, a maintainer closed it in favour of
+        <a class="lnk" href="https://github.com/n8n-io/n8n/pull/35456">PR #35456</a>. A separate
+        rework had changed the same <code>acceptOffer</code> path in the meantime, so the original
+        patch no longer applied cleanly. #35456 re-implements the consecutive-timeout disconnect on
+        current master and carries it further: reject and defer replies reset the counter too, the
+        runner is reported exactly once at the threshold, and the disconnect gets its own
+        <code>runner-unresponsive</code> reason for observability. It merged on 4 August, credits the
+        diagnosis by name, and shipped to the 2.33 and 2.34 release lines.</p>
       </div>
       <p class="sources">
         <a href="https://github.com/n8n-io/n8n/pull/29516">PR #29516</a> ·
+        <a href="https://github.com/n8n-io/n8n/pull/35456">PR #35456</a> ·
         <a href="https://github.com/n8n-io/n8n/issues/29372">issue #29372</a>
       </p>
     </section>
