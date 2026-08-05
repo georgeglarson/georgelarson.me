@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rust-connect · George Larson</title>
+<meta name="description" content="A desktop-agnostic KDE Connect implementation in Rust: mutual TLS, a local REST API, real Android interoperability, and more than 900 tests.">
+
+<link rel="icon" href="/favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust-connect · George Larson">
+<meta property="og:description" content="A desktop-agnostic KDE Connect implementation in Rust, verified against the stock Android app.">
+<meta property="og:url" content="https://georgelarson.me/rust-connect">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rust-connect · George Larson">
+<meta name="twitter:description" content="Mutual TLS, a local REST API, real Android interoperability, and more than 900 tests.">
+
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/projects">projects</a>
+    <a href="/contributions">contributions</a>
+    <a href="/resume">resume</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/projects"><span class="caret">←</span> work</a></p>
+
+    <p class="kicker reveal">Case study · Rust / Android</p>
+    <h1 class="title reveal">rust-connect</h1>
+
+    <section class="block reveal">
+      <h2 class="label">The problem</h2>
+      <div class="prose">
+        <p>KDE Connect makes an Android phone feel native on a Linux desktop: notifications,
+        clipboard, files, media controls, SMS, and remote input travel between the two. Its Linux
+        application is built on Qt and KDE libraries. GSConnect integrates with GNOME Shell.
+        rust-connect takes a third route for users who want neither desktop stack.</p>
+        <p>rust-connect provides a compatible protocol surface as a desktop-environment-independent
+        user service. The
+        stock KDE Connect Android app stays on the phone; the Linux side is Rust, a local REST API,
+        and no desktop-environment dependency.</p>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">The framing</h2>
+      <div class="prose">
+        <p>Completeness is measured against KDE Connect and GSConnect, not against the features one
+        user happens to need. A plugin cannot advertise a capability it does not honor. Unfinished
+        features get finished or stop advertising temporarily; they do not disappear to make the
+        roster look tidy.</p>
+        <p>The control surface follows the opposite rule. One authenticated REST API on localhost
+        serves the CLI, troubleshooting UI, Swagger documentation, and event stream. An MCP layer
+        is deferred; the REST API is the current control surface.</p>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">The build</h2>
+      <div class="prose">
+        <p>Rust, Tokio, Axum, rustls, and zbus. Discovery uses complementary mDNS and UDP broadcast
+        paths. Pairing uses mutual TLS 1.2, trust-on-first-use certificate pinning, and the
+        same timestamped Short Authentication String Android displays. Payload transfers open a
+        second bounded TLS connection, matching the reference protocol.</p>
+        <p>The registry contains 24 protocol plugins, including file sharing, notifications and
+        replies, SMS, contacts, battery, connectivity, clipboard, MPRIS media control, mouse and
+        presenter input, remote commands, and SFTP. Some require desktop facilities or manual setup
+        and degrade when those facilities are absent. Clipboard integration drives the real Wayland
+        session. MPRIS talks to actual media players over D-Bus. The daemon ships as a systemd user
+        service because identity, downloads, notifications, clipboard, and media control all belong
+        to the logged-in session.</p>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">The proof</h2>
+      <div class="prose">
+        <p>More than 900 automated tests cover the protocol, API, CLI, hostile peers, transcript
+        replay, property cases, and fuzz targets. Those tests are one evidence layer. The wire
+        contract comes from the Android and KDE sources, and the final interoperability check is a
+        stock Android phone.</p>
+        <p>The public live-device matrix records discovery and reconnect behavior, daemon-initiated
+        fresh pairing with matching SAS values, upgrade continuity, file transfer in both directions,
+        notification mirroring, clipboard in both directions, battery, and connectivity. The v0.1.0
+        release does not display the desktop SAS during phone-initiated pairing; that path was fixed
+        on <code>main</code> in
+        <a class="lnk" href="https://github.com/georgeglarson/rust-connect/pull/9">PR #9</a>.</p>
+      </div>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">The outcome</h2>
+      <div class="prose">
+        <p>v0.1.0 is public under GPL-2.0-or-later. The release ships a Debian package and a standalone
+        Linux binary, with CI, dependency auditing, fuzzing, a threat model, troubleshooting guide,
+        protocol references, and a live-device validation matrix in the repository.</p>
+        <p>The build also produced a more useful engineering result than a feature count: a clear
+        boundary between tests that confirm an implementation and evidence that confirms the
+        implementation understood the protocol.</p>
+      </div>
+      <p class="sources">
+        <a href="https://github.com/georgeglarson/rust-connect">source</a> ·
+        <a href="https://github.com/georgeglarson/rust-connect/releases/tag/v0.1.0">v0.1.0 release</a> ·
+        <a href="https://github.com/georgeglarson/rust-connect/blob/main/docs/live-validation.md">live-device validation</a>
+      </p>
+    </section>
+
+  </article>
+
+  <div class="measure">
+    <hr class="rule">
+    <p class="more-link"><a class="lnk mono-link" href="/projects">&larr; more work</a> &nbsp;&middot;&nbsp; <a class="lnk mono-link" href="https://github.com/georgeglarson/rust-connect">inspect the source &rarr;</a></p>
+    <p class="lede-line">Hiring, or stuck on something? <a class="lnk" href="mailto:george.g.larson@gmail.com">Let's talk.</a></p>
+  </div>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a> · <a href="/resume">resume</a></span>
+</footer>
+
+</body>
+</html>
