@@ -116,12 +116,21 @@ and the headline count in the meta tags + `index.html` receipt line.
   Add it to `merged:` (and write its `desc`).
 - `new open PR` — an open external PR not covered by any `in_review:` group.
   Add a group (or extend an existing one) with a `desc`.
-- `stale review` — an `in_review:` number that merged (move it up to `merged:`) or was closed without merging (remove the group / number).
+- `stale review` — an `in_review:` number that merged (move it up to `merged:`) or was closed without merging (remove the group / number, or move it to `credited:` if the idea shipped under someone else's commit).
+- `stale credit` — a `credited:` number that reopened (it's in review again) or merged after all (move it up to `merged:`). Closed-unmerged is the one status the other checks are blind to, so this is the only thing watching those entries.
 
 ## Curation rules
 
 - `merged:` is authoritative for the count and the Merged section. Sort is by
   `merged` date descending (handled by the generator).
+- `credited:` is for work whose idea shipped under someone else's commit: the PR
+  is closed-unmerged, so it can't sit in `in_review`, and the commit that landed
+  isn't George's, so it must never reach `merged:` or the count. Required fields
+  are `shipped_in` (the merged PR carrying the credit) plus the usual
+  `repo`/`number`/`name`/`desc`; add `shipped_in_repo` when the merged PR lives
+  in a different repo. Both PRs get linked, because the claim is only worth
+  making if a reader can click through to the maintainer's own words. Curate one
+  only when the credit is written down upstream and clickable.
 - `desc` uses backticks for code spans (`like this`) — the generator turns them
   into `<code>` tags. Don't hand-write `<code>`.
 - `extra` (optional) is raw HTML appended inside the `<p class="desc">` — used for

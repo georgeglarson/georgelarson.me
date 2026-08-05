@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions · George Larson</title>
-<meta name="description" content="Thirteen fixes merged across ten projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+<meta name="description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
 
 <link rel="icon" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open-source contributions · George Larson">
-<meta property="og:description" content="Thirteen fixes merged across ten projects, more in review. Every one survives a click.">
+<meta property="og:description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click.">
 <meta property="og:url" content="https://georgelarson.me/contributions">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open-source contributions · George Larson">
-<meta name="twitter:description" content="Thirteen fixes merged across ten projects, more in review. Every one survives a click.">
+<meta name="twitter:description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click.">
 
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -46,6 +46,14 @@
       <h2 class="label">Merged</h2>
       <ul class="tools">
 <!-- contributions:merged:start -->
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16272">#16272</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">The repo ignored three named subdirectories of <code>.tmp/</code> while the test harnesses wrote to several more, so runtime state kept turning up in commits. Ignoring the root instead means the list can&#x27;t fall behind the code again.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16239">#16239</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">The dev launcher handled <code>SIGINT</code> and <code>SIGTERM</code> but not <code>SIGHUP</code>, so closing a terminal or multiplexer killed the launcher and left its detached services running. Reproduced against the real spawn path before and after the fix.</p>
+        </li>
         <li>
           <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4150">#4150</a> <span class="tag">merged Jul 2026</span></div>
           <p class="desc">Verifies the <code>kimi-for-coding</code> model id against Moonshot&#x27;s Kimi Code membership endpoint, so it appears in the agent-canvas model picker with a Verified badge instead of free-typed entry. Companion to agent-canvas #1844.</p>
@@ -107,6 +115,14 @@
       <ul class="tools">
 <!-- contributions:inreview:start -->
         <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16311">#16311</a></div>
+          <p class="desc">A context-window usage meter, a usage drawer, and manual compaction, replacing the old metrics modal. Carries three fixes found along the way: a divide-by-zero on models that report no context window, websocket usage metrics dropped for non-agent usage ids, and a crash on the home route.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16279">#16279</a>, <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16280">#16280</a></div>
+          <p class="desc">The same <code>SIGHUP</code> gap as #16239, one launcher over in each case. Orphaned services hold their ports, and a surviving agent-server keeps heartbeating its lease files, so the next start reports every conversation as held and lists none.</p>
+        </li>
+        <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16145">#16145</a></div>
           <p class="desc">A saved-but-not-signed-in ACP credential reads as &#x27;configured&#x27; instead of raising the green &#x27;signed in&#x27; banner, which on Docker and cloud installs claimed a login that hadn&#x27;t happened. Re-landed here after agent-canvas moved into this repo.</p>
         </li>
@@ -127,10 +143,6 @@
           <p class="desc">Re-enables the 4010 SM204 (Motor Carrier Load Tender) and SH856 (Ship Notice/Manifest, the 856 ASN), third and fourth in the series after PO850 and AR943/RE944, on the same outgrown-segment fix pattern.</p>
         </li>
         <li>
-          <div class="name">n8n <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">#29516</a></div>
-          <p class="desc">A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds. <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
-        </li>
-        <li>
           <div class="name">mitmproxy <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8199">#8199</a>, <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8200">#8200</a></div>
           <p class="desc">A <code>Flow.kill()</code> resume-event fix so teardown closes the client connection, plus a KillInjected event so killing a flow disconnects in-transit connections.</p>
         </li>
@@ -143,6 +155,18 @@
           <p class="desc">Respect the Reka DismissableLayer state for the Escape key in keybindings.</p>
         </li>
       <!-- contributions:inreview:end -->
+      </ul>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">Credited upstream</h2>
+      <ul class="tools">
+<!-- contributions:credited:start -->
+        <li>
+          <div class="name">n8n <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">#29516</a> <span class="tag">shipped in <a class="lnk" href="https://github.com/n8n-io/n8n/pull/35456">#35456</a></span></div>
+          <p class="desc">A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds. The PR predated a rework of the same <code>acceptOffer</code> path, so a maintainer re-implemented the idea on current master and credited the diagnosis by name. Shipped to the 2.33 and 2.34 release lines. <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
+        </li>
+      <!-- contributions:credited:end -->
       </ul>
     </section>
 

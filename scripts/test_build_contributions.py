@@ -16,6 +16,7 @@ import build_contributions as bc  # noqa: E402
 
 YAML = os.path.join(HERE, "contributions.yaml")
 FIXTURE = os.path.join(HERE, "testdata", "prs.json")
+PAGE = os.path.join(HERE, os.pardir, "contributions.html")
 
 
 def _load_fixture():
@@ -27,26 +28,28 @@ class MergedSectionTests(unittest.TestCase):
     def setUp(self):
         self.cur = bc.load_curation(YAML)
 
-    def test_thirteen_merged_entries(self):
+    def test_fifteen_merged_entries(self):
         html = bc.render_merged_html(self.cur)
-        self.assertEqual(html.count("<li>"), 13)
+        self.assertEqual(html.count("<li>"), 15)
 
     def test_sorted_newest_first(self):
         numbers = bc.merged_numbers_in_order(self.cur)
         self.assertEqual(
             numbers,
-            [4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164],
+            [16272, 16239, 4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434,
+             564, 475, 4748, 164],
         )
 
     def test_every_receipt_present(self):
         html = bc.render_merged_html(self.cur)
-        for n in (4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
+        for n in (16272, 16239, 4150, 16152, 1844, 289, 288, 1368, 1133, 1134,
+                  1434, 564, 475, 4748, 164):
             self.assertIn(f"#{n}", html)
 
     def test_first_entry_is_newest(self):
         html = bc.render_merged_html(self.cur)
         first = html.split("<li>", 1)[1]
-        self.assertIn("#4150", first)
+        self.assertIn("#16272", first)
 
 
 class HeadlineTests(unittest.TestCase):
@@ -55,12 +58,12 @@ class HeadlineTests(unittest.TestCase):
 
     def test_counts(self):
         n_fixes, n_projects, sentence = bc.headline(self.cur)
-        self.assertEqual(n_fixes, 13)
+        self.assertEqual(n_fixes, 15)
         self.assertEqual(n_projects, 10)
 
     def test_sentence_spelled_out(self):
         _, _, sentence = bc.headline(self.cur)
-        self.assertIn("Thirteen", sentence)
+        self.assertIn("Fifteen", sentence)
         self.assertIn("ten", sentence)
 
 
@@ -76,10 +79,15 @@ class InReviewTests(unittest.TestCase):
         # it alone would keep passing while a newly-curated group went unchecked
         for repo in (
             "OpenHands/OpenHands", "livekit/agents", "allenai/open-instruct",
-            "stryker-mutator/stryker-net", "kputnam/stupidedi", "n8n-io/n8n",
+            "stryker-mutator/stryker-net", "kputnam/stupidedi",
             "mitmproxy/mitmproxy", "charmbracelet/crush", "Comfy-Org/ComfyUI_frontend",
         ):
             self.assertIn(repo, html)
+
+    def test_n8n_no_longer_sits_in_review(self):
+        # #29516 was closed unmerged 2026-08-04; it moved to `credited`. Leaving
+        # it here is the exact stale claim this page must not make.
+        self.assertNotIn("29516", bc.render_inreview_html(self.cur))
 
     def test_draft_tag_sourced_from_live_isdraft(self):
         # draft status is live state from gh, NOT a yaml field — driven by the
@@ -97,11 +105,30 @@ class InReviewTests(unittest.TestCase):
         ]
         self.assertEqual(bc.drafts_from_prs(prs), {("a/b", 1)})
 
-    def test_extra_deep_dive_link_preserved(self):
-        # n8n has a /n8n hunt write-up; its `extra` link must survive generation.
-        html = bc.render_inreview_html(self.cur)
-        self.assertIn('href="/n8n"', html)
-        self.assertIn("full hunt", html)
+
+class PageInvariantTests(unittest.TestCase):
+    """Whole-page guarantees that must hold no matter which section owns an entry."""
+
+    def setUp(self):
+        self.cur = bc.load_curation(YAML)
+        with open(PAGE) as f:
+            self.html = f.read()
+
+    def test_page_keeps_the_only_inbound_link_to_the_n8n_write_up(self):
+        # /contributions is the only page linking /n8n. This was an in_review
+        # `extra` until #29516 closed and the entry moved to `credited`; asserted
+        # at page level so a future move between sections can't orphan the
+        # write-up while a section-scoped test keeps passing.
+        out, _ = bc.regenerate_html(self.html, self.cur)
+        self.assertIn('href="/n8n"', out)
+        self.assertIn("full hunt", out)
+
+    def test_regenerated_page_is_stable(self):
+        # Committed page must equal what the generator produces, so a reviewer
+        # reads the same html the next --write would.
+        out, _ = bc.regenerate_html(self.html, self.cur)
+        self.assertEqual(out, self.html, "contributions.html is stale — re-run "
+                                         "build_contributions.py --write")
 
 
 class DriftDetectionTests(unittest.TestCase):
@@ -140,6 +167,13 @@ class DriftDetectionTests(unittest.TestCase):
             for g in cur["in_review"]
             for n in g["numbers"]
             if (g["repo"], int(n)) not in known
+        ] + [
+            # credited entries too: the fixture is the only offline exercise of
+            # the closed-unmerged path, and that path is precisely the one the
+            # live detector was blind to before `stale_credited` existed.
+            f"{e['repo']}#{e['number']}"
+            for e in cur.get("credited", [])
+            if (e["repo"], int(e["number"])) not in known
         ]
         self.assertEqual(
             missing, [],
@@ -206,6 +240,104 @@ class DriftDetectionTests(unittest.TestCase):
         drift = bc.detect_drift(prs, cur)
         self.assertTrue(any("8199" in s for s in drift["stale_inreview"]),
                         f"closed-unmerged in-review should be stale: {drift}")
+
+
+class CreditedSectionTests(unittest.TestCase):
+    """Work whose idea shipped under someone else's commit.
+
+    Its own section because it is neither: a closed-unmerged PR can't sit in
+    `in_review` (it isn't), and it must never reach `merged` (the commit that
+    landed isn't George's). Counting it would inflate the headline, so the
+    headline tests below pin that it doesn't.
+    """
+
+    def setUp(self):
+        self.cur = bc.load_curation(YAML)
+
+    def test_renders_one_li_per_entry(self):
+        html = bc.render_credited_html(self.cur)
+        self.assertEqual(html.count("<li>"), len(self.cur["credited"]))
+
+    def test_n8n_entry_links_the_closed_pr_and_the_merged_one(self):
+        html = bc.render_credited_html(self.cur)
+        self.assertIn("n8n-io/n8n/pull/29516", html)
+        self.assertIn("n8n-io/n8n/pull/35456", html)
+
+    def test_deep_dive_link_moved_across_with_the_entry(self):
+        # /contributions is the only inbound link to the /n8n write-up. It rode
+        # on the in_review group before; losing it here would orphan the page.
+        html = bc.render_credited_html(self.cur)
+        self.assertIn('href="/n8n"', html)
+        self.assertIn("full hunt", html)
+
+    def test_never_tagged_as_merged(self):
+        html = bc.render_credited_html(self.cur)
+        self.assertNotIn('<span class="tag">merged', html)
+
+    def test_absent_key_renders_empty_rather_than_raising(self):
+        # `credited` is optional curation; a yaml without it must still build.
+        self.assertEqual(bc.render_credited_html({"merged": [], "in_review": []}), "")
+
+    def test_backticks_become_code(self):
+        cur = {"credited": [{
+            "repo": "a/b", "number": 1, "name": "a", "shipped_in": 2,
+            "desc": "a `flag` fix",
+        }]}
+        self.assertIn("<code>flag</code>", bc.render_credited_html(cur))
+
+
+class CreditedCountTests(unittest.TestCase):
+    """Credited work is a receipt, not a merge. It must not move the count."""
+
+    def test_headline_ignores_credited_entries(self):
+        cur = {
+            "merged": [{"repo": "a/b", "number": 1, "merged": "2026-07-01",
+                        "name": "a", "desc": "x"}],
+            "in_review": [],
+            "credited": [{"repo": "c/d", "number": 2, "name": "c",
+                          "shipped_in": 3, "desc": "y"}],
+        }
+        n_fixes, n_projects, _ = bc.headline(cur)
+        self.assertEqual(n_fixes, 1)
+        self.assertEqual(n_projects, 1)
+
+
+class CreditedDriftTests(unittest.TestCase):
+    """A credited PR is closed-unmerged, which drift detection is otherwise blind to."""
+
+    def test_credited_pr_not_flagged_while_it_stays_closed(self):
+        prs = [{
+            "repository": {"nameWithOwner": "n8n-io/n8n"},
+            "number": 29516, "state": "CLOSED", "status": "closed",
+            "url": "https://github.com/n8n-io/n8n/pull/29516",
+        }]
+        drift = bc.detect_drift(prs, bc.load_curation(YAML))
+        self.assertEqual(drift["stale_credited"], [])
+        self.assertEqual(drift["new_open"], [])
+
+    def test_reopened_credited_pr_is_flagged(self):
+        # If it reopens, the page's "closed in favour of" prose becomes a lie.
+        prs = [{
+            "repository": {"nameWithOwner": "n8n-io/n8n"},
+            "number": 29516, "state": "OPEN", "status": "open", "isDraft": False,
+            "url": "https://github.com/n8n-io/n8n/pull/29516",
+        }]
+        drift = bc.detect_drift(prs, bc.load_curation(YAML))
+        self.assertTrue(any("29516" in s for s in drift["stale_credited"]), drift)
+        # and it must not double-report as an uncurated open PR
+        self.assertEqual(drift["new_open"], [])
+
+    def test_merged_credited_pr_is_flagged(self):
+        prs = [{
+            "repository": {"nameWithOwner": "n8n-io/n8n"},
+            "number": 29516, "state": "CLOSED", "status": "merged",
+            "closedAt": "2026-09-01T00:00:00Z",
+            "url": "https://github.com/n8n-io/n8n/pull/29516",
+        }]
+        drift = bc.detect_drift(prs, bc.load_curation(YAML))
+        self.assertTrue(any("29516" in s for s in drift["stale_credited"]), drift)
+        # a merge belongs in `merged:`, so that promotion must be flagged too
+        self.assertTrue(any("29516" in m for m in drift["new_merges"]), drift)
 
 
 class CodeTagTests(unittest.TestCase):
