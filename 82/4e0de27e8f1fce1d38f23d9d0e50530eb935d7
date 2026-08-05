@@ -1,0 +1,50 @@
+n8n.html
+  s_b19e3a7ce56a68::t_2b449798250c08 89-101,105
+  s_b19e3a7ce56a68::t_282d8b394ad6d3 7
+contributions.html
+  s_b19e3a7ce56a68::t_d907a42c22dc74 161-164,170-172
+  s_b19e3a7ce56a68::t_decdda97d1598c 7,13,17,49-56,117-124,165-169
+scripts/testdata/prs.json
+  s_b19e3a7ce56a68::t_42736c3d8cec44 378,392,406
+  s_b19e3a7ce56a68::t_48cd1f50195974 185,193,196,337-377,379-391,393-405
+scripts/build_contributions.py
+  s_b19e3a7ce56a68::t_1b804722c9a54f 266
+  s_b19e3a7ce56a68::t_b693d4eba0f151 219-222,226
+  s_b19e3a7ce56a68::t_e2f819b6ebca0a 237-239,242-243
+  s_b19e3a7ce56a68::t_7ce78337223888 307-309
+  s_b19e3a7ce56a68::t_ca018fd260e18a 340-341
+  s_b19e3a7ce56a68::t_958a65c0dfe597 257-258
+  s_b19e3a7ce56a68::t_6e8a86e35c0d21 166-192
+scripts/test_build_contributions.py
+  s_b19e3a7ce56a68::t_c070106198f4c3 61,66
+  s_b19e3a7ce56a68::t_c8514bffafa3e4 82,87-90
+  s_b19e3a7ce56a68::t_b4981e58ff637d 31,33,39-40,45-46,52
+  s_b19e3a7ce56a68::t_431c239c03b94d 19
+  s_b19e3a7ce56a68::t_a7b6f95555b87c 108-131
+  s_b19e3a7ce56a68::t_40fa9e472cff9f 245-342
+  s_b19e3a7ce56a68::t_a458f90df05468 170-176
+  s_b19e3a7ce56a68::t_ec57e16c1f17c9 91
+AGENTS.md
+  s_b19e3a7ce56a68::t_511048bd6c45ae 119-120
+  s_b19e3a7ce56a68::t_cbee4d5cc41ffd 126-133
+scripts/contributions.yaml
+  s_b19e3a7ce56a68::t_4b97bc9df503da 16-17
+  s_b19e3a7ce56a68::t_8eec0de2fb56ca 38-45
+  s_b19e3a7ce56a68::t_0221da1b3562c3 79-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "824e0de27e8f1fce1d38f23d9d0e50530eb935d7",
+  "prompts": {},
+  "sessions": {
+    "s_b19e3a7ce56a68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9de6e49b-0e38-4aae-bd9c-ed1803fc2bfd",
+        "model": "claude-opus-5"
+      },
+      "human_author": "George Larson <george.g.larson@gmail.com>"
+    }
+  }
+}
