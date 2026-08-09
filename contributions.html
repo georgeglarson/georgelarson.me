@@ -115,6 +115,22 @@
       <ul class="tools">
 <!-- contributions:inreview:start -->
         <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16439">#16439</a>, <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16441">#16441</a></div>
+          <p class="desc">A user reported his agent quietly switching itself to a weaker model. The <code>switch_llm</code> tool ships enabled under a confirmation policy that never asks, so a conversation can end up on a model nobody chose. These expose the off switch the SDK already had but the interface never rendered, and re-derive the model stamp from event history so a dropped socket stops leaving the readout disagreeing with itself.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16426">#16426</a></div>
+          <p class="desc">Adds a provider&#x27;s whole model catalog as LLM profiles in one pass, instead of one entry at a time.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16415">#16415</a></div>
+          <p class="desc">The provider list stopped at 100 because the server&#x27;s pagination cursor was discarded, so <code>together_ai</code>, <code>vertex_ai</code>, and <code>xai</code> were unreachable in every provider dropdown. Reproduced against unmodified upstream main.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16443">#16443</a></div>
+          <p class="desc">A <code>ProgressEvent</code> test fallback that could never install itself: it was guarded on the symbol being absent, and jsdom always defines it. That left the request interceptor free to throw during teardown and redden an otherwise passing run.</p>
+        </li>
+        <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16311">#16311</a></div>
           <p class="desc">A context-window usage meter, a usage drawer, and manual compaction, replacing the old metrics modal. Carries three fixes found along the way: a divide-by-zero on models that report no context window, websocket usage metrics dropped for non-agent usage ids, and a crash on the home route.</p>
         </li>

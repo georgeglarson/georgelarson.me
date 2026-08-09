@@ -1,408 +1,758 @@
 [
- {
-  "closedAt": "2026-07-08T02:36:04Z",
-  "createdAt": "2026-07-06T00:27:16Z",
-  "isDraft": false,
-  "number": 1134,
-  "repository": {
-   "name": "neurolink",
-   "nameWithOwner": "juspay/neurolink"
+  {
+    "closedAt": "2025-02-22T10:31:22Z",
+    "createdAt": "2025-02-20T22:26:07Z",
+    "isDraft": false,
+    "number": 1,
+    "repository": {
+      "name": "crypto-data-pipeline",
+      "nameWithOwner": "Baidis/crypto-data-pipeline"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "migration: mongo to postgres",
+    "url": "https://github.com/Baidis/crypto-data-pipeline/pull/1"
   },
-  "state": "merged",
-  "title": "fix(core): pass system messages via generateText system option, not messages array",
-  "url": "https://github.com/juspay/neurolink/pull/1134",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-07-08T19:50:47Z",
-  "createdAt": "2026-07-05T02:51:11Z",
-  "isDraft": false,
-  "number": 1133,
-  "repository": {
-   "name": "ferriskey",
-   "nameWithOwner": "ferriskey/ferriskey"
+  {
+    "closedAt": "2025-02-16T03:42:57Z",
+    "createdAt": "2025-02-15T18:06:33Z",
+    "isDraft": false,
+    "number": 3,
+    "repository": {
+      "name": "veniceBasic",
+      "nameWithOwner": "Baidis/veniceBasic"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "fix: improve environment variable loading and add debug capability",
+    "url": "https://github.com/Baidis/veniceBasic/pull/3"
   },
-  "state": "merged",
-  "title": "feat(token-exchange): add GrantType::TokenExchange and domain value objects",
-  "url": "https://github.com/ferriskey/ferriskey/pull/1133",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-06-26T23:21:33Z",
-  "createdAt": "2026-06-19T17:36:04Z",
-  "isDraft": false,
-  "number": 1434,
-  "repository": {
-   "name": "agent-canvas",
-   "nameWithOwner": "OpenHands/agent-canvas"
+  {
+    "closedAt": "2026-07-15T10:47:43Z",
+    "createdAt": "2026-07-15T09:36:09Z",
+    "isDraft": false,
+    "number": 33367,
+    "repository": {
+      "name": "litellm",
+      "nameWithOwner": "BerriAI/litellm"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix: support Python 3.14 by bumping PyO3 to 0.29",
+    "url": "https://github.com/BerriAI/litellm/pull/33367"
   },
-  "state": "merged",
-  "title": "fix(examples): inherit acp-docker image from config/defaults.json",
-  "url": "https://github.com/OpenHands/agent-canvas/pull/1434",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-07-11T15:37:11Z",
-  "createdAt": "2026-06-15T18:03:27Z",
-  "isDraft": false,
-  "number": 1368,
-  "repository": {
-   "name": "agent-canvas",
-   "nameWithOwner": "OpenHands/agent-canvas"
+  {
+    "closedAt": "2026-05-04T21:52:35Z",
+    "createdAt": "2026-04-27T13:15:40Z",
+    "isDraft": false,
+    "number": 11682,
+    "repository": {
+      "name": "ComfyUI_frontend",
+      "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix(graph-traversal,minimap): cycle guards and callback chain-wrap survival",
+    "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11682"
   },
-  "state": "merged",
-  "title": "feat(home): group workspace folders by parent in the dropdown (#129)",
-  "url": "https://github.com/OpenHands/agent-canvas/pull/1368",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-06-17T06:46:01Z",
-  "createdAt": "2026-06-14T20:33:12Z",
-  "isDraft": false,
-  "number": 564,
-  "repository": {
-   "name": "last30days-skill",
-   "nameWithOwner": "mvanhorn/last30days-skill"
+  {
+    "closedAt": "2026-04-28T02:55:48Z",
+    "createdAt": "2026-04-27T13:15:42Z",
+    "isDraft": false,
+    "number": 11683,
+    "repository": {
+      "name": "ComfyUI_frontend",
+      "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "feat(api-nodes): cost aggregator + reactivity substrate (1/3)",
+    "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11683"
   },
-  "state": "merged",
-  "title": "feat(env): add a pass(1) credential source (Linux/Unix analog of Keychain)",
-  "url": "https://github.com/mvanhorn/last30days-skill/pull/564",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-07-13T07:40:39Z",
-  "createdAt": "2026-07-09T19:41:18Z",
-  "isDraft": false,
-  "number": 288,
-  "repository": {
-   "name": "stupidedi",
-   "nameWithOwner": "kputnam/stupidedi"
+  {
+    "closedAt": "2026-04-28T02:57:20Z",
+    "createdAt": "2026-04-27T13:15:45Z",
+    "isDraft": false,
+    "number": 11684,
+    "repository": {
+      "name": "ComfyUI_frontend",
+      "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "feat(api-nodes): per-node costs in sign-in dialog (2/3)",
+    "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11684"
   },
-  "state": "merged",
-  "title": "Re-enable the 4010 PO850 transaction set",
-  "url": "https://github.com/kputnam/stupidedi/pull/288",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-07-16T02:08:39Z",
-  "createdAt": "2026-07-15T02:24:17Z",
-  "isDraft": false,
-  "number": 289,
-  "repository": {
-   "name": "stupidedi",
-   "nameWithOwner": "kputnam/stupidedi"
+  {
+    "closedAt": "2026-04-28T02:58:00Z",
+    "createdAt": "2026-04-27T13:15:47Z",
+    "isDraft": false,
+    "number": 11685,
+    "repository": {
+      "name": "ComfyUI_frontend",
+      "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "feat(api-nodes): actionbar cost indicator + breakdown popover (3/3)",
+    "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11685"
   },
-  "state": "merged",
-  "title": "Re-enable the 4010 AR943 and RE944 transaction sets",
-  "url": "https://github.com/kputnam/stupidedi/pull/289",
-  "status": "merged"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-07-07T13:54:01Z",
-  "isDraft": false,
-  "number": 3694,
-  "repository": {
-   "name": "stryker-net",
-   "nameWithOwner": "stryker-mutator/stryker-net"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-27T13:15:50Z",
+    "isDraft": false,
+    "number": 11686,
+    "repository": {
+      "name": "ComfyUI_frontend",
+      "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(keybindings): respect Reka DismissableLayer state for Escape",
+    "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686"
   },
-  "state": "open",
-  "title": "fix(mutator): mutate implicit array creation expressions",
-  "url": "https://github.com/stryker-mutator/stryker-net/pull/3694",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-07-03T19:57:38Z",
-  "isDraft": false,
-  "number": 1751,
-  "repository": {
-   "name": "open-instruct",
-   "nameWithOwner": "allenai/open-instruct"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-28T21:50:17Z",
+    "isDraft": false,
+    "number": 16145,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#15643)",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16145"
   },
-  "state": "open",
-  "title": "Add --launcher flag to mason.py so non-Ai2 users can run without Beaker",
-  "url": "https://github.com/allenai/open-instruct/pull/1751",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-07-01T01:10:37Z",
-  "isDraft": false,
-  "number": 6280,
-  "repository": {
-   "name": "agents",
-   "nameWithOwner": "livekit/agents"
+  {
+    "closedAt": "2026-07-29T12:21:20Z",
+    "createdAt": "2026-07-29T10:57:41Z",
+    "isDraft": false,
+    "number": 16152,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "fix(e2e): shut the mock-LLM stack down gracefully so it stops leaking processes",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16152"
   },
-  "state": "open",
-  "title": "fix(voice): collapse duplicate same-target handoff tool calls",
-  "url": "https://github.com/livekit/agents/pull/6280",
-  "status": "open"
- },
- {
-  "closedAt": "2026-07-27T15:01:59Z",
-  "createdAt": "2026-06-19T12:40:58Z",
-  "isDraft": false,
-  "number": 1430,
-  "repository": {
-   "name": "agent-canvas",
-   "nameWithOwner": "OpenHands/agent-canvas"
+  {
+    "closedAt": "2026-08-03T11:41:59Z",
+    "createdAt": "2026-08-01T18:22:16Z",
+    "isDraft": false,
+    "number": 16239,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "fix: clean up dev services on SIGHUP",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16239"
   },
-  "state": "closed",
-  "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#1244)",
-  "url": "https://github.com/OpenHands/agent-canvas/pull/1430",
-  "status": "closed"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-04-29T22:32:53Z",
-  "isDraft": false,
-  "number": 8200,
-  "repository": {
-   "name": "mitmproxy",
-   "nameWithOwner": "mitmproxy/mitmproxy"
+  {
+    "closedAt": "2026-08-03T19:59:23Z",
+    "createdAt": "2026-08-03T19:12:14Z",
+    "isDraft": false,
+    "number": 16272,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "chore: ignore all of /.tmp/, not three of its subdirectories",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16272"
   },
-  "state": "open",
-  "title": "Make Flow.kill() actually disconnect in-transit flows (KillInjected event)",
-  "url": "https://github.com/mitmproxy/mitmproxy/pull/8200",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-04-29T19:53:23Z",
-  "isDraft": false,
-  "number": 8199,
-  "repository": {
-   "name": "mitmproxy",
-   "nameWithOwner": "mitmproxy/mitmproxy"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-04T01:49:17Z",
+    "isDraft": false,
+    "number": 16279,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix: clean up dev:minimal services on SIGHUP",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16279"
   },
-  "state": "open",
-  "title": "fix(flow): kill() wakes wait_for_resume so proxy teardown closes the client connection",
-  "url": "https://github.com/mitmproxy/mitmproxy/pull/8199",
-  "status": "open"
- },
- {
-  "closedAt": "2026-08-04T15:52:56Z",
-  "createdAt": "2026-04-29T13:48:45Z",
-  "isDraft": false,
-  "number": 29516,
-  "repository": {
-   "name": "n8n",
-   "nameWithOwner": "n8n-io/n8n"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-04T01:49:21Z",
+    "isDraft": false,
+    "number": 16280,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix: clean up dev:extra-backend agent-server on SIGHUP",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16280"
   },
-  "state": "closed",
-  "title": "fix(core): Detect and recover from stuck task-runner channels",
-  "url": "https://github.com/n8n-io/n8n/pull/29516",
-  "status": "closed"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-04-29T07:01:35Z",
-  "isDraft": false,
-  "number": 2750,
-  "repository": {
-   "name": "crush",
-   "nameWithOwner": "charmbracelet/crush"
+  {
+    "closedAt": "2026-08-04T16:02:53Z",
+    "createdAt": "2026-08-04T13:15:08Z",
+    "isDraft": true,
+    "number": 16294,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix: install dev launcher signal handlers only when a process owns the lifecycle",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16294"
   },
-  "state": "open",
-  "title": "fix(lsp): score-based client selection so catch-all LSPs don't steal files",
-  "url": "https://github.com/charmbracelet/crush/pull/2750",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-04-29T06:46:32Z",
-  "isDraft": false,
-  "number": 2749,
-  "repository": {
-   "name": "crush",
-   "nameWithOwner": "charmbracelet/crush"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-04T17:48:10Z",
+    "isDraft": false,
+    "number": 16311,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat: context window usage meter, usage drawer, and manual compaction",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16311"
   },
-  "state": "open",
-  "title": "fix(lsp): respect SingleFileSupport so single-file servers start without root markers",
-  "url": "https://github.com/charmbracelet/crush/pull/2749",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-04-27T13:15:50Z",
-  "isDraft": false,
-  "number": 11686,
-  "repository": {
-   "name": "ComfyUI_frontend",
-   "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-07T22:09:50Z",
+    "isDraft": false,
+    "number": 16415,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(settings): follow pagination when listing LLM providers",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16415"
   },
-  "state": "open",
-  "title": "fix(keybindings): respect Reka DismissableLayer state for Escape",
-  "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686",
-  "status": "open"
- },
- {
-  "closedAt": "2026-06-21T19:24:47Z",
-  "createdAt": "2026-06-17T00:45:14Z",
-  "isDraft": false,
-  "number": 546,
-  "repository": {
-   "name": "basalt",
-   "nameWithOwner": "erikjuhani/basalt"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-08T11:30:17Z",
+    "isDraft": false,
+    "number": 16426,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(settings): bulk-add provider models as LLM profiles",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16426"
   },
-  "state": "closed",
-  "title": "Add buffer_offset method to TextBuffer",
-  "url": "https://github.com/erikjuhani/basalt/pull/546",
-  "status": "closed"
- },
- {
-  "closedAt": "2026-07-18T17:50:29Z",
-  "createdAt": "2026-07-18T14:30:26Z",
-  "isDraft": false,
-  "number": 1844,
-  "repository": {
-   "name": "agent-canvas",
-   "nameWithOwner": "OpenHands/agent-canvas"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-08T20:10:53Z",
+    "isDraft": false,
+    "number": 16439,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(chat): re-derive active profile stamp from event history on reload",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16439"
   },
-  "state": "merged",
-  "title": "feat(llm): add Kimi Code membership as a first-class Moonshot option",
-  "url": "https://github.com/OpenHands/agent-canvas/pull/1844",
-  "status": "merged"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-07-17T07:28:01Z",
-  "isDraft": false,
-  "number": 292,
-  "repository": {
-   "name": "stupidedi",
-   "nameWithOwner": "kputnam/stupidedi"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-08T23:10:41Z",
+    "isDraft": false,
+    "number": 16441,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(settings): expose the LLM-switching toggle in Agent settings",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16441"
   },
-  "state": "open",
-  "title": "Re-enable the 4010 SM204 transaction set",
-  "url": "https://github.com/kputnam/stupidedi/pull/292",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-07-18T23:16:30Z",
-  "isDraft": false,
-  "number": 293,
-  "repository": {
-   "name": "stupidedi",
-   "nameWithOwner": "kputnam/stupidedi"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-08T23:43:16Z",
+    "isDraft": false,
+    "number": 16443,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(test): install the ProgressEvent fallback under jsdom, where it is needed",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16443"
   },
-  "state": "open",
-  "title": "Re-enable the 4010 SH856 transaction set",
-  "url": "https://github.com/kputnam/stupidedi/pull/293",
-  "status": "open"
- },
- {
-  "closedAt": "2026-07-30T14:23:00Z",
-  "createdAt": "2026-07-18T14:31:00Z",
-  "isDraft": false,
-  "number": 4150,
-  "repository": {
-   "name": "software-agent-sdk",
-   "nameWithOwner": "OpenHands/software-agent-sdk"
+  {
+    "closedAt": "2026-07-11T15:37:11Z",
+    "createdAt": "2026-06-15T18:03:27Z",
+    "isDraft": false,
+    "number": 1368,
+    "repository": {
+      "name": "agent-canvas",
+      "nameWithOwner": "OpenHands/agent-canvas"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "feat(home): group workspace folders by parent in the dropdown (#129)",
+    "url": "https://github.com/OpenHands/agent-canvas/pull/1368"
   },
-  "state": "merged",
-  "title": "feat(llm): verify kimi-for-coding (Kimi Code membership)",
-  "url": "https://github.com/OpenHands/software-agent-sdk/pull/4150",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-07-29T12:21:20Z",
-  "createdAt": "2026-07-29T10:57:41Z",
-  "isDraft": false,
-  "number": 16152,
-  "repository": {
-   "name": "OpenHands",
-   "nameWithOwner": "OpenHands/OpenHands"
+  {
+    "closedAt": "2026-07-27T15:01:59Z",
+    "createdAt": "2026-06-19T12:40:58Z",
+    "isDraft": false,
+    "number": 1430,
+    "repository": {
+      "name": "agent-canvas",
+      "nameWithOwner": "OpenHands/agent-canvas"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#1244)",
+    "url": "https://github.com/OpenHands/agent-canvas/pull/1430"
   },
-  "state": "merged",
-  "title": "fix(e2e): shut the mock-LLM stack down gracefully so it stops leaking processes",
-  "url": "https://github.com/OpenHands/OpenHands/pull/16152",
-  "status": "merged"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-07-28T21:50:17Z",
-  "isDraft": false,
-  "number": 16145,
-  "repository": {
-   "name": "OpenHands",
-   "nameWithOwner": "OpenHands/OpenHands"
+  {
+    "closedAt": "2026-06-26T23:21:33Z",
+    "createdAt": "2026-06-19T17:36:04Z",
+    "isDraft": false,
+    "number": 1434,
+    "repository": {
+      "name": "agent-canvas",
+      "nameWithOwner": "OpenHands/agent-canvas"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "fix(examples): inherit acp-docker image from config/defaults.json",
+    "url": "https://github.com/OpenHands/agent-canvas/pull/1434"
   },
-  "state": "open",
-  "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#15643)",
-  "url": "https://github.com/OpenHands/OpenHands/pull/16145",
-  "status": "open"
- },
- {
-  "closedAt": "2026-08-03T19:59:23Z",
-  "createdAt": "2026-08-03T19:12:14Z",
-  "isDraft": false,
-  "number": 16272,
-  "repository": {
-   "name": "OpenHands",
-   "nameWithOwner": "OpenHands/OpenHands"
+  {
+    "closedAt": "2026-07-18T17:50:29Z",
+    "createdAt": "2026-07-18T14:30:26Z",
+    "isDraft": false,
+    "number": 1844,
+    "repository": {
+      "name": "agent-canvas",
+      "nameWithOwner": "OpenHands/agent-canvas"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "feat(llm): add Kimi Code membership as a first-class Moonshot option",
+    "url": "https://github.com/OpenHands/agent-canvas/pull/1844"
   },
-  "state": "merged",
-  "title": "chore: ignore all of /.tmp/, not three of its subdirectories",
-  "url": "https://github.com/OpenHands/OpenHands/pull/16272",
-  "status": "merged"
- },
- {
-  "closedAt": "2026-08-03T11:41:59Z",
-  "createdAt": "2026-08-01T18:22:16Z",
-  "isDraft": false,
-  "number": 16239,
-  "repository": {
-   "name": "OpenHands",
-   "nameWithOwner": "OpenHands/OpenHands"
+  {
+    "closedAt": "2026-07-30T14:23:01Z",
+    "createdAt": "2026-07-18T14:31:00Z",
+    "isDraft": false,
+    "number": 4150,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "feat(llm): verify kimi-for-coding (Kimi Code membership)",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4150"
   },
-  "state": "merged",
-  "title": "fix: clean up dev services on SIGHUP",
-  "url": "https://github.com/OpenHands/OpenHands/pull/16239",
-  "status": "merged"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-08-04T17:48:10Z",
-  "isDraft": false,
-  "number": 16311,
-  "repository": {
-   "name": "OpenHands",
-   "nameWithOwner": "OpenHands/OpenHands"
+  {
+    "closedAt": "2026-03-03T16:39:48Z",
+    "createdAt": "2026-02-27T00:56:23Z",
+    "isDraft": false,
+    "number": 99,
+    "repository": {
+      "name": "CashRegister",
+      "nameWithOwner": "TrueFit/CashRegister"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "Cash Register \u2014 Rust implementation",
+    "url": "https://github.com/TrueFit/CashRegister/pull/99"
   },
-  "state": "open",
-  "title": "feat: context window usage meter, usage drawer, and manual compaction",
-  "url": "https://github.com/OpenHands/OpenHands/pull/16311",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-08-04T01:49:17Z",
-  "isDraft": false,
-  "number": 16279,
-  "repository": {
-   "name": "OpenHands",
-   "nameWithOwner": "OpenHands/OpenHands"
+  {
+    "closedAt": "2014-03-10T14:45:23Z",
+    "createdAt": "2014-03-08T16:46:29Z",
+    "isDraft": false,
+    "number": 164,
+    "repository": {
+      "name": "largo",
+      "nameWithOwner": "WPBuddy/largo"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "Updated LESS syntax in less/mixins.less",
+    "url": "https://github.com/WPBuddy/largo/pull/164"
   },
-  "state": "open",
-  "title": "fix: clean up dev:minimal services on SIGHUP",
-  "url": "https://github.com/OpenHands/OpenHands/pull/16279",
-  "status": "open"
- },
- {
-  "closedAt": "0001-01-01T00:00:00Z",
-  "createdAt": "2026-08-04T01:49:21Z",
-  "isDraft": false,
-  "number": 16280,
-  "repository": {
-   "name": "OpenHands",
-   "nameWithOwner": "OpenHands/OpenHands"
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-03T19:57:38Z",
+    "isDraft": false,
+    "number": 1751,
+    "repository": {
+      "name": "open-instruct",
+      "nameWithOwner": "allenai/open-instruct"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "Add --launcher flag to mason.py so non-Ai2 users can run without Beaker",
+    "url": "https://github.com/allenai/open-instruct/pull/1751"
   },
-  "state": "open",
-  "title": "fix: clean up dev:extra-backend agent-server on SIGHUP",
-  "url": "https://github.com/OpenHands/OpenHands/pull/16280",
-  "status": "open"
- }
+  {
+    "closedAt": "2025-12-06T19:09:39Z",
+    "createdAt": "2025-12-05T23:52:29Z",
+    "isDraft": false,
+    "number": 475,
+    "repository": {
+      "name": "models.dev",
+      "nameWithOwner": "anomalyco/models.dev"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "Add Claude Opus 4.5 model to Venice provider (claude-opus-45)",
+    "url": "https://github.com/anomalyco/models.dev/pull/475"
+  },
+  {
+    "closedAt": "2026-02-15T06:15:55Z",
+    "createdAt": "2025-11-24T23:45:43Z",
+    "isDraft": false,
+    "number": 4715,
+    "repository": {
+      "name": "opencode",
+      "nameWithOwner": "anomalyco/opencode"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix(write): support array content from Venice.ai models",
+    "url": "https://github.com/anomalyco/opencode/pull/4715"
+  },
+  {
+    "closedAt": "2025-11-26T05:40:53Z",
+    "createdAt": "2025-11-25T19:12:01Z",
+    "isDraft": false,
+    "number": 4748,
+    "repository": {
+      "name": "opencode",
+      "nameWithOwner": "anomalyco/opencode"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "docs: add Venice.ai provider",
+    "url": "https://github.com/anomalyco/opencode/pull/4748"
+  },
+  {
+    "closedAt": "2026-02-02T16:42:09Z",
+    "createdAt": "2025-11-26T07:22:47Z",
+    "isDraft": false,
+    "number": 4772,
+    "repository": {
+      "name": "opencode",
+      "nameWithOwner": "anomalyco/opencode"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "Feat/add venice provider",
+    "url": "https://github.com/anomalyco/opencode/pull/4772"
+  },
+  {
+    "closedAt": "2026-04-30T19:00:43Z",
+    "createdAt": "2026-04-29T00:43:13Z",
+    "isDraft": false,
+    "number": 24871,
+    "repository": {
+      "name": "opencode",
+      "nameWithOwner": "anomalyco/opencode"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix(mcp): truncate tool names exceeding 64-char provider limit",
+    "url": "https://github.com/anomalyco/opencode/pull/24871"
+  },
+  {
+    "closedAt": "2026-04-30T20:26:01Z",
+    "createdAt": "2026-04-30T18:07:48Z",
+    "isDraft": true,
+    "number": 25141,
+    "repository": {
+      "name": "opencode",
+      "nameWithOwner": "anomalyco/opencode"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "feat(opencode): configurable timeout for task tool",
+    "url": "https://github.com/anomalyco/opencode/pull/25141"
+  },
+  {
+    "closedAt": "2026-03-05T19:11:43Z",
+    "createdAt": "2025-11-24T19:31:09Z",
+    "isDraft": false,
+    "number": 112,
+    "repository": {
+      "name": "catwalk",
+      "nameWithOwner": "charmbracelet/catwalk"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "feat(venice): add additional models to Venice.ai provider",
+    "url": "https://github.com/charmbracelet/catwalk/pull/112"
+  },
+  {
+    "closedAt": "2025-11-24T18:36:12Z",
+    "createdAt": "2025-11-24T18:33:39Z",
+    "isDraft": false,
+    "number": 1507,
+    "repository": {
+      "name": "crush",
+      "nameWithOwner": "charmbracelet/crush"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "feat: VeniceCode v1.0 - Venice.ai optimized fork",
+    "url": "https://github.com/charmbracelet/crush/pull/1507"
+  },
+  {
+    "closedAt": "2026-05-21T08:02:08Z",
+    "createdAt": "2025-11-24T20:03:45Z",
+    "isDraft": false,
+    "number": 1508,
+    "repository": {
+      "name": "crush",
+      "nameWithOwner": "charmbracelet/crush"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix(write): handle array content from GLM and Qwen models",
+    "url": "https://github.com/charmbracelet/crush/pull/1508"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T06:46:32Z",
+    "isDraft": false,
+    "number": 2749,
+    "repository": {
+      "name": "crush",
+      "nameWithOwner": "charmbracelet/crush"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(lsp): respect SingleFileSupport so single-file servers start without root markers",
+    "url": "https://github.com/charmbracelet/crush/pull/2749"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T07:01:35Z",
+    "isDraft": false,
+    "number": 2750,
+    "repository": {
+      "name": "crush",
+      "nameWithOwner": "charmbracelet/crush"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(lsp): score-based client selection so catch-all LSPs don't steal files",
+    "url": "https://github.com/charmbracelet/crush/pull/2750"
+  },
+  {
+    "closedAt": "2026-06-21T19:24:47Z",
+    "createdAt": "2026-06-17T00:45:14Z",
+    "isDraft": false,
+    "number": 546,
+    "repository": {
+      "name": "basalt",
+      "nameWithOwner": "erikjuhani/basalt"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "Add buffer_offset method to TextBuffer",
+    "url": "https://github.com/erikjuhani/basalt/pull/546"
+  },
+  {
+    "closedAt": "2026-07-08T19:50:47Z",
+    "createdAt": "2026-07-05T02:51:11Z",
+    "isDraft": false,
+    "number": 1133,
+    "repository": {
+      "name": "ferriskey",
+      "nameWithOwner": "ferriskey/ferriskey"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "feat(token-exchange): add GrantType::TokenExchange and domain value objects",
+    "url": "https://github.com/ferriskey/ferriskey/pull/1133"
+  },
+  {
+    "closedAt": "2026-07-08T02:36:04Z",
+    "createdAt": "2026-07-06T00:27:16Z",
+    "isDraft": false,
+    "number": 1134,
+    "repository": {
+      "name": "neurolink",
+      "nameWithOwner": "juspay/neurolink"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "fix(core): pass system messages via generateText system option, not messages array",
+    "url": "https://github.com/juspay/neurolink/pull/1134"
+  },
+  {
+    "closedAt": "2026-07-13T07:40:39Z",
+    "createdAt": "2026-07-09T19:41:18Z",
+    "isDraft": false,
+    "number": 288,
+    "repository": {
+      "name": "stupidedi",
+      "nameWithOwner": "kputnam/stupidedi"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "Re-enable the 4010 PO850 transaction set",
+    "url": "https://github.com/kputnam/stupidedi/pull/288"
+  },
+  {
+    "closedAt": "2026-07-16T02:08:39Z",
+    "createdAt": "2026-07-15T02:24:17Z",
+    "isDraft": false,
+    "number": 289,
+    "repository": {
+      "name": "stupidedi",
+      "nameWithOwner": "kputnam/stupidedi"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "Re-enable the 4010 AR943 and RE944 transaction sets",
+    "url": "https://github.com/kputnam/stupidedi/pull/289"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-17T07:28:01Z",
+    "isDraft": false,
+    "number": 292,
+    "repository": {
+      "name": "stupidedi",
+      "nameWithOwner": "kputnam/stupidedi"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "Re-enable the 4010 SM204 transaction set",
+    "url": "https://github.com/kputnam/stupidedi/pull/292"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-18T23:16:30Z",
+    "isDraft": false,
+    "number": 293,
+    "repository": {
+      "name": "stupidedi",
+      "nameWithOwner": "kputnam/stupidedi"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "Re-enable the 4010 SH856 transaction set",
+    "url": "https://github.com/kputnam/stupidedi/pull/293"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-01T01:10:37Z",
+    "isDraft": false,
+    "number": 6280,
+    "repository": {
+      "name": "agents",
+      "nameWithOwner": "livekit/agents"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(voice): collapse duplicate same-target handoff tool calls",
+    "url": "https://github.com/livekit/agents/pull/6280"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T19:53:23Z",
+    "isDraft": false,
+    "number": 8199,
+    "repository": {
+      "name": "mitmproxy",
+      "nameWithOwner": "mitmproxy/mitmproxy"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(flow): kill() wakes wait_for_resume so proxy teardown closes the client connection",
+    "url": "https://github.com/mitmproxy/mitmproxy/pull/8199"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-04-29T22:32:53Z",
+    "isDraft": false,
+    "number": 8200,
+    "repository": {
+      "name": "mitmproxy",
+      "nameWithOwner": "mitmproxy/mitmproxy"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "Make Flow.kill() actually disconnect in-transit flows (KillInjected event)",
+    "url": "https://github.com/mitmproxy/mitmproxy/pull/8200"
+  },
+  {
+    "closedAt": "2026-06-17T06:46:01Z",
+    "createdAt": "2026-06-14T20:33:12Z",
+    "isDraft": false,
+    "number": 564,
+    "repository": {
+      "name": "last30days-skill",
+      "nameWithOwner": "mvanhorn/last30days-skill"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "feat(env): add a pass(1) credential source (Linux/Unix analog of Keychain)",
+    "url": "https://github.com/mvanhorn/last30days-skill/pull/564"
+  },
+  {
+    "closedAt": "2026-08-04T15:52:56Z",
+    "createdAt": "2026-04-29T13:48:45Z",
+    "isDraft": false,
+    "number": 29516,
+    "repository": {
+      "name": "n8n",
+      "nameWithOwner": "n8n-io/n8n"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "fix(core): Detect and recover from stuck task-runner channels",
+    "url": "https://github.com/n8n-io/n8n/pull/29516"
+  },
+  {
+    "closedAt": "2026-05-04T15:31:48Z",
+    "createdAt": "2026-04-13T06:58:59Z",
+    "isDraft": false,
+    "number": 2390,
+    "repository": {
+      "name": "ironclaw",
+      "nameWithOwner": "nearai/ironclaw"
+    },
+    "state": "closed",
+    "status": "closed",
+    "title": "Fix: default image detail to 'auto' for OpenAI-compatible vision",
+    "url": "https://github.com/nearai/ironclaw/pull/2390"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-07-07T13:54:01Z",
+    "isDraft": false,
+    "number": 3694,
+    "repository": {
+      "name": "stryker-net",
+      "nameWithOwner": "stryker-mutator/stryker-net"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(mutator): mutate implicit array creation expressions",
+    "url": "https://github.com/stryker-mutator/stryker-net/pull/3694"
+  }
 ]

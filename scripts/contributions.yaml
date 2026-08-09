@@ -37,6 +37,22 @@ merged:
 in_review:
   - repo: OpenHands/OpenHands
     name: OpenHands
+    numbers: [16439, 16441]
+    desc: "A user reported his agent quietly switching itself to a weaker model. The `switch_llm` tool ships enabled under a confirmation policy that never asks, so a conversation can end up on a model nobody chose. These expose the off switch the SDK already had but the interface never rendered, and re-derive the model stamp from event history so a dropped socket stops leaving the readout disagreeing with itself."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16426]
+    desc: "Adds a provider's whole model catalog as LLM profiles in one pass, instead of one entry at a time."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16415]
+    desc: "The provider list stopped at 100 because the server's pagination cursor was discarded, so `together_ai`, `vertex_ai`, and `xai` were unreachable in every provider dropdown. Reproduced against unmodified upstream main."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16443]
+    desc: "A `ProgressEvent` test fallback that could never install itself: it was guarded on the symbol being absent, and jsdom always defines it. That left the request interceptor free to throw during teardown and redden an otherwise passing run."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
     numbers: [16311]
     desc: "A context-window usage meter, a usage drawer, and manual compaction, replacing the old metrics modal. Carries three fixes found along the way: a divide-by-zero on models that report no context window, websocket usage metrics dropped for non-agent usage ids, and a crash on the home route."
   - repo: OpenHands/OpenHands
