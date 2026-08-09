@@ -7,8 +7,7 @@ canonical_url: https://georgelarson.me/writing/2026-07-26-pght/
 cover_image: cover.webp
 ---
 
-This tool (pght) compares what Pittsburgh hospitals charge for the same procedure. 
-It reads the standard-charge files US hospitals publish under federal law, starting with five Pittsburgh files, 4.5 million rows, from January and March 2026. 
+US hospitals publish their prices. 
 
 That data has been known hostile territory for years. 
 Prices filed for services a hospital does not provide made the literature as ["ghost codes"](https://pmc.ncbi.nlm.nih.gov/articles/PMC11363865/). 
