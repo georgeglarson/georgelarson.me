@@ -142,11 +142,30 @@ publish_devto() {
   # Force it true here rather than editing each story file.
   body=$(echo "$body" | sed '0,/^---$/!{0,/^published:[[:space:]]*false[[:space:]]*$/s//published: true/}')
 
+  # Reuse an existing article for this canonical instead of creating another.
+  # Every run used to POST unconditionally, so re-running piled up duplicates:
+  # by 2026-08-08 there were six drafts of the codetest piece and two of the AI
+  # lab one, none of them publishable and none deletable through the API.
+  local existing_id
+  existing_id=$(curl -s -H "api-key: $DEVTO_API_KEY" \
+      "https://dev.to/api/articles/me/all?per_page=100" \
+    | jq -r --arg c "$CANONICAL" --arg t "$TITLE" \
+        'map(select(.canonical_url == $c or .title == $t)) | sort_by(.id) | .[0].id // empty' \
+      2>/dev/null || true)
+
   local response
-  response=$(curl -s -X POST https://dev.to/api/articles \
-    -H "Content-Type: application/json" \
-    -H "api-key: $DEVTO_API_KEY" \
-    -d "$(jq -n --arg body "$body" '{article: {body_markdown: $body, published: true}}')")
+  if [[ -n "$existing_id" ]]; then
+    echo -n "(updating $existing_id) "
+    response=$(curl -s -X PUT "https://dev.to/api/articles/${existing_id}" \
+      -H "Content-Type: application/json" \
+      -H "api-key: $DEVTO_API_KEY" \
+      -d "$(jq -n --arg body "$body" '{article: {body_markdown: $body, published: true}}')")
+  else
+    response=$(curl -s -X POST https://dev.to/api/articles \
+      -H "Content-Type: application/json" \
+      -H "api-key: $DEVTO_API_KEY" \
+      -d "$(jq -n --arg body "$body" '{article: {body_markdown: $body, published: true}}')")
+  fi
 
   local url
   url=$(echo "$response" | jq -r '.url // empty')
