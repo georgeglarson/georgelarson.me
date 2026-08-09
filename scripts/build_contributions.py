@@ -163,6 +163,28 @@ def render_inreview_html(curation, drafts=None):
     return "\n".join(lines)
 
 
+def render_credited_html(curation):
+    """Closed PRs whose substance a maintainer adopted, with credit.
+
+    Kept off the merged count deliberately: the code that landed is someone
+    else's. What survives a click is the upstream PR crediting the diagnosis,
+    which is a different claim from "my patch merged" and should read as one.
+    """
+    lines = []
+    for g in curation.get("credited", []):
+        numbers = [int(n) for n in g["numbers"]]
+        links = ", ".join(
+            f'<a class="lnk" href="{_pr_url(g["repo"], n)}">#{n}</a>' for n in numbers
+        )
+        lines.append(
+            "        <li>\n"
+            f'          <div class="name">{escape(g["name"])} {links}</div>\n'
+            f'          <p class="desc">{_code_tags(g["desc"])}{g.get("extra", "")}</p>\n'
+            "        </li>"
+        )
+    return "\n".join(lines)
+
+
 _HEADLINE_SENTENCE = (
     "{fixes} fixes merged across {projects} projects, more in review. "
     "Every one survives a click."
@@ -185,6 +207,9 @@ def headline(curation):
 def detect_drift(prs, curation):
     merged_set = {_merged_key(e) for e in curation["merged"]}
     exclusion_set = {_merged_key(e) for e in curation.get("exclusions", [])}
+    for g in curation.get("credited", []):
+        for n in g["numbers"]:
+            exclusion_set.add(_merged_key({"repo": g["repo"], "number": n}))
     inreview_set = set()
     for g in curation["in_review"]:
         for n in g["numbers"]:
@@ -227,7 +252,16 @@ def detect_drift(prs, curation):
 _MARKERS = {
     "merged": ("<!-- contributions:merged:start -->", "<!-- contributions:merged:end -->"),
     "inreview": ("<!-- contributions:inreview:start -->", "<!-- contributions:inreview:end -->"),
+    "credited": ("<!-- contributions:credited:start -->", "<!-- contributions:credited:end -->"),
 }
+
+# Pages outside `--page` that repeat the headline count. The count line has
+# moved between these before (it left index.html when the receipts section was
+# renamed to Projects, 2026-07-20), which silently broke `--write` for weeks:
+# the rewrite was hardcoded to index.html and raised when the pattern was gone.
+# Scan them all and require a hit on at least one, so a future move degrades to
+# "rewrote the other page" instead of a hard stop.
+COMPANION_PAGES = ("index.html", "projects.html")
 
 _OLD_HEADLINE_RE = re.compile(
     r"(?i)\b\w+ fixes merged "
@@ -267,6 +301,9 @@ def regenerate_html(html, curation, drafts=None):
     isr, ire = _MARKERS["inreview"]
     html = _replace_between(html, ms, me, render_merged_html(curation))
     html = _replace_between(html, isr, ire, render_inreview_html(curation, drafts))
+    cs, ce = _MARKERS["credited"]
+    if cs in html:
+        html = _replace_between(html, cs, ce, render_credited_html(curation))
     # headline surfaces: meta description, og, twitter — all three must match, else
     # one could drift stale silently. (index receipt line handled in main().)
     html = _rewrite_headlines(html, n_fixes, n_projects, expected_min=3)
@@ -305,19 +342,34 @@ def main(argv=None):
     if args.write:
         # Compute the index rewrite before writing either file, so a raise leaves
         # both un-written rather than contributions.html updated but index.html stale.
-        idx_new, write_index = None, False
-        try:
-            with open("index.html") as f:
-                idx = f.read()
-            idx_new = _rewrite_headlines(idx, *headline(curation)[:2], expected_min=1)
-            write_index = idx_new != idx
-        except FileNotFoundError:
-            pass
+        pending = []
+        matched_pages = 0
+        for companion in COMPANION_PAGES:
+            try:
+                with open(companion) as f:
+                    page = f.read()
+            except FileNotFoundError:
+                continue
+            if not _OLD_HEADLINE_RE.search(page):
+                continue
+            matched_pages += 1
+            rewritten = _rewrite_headlines(
+                page, *headline(curation)[:2], expected_min=1
+            )
+            if rewritten != page:
+                pending.append((companion, rewritten))
+        if matched_pages == 0:
+            raise RuntimeError(
+                "headline pattern found on none of "
+                f"{', '.join(COMPANION_PAGES)} — expected "
+                "'X fixes merged across Y projects' on at least one. If the "
+                "headline moved to another page, add it to COMPANION_PAGES."
+            )
         with open(args.page, "w") as f:
             f.write(new_html)
-        if write_index:
-            with open("index.html", "w") as f:
-                f.write(idx_new)
+        for companion, rewritten in pending:
+            with open(companion, "w") as f:
+                f.write(rewritten)
         where = f"{args.page} + index.html" if write_index else args.page
         print(f"wrote {where}; headline: {sentence}", file=sys.stderr)
     else:

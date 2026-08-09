@@ -13,6 +13,12 @@
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.
 merged:
+  - {repo: OpenHands/OpenHands, number: 16272, merged: 2026-08-03, name: OpenHands, desc: "`.tmp/` was ignored three named subdirectories at a time while the harnesses wrote to more, so runtime state kept reaching commits. Ignores the root instead."}
+  - {repo: OpenHands/OpenHands, number: 16239, merged: 2026-08-03, name: OpenHands, desc: "The dev launcher handled SIGINT and SIGTERM but not SIGHUP, so closing a terminal orphaned its detached services. Reproduced against the real spawn path on both sides of the fix."}
+  - {repo: OpenHands/software-agent-sdk, number: 4150, merged: 2026-07-30, name: "OpenHands / software-agent-sdk", desc: "Verifies the `kimi-for-coding` model id against Moonshot's membership endpoint, so it earns the Verified badge in the model picker."}
+  - {repo: OpenHands/OpenHands, number: 16152, merged: 2026-07-29, name: OpenHands, desc: "The mock-LLM end-to-end stack shuts down gracefully instead of leaving six orphaned processes and four bound ports behind after Playwright exits."}
+  - {repo: OpenHands/agent-canvas, number: 1844, merged: 2026-07-18, name: "OpenHands / agent-canvas", desc: "Adds Kimi Code membership as a first-class Moonshot option in the model picker."}
+  - {repo: kputnam/stupidedi, number: 289, merged: 2026-07-16, name: stupidedi, desc: "Re-enabled the 4010 AR943 and RE944 warehouse pair, the same outgrown element lists as PO850 plus positional slot shifts."}
   - {repo: kputnam/stupidedi, number: 288, merged: 2026-07-13, name: stupidedi, desc: "Re-enabled the 4010 PO850 transaction set, whose autoload had been off because the segment definitions had outgrown its element lists."}
   - {repo: OpenHands/agent-canvas, number: 1368, merged: 2026-07-11, name: "OpenHands / agent-canvas", desc: "Groups workspace folders by parent in the dropdown, so deeply nested paths stay organized instead of flattening into one list."}
   - {repo: ferriskey/ferriskey, number: 1133, merged: 2026-07-08, name: ferriskey, desc: "Adds the `TokenExchange` grant type and its domain value objects, opening RFC 8693 token exchange in the Rust auth server."}
@@ -45,11 +51,6 @@ in_review:
     name: stupidedi
     numbers: [289]
     desc: "Re-enabled the 4010 AR943 and RE944 transaction sets (warehouse stock-transfer shipment and receipt advice), whose autoload had been off on the same outgrown segment-element lists as PO850."
-  - repo: n8n-io/n8n
-    name: n8n
-    numbers: [29516]
-    desc: "A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds."
-    extra: ' <a class="lnk" href="/n8n">The full hunt &rarr;</a>'
   - repo: mitmproxy/mitmproxy
     name: mitmproxy
     numbers: [8199, 8200]
@@ -58,10 +59,18 @@ in_review:
     name: "charmbracelet / crush"
     numbers: [2749, 2750]
     desc: "LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers."
-  - repo: OpenHands/agent-canvas
-    name: "OpenHands / agent-canvas"
-    numbers: [1430]
-    desc: "Surfaces a \"credentials configured\" banner on Docker and cloud, so the configured state is visible at a glance."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16145]
+    desc: "Surfaces a \"credentials configured\" banner on Docker and cloud, so the configured state is visible at a glance. Re-landed on the monorepo at a maintainer's written request after the agent-canvas repo was archived."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16439, 16441]
+    desc: "A user reported in Slack that his agent kept switching itself to a weaker model. The `switch_llm` tool ships enabled and runs under a confirmation policy that never asks, so a conversation can end up on a model nobody chose. These surface the off switch the SDK already exported but the GUI never rendered, and fix a stamp that left the model readout permanently disagreeing with itself after a dropped socket."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16443]
+    desc: "A test-suite fallback for `ProgressEvent` that could never install itself: it was guarded on the symbol being missing, and jsdom always defines it. Left MSW's request interceptor free to throw during teardown and fail an otherwise green run."
   - repo: Comfy-Org/ComfyUI_frontend
     name: ComfyUI_frontend
     numbers: [11686]
