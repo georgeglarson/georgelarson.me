@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions · George Larson</title>
-<meta name="description" content="Ten fixes merged across eight projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+<meta name="description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
 
 <link rel="icon" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open-source contributions · George Larson">
-<meta property="og:description" content="Ten fixes merged across eight projects, more in review. Every one survives a click.">
+<meta property="og:description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click.">
 <meta property="og:url" content="https://georgelarson.me/contributions">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open-source contributions · George Larson">
-<meta name="twitter:description" content="Ten fixes merged across eight projects, more in review. Every one survives a click.">
+<meta name="twitter:description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click.">
 
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -47,8 +47,28 @@
       <ul class="tools">
 <!-- contributions:merged:start -->
         <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16272">#16272</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc"><code>.tmp/</code> was ignored three named subdirectories at a time while the harnesses wrote to more, so runtime state kept reaching commits. Ignores the root instead.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16239">#16239</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">The dev launcher handled SIGINT and SIGTERM but not SIGHUP, so closing a terminal orphaned its detached services. Reproduced against the real spawn path on both sides of the fix.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4150">#4150</a> <span class="tag">merged Jul 2026</span></div>
+          <p class="desc">Verifies the <code>kimi-for-coding</code> model id against Moonshot&#x27;s membership endpoint, so it earns the Verified badge in the model picker.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16152">#16152</a> <span class="tag">merged Jul 2026</span></div>
+          <p class="desc">The mock-LLM end-to-end stack shuts down gracefully instead of leaving six orphaned processes and four bound ports behind after Playwright exits.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1844">#1844</a> <span class="tag">merged Jul 2026</span></div>
+          <p class="desc">Adds Kimi Code membership as a first-class Moonshot option in the model picker.</p>
+        </li>
+        <li>
           <div class="name">stupidedi <a class="lnk" href="https://github.com/kputnam/stupidedi/pull/289">#289</a> <span class="tag">merged Jul 2026</span></div>
-          <p class="desc">Re-enabled the 4010 AR943 and RE944 transaction sets (warehouse stock-transfer shipment and receipt advice), whose autoload had been off on the same outgrown segment-element lists as PO850.</p>
+          <p class="desc">Re-enabled the 4010 AR943 and RE944 warehouse pair, the same outgrown element lists as PO850 plus positional slot shifts.</p>
         </li>
         <li>
           <div class="name">stupidedi <a class="lnk" href="https://github.com/kputnam/stupidedi/pull/288">#288</a> <span class="tag">merged Jul 2026</span></div>
@@ -107,8 +127,8 @@
           <p class="desc">Extends the array-creation mutator to implicit array creation, a syntax shape it previously had no arm for.</p>
         </li>
         <li>
-          <div class="name">n8n <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">#29516</a></div>
-          <p class="desc">A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds. <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
+          <div class="name">stupidedi <a class="lnk" href="https://github.com/kputnam/stupidedi/pull/292">#292</a>, <a class="lnk" href="https://github.com/kputnam/stupidedi/pull/293">#293</a></div>
+          <p class="desc">Re-enable the 4010 SM204 and SH856 transaction sets (motor-carrier load tender and the 856 advance ship notice), the same outgrown segment-element lists as the merged PO850 and AR943/RE944 pairs.</p>
         </li>
         <li>
           <div class="name">mitmproxy <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8199">#8199</a>, <a class="lnk" href="https://github.com/mitmproxy/mitmproxy/pull/8200">#8200</a></div>
@@ -119,14 +139,50 @@
           <p class="desc">LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers.</p>
         </li>
         <li>
-          <div class="name">OpenHands / agent-canvas <a class="lnk" href="https://github.com/OpenHands/agent-canvas/pull/1430">#1430</a></div>
-          <p class="desc">Surfaces a &quot;credentials configured&quot; banner on Docker and cloud, so the configured state is visible at a glance.</p>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16145">#16145</a></div>
+          <p class="desc">Surfaces a &quot;credentials configured&quot; banner on Docker and cloud, so the configured state is visible at a glance. Re-landed on the monorepo at a maintainer&#x27;s written request after the agent-canvas repo was archived.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16439">#16439</a>, <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16441">#16441</a></div>
+          <p class="desc">A user reported in Slack that his agent kept switching itself to a weaker model. The <code>switch_llm</code> tool ships enabled and runs under a confirmation policy that never asks, so a conversation can end up on a model nobody chose. These surface the off switch the SDK already exported but the GUI never rendered, and fix a stamp that left the model readout permanently disagreeing with itself after a dropped socket.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16443">#16443</a></div>
+          <p class="desc">A test-suite fallback for <code>ProgressEvent</code> that could never install itself: it was guarded on the symbol being missing, and jsdom always defines it. Left MSW&#x27;s request interceptor free to throw during teardown and fail an otherwise green run.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16279">#16279</a>, <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16280">#16280</a></div>
+          <p class="desc">The same <code>SIGHUP</code> gap as merged #16239, one launcher over in each case. Orphaned services hold their ports, and a surviving agent-server keeps heartbeating its lease files, so the next start reports every conversation as held and lists none.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16311">#16311</a></div>
+          <p class="desc">A context-window usage meter, a usage drawer, and manual compaction, against the maintainers&#x27; own issue #16170.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16415">#16415</a></div>
+          <p class="desc">The provider list was truncated at 100 with the server&#x27;s pagination cursor discarded, so <code>together_ai</code>, <code>vertex_ai</code>, and <code>xai</code> were unreachable in every provider dropdown. Reproduced on unmodified upstream main against Cloud.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16426">#16426</a></div>
+          <p class="desc">Bulk-add a provider&#x27;s models as LLM profiles, so a catalog becomes usable profiles in one pass instead of one entry at a time.</p>
         </li>
         <li>
           <div class="name">ComfyUI_frontend <a class="lnk" href="https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686">#11686</a></div>
           <p class="desc">Respect the Reka DismissableLayer state for the Escape key in keybindings.</p>
         </li>
       <!-- contributions:inreview:end -->
+      </ul>
+    </section>
+
+    <section class="block reveal">
+      <h2 class="label">Adopted upstream</h2>
+      <ul class="tools">
+<!-- contributions:credited:start -->
+        <li>
+          <div class="name">n8n <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">#29516</a></div>
+          <p class="desc">A consecutive-acceptance-timeout disconnect in the task-broker <code>acceptOffer</code> path. The maintainer closed this in favour of a PR that re-implements the same mechanism on current master and credits the diagnosis in a section of its own. <a class="lnk" href="https://github.com/n8n-io/n8n/pull/35456">n8n#35456 &rarr;</a> <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
+        </li>
+      <!-- contributions:credited:end -->
       </ul>
     </section>
 

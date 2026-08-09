@@ -277,9 +277,16 @@ def _rewrite_headlines(html, n_fixes, n_projects, expected_min=1):
     leave the headline stale while the rendered list advances, which is exactly
     the drift this tool exists to prevent.
     """
-    repl = (f"{_numword(n_fixes, cap=True)} fixes merged across "
-            f"{_numword(n_projects)} projects")
-    new_html, n = _OLD_HEADLINE_RE.subn(lambda m: repl, html)
+    def repl(m):
+        # Follow the case of what was there. The count opens a sentence in the
+        # meta tags ("Fifteen fixes merged...") but sits mid-sentence on
+        # projects.html ("The full record: fifteen fixes merged..."), and a
+        # blanket capital reads as a typo in the second place.
+        cap = m.group(0)[:1].isupper()
+        return (f"{_numword(n_fixes, cap=cap)} fixes merged across "
+                f"{_numword(n_projects)} projects")
+
+    new_html, n = _OLD_HEADLINE_RE.subn(repl, html)
     if n < expected_min:
         raise RuntimeError(
             f"headline pattern not found ({n} matches, expected >= {expected_min}) "
@@ -370,8 +377,8 @@ def main(argv=None):
         for companion, rewritten in pending:
             with open(companion, "w") as f:
                 f.write(rewritten)
-        where = f"{args.page} + index.html" if write_index else args.page
-        print(f"wrote {where}; headline: {sentence}", file=sys.stderr)
+        written = [args.page, *(companion for companion, _ in pending)]
+        print(f"wrote {', '.join(written)}; headline: {sentence}", file=sys.stderr)
     else:
         sys.stdout.write(new_html)
 
