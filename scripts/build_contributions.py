@@ -266,6 +266,14 @@ _MARKERS = {
     "credited": ("<!-- contributions:credited:start -->", "<!-- contributions:credited:end -->"),
 }
 
+# Pages outside `--page` that repeat the headline count. The count has moved
+# between these before: 0aab53d (2026-07-20) renamed the receipts section and
+# took the line off index.html, and projects.html has carried its own copy the
+# whole time with nothing updating it, so /projects read "ten fixes merged
+# across eight projects" while /contributions read fifteen across ten. Scan the
+# list rather than special-casing one page, so the next move is a one-line edit.
+COMPANION_PAGES = ("index.html", "projects.html")
+
 _OLD_HEADLINE_RE = re.compile(
     r"(?i)\b\w+ fixes merged "
     r"(?:into other people's projects|across \w+ projects)\b"
@@ -280,9 +288,16 @@ def _rewrite_headlines(html, n_fixes, n_projects, expected_min=1):
     leave the headline stale while the rendered list advances, which is exactly
     the drift this tool exists to prevent.
     """
-    repl = (f"{_numword(n_fixes, cap=True)} fixes merged across "
-            f"{_numword(n_projects)} projects")
-    new_html, n = _OLD_HEADLINE_RE.subn(lambda m: repl, html)
+    def repl(m):
+        # Follow the case of what was matched. The count opens a sentence in the
+        # meta tags ("Fifteen fixes merged ...") but sits mid-sentence on
+        # projects.html ("The full record: fifteen fixes merged ..."), where a
+        # blanket capital reads as a typo.
+        cap = m.group(0)[:1].isupper()
+        return (f"{_numword(n_fixes, cap=cap)} fixes merged across "
+                f"{_numword(n_projects)} projects")
+
+    new_html, n = _OLD_HEADLINE_RE.subn(repl, html)
     if n < expected_min:
         raise RuntimeError(
             f"headline pattern not found ({n} matches, expected >= {expected_min}) "
@@ -345,31 +360,34 @@ def main(argv=None):
     new_html, sentence = regenerate_html(html, curation, drafts)
 
     if args.write:
-        # Compute the index rewrite before writing either file, so a raise leaves
-        # both un-written rather than contributions.html updated but index.html stale.
-        idx_new, write_index = None, False
-        try:
-            with open("index.html") as f:
-                idx = f.read()
-            if _OLD_HEADLINE_RE.search(idx):
-                # index.html carries the fixes-merged headline, so keep its count
-                # in step — same silent-drift guard as the contributions.html leg.
-                idx_new = _rewrite_headlines(idx, *headline(curation)[:2], expected_min=1)
-                write_index = idx_new != idx
-            else:
-                # index.html links to /contributions without a count headline
-                # (homepage simplified to drop it). Nothing to rewrite; don't crash.
-                print("note: index.html has no fixes-merged headline; skipped index rewrite",
-                      file=sys.stderr)
-        except FileNotFoundError:
-            pass
+        # Compute every companion rewrite before writing anything, so a raise
+        # leaves all pages un-written rather than contributions.html updated and
+        # the companions stale.
+        pending, carriers = [], []
+        for companion in COMPANION_PAGES:
+            try:
+                with open(companion) as f:
+                    page = f.read()
+            except FileNotFoundError:
+                continue
+            if not _OLD_HEADLINE_RE.search(page):
+                # This page links to /contributions without carrying a count.
+                continue
+            carriers.append(companion)
+            rewritten = _rewrite_headlines(page, *headline(curation)[:2], expected_min=1)
+            if rewritten != page:
+                pending.append((companion, rewritten))
+        if not carriers:
+            print(f"note: no fixes-merged headline on {', '.join(COMPANION_PAGES)}; "
+                  "nothing to keep in step. If it moved, add the page to COMPANION_PAGES.",
+                  file=sys.stderr)
         with open(args.page, "w") as f:
             f.write(new_html)
-        if write_index:
-            with open("index.html", "w") as f:
-                f.write(idx_new)
-        where = f"{args.page} + index.html" if write_index else args.page
-        print(f"wrote {where}; headline: {sentence}", file=sys.stderr)
+        for companion, rewritten in pending:
+            with open(companion, "w") as f:
+                f.write(rewritten)
+        written = [args.page, *(companion for companion, _ in pending)]
+        print(f"wrote {', '.join(written)}; headline: {sentence}", file=sys.stderr)
     else:
         sys.stdout.write(new_html)
 
