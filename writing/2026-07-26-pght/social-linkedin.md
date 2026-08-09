@@ -8,7 +8,7 @@ What they publish is a minefield:
 I built the layer that reconciles the data inside for one metro: five Pittsburgh hospital files, 4.5 million rows, and a tool that compares what hospitals charge for the same procedure. 
 Every published figure re-executes from its own stored query against the live data before it counts.
 
-Here are the four traps cicrumnavigated:
+Here are the four traps circumnavigated:
 
 Invented numbers. Postgres's default median averages the two middle rows, a rate that appears in no contract and on no bill. The first time a re-execution check ran against my generated findings, twelve of twenty stated a dollar figure the data could never return.
 
