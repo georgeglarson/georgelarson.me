@@ -72,6 +72,22 @@ echo "  Canonical: $CANONICAL"
 echo ""
 
 PUBLISHED_LOG="$STORY_DIR/published.md"
+
+# Which platforms this run touches. Declared here because the log-merge below
+# needs it; the dispatch at the bottom uses the same value.
+PLATFORMS="${PLATFORMS:-devto hashnode mastodon bluesky linkedin}"
+
+# Carry forward rows for platforms this run isn't touching. The log used to be
+# truncated on every invocation, which was harmless when one run did all
+# platforms and destructive the moment PLATFORMS allowed partial runs: finishing
+# a half-completed distribution wiped the URLs the earlier run had recorded, so
+# the only record of where a post actually landed was terminal scrollback.
+PRIOR_ROWS=""
+if [[ -f "$PUBLISHED_LOG" ]]; then
+  PRIOR_ROWS=$(grep -E '^\| [A-Za-z]' "$PUBLISHED_LOG" \
+    | grep -vE '^\| (Platform|Canonical) ' || true)
+fi
+
 cat > "$PUBLISHED_LOG" << EOF
 # Published: $TITLE
 
@@ -81,6 +97,20 @@ cat > "$PUBLISHED_LOG" << EOF
 |-----------|-----|
 | Canonical | $CANONICAL |
 EOF
+
+# Replay only the platforms this run will not write a fresh row for.
+if [[ -n "$PRIOR_ROWS" ]]; then
+  while IFS= read -r row; do
+    [[ -z "$row" ]] && continue
+    local_plat=$(printf '%s' "$row" | sed -E 's/^\| *([A-Za-z.]+) *\|.*/\1/' | tr '[:upper:]' '[:lower:]')
+    case "$local_plat" in
+      dev.to) local_plat="devto" ;;
+    esac
+    if [[ " $PLATFORMS " != *" $local_plat "* ]]; then
+      echo "$row" >> "$PUBLISHED_LOG"
+    fi
+  done <<< "$PRIOR_ROWS"
+fi
 
 ERRORS=""
 
@@ -104,6 +134,13 @@ publish_devto() {
 
   # Remove empty cover_image line (Dev.to chokes on it)
   body=$(echo "$body" | sed '/^cover_image:[[:space:]]*$/d')
+
+  # Front matter inside body_markdown BEATS the API's own `published` flag, so a
+  # file carrying `published: false` produced a draft no matter what we sent.
+  # Every article distributed before 2026-08-08 sat unpublished for this reason,
+  # while published.md recorded the draft's temp-slug URL as if it had shipped.
+  # Force it true here rather than editing each story file.
+  body=$(echo "$body" | sed '0,/^---$/!{0,/^published:[[:space:]]*false[[:space:]]*$/s//published: true/}')
 
   local response
   response=$(curl -s -X POST https://dev.to/api/articles \
@@ -138,20 +175,35 @@ publish_devto() {
 publish_hashnode() {
   echo -n "  Hashnode... "
 
-  # Get publication ID
-  local pub_response
-  pub_response=$(curl -s -X POST https://gql.hashnode.com \
+  # Get publication ID.
+  #
+  # Hashnode retired free GraphQL API access on 2026-05-13: reads and writes
+  # both require a Pro plan on the publication now, and gql.hashnode.com
+  # 301-redirects unauthenticated traffic to the changelog announcing it. The
+  # redirect body is HTML, so the old code fed a "<html>" page to jq and killed
+  # the whole run. Detect it and skip cleanly instead.
+  #   https://hashnode.com/changelog/2026-05-13-graphql-api-paid-access
+  local pub_response http_code
+  pub_response=$(curl -s -w "\n%{http_code}" -X POST https://gql.hashnode.com \
     -H "Content-Type: application/json" \
     -H "Authorization: $HASHNODE_API_TOKEN" \
     -d '{"query": "{ me { publications(first: 1) { edges { node { id } } } } }"}')
+  http_code=$(printf '%s' "$pub_response" | tail -n1)
+  pub_response=$(printf '%s' "$pub_response" | sed '$d')
+
+  if [[ "$http_code" == 3* ]]; then
+    echo "SKIP: free GraphQL API retired 2026-05-13, needs a paid Pro plan"
+    echo "| Hashnode  | (skipped — API requires a paid plan since 2026-05-13) |" >> "$PUBLISHED_LOG"
+    return
+  fi
 
   local pub_id
-  pub_id=$(echo "$pub_response" | jq -r '.data.me.publications.edges[0].node.id // empty')
+  pub_id=$(printf '%s' "$pub_response" | jq -r '.data.me.publications.edges[0].node.id // empty' 2>/dev/null || true)
 
   if [[ -z "$pub_id" ]]; then
-    echo "FAILED: could not get publication ID"
+    echo "FAILED: could not get publication ID (HTTP $http_code)"
     echo "  Raw response: $pub_response" >&2
-    ERRORS="${ERRORS}Hashnode: could not get publication ID\n"
+    ERRORS="${ERRORS}Hashnode: could not get publication ID (HTTP ${http_code})\n"
     return
   fi
 
@@ -271,24 +323,45 @@ publish_mastodon() {
 publish_bluesky() {
   echo -n "  Bluesky... "
 
-  # Bluesky has a 300 grapheme limit — use mastodon text trimmed, or build a short version
+  # Bluesky has a 300 grapheme limit. Prefer hand-written copy for this platform;
+  # fall back to the Mastodon text, trimmed to whole paragraphs.
   local post_text
-  if [[ -f "$STORY_DIR/social-mastodon.md" ]]; then
+  if [[ -f "$STORY_DIR/social-bluesky.md" ]]; then
+    post_text=$(cat "$STORY_DIR/social-bluesky.md")
+  elif [[ -f "$STORY_DIR/social-mastodon.md" ]]; then
     post_text=$(cat "$STORY_DIR/social-mastodon.md")
   else
-    post_text="$TITLE — $CANONICAL"
+    post_text="$TITLE $CANONICAL"
   fi
 
-  # Check grapheme count (approximate with wc -m)
   local char_count
-  char_count=$(echo -n "$post_text" | wc -m)
+  char_count=$(printf '%s' "$post_text" | wc -m)
   if [[ $char_count -gt 300 ]]; then
-    # Strip the canonical URL, trim the body to ~280 chars, then re-append URL
-    post_text=$(echo -n "$post_text" | sed "s|${CANONICAL}||")
-    post_text=$(echo -n "$post_text" | head -c 280)
-    # Trim trailing whitespace/newlines after truncation
-    post_text=$(echo -n "$post_text" | sed -e 's/[[:space:]]*$//')
-    post_text="${post_text}
+    # The old arithmetic trimmed the body to a flat 280 and THEN appended the
+    # canonical URL plus a blank line, so anything long landed near 330 and
+    # Bluesky rejected the whole post with InvalidRequest. Every over-length
+    # post silently failed this way. Budget the URL first, and drop whole
+    # paragraphs rather than cutting mid-word.
+    local url_len budget body
+    url_len=$(printf '%s' "$CANONICAL" | wc -m)
+    budget=$((300 - url_len - 2))
+    body=$(printf '%s' "$post_text" | sed "s|${CANONICAL}||" | sed -e 's/[[:space:]]*$//')
+    local kept="" para
+    while IFS= read -r para; do
+      [[ -z "$para" ]] && continue
+      local candidate
+      if [[ -z "$kept" ]]; then candidate="$para"; else candidate="$kept
+
+$para"; fi
+      [[ $(printf '%s' "$candidate" | wc -m) -gt $budget ]] && break
+      kept="$candidate"
+    done < <(printf '%s\n' "$body" | awk 'BEGIN{RS="\n\n+"} {gsub(/\n+$/,""); print; print ""}')
+    if [[ -z "$kept" ]]; then
+      echo "FAILED: no paragraph fits Bluesky's limit; add ${STORY_DIR}/social-bluesky.md"
+      ERRORS="${ERRORS}Bluesky: no paragraph fits 300 graphemes; needs social-bluesky.md\n"
+      return
+    fi
+    post_text="${kept}
 
 ${CANONICAL}"
   fi
@@ -392,12 +465,25 @@ note_linkedin() {
 
 # ---------------------------------------------------------------------------
 # Run all
+#
+# Each platform runs under `|| true`. Under `set -e` + `pipefail`, one bad
+# response aborted the ENTIRE run: on 2026-08-08 Hashnode returned an HTML 301
+# instead of JSON, jq died inside a pipeline, and the script exited before
+# Mastodon, Bluesky, or the LinkedIn note were ever attempted. Publishing is not
+# transactional, so a platform that fails must cost only itself.
+#
+# PLATFORMS selects a subset, so a partial run can be finished without
+# re-posting where it already succeeded:
+#   PLATFORMS="mastodon bluesky linkedin" ./scripts/distribute.sh <dir>
 # ---------------------------------------------------------------------------
-publish_devto
-publish_hashnode
-publish_mastodon
-publish_bluesky
-note_linkedin
+wants() { [[ " $PLATFORMS " == *" $1 "* ]]; }
+
+wants devto    && { publish_devto    || ERRORS="${ERRORS}Dev.to: aborted unexpectedly\n"; }
+wants hashnode && { publish_hashnode || ERRORS="${ERRORS}Hashnode: aborted unexpectedly\n"; }
+wants mastodon && { publish_mastodon || ERRORS="${ERRORS}Mastodon: aborted unexpectedly\n"; }
+wants bluesky  && { publish_bluesky  || ERRORS="${ERRORS}Bluesky: aborted unexpectedly\n"; }
+wants linkedin && { note_linkedin    || true; }
+true
 
 echo ""
 echo "Publish log written to: $PUBLISHED_LOG"
