@@ -4,12 +4,17 @@
 Run: python3 -m unittest scripts.test_build_contributions
   or: python3 scripts/test_build_contributions.py
 """
+import io
 import json
 import os
+import shutil
 import sys
+import tempfile
 import unittest
+from contextlib import redirect_stderr
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
 import build_contributions as bc  # noqa: E402
@@ -379,6 +384,89 @@ class HeadlineRewriteTests(unittest.TestCase):
     def test_rewrite_raises_if_no_headline_present(self):
         with self.assertRaises(RuntimeError):
             bc._rewrite_headlines("nothing here matches", 10, 8)
+
+    def test_rewrite_keeps_a_sentence_opening_capital(self):
+        out = bc._rewrite_headlines(
+            "Nine fixes merged across eight projects", 15, 10)
+        self.assertIn("Fifteen fixes merged across ten projects", out)
+
+    def test_rewrite_keeps_a_mid_sentence_lowercase(self):
+        # projects.html reads "The full record: ten fixes merged across ...".
+        # Capitalising mid-sentence there reads as a typo.
+        out = bc._rewrite_headlines(
+            "The full record: ten fixes merged across eight projects", 15, 10)
+        self.assertIn("record: fifteen fixes merged across ten projects", out)
+        self.assertNotIn("Fifteen", out)
+
+
+class CompanionPageTests(unittest.TestCase):
+    """--write must keep EVERY page carrying the count in step, not just index.
+
+    projects.html has carried its own copy of the headline since the line moved
+    off index.html (0aab53d, 2026-07-20). Nothing updated it, so /projects said
+    "ten fixes merged across eight projects" while /contributions said fifteen
+    across ten, live, for weeks. These run main() end to end against copies in a
+    tmpdir; nothing else in this suite exercises --write at all, which is how
+    that stayed invisible.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        os.makedirs(os.path.join(self.tmp, "scripts", "testdata"))
+        for rel in ("contributions.html", "index.html", "projects.html"):
+            src = os.path.join(ROOT, rel)
+            if os.path.exists(src):
+                shutil.copy(src, os.path.join(self.tmp, rel))
+        shutil.copy(YAML, os.path.join(self.tmp, "scripts", "contributions.yaml"))
+        shutil.copy(FIXTURE, os.path.join(self.tmp, "scripts", "testdata", "prs.json"))
+        self.cwd = os.getcwd()
+        os.chdir(self.tmp)
+
+    def tearDown(self):
+        os.chdir(self.cwd)
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _run(self):
+        err = io.StringIO()
+        with redirect_stderr(err):
+            bc.main(["--write", "--fixture", "scripts/testdata/prs.json"])
+        return err.getvalue()
+
+    def _expected(self):
+        n_fixes, n_projects, _ = bc.headline(bc.load_curation("scripts/contributions.yaml"))
+        return (f"{bc._numword(n_fixes)} fixes merged across "
+                f"{bc._numword(n_projects)} projects")
+
+    def test_write_completes(self):
+        self.assertIn("wrote contributions.html", self._run())
+
+    def test_every_carrier_ends_up_in_step(self):
+        self._run()
+        expected = self._expected()
+        for companion in bc.COMPANION_PAGES:
+            if not os.path.exists(companion):
+                continue
+            page = open(companion).read()
+            if not bc._OLD_HEADLINE_RE.search(page):
+                continue  # this page carries no count
+            self.assertIn(expected, page.lower(),
+                          f"{companion} still carries a stale count")
+
+    def test_projects_page_is_rewritten(self):
+        # The regression that shipped: projects.html was never a write target.
+        before = open("projects.html").read()
+        self.assertIn("fixes merged across", before,
+                      "fixture drift: projects.html no longer carries the count")
+        self._run()
+        self.assertIn(self._expected(), open("projects.html").read().lower())
+
+    def test_write_is_idempotent(self):
+        self._run()
+        snapshot = {p: open(p).read() for p in
+                    ("contributions.html", *bc.COMPANION_PAGES) if os.path.exists(p)}
+        self._run()
+        for path, content in snapshot.items():
+            self.assertEqual(content, open(path).read(), f"{path} not idempotent")
 
 
 class MergedExtraTests(unittest.TestCase):
