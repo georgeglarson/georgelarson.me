@@ -48,6 +48,10 @@ in_review:
     name: OpenHands
     numbers: [16426]
     desc: "Adds a provider's whole model catalog as LLM profiles in one pass, instead of one entry at a time."
+  - repo: OpenHands/software-agent-sdk
+    name: "OpenHands / software-agent-sdk"
+    numbers: [4557]
+    desc: "A per-conversation deny-list for sub-agents, enforced at the spawn site rather than by hiding the option, so an agent that already knows a disabled agent's name still cannot delegate to it. Issue #4556."
   - repo: OpenHands/OpenHands
     name: OpenHands
     numbers: [16600]

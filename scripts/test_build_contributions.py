@@ -7,6 +7,7 @@ Run: python3 -m unittest scripts.test_build_contributions
 import io
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -22,7 +23,8 @@ import build_contributions as bc  # noqa: E402
 
 YAML = os.path.join(HERE, "contributions.yaml")
 FIXTURE = os.path.join(HERE, "testdata", "prs.json")
-PAGE = os.path.join(HERE, os.pardir, "contributions.html")
+REPO = os.path.join(HERE, os.pardir)
+PAGE = os.path.join(REPO, "contributions.html")
 
 
 def _load_fixture():
@@ -500,6 +502,137 @@ class MergedExtraTests(unittest.TestCase):
         html = bc.render_merged_html(cur)
         self.assertIn('href="/deep"', html)
         self.assertIn("write-up", html)
+
+
+class StatsLineTests(unittest.TestCase):
+    """The at-a-glance line under the page title.
+
+    Generated from the same curation as the lists below it, so it cannot drift
+    from what the page actually shows. A hand-written stat line is a number that
+    goes stale silently, which is the failure this whole generator exists to
+    prevent.
+    """
+
+    def setUp(self):
+        self.cur = bc.load_curation(YAML)
+
+    def test_counts_match_the_rendered_sections(self):
+        s = bc.stats(self.cur)
+        self.assertEqual(s["merged"], len(self.cur["merged"]))
+        self.assertEqual(s["projects"], len({e["repo"] for e in self.cur["merged"]}))
+        self.assertEqual(s["in_review"],
+                         sum(len(g["numbers"]) for g in self.cur["in_review"]))
+        self.assertEqual(s["fixed_upstream"], len(self.cur["credited"]))
+
+    def test_in_review_counts_prs_not_groups(self):
+        # A group can carry several PR numbers (#16279 and #16280 ship as one
+        # entry). Counting groups would report fewer PRs than the page lists,
+        # and disagree with `merged`, which counts PRs.
+        cur = {"merged": [], "in_review": [
+            {"repo": "a/b", "name": "a", "numbers": [1, 2, 3], "desc": "x"},
+            {"repo": "c/d", "name": "c", "numbers": [4], "desc": "y"},
+        ], "credited": []}
+        self.assertEqual(bc.stats(cur)["in_review"], 4)
+
+    def test_headline_count_and_stats_merged_agree(self):
+        n_fixes, n_projects, _ = bc.headline(self.cur)
+        s = bc.stats(self.cur)
+        self.assertEqual((s["merged"], s["projects"]), (n_fixes, n_projects))
+
+    def test_renders_every_figure_with_its_label(self):
+        html = bc.render_stats_html(self.cur)
+        s = bc.stats(self.cur)
+        for label, key in (("merged", "merged"), ("projects", "projects"),
+                           ("in review", "in_review"),
+                           ("fixed upstream", "fixed_upstream")):
+            self.assertIn(f"<b>{s[key]}</b> {label}", html)
+
+    def test_omits_a_section_that_has_no_entries(self):
+        # A yaml with no credited entries must not render "0 fixed upstream".
+        cur = {"merged": [{"repo": "a/b", "number": 1, "merged": "2026-01-01",
+                           "name": "a", "desc": "x"}],
+               "in_review": [], "credited": []}
+        html = bc.render_stats_html(cur)
+        self.assertNotIn("fixed upstream", html)
+        self.assertNotIn("in review", html)
+        self.assertIn("<b>1</b> merged", html)
+
+    def test_page_carries_the_stats_markers(self):
+        with open(PAGE) as f:
+            page = f.read()
+        self.assertIn("<!-- contributions:stats:start -->", page)
+        self.assertIn("<!-- contributions:stats:end -->", page)
+
+
+class WideShellTests(unittest.TestCase):
+    """The receipts page opts into the wide layout; prose pages must not.
+
+    Two constraints stack (`.shell` and `.measure`), which is why widening one
+    alone changed nothing when this was prototyped. Both are pinned here.
+    """
+
+    def _read(self, name):
+        with open(os.path.join(REPO, name)) as f:
+            return f.read()
+
+    def test_contributions_opts_into_the_wide_shell(self):
+        page = self._read("contributions.html")
+        # every shell on the page, so nav and footer align with the content
+        self.assertEqual(page.count("shell--wide"), page.count('class="shell'))
+
+    def test_prose_pages_keep_the_narrow_measure(self):
+        for name in ("who-is-george.html", "n8n.html", "resume.html"):
+            with self.subTest(page=name):
+                self.assertNotIn("shell--wide", self._read(name))
+
+    @staticmethod
+    def _strip_comments(css):
+        """CSS with /* ... */ removed, so prose about a selector is not mistaken
+        for a rule using it. The --measure-wide token comment names
+        `.shell--wide` while explaining it, which is documentation, not scope
+        leakage."""
+        return re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+
+    @staticmethod
+    def _media_block(css, query):
+        """Body of one @media block, by brace matching."""
+        start = css.index(query)
+        depth, i = 0, css.index("{", start)
+        open_at = i
+        while True:
+            if css[i] == "{":
+                depth += 1
+            elif css[i] == "}":
+                depth -= 1
+                if depth == 0:
+                    return css[open_at + 1:i]
+            i += 1
+
+    def test_wide_layout_lives_entirely_inside_the_breakpoint(self):
+        css = self._read("css/site.css")
+        self.assertIn("--measure-wide", css)
+        block = self._media_block(css, "@media (min-width: 1180px)")
+        # Both caps lift together: widening .shell alone leaves article.measure
+        # holding the list at 64ch, which is a change that renders identically.
+        self.assertIn(".shell--wide {", block)
+        self.assertIn(".shell--wide .measure", block)
+        self.assertIn(".shell--wide .tools", block)
+        # ...and nothing about the wide layout leaks to narrow viewports, where
+        # a widened header over a 64ch article would misalign the nav.
+        outside = self._strip_comments(css.replace(block, ""))
+        self.assertNotIn(".shell--wide", outside)
+
+    def test_grid_not_multicolumn(self):
+        # CSS `columns` flows top-to-bottom in the left column first, which on a
+        # date-sorted list puts the ten newest in the left rail and makes the eye
+        # read recency wrong. Grid is row-major.
+        block = self._media_block(self._read("css/site.css"),
+                                  "@media (min-width: 1180px)")
+        self.assertIn("display: grid", block)
+        # `columns:` as its own property, not the tail of grid-template-columns
+        # or column-gap, both of which are wanted here.
+        self.assertIsNone(re.search(r"(?<![-\w])columns\s*:", block),
+                          "multi-column would flow the list column-major")
 
 
 class UpstreamTargetTests(unittest.TestCase):

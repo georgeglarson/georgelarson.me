@@ -260,6 +260,43 @@ def verify_upstream_targets(curation, lookup):
     return problems
 
 
+# Order is the reading order of the page: the receipts first, then what is
+# pending, then the weaker class last. A figure with no entries is dropped
+# rather than rendered as a zero -- "0 fixed upstream" invites the question the
+# section exists to avoid.
+_STAT_LABELS = (
+    ("merged", "merged"),
+    ("projects", "projects"),
+    ("in_review", "in review"),
+    ("fixed_upstream", "fixed upstream"),
+)
+
+
+def stats(curation):
+    """Counts for the at-a-glance line, from the same curation as the lists.
+
+    `in_review` counts PRs, not groups: a group can carry several numbers
+    (#16279 and #16280 ship as one entry), and counting groups would report
+    fewer PRs than the page lists while `merged` counts PRs.
+    """
+    merged = curation.get("merged", [])
+    return {
+        "merged": len(merged),
+        "projects": len({e["repo"] for e in merged}),
+        "in_review": sum(len(g["numbers"]) for g in curation.get("in_review", [])),
+        "fixed_upstream": len(curation.get("credited", [])),
+    }
+
+
+def render_stats_html(curation):
+    counts = stats(curation)
+    spans = [
+        f'<span><b>{counts[key]}</b> {label}</span>'
+        for key, label in _STAT_LABELS if counts[key]
+    ]
+    return "        " + "".join(spans) if spans else ""
+
+
 _HEADLINE_SENTENCE = (
     "{fixes} fixes merged across {projects} projects, more in review. "
     "Every one survives a click."
@@ -341,6 +378,7 @@ _MARKERS = {
     "merged": ("<!-- contributions:merged:start -->", "<!-- contributions:merged:end -->"),
     "inreview": ("<!-- contributions:inreview:start -->", "<!-- contributions:inreview:end -->"),
     "credited": ("<!-- contributions:credited:start -->", "<!-- contributions:credited:end -->"),
+    "stats": ("<!-- contributions:stats:start -->", "<!-- contributions:stats:end -->"),
 }
 
 # Pages outside `--page` that repeat the headline count. The count has moved
@@ -399,6 +437,8 @@ def regenerate_html(html, curation, drafts=None):
     if curation.get("credited"):
         cs, ce = _MARKERS["credited"]
         html = _replace_between(html, cs, ce, render_credited_html(curation))
+    ss, se = _MARKERS["stats"]
+    html = _replace_between(html, ss, se, render_stats_html(curation))
     # headline surfaces: meta description, og, twitter — all three must match, else
     # one could drift stale silently. (index receipt line handled in main().)
     html = _rewrite_headlines(html, n_fixes, n_projects, expected_min=3)

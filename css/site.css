@@ -49,6 +49,11 @@
   --font-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
 
   --measure: 64ch;
+  /* Receipt lists, not prose. /contributions outgrew the reading measure: it
+     holds 36 entries where it held 17, so at 64ch it ran ~6 screens deep while
+     using a fifth of a wide display. Prose keeps --measure; lists opt into this
+     via .shell--wide. */
+  --measure-wide: 120ch;
   --gutter: clamp(1.25rem, 5vw, 2.5rem);
   --rhythm: 1.7;
 }
@@ -76,6 +81,39 @@ img { max-width: 100%; }
   max-width: calc(var(--measure) + var(--gutter) * 2);
   margin-inline: auto;
   padding-inline: var(--gutter);
+}
+
+/* At-a-glance counts under a page title. Generated from contributions.yaml, so
+   it cannot drift from the lists below it. */
+.stats {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  margin: 0.5rem 0 0;
+}
+.stats b { color: var(--accent); font-weight: 600; }
+/* Literal middot, not an escape: in CSS a space TERMINATES a hex escape, so
+   " \00b7 " renders as " ·" with the trailing space eaten. */
+.stats span + span::before { content: " · "; color: var(--accent-lo); }
+
+/* Wide viewports: two columns of receipts.
+   BOTH width caps have to lift together. .shell and .measure encode the same
+   intent one level apart, so widening the shell alone changes nothing visible
+   -- the article keeps the list at 64ch and the page looks unaltered.
+   Grid rather than CSS `columns`: multi-column flows top-to-bottom in the left
+   column first, which on a date-sorted list stacks the ten newest in the left
+   rail and makes the eye read recency wrong. Grid is row-major, so newest-first
+   still scans left to right. */
+@media (min-width: 1180px) {
+  .shell--wide { max-width: calc(var(--measure-wide) + var(--gutter) * 2); }
+  .shell--wide .measure { max-width: 100%; }
+  .shell--wide .tools {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 3.5vw, 3.5rem);
+    align-items: start;
+  }
 }
 
 /* ---- header / nav (mono) ---- */
