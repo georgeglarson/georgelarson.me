@@ -115,22 +115,57 @@ and the headline count in the meta tags + `index.html` receipt line.
 - `new merge` — a merged external PR not in `merged:` and not in `exclusions:`.
   Add it to `merged:` (and write its `desc`).
 - `new open PR` — an open external PR not covered by any `in_review:` group.
-  Add a group (or extend an existing one) with a `desc`.
+  Add a group (or extend an existing one) with a `desc`. **Drafts are exempt**:
+  an uncurated draft is held back on purpose and stays silent, then surfaces here
+  the moment it goes ready-for-review. Curating a draft deliberately still works
+  and still renders the `draft` tag.
 - `stale review` — an `in_review:` number that merged (move it up to `merged:`) or was closed without merging (remove the group / number, or move it to `credited:` if the idea shipped under someone else's commit).
 - `stale credit` — a `credited:` number that reopened (it's in review again) or merged after all (move it up to `merged:`). Closed-unmerged is the one status the other checks are blind to, so this is the only thing watching those entries.
+- `bad upstream` — a `credited:` entry whose upstream target is not MERGED (open, closed-unmerged, or MISSING). The section's whole claim is that the fix exists upstream, so a target that never landed means the bug is still there and the row is a false receipt. **Drop the entry.** Checked against live GitHub on every non-fixture run.
+
+## Layout (this page only)
+
+`/contributions` is the one page on `.shell--wide`: a two-column receipt grid
+above 1180px, because it holds ~36 entries and at the 64ch prose measure it ran
+six screens deep while using a fifth of a wide display. Prose pages keep
+`--measure`; only list-shaped pages opt in.
+
+**The trap:** `.shell` and `article.measure` both cap width, one level apart, so
+lifting either alone renders *identically*. Both must lift together, and both
+live inside the `@media (min-width: 1180px)` block so nothing changes below it.
+Grid, not CSS `columns` — multi-column flows column-major, which on a date-sorted
+list stacks the newest entries in the left rail and reads recency wrong.
+
+The stats line under the title is generated between `contributions:stats:*`
+markers from the same yaml as the lists, so it cannot disagree with them. A
+figure with no entries is dropped rather than rendered as a zero.
 
 ## Curation rules
 
 - `merged:` is authoritative for the count and the Merged section. Sort is by
   `merged` date descending (handled by the generator).
-- `credited:` is for work whose idea shipped under someone else's commit: the PR
-  is closed-unmerged, so it can't sit in `in_review`, and the commit that landed
-  isn't George's, so it must never reach `merged:` or the count. Required fields
-  are `shipped_in` (the merged PR carrying the credit) plus the usual
-  `repo`/`number`/`name`/`desc`; add `shipped_in_repo` when the merged PR lives
-  in a different repo. Both PRs get linked, because the claim is only worth
-  making if a reader can click through to the maintainer's own words. Curate one
-  only when the credit is written down upstream and clickable.
+- `credited:` renders the **Fixed upstream** section: work George filed whose fix
+  landed under someone else's commit. The PR is closed-unmerged, so it can't sit
+  in `in_review`, and the commit that landed isn't his, so it must never reach
+  `merged:` or the count. Usual `repo`/`number`/`name`/`desc`, plus **exactly one**
+  of two shapes (naming neither or both raises):
+  - `shipped_in` — a maintainer re-implemented the idea and **credited it by
+    name**. The strong claim; renders `shipped in #N`. Only valid when a reader
+    can click through to the maintainer's own words.
+  - `fixed_upstream` — the same problem got fixed by someone else's PR with **no
+    mention of George anywhere**. Renders `fixed upstream in #N`. Says the problem
+    is gone, nothing more.
+
+  Add `shipped_in_repo` / `fixed_upstream_repo` when the target lives elsewhere.
+  **Every target must be MERGED**, enforced against live GitHub (see `bad upstream`
+  above). This is not decorative: opencode #24871 and #25141 were candidates until
+  the check showed their targets never landed.
+
+  **This list is not a ledger of every closed PR and must not be built into one.**
+  The entry criterion is a merged upstream commit a reader can open. Closures with
+  no upstream landing (CLA machinery, maintainer scope calls, stale-bot expiry,
+  ones George withdrew himself) stay off the page. Enumerating them is the
+  defensive shape and invites the reading the section exists to prevent.
 - `desc` uses backticks for code spans (`like this`) — the generator turns them
   into `<code>` tags. Don't hand-write `<code>`.
 - `extra` (optional) is raw HTML appended inside the `<p class="desc">` — used for
