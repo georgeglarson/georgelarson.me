@@ -163,31 +163,101 @@ def render_inreview_html(curation, drafts=None):
     return "\n".join(lines)
 
 
+# The two shapes an entry in `credited:` can take, strongest first. Each maps a
+# yaml field to the repo-override field beside it and the tag the page renders.
+# They are separate fields on purpose: `shipped_in` asserts a maintainer named
+# him, `fixed_upstream` asserts only that the bug is gone. Keeping them apart
+# means a later edit cannot upgrade the weaker claim by rewriting prose.
+_UPSTREAM_SHAPES = (
+    ("shipped_in", "shipped_in_repo", "shipped in"),
+    ("fixed_upstream", "fixed_upstream_repo", "fixed upstream in"),
+)
+
+
+def _upstream_ref(entry):
+    """(target_repo, target_number, tag_label, field) for one credited entry.
+
+    Raises when an entry names neither shape or both: neither leaves the page
+    with a dangling claim and no link, both would render two contradictory
+    strengths of the same assertion.
+    """
+    found = [sh for sh in _UPSTREAM_SHAPES if sh[0] in entry]
+    if len(found) != 1:
+        named = " and ".join(sh[0] for sh in found) or "neither shape"
+        raise RuntimeError(
+            f"{entry['repo']}#{entry['number']}: credited entry names {named}; "
+            f"it must name exactly one of {', '.join(sh[0] for sh in _UPSTREAM_SHAPES)}"
+        )
+    field, repo_field, label = found[0]
+    return entry.get(repo_field, entry["repo"]), int(entry[field]), label, field
+
+
 def render_credited_html(curation):
-    """Work whose idea shipped under someone else's commit.
+    """Work he filed whose fix landed under someone else's commit.
 
     Deliberately its own section. These PRs are closed-unmerged, so they cannot
     sit in `in_review`, and the commit that landed upstream is not George's, so
     they must never reach `merged` or the headline count. Each entry links both
-    the closed PR and the merged one that carries the credit, because the claim
-    is only worth making if a reader can click through to the maintainer's own
-    words.
+    the closed PR and the merged one upstream, because the claim is only worth
+    making if a reader can open the commit that carries it.
+
+    Not a ledger of every closed PR. The entry criterion is a merged upstream
+    landing; closures with none stay off the page entirely.
     """
     lines = []
     for e in curation.get("credited", []):
         repo, num = e["repo"], int(e["number"])
-        shipped = int(e["shipped_in"])
+        tgt_repo, tgt_num, label, _ = _upstream_ref(e)
         lines.append(
             "        <li>\n"
             f'          <div class="name">{escape(e["name"])} '
             f'<a class="lnk" href="{_pr_url(repo, num)}">#{num}</a> '
-            f'<span class="tag">shipped in '
-            f'<a class="lnk" href="{_pr_url(e.get("shipped_in_repo", repo), shipped)}">'
-            f'#{shipped}</a></span></div>\n'
+            f'<span class="tag">{label} '
+            f'<a class="lnk" href="{_pr_url(tgt_repo, tgt_num)}">'
+            f'#{tgt_num}</a></span></div>\n'
             f'          <p class="desc">{_code_tags(e["desc"])}{e.get("extra", "")}</p>\n'
             "        </li>"
         )
     return "\n".join(lines)
+
+
+def gh_pr_state(repo, number):
+    """Live state of any PR, including other people's. Returns e.g. 'MERGED'.
+
+    A number that does not resolve reports as MISSING rather than raising: a
+    typo'd target is exactly the mistake this lookup exists to catch, and
+    crashing the build turns a reportable problem into an unbuildable page.
+    """
+    try:
+        out = _gh(["pr", "view", str(number), "--repo", repo, "--json", "state"])
+    except subprocess.CalledProcessError:
+        return "MISSING"
+    return json.loads(out).get("state", "UNKNOWN")
+
+
+def verify_upstream_targets(curation, lookup):
+    """Every `shipped_in` / `fixed_upstream` target must actually be MERGED.
+
+    The section's whole claim is that the fix exists upstream. A target that is
+    open or closed-unmerged means the bug is still there and the page is saying
+    something untrue, which no amount of careful prose fixes.
+
+    This is not hypothetical. Two candidates failed it on 2026-08-20: opencode
+    #24871 had stood down for #15595 (later closed unmerged) and #25141 for
+    #20103 (still open). Both would have read as receipts. `lookup` is injected
+    so the offline suite exercises this without touching the network.
+    """
+    problems = []
+    for e in curation.get("credited", []):
+        repo, num = e["repo"], int(e["number"])
+        tgt_repo, tgt_num, _, field = _upstream_ref(e)
+        state = lookup(tgt_repo, tgt_num)
+        if state != "MERGED":
+            problems.append(
+                f"{repo}#{num} {field} {tgt_repo}#{tgt_num}, which is {state}, "
+                f"not MERGED -> the fix never landed; drop the entry"
+            )
+    return problems
 
 
 _HEADLINE_SENTENCE = (
@@ -236,6 +306,13 @@ def detect_drift(prs, curation):
         if status == "open":
             if key in credited_set:
                 stale_credited.append(f"{repo}#{num} reopened -> it is in review again, not credited")
+            elif p.get("isDraft") and key not in inreview_set:
+                # A draft is work in progress, not something to put in front of a
+                # reader, so an uncurated one is not drift. It surfaces here the
+                # moment it goes ready-for-review, which is the point at which it
+                # earns a row. Curating a draft deliberately still works: the
+                # renderer tags it `draft` from this same live state.
+                continue
             elif key not in inreview_set and key not in exclusion_set:
                 new_open.append(f"{repo}#{num}")
         elif status == "merged":
@@ -344,7 +421,11 @@ def main(argv=None):
     drafts = drafts_from_prs(prs)
 
     drift = detect_drift(prs, curation)
-    if any(drift.values()):
+    # Live only. The upstream targets are other people's PRs, so they never turn
+    # up in the author-scoped gh buckets above and a fixture of George's own PRs
+    # cannot cover them. The offline suite calls verify_upstream_targets direct.
+    upstream_problems = [] if args.fixture else verify_upstream_targets(curation, gh_pr_state)
+    if any(drift.values()) or upstream_problems:
         print("# drift detected — curate these in contributions.yaml:", file=sys.stderr)
         for m in drift["new_merges"]:
             print(f"  + new merge:     {m}", file=sys.stderr)
@@ -354,6 +435,8 @@ def main(argv=None):
             print(f"  ~ stale review:  {s}", file=sys.stderr)
         for s in drift["stale_credited"]:
             print(f"  ~ stale credit:  {s}", file=sys.stderr)
+        for s in upstream_problems:
+            print(f"  ! bad upstream:  {s}", file=sys.stderr)
 
     with open(args.page) as f:
         html = f.read()

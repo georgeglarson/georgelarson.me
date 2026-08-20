@@ -8,6 +8,7 @@ import io
 import json
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -33,28 +34,28 @@ class MergedSectionTests(unittest.TestCase):
     def setUp(self):
         self.cur = bc.load_curation(YAML)
 
-    def test_fifteen_merged_entries(self):
+    def test_twenty_merged_entries(self):
         html = bc.render_merged_html(self.cur)
-        self.assertEqual(html.count("<li>"), 15)
+        self.assertEqual(html.count("<li>"), 20)
 
     def test_sorted_newest_first(self):
         numbers = bc.merged_numbers_in_order(self.cur)
         self.assertEqual(
             numbers,
-            [16272, 16239, 4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434,
-             564, 475, 4748, 164],
+            [4536, 4526, 4482, 16534, 16311, 16272, 16239, 4150, 16152, 1844, 289,
+             288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164],
         )
 
     def test_every_receipt_present(self):
         html = bc.render_merged_html(self.cur)
-        for n in (16272, 16239, 4150, 16152, 1844, 289, 288, 1368, 1133, 1134,
-                  1434, 564, 475, 4748, 164):
+        for n in (4536, 4526, 4482, 16534, 16311, 16272, 16239, 4150, 16152,
+                  1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748, 164):
             self.assertIn(f"#{n}", html)
 
     def test_first_entry_is_newest(self):
         html = bc.render_merged_html(self.cur)
         first = html.split("<li>", 1)[1]
-        self.assertIn("#16272", first)
+        self.assertIn("#4536", first)
 
 
 class HeadlineTests(unittest.TestCase):
@@ -63,12 +64,12 @@ class HeadlineTests(unittest.TestCase):
 
     def test_counts(self):
         n_fixes, n_projects, sentence = bc.headline(self.cur)
-        self.assertEqual(n_fixes, 15)
+        self.assertEqual(n_fixes, 20)
         self.assertEqual(n_projects, 10)
 
     def test_sentence_spelled_out(self):
         _, _, sentence = bc.headline(self.cur)
-        self.assertIn("Fifteen", sentence)
+        self.assertIn("Twenty", sentence)
         self.assertIn("ten", sentence)
 
 
@@ -85,7 +86,7 @@ class InReviewTests(unittest.TestCase):
         for repo in (
             "OpenHands/OpenHands", "livekit/agents", "allenai/open-instruct",
             "stryker-mutator/stryker-net", "kputnam/stupidedi",
-            "mitmproxy/mitmproxy", "charmbracelet/crush", "Comfy-Org/ComfyUI_frontend",
+            "mitmproxy/mitmproxy", "charmbracelet/crush",
         ):
             self.assertIn(repo, html)
 
@@ -222,16 +223,31 @@ class DriftDetectionTests(unittest.TestCase):
     def test_flags_stale_inreview_group(self):
         # An in_review number that has since merged -> flagged so it can move up.
         prs = [{
-            "repository": {"nameWithOwner": "Comfy-Org/ComfyUI_frontend"},
-            "number": 11686, "state": "CLOSED", "status": "merged",
+            "repository": {"nameWithOwner": "allenai/open-instruct"},
+            "number": 1751, "state": "CLOSED", "status": "merged",
             "closedAt": "2026-07-15T00:00:00Z",
-            "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686",
+            "url": "https://github.com/allenai/open-instruct/pull/1751",
         }]
         cur = bc.load_curation(YAML)
         drift = bc.detect_drift(prs, cur)
-        # #11686 merged -> it's a new merge to curate AND the in_review group is now stale
-        self.assertTrue(any("11686" in m for m in drift["new_merges"]))
-        self.assertTrue(any("11686" in s for s in drift["stale_inreview"]))
+        # #1751 merged -> it's a new merge to curate AND the in_review group is now stale
+        self.assertTrue(any("1751" in m for m in drift["new_merges"]))
+        self.assertTrue(any("1751" in s for s in drift["stale_inreview"]))
+
+    def test_uncurated_draft_is_not_drift(self):
+        # Drafts are held back on purpose (the ledger's standing rule), so an
+        # uncurated one must stay quiet instead of nagging on every run. It
+        # becomes drift the moment it goes ready-for-review.
+        draft = {
+            "repository": {"nameWithOwner": "someorg/somerepo"}, "number": 77,
+            "state": "OPEN", "status": "open", "isDraft": True,
+            "url": "https://github.com/someorg/somerepo/pull/77",
+        }
+        cur = bc.load_curation(YAML)
+        self.assertEqual(bc.detect_drift([draft], cur)["new_open"], [])
+        ready = {**draft, "isDraft": False}
+        self.assertEqual(bc.detect_drift([ready], cur)["new_open"],
+                         ["someorg/somerepo#77"])
 
     def test_flags_closed_unmerged_inreview(self):
         # An in_review PR closed WITHOUT merging disappears from both --state open
@@ -484,6 +500,120 @@ class MergedExtraTests(unittest.TestCase):
         html = bc.render_merged_html(cur)
         self.assertIn('href="/deep"', html)
         self.assertIn("write-up", html)
+
+
+class UpstreamTargetTests(unittest.TestCase):
+    """The `Fixed upstream` section claims a fix exists under someone else's
+    commit. That claim is only true if the target actually merged, and the
+    target is another person's PR, so nothing in the author-scoped gh buckets
+    can see it. These pin the rule that would otherwise live in a comment.
+    """
+
+    def setUp(self):
+        self.cur = bc.load_curation(YAML)
+
+    def test_real_curation_names_exactly_one_shape_per_entry(self):
+        # Neither shape leaves a dangling claim with no link; both would render
+        # two different strengths of the same assertion.
+        for e in self.cur["credited"]:
+            with self.subTest(pr=f"{e['repo']}#{e['number']}"):
+                bc._upstream_ref(e)  # raises if the entry names neither or both
+
+    def test_clean_when_every_target_merged(self):
+        problems = bc.verify_upstream_targets(self.cur, lambda repo, num: "MERGED")
+        self.assertEqual(problems, [])
+
+    def test_flags_a_target_that_was_closed_unmerged(self):
+        # The real 2026-08-20 near-miss: opencode #24871 stood down for #15595
+        # as prior art, and #15595 was itself later closed without merging, so
+        # the bug is still upstream. Listing it would have been a false receipt.
+        cur = {"credited": [{
+            "repo": "anomalyco/opencode", "number": 24871, "name": "opencode",
+            "fixed_upstream": 15595, "desc": "duplicate of prior art",
+        }]}
+        problems = bc.verify_upstream_targets(cur, lambda repo, num: "CLOSED")
+        self.assertEqual(len(problems), 1)
+        self.assertIn("#15595", problems[0])
+        self.assertIn("CLOSED", problems[0])
+
+    def test_flags_a_target_still_open(self):
+        # The sibling case: #25141 yielded to #20103, which never landed either.
+        cur = {"credited": [{
+            "repo": "anomalyco/opencode", "number": 25141, "name": "opencode",
+            "fixed_upstream": 20103, "desc": "duplicate",
+        }]}
+        problems = bc.verify_upstream_targets(cur, lambda repo, num: "OPEN")
+        self.assertEqual(len(problems), 1)
+        self.assertIn("#20103", problems[0])
+
+    def test_target_in_another_repo_is_looked_up_there(self):
+        seen = []
+
+        def lookup(repo, num):
+            seen.append((repo, num))
+            return "MERGED"
+
+        cur = {"credited": [{
+            "repo": "a/b", "number": 1, "name": "a", "desc": "x",
+            "fixed_upstream": 9, "fixed_upstream_repo": "c/d",
+        }]}
+        bc.verify_upstream_targets(cur, lookup)
+        self.assertEqual(seen, [("c/d", 9)])
+
+    def test_unresolvable_target_reports_missing_rather_than_raising(self):
+        # A typo'd number is the mistake this lookup exists to catch. Letting the
+        # gh failure propagate turns a reportable problem into a build that will
+        # not run at all. Found for real by pointing an entry at a number that
+        # does not exist in its repo: the generator died on a traceback.
+        original = bc._gh
+
+        def boom(args):
+            raise subprocess.CalledProcessError(1, ["gh", *args])
+
+        bc._gh = boom
+        try:
+            self.assertEqual(bc.gh_pr_state("a/b", 999999), "MISSING")
+        finally:
+            bc._gh = original
+
+    def test_missing_target_is_flagged_like_any_other_non_merge(self):
+        cur = {"credited": [{"repo": "a/b", "number": 1, "name": "a",
+                             "fixed_upstream": 999999, "desc": "x"}]}
+        problems = bc.verify_upstream_targets(cur, lambda repo, num: "MISSING")
+        self.assertEqual(len(problems), 1)
+        self.assertIn("MISSING", problems[0])
+
+    def test_entry_naming_neither_shape_raises(self):
+        with self.assertRaises(RuntimeError) as ctx:
+            bc._upstream_ref({"repo": "a/b", "number": 1, "name": "a", "desc": "x"})
+        self.assertIn("neither shape", str(ctx.exception))
+
+    def test_entry_naming_both_shapes_raises(self):
+        with self.assertRaises(RuntimeError) as ctx:
+            bc._upstream_ref({"repo": "a/b", "number": 1, "name": "a", "desc": "x",
+                              "shipped_in": 2, "fixed_upstream": 3})
+        self.assertIn("shipped_in and fixed_upstream", str(ctx.exception))
+
+    def test_the_two_shapes_render_different_tags(self):
+        # The distinction is the whole point: one says a maintainer named him,
+        # the other says only that the bug is gone. If both rendered the same
+        # tag the weaker claim would read as the stronger one.
+        strong = bc.render_credited_html({"credited": [{
+            "repo": "a/b", "number": 1, "name": "a", "shipped_in": 2, "desc": "x"}]})
+        weak = bc.render_credited_html({"credited": [{
+            "repo": "a/b", "number": 1, "name": "a", "fixed_upstream": 2, "desc": "x"}]})
+        self.assertIn(">shipped in ", strong)
+        self.assertNotIn("fixed upstream", strong)
+        self.assertIn(">fixed upstream in ", weak)
+        self.assertNotIn(">shipped in ", weak)
+
+    def test_weak_entries_link_both_prs(self):
+        html = bc.render_credited_html(self.cur)
+        for closed, landed in ((16415, 16453), (16443, 16504)):
+            self.assertIn(f"OpenHands/OpenHands/pull/{closed}", html)
+            self.assertIn(f"OpenHands/OpenHands/pull/{landed}", html)
+        self.assertIn("charmbracelet/catwalk/pull/112", html)
+        self.assertIn("charmbracelet/catwalk/pull/137", html)
 
 
 if __name__ == "__main__":

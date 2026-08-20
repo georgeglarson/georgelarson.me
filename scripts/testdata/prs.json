@@ -98,7 +98,7 @@
     "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11685"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-10T13:49:44Z",
     "createdAt": "2026-04-27T13:15:50Z",
     "isDraft": false,
     "number": 11686,
@@ -106,8 +106,8 @@
       "name": "ComfyUI_frontend",
       "nameWithOwner": "Comfy-Org/ComfyUI_frontend"
     },
-    "state": "open",
-    "status": "open",
+    "state": "closed",
+    "status": "closed",
     "title": "fix(keybindings): respect Reka DismissableLayer state for Escape",
     "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686"
   },
@@ -210,7 +210,7 @@
     "url": "https://github.com/OpenHands/OpenHands/pull/16294"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-10T16:04:30Z",
     "createdAt": "2026-08-04T17:48:10Z",
     "isDraft": false,
     "number": 16311,
@@ -218,13 +218,13 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "feat: context window usage meter, usage drawer, and manual compaction",
     "url": "https://github.com/OpenHands/OpenHands/pull/16311"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-12T13:40:01Z",
     "createdAt": "2026-08-07T22:09:50Z",
     "isDraft": false,
     "number": 16415,
@@ -232,8 +232,8 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "closed",
+    "status": "closed",
     "title": "fix(settings): follow pagination when listing LLM providers",
     "url": "https://github.com/OpenHands/OpenHands/pull/16415"
   },
@@ -280,7 +280,7 @@
     "url": "https://github.com/OpenHands/OpenHands/pull/16441"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-11T15:23:52Z",
     "createdAt": "2026-08-08T23:43:16Z",
     "isDraft": false,
     "number": 16443,
@@ -288,10 +288,52 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "closed",
+    "status": "closed",
     "title": "fix(test): install the ProgressEvent fallback under jsdom, where it is needed",
     "url": "https://github.com/OpenHands/OpenHands/pull/16443"
+  },
+  {
+    "closedAt": "2026-08-12T14:40:30Z",
+    "createdAt": "2026-08-11T23:15:03Z",
+    "isDraft": false,
+    "number": 16534,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "fix(context-meter): draw the ring track from the foreground, not a border token",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16534"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-13T19:32:24Z",
+    "isDraft": false,
+    "number": 16600,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(conversation-panel): user-applied conversation tags, tag filter bar, collapsible tag UI",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16600"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-17T15:12:28Z",
+    "isDraft": false,
+    "number": 16656,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat: add linux desktop installer build (CI + deb maintainer fix)",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16656"
   },
   {
     "closedAt": "2026-07-11T15:37:11Z",
@@ -362,6 +404,76 @@
     "status": "merged",
     "title": "feat(llm): verify kimi-for-coding (Kimi Code membership)",
     "url": "https://github.com/OpenHands/software-agent-sdk/pull/4150"
+  },
+  {
+    "closedAt": "2026-08-13T12:10:33Z",
+    "createdAt": "2026-08-13T00:28:41Z",
+    "isDraft": false,
+    "number": 4482,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "feat(file-router): add POST /file/create_directory",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4482"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-16T20:49:55Z",
+    "isDraft": true,
+    "number": 4510,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(tools): add per-call llm_profile override to the task tool",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4510"
+  },
+  {
+    "closedAt": "2026-08-19T14:02:33Z",
+    "createdAt": "2026-08-18T13:57:49Z",
+    "isDraft": false,
+    "number": 4526,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "test(sdk): pin events_to_messages boundaries + fix responses_reasoning_item batch drop",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4526"
+  },
+  {
+    "closedAt": "2026-08-19T21:42:39Z",
+    "createdAt": "2026-08-18T22:06:04Z",
+    "isDraft": false,
+    "number": 4536,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "test(sdk): pin send_message skill-activation wiring",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4536"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-20T10:45:01Z",
+    "isDraft": true,
+    "number": 4557,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(sdk): enforce disabled_agents deny-list at sub-agent spawn time",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4557"
   },
   {
     "closedAt": "2026-03-03T16:39:48Z",

@@ -13,6 +13,11 @@
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.
 merged:
+  - {repo: OpenHands/software-agent-sdk, number: 4536, merged: 2026-08-19, name: "OpenHands / software-agent-sdk", desc: "`send_message` owns skill activation for every user message: matching the text against the agent's skills, attaching the recalled knowledge to the event, and recording the activation so a skill fires once per conversation. The block shipped carrying its own `# TODO` for test cases. These pin the wiring."}
+  - {repo: OpenHands/software-agent-sdk, number: 4526, merged: 2026-08-19, name: "OpenHands / software-agent-sdk", desc: "`events_to_messages` is the projection that turns the persisted event log into the messages the model actually sees, and it had carried a `# TODO: We should add extensive tests for this` since it was written. Writing the boundary tests exposed a live defect underneath: reasoning items dropped out of re-batched parallel tool calls. Both land here."}
+  - {repo: OpenHands/software-agent-sdk, number: 4482, merged: 2026-08-13, name: "OpenHands / software-agent-sdk", desc: "Adds `POST /file/create_directory` to the file router, so a client can create a workspace folder instead of only listing the ones that already exist. Verified over real HTTP against a running agent-server through a locally built typescript-client: nested paths, repeat calls, and immediate visibility to the folder picker's own listing endpoint."}
+  - {repo: OpenHands/OpenHands, number: 16534, merged: 2026-08-12, name: OpenHands, desc: "The context meter drew its ring track from a border token, which left the track washed out against the surface behind it. Draws it from the foreground colour instead. Checked by building the full stack from `main` and from the branch with nothing else changed, then reading the rendered colours out of the running app rather than trusting the token names."}
+  - {repo: OpenHands/OpenHands, number: 16311, merged: 2026-08-10, name: OpenHands, desc: "A context-window usage meter, a usage drawer, and manual compaction, replacing the old metrics modal. Carries three fixes found along the way: a divide-by-zero on models that report no context window, websocket usage metrics dropped for non-agent usage ids, and a crash on the home route."}
   - {repo: OpenHands/OpenHands, number: 16272, merged: 2026-08-03, name: OpenHands, desc: "The repo ignored three named subdirectories of `.tmp/` while the test harnesses wrote to several more, so runtime state kept turning up in commits. Ignoring the root instead means the list can't fall behind the code again."}
   - {repo: OpenHands/OpenHands, number: 16239, merged: 2026-08-03, name: OpenHands, desc: "The dev launcher handled `SIGINT` and `SIGTERM` but not `SIGHUP`, so closing a terminal or multiplexer killed the launcher and left its detached services running. Reproduced against the real spawn path before and after the fix."}
   - {repo: OpenHands/software-agent-sdk, number: 4150, merged: 2026-07-30, name: "OpenHands / software-agent-sdk", desc: "Verifies the `kimi-for-coding` model id against Moonshot's Kimi Code membership endpoint, so it appears in the agent-canvas model picker with a Verified badge instead of free-typed entry. Companion to agent-canvas #1844."}
@@ -45,16 +50,12 @@ in_review:
     desc: "Adds a provider's whole model catalog as LLM profiles in one pass, instead of one entry at a time."
   - repo: OpenHands/OpenHands
     name: OpenHands
-    numbers: [16415]
-    desc: "The provider list stopped at 100 because the server's pagination cursor was discarded, so `together_ai`, `vertex_ai`, and `xai` were unreachable in every provider dropdown. Reproduced against unmodified upstream main."
+    numbers: [16600]
+    desc: "Conversation tags a user applies by hand, a filter bar across the panel, and per-card collapse, so a long conversation list stays navigable instead of scrolling forever."
   - repo: OpenHands/OpenHands
     name: OpenHands
-    numbers: [16443]
-    desc: "A `ProgressEvent` test fallback that could never install itself: it was guarded on the symbol being absent, and jsdom always defines it. That left the request interceptor free to throw during teardown and redden an otherwise passing run."
-  - repo: OpenHands/OpenHands
-    name: OpenHands
-    numbers: [16311]
-    desc: "A context-window usage meter, a usage drawer, and manual compaction, replacing the old metrics modal. Carries three fixes found along the way: a divide-by-zero on models that report no context window, websocket usage metrics dropped for non-agent usage ids, and a crash on the home route."
+    numbers: [16656]
+    desc: "A Linux desktop installer lane in CI, mirroring the macOS and Windows builds, plus the four-line maintainer field without which the deb target cannot build at all: fpm refuses the package with no author email."
   - repo: OpenHands/OpenHands
     name: OpenHands
     numbers: [16279, 16280]
@@ -87,18 +88,32 @@ in_review:
     name: "charmbracelet / crush"
     numbers: [2749, 2750]
     desc: "LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers."
-  - repo: Comfy-Org/ComfyUI_frontend
-    name: ComfyUI_frontend
-    numbers: [11686]
-    desc: "Respect the Reka DismissableLayer state for the Escape key in keybindings."
 
-# --- Credited upstream: the idea shipped, under someone else's commit ---
+# --- Fixed upstream: filed it, someone else's commit carries the fix ---
 # Its own list because it is neither of the two above. A closed-unmerged PR is
 # not in review, and the commit that landed is not George's, so it must never
-# reach `merged:` or the headline count. `shipped_in` is the merged PR that
-# carries the credit (add `shipped_in_repo` if it lives in a different repo);
-# both get linked, because the claim is only worth making if a reader can click
-# through to the maintainer's own words.
+# reach `merged:` or the headline count.
+#
+# Two shapes, two fields, deliberately not interchangeable:
+#   shipped_in     -- a maintainer re-implemented the idea and credited it by
+#                     name. The strong claim. Only use it when a reader can
+#                     click through to the maintainer's own words.
+#   fixed_upstream -- the same problem got fixed by someone else's PR, with no
+#                     mention of George anywhere. The weak claim, and the honest
+#                     one for most of these. Says the problem is gone, no more.
+# Add `shipped_in_repo` / `fixed_upstream_repo` if the target lives elsewhere.
+#
+# Every target must be MERGED. Two earlier candidates failed exactly this test:
+# opencode #24871 stood down for #15595, which was later closed unmerged, and
+# #25141 for #20103, still open. In both cases the bug is still there, so the
+# honest description is "yielded to a PR that stalled", which is not a receipt.
+# `verify_upstream_targets` enforces this against live GitHub so the rule is
+# checked rather than remembered.
+#
+# This list is not a ledger of every closed PR and must not be read as one. The
+# entry criterion is a merged upstream commit that a reader can open. Closures
+# with no upstream landing (CLA machinery that never unstuck, maintainer scope
+# calls, stale-bot expiry, ones George withdrew himself) stay off the page.
 credited:
   - repo: n8n-io/n8n
     number: 29516
@@ -106,6 +121,21 @@ credited:
     name: n8n
     desc: "A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds. The PR predated a rework of the same `acceptOffer` path, so a maintainer re-implemented the idea on current master and credited the diagnosis by name. Shipped to the 2.33 and 2.34 release lines."
     extra: ' <a class="lnk" href="/n8n">The full hunt &rarr;</a>'
+  - repo: OpenHands/OpenHands
+    number: 16415
+    fixed_upstream: 16453
+    name: OpenHands
+    desc: "The Basic LLM provider list stopped at 100 entries because the server's pagination cursor was discarded, putting `together_ai`, `vertex_ai`, and `xai` out of reach in every provider dropdown. Reproduced against unmodified upstream main. #16453 fixed the same bug from the other direction, dropping the limit rather than following the cursor."
+  - repo: OpenHands/OpenHands
+    number: 16443
+    fixed_upstream: 16504
+    name: OpenHands
+    desc: "A `ProgressEvent` test fallback that could never install itself: it was guarded on the symbol being absent, and jsdom always defines it, which left the request interceptor free to throw during teardown and redden an otherwise passing run. #16504 landed the same root cause. It ships no test, so the 1000-iteration repro lives in that PR's description rather than in the suite."
+  - repo: charmbracelet/catwalk
+    number: 112
+    fixed_upstream: 137
+    name: "charmbracelet / catwalk"
+    desc: "Added the missing Venice.ai models to the provider catalog by hand. The maintainers took the general fix instead, generating the whole provider config and refreshing it daily, so the catalog stops going stale between contributions."
 
 # --- Search-index gaps: curated PRs that `gh search` genuinely never returns ---
 # The header explains why these exist; this list makes it machine-checkable, so

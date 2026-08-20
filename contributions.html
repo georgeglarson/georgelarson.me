@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions · George Larson</title>
-<meta name="description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+<meta name="description" content="Twenty fixes merged across ten projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
 
 <link rel="icon" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open-source contributions · George Larson">
-<meta property="og:description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click.">
+<meta property="og:description" content="Twenty fixes merged across ten projects, more in review. Every one survives a click.">
 <meta property="og:url" content="https://georgelarson.me/contributions">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open-source contributions · George Larson">
-<meta name="twitter:description" content="Fifteen fixes merged across ten projects, more in review. Every one survives a click.">
+<meta name="twitter:description" content="Twenty fixes merged across ten projects, more in review. Every one survives a click.">
 
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -46,6 +46,26 @@
       <h2 class="label">Merged</h2>
       <ul class="tools">
 <!-- contributions:merged:start -->
+        <li>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4536">#4536</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc"><code>send_message</code> owns skill activation for every user message: matching the text against the agent&#x27;s skills, attaching the recalled knowledge to the event, and recording the activation so a skill fires once per conversation. The block shipped carrying its own <code># TODO</code> for test cases. These pin the wiring.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4526">#4526</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc"><code>events_to_messages</code> is the projection that turns the persisted event log into the messages the model actually sees, and it had carried a <code># TODO: We should add extensive tests for this</code> since it was written. Writing the boundary tests exposed a live defect underneath: reasoning items dropped out of re-batched parallel tool calls. Both land here.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4482">#4482</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">Adds <code>POST /file/create_directory</code> to the file router, so a client can create a workspace folder instead of only listing the ones that already exist. Verified over real HTTP against a running agent-server through a locally built typescript-client: nested paths, repeat calls, and immediate visibility to the folder picker&#x27;s own listing endpoint.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16534">#16534</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">The context meter drew its ring track from a border token, which left the track washed out against the surface behind it. Draws it from the foreground colour instead. Checked by building the full stack from <code>main</code> and from the branch with nothing else changed, then reading the rendered colours out of the running app rather than trusting the token names.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16311">#16311</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">A context-window usage meter, a usage drawer, and manual compaction, replacing the old metrics modal. Carries three fixes found along the way: a divide-by-zero on models that report no context window, websocket usage metrics dropped for non-agent usage ids, and a crash on the home route.</p>
+        </li>
         <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16272">#16272</a> <span class="tag">merged Aug 2026</span></div>
           <p class="desc">The repo ignored three named subdirectories of <code>.tmp/</code> while the test harnesses wrote to several more, so runtime state kept turning up in commits. Ignoring the root instead means the list can&#x27;t fall behind the code again.</p>
@@ -123,16 +143,12 @@
           <p class="desc">Adds a provider&#x27;s whole model catalog as LLM profiles in one pass, instead of one entry at a time.</p>
         </li>
         <li>
-          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16415">#16415</a></div>
-          <p class="desc">The provider list stopped at 100 because the server&#x27;s pagination cursor was discarded, so <code>together_ai</code>, <code>vertex_ai</code>, and <code>xai</code> were unreachable in every provider dropdown. Reproduced against unmodified upstream main.</p>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16600">#16600</a></div>
+          <p class="desc">Conversation tags a user applies by hand, a filter bar across the panel, and per-card collapse, so a long conversation list stays navigable instead of scrolling forever.</p>
         </li>
         <li>
-          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16443">#16443</a></div>
-          <p class="desc">A <code>ProgressEvent</code> test fallback that could never install itself: it was guarded on the symbol being absent, and jsdom always defines it. That left the request interceptor free to throw during teardown and redden an otherwise passing run.</p>
-        </li>
-        <li>
-          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16311">#16311</a></div>
-          <p class="desc">A context-window usage meter, a usage drawer, and manual compaction, replacing the old metrics modal. Carries three fixes found along the way: a divide-by-zero on models that report no context window, websocket usage metrics dropped for non-agent usage ids, and a crash on the home route.</p>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16656">#16656</a></div>
+          <p class="desc">A Linux desktop installer lane in CI, mirroring the macOS and Windows builds, plus the four-line maintainer field without which the deb target cannot build at all: fpm refuses the package with no author email.</p>
         </li>
         <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16279">#16279</a>, <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16280">#16280</a></div>
@@ -166,21 +182,29 @@
           <div class="name">charmbracelet / crush <a class="lnk" href="https://github.com/charmbracelet/crush/pull/2749">#2749</a>, <a class="lnk" href="https://github.com/charmbracelet/crush/pull/2750">#2750</a></div>
           <p class="desc">LSP score-based client selection and single-file-server handling, so single-file language servers start without root markers.</p>
         </li>
-        <li>
-          <div class="name">ComfyUI_frontend <a class="lnk" href="https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686">#11686</a></div>
-          <p class="desc">Respect the Reka DismissableLayer state for the Escape key in keybindings.</p>
-        </li>
       <!-- contributions:inreview:end -->
       </ul>
     </section>
 
     <section class="block reveal">
-      <h2 class="label">Credited upstream</h2>
+      <h2 class="label">Fixed upstream</h2>
       <ul class="tools">
 <!-- contributions:credited:start -->
         <li>
           <div class="name">n8n <a class="lnk" href="https://github.com/n8n-io/n8n/pull/29516">#29516</a> <span class="tag">shipped in <a class="lnk" href="https://github.com/n8n-io/n8n/pull/35456">#35456</a></span></div>
           <p class="desc">A per-runner consecutive-timeout counter that detects and recovers stuck task-runner channels, cutting detection from hours to about six seconds. The PR predated a rework of the same <code>acceptOffer</code> path, so a maintainer re-implemented the idea on current master and credited the diagnosis by name. Shipped to the 2.33 and 2.34 release lines. <a class="lnk" href="/n8n">The full hunt &rarr;</a></p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16415">#16415</a> <span class="tag">fixed upstream in <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16453">#16453</a></span></div>
+          <p class="desc">The Basic LLM provider list stopped at 100 entries because the server&#x27;s pagination cursor was discarded, putting <code>together_ai</code>, <code>vertex_ai</code>, and <code>xai</code> out of reach in every provider dropdown. Reproduced against unmodified upstream main. #16453 fixed the same bug from the other direction, dropping the limit rather than following the cursor.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16443">#16443</a> <span class="tag">fixed upstream in <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16504">#16504</a></span></div>
+          <p class="desc">A <code>ProgressEvent</code> test fallback that could never install itself: it was guarded on the symbol being absent, and jsdom always defines it, which left the request interceptor free to throw during teardown and redden an otherwise passing run. #16504 landed the same root cause. It ships no test, so the 1000-iteration repro lives in that PR&#x27;s description rather than in the suite.</p>
+        </li>
+        <li>
+          <div class="name">charmbracelet / catwalk <a class="lnk" href="https://github.com/charmbracelet/catwalk/pull/112">#112</a> <span class="tag">fixed upstream in <a class="lnk" href="https://github.com/charmbracelet/catwalk/pull/137">#137</a></span></div>
+          <p class="desc">Added the missing Venice.ai models to the provider catalog by hand. The maintainers took the general fix instead, generating the whole provider config and refreshing it daily, so the catalog stops going stale between contributions.</p>
         </li>
       <!-- contributions:credited:end -->
       </ul>
