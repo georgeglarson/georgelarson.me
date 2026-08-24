@@ -112,7 +112,7 @@
     "url": "https://github.com/Comfy-Org/ComfyUI_frontend/pull/11686"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-23T13:54:48Z",
     "createdAt": "2026-07-28T21:50:17Z",
     "isDraft": false,
     "number": 16145,
@@ -120,8 +120,8 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "fix(acp): surface a 'credentials configured' banner state on Docker/cloud (#15643)",
     "url": "https://github.com/OpenHands/OpenHands/pull/16145"
   },
@@ -322,7 +322,7 @@
     "url": "https://github.com/OpenHands/OpenHands/pull/16600"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-23T15:21:24Z",
     "createdAt": "2026-08-17T15:12:28Z",
     "isDraft": false,
     "number": 16656,
@@ -330,8 +330,8 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "feat: add linux desktop installer build (CI + deb maintainer fix)",
     "url": "https://github.com/OpenHands/OpenHands/pull/16656"
   },
@@ -866,5 +866,75 @@
     "status": "open",
     "title": "fix(mutator): mutate implicit array creation expressions",
     "url": "https://github.com/stryker-mutator/stryker-net/pull/3694"
+  },
+  {
+    "closedAt": "2026-08-23T15:27:47Z",
+    "createdAt": "2026-08-20T19:11:45Z",
+    "isDraft": false,
+    "number": 16758,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "fix(providers): follow next_page_id so cloud picks surface past the default page size",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16758"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-23T22:07:48Z",
+    "isDraft": false,
+    "number": 750,
+    "repository": {
+      "name": "docs",
+      "nameWithOwner": "OpenHands/docs"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "docs: document issue triage and the ready-for-dev gate",
+    "url": "https://github.com/OpenHands/docs/pull/750"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-21T00:51:54Z",
+    "isDraft": false,
+    "number": 4565,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "test(integration): cover triggered skill and path-rule content across condensation",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4565"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-20T16:53:43Z",
+    "isDraft": false,
+    "number": 43685,
+    "repository": {
+      "name": "opencode",
+      "nameWithOwner": "anomalyco/opencode"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(opencode): configurable timeout for task tool",
+    "url": "https://github.com/anomalyco/opencode/pull/43685"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-20T16:53:41Z",
+    "isDraft": false,
+    "number": 43684,
+    "repository": {
+      "name": "opencode",
+      "nameWithOwner": "anomalyco/opencode"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(mcp): truncate tool names exceeding 64-char provider limit",
+    "url": "https://github.com/anomalyco/opencode/pull/43684"
   }
 ]
