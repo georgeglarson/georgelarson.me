@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions · George Larson</title>
-<meta name="description" content="23 fixes merged across ten projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+<meta name="description" content="27 fixes merged across eleven projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
 
 <link rel="icon" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open-source contributions · George Larson">
-<meta property="og:description" content="23 fixes merged across ten projects, more in review. Every one survives a click.">
+<meta property="og:description" content="27 fixes merged across eleven projects, more in review. Every one survives a click.">
 <meta property="og:url" content="https://georgelarson.me/contributions">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open-source contributions · George Larson">
-<meta name="twitter:description" content="23 fixes merged across ten projects, more in review. Every one survives a click.">
+<meta name="twitter:description" content="27 fixes merged across eleven projects, more in review. Every one survives a click.">
 
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -43,14 +43,43 @@
     <h1 class="title reveal">Contributions</h1>
       <p class="stats reveal">
 <!-- contributions:stats:start -->
-        <span><b>23</b> merged</span><span><b>10</b> projects</span><span><b>20</b> in review</span><span><b>4</b> fixed upstream</span>
+        <span><b>27</b> merged</span><span><b>11</b> projects</span><span><b>18</b> in review</span><span><b>4</b> fixed upstream</span>
       <!-- contributions:stats:end -->
       </p>
+
+    <section class="block reveal">
+      <h2 class="label">OpenHands Active Contributor</h2>
+      <div class="prose">
+        <p>OpenHands named me an Active Contributor in August 2026. It comes with priority review,
+        triage access, and contributor benefits. The title matters more to me because of who grants
+        it: the people building a coding-agent harness, after reviewing my work and collaborating
+        with me across their projects.</p>
+        <p>It's an honor. Nineteen merged contributions across the OpenHands app, software-agent SDK,
+        docs, and Agent Canvas are public below and in the
+        <a class="lnk" href="https://champions.hub.openhands.dev/">official OpenHands contributor directory</a>.</p>
+      </div>
+    </section>
 
     <section class="block reveal">
       <h2 class="label">Merged</h2>
       <ul class="tools">
 <!-- contributions:merged:start -->
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16441">#16441</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">Exposes the SDK&#x27;s existing LLM-switching toggle in Agent settings, so users can stop an agent from moving itself to another model under a confirmation policy that never asks.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16279">#16279</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">Handles <code>SIGHUP</code> in the minimal development launcher so closing a terminal or multiplexer cleans up its detached services instead of leaving ports and lease files behind.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16280">#16280</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">Handles <code>SIGHUP</code> in the extra-backend development launcher so the agent-server cannot survive its parent and keep stale conversation leases alive.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / docs <a class="lnk" href="https://github.com/OpenHands/docs/pull/750">#750</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">Documents issue triage and the <code>ready-for-dev</code> gate contributors otherwise had to learn by failing CI: labeling, acceptance criteria, evidence placement, linked issues, and bot abstention.</p>
+        </li>
         <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16758">#16758</a> <span class="tag">merged Aug 2026</span></div>
           <p class="desc">Searching <code>xai</code> in the Cloud LLM provider list returned only a fuzzy name match while the real <code>xAI</code> entry sat past the default page cut: the providers hook read the first page and dropped <code>next_page_id</code>. It now walks the cursor to exhaustion, cycle-guarded, so all 135 providers surface. This is the follow-up the #16415 close comment predicted after #16453 fixed the local path.</p>
@@ -152,12 +181,12 @@
       <ul class="tools">
 <!-- contributions:inreview:start -->
         <li>
-          <div class="name">OpenHands / docs <a class="lnk" href="https://github.com/OpenHands/docs/pull/750">#750</a></div>
-          <p class="desc">Contributors had to learn the <code>ready-for-dev</code> gate exists by failing CI, because nothing documented issue triage or what the readiness check wants. Writes up how issues get labeled, what the PR description gate enforces, and the pitfalls: heading levels, evidence placement, closed linked issues, bot abstention.</p>
+          <div class="name">OpenHands / docs <a class="lnk" href="https://github.com/OpenHands/docs/pull/757">#757</a></div>
+          <p class="desc">Documents the prompt token composition metrics from software-agent-sdk #4623: what each component bucket measures, the estimates-vs-provider-usage contract, and how to opt in.</p>
         </li>
         <li>
-          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4565">#4565</a></div>
-          <p class="desc">A skill or path rule fires once per conversation, on an event condensation is allowed to forget, while the &#x27;already activated&#x27; marker persists and is never cleared. After condensation the guidance can be gone from everything the model sees while state still reports it active. Two end-to-end cases run the whole scenario so the intended lifecycle gets settled against observed behavior rather than a reading of the code.</p>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4565">#4565</a>, <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4623">#4623</a></div>
+          <p class="desc">A skill or path rule fires once per conversation, on an event condensation is allowed to forget, while the &#x27;already activated&#x27; marker persists and is never cleared. After condensation the guidance can be gone from everything the model sees while state still reports it active. Two end-to-end cases run the whole scenario so the intended lifecycle gets settled against observed behavior rather than a reading of the code. #4623: every LLM call can now say what its prompt is made of (system prompt, tool schemas, history, latest message), opt-in via <code>enable_prompt_composition</code>, each estimate joined to the provider&#x27;s authoritative usage. Validated live against provider billing on two model lanes.</p>
         </li>
         <li>
           <div class="name">opencode <a class="lnk" href="https://github.com/anomalyco/opencode/pull/43685">#43685</a></div>
@@ -168,8 +197,8 @@
           <p class="desc">OpenAI&#x27;s tool-use API rejects function names over 64 characters, so a long MCP server and tool name made the provider return 400 and opencode silently stopped processing. Truncates over-long names to a readable prefix plus a stable hash suffix, so two tools that would otherwise collide stay distinct, and warns instead of dropping one silently.</p>
         </li>
         <li>
-          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16439">#16439</a>, <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16441">#16441</a></div>
-          <p class="desc">A user reported his agent quietly switching itself to a weaker model. The <code>switch_llm</code> tool ships enabled under a confirmation policy that never asks, so a conversation can end up on a model nobody chose. These expose the off switch the SDK already had but the interface never rendered, and re-derive the model stamp from event history so a dropped socket stops leaving the readout disagreeing with itself.</p>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16439">#16439</a></div>
+          <p class="desc">Re-derives the active model stamp from event history so a dropped socket stops leaving the readout disagreeing with the model the agent is using.</p>
         </li>
         <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16426">#16426</a></div>
@@ -182,10 +211,6 @@
         <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16600">#16600</a></div>
           <p class="desc">Conversation tags a user applies by hand, a filter bar across the panel, and per-card collapse, so a long conversation list stays navigable instead of scrolling forever.</p>
-        </li>
-        <li>
-          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16279">#16279</a>, <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16280">#16280</a></div>
-          <p class="desc">The same <code>SIGHUP</code> gap as #16239, one launcher over in each case. Orphaned services hold their ports, and a surviving agent-server keeps heartbeating its lease files, so the next start reports every conversation as held and lists none.</p>
         </li>
         <li>
           <div class="name">livekit / agents <a class="lnk" href="https://github.com/livekit/agents/pull/6280">#6280</a></div>
