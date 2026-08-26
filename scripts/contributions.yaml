@@ -13,6 +13,10 @@
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.
 merged:
+  - {repo: OpenHands/OpenHands, number: 16441, merged: 2026-08-24, name: OpenHands, desc: "Exposes the SDK's existing LLM-switching toggle in Agent settings, so users can stop an agent from moving itself to another model under a confirmation policy that never asks."}
+  - {repo: OpenHands/OpenHands, number: 16279, merged: 2026-08-24, name: OpenHands, desc: "Handles `SIGHUP` in the minimal development launcher so closing a terminal or multiplexer cleans up its detached services instead of leaving ports and lease files behind."}
+  - {repo: OpenHands/OpenHands, number: 16280, merged: 2026-08-24, name: OpenHands, desc: "Handles `SIGHUP` in the extra-backend development launcher so the agent-server cannot survive its parent and keep stale conversation leases alive."}
+  - {repo: OpenHands/docs, number: 750, merged: 2026-08-24, name: "OpenHands / docs", desc: "Documents issue triage and the `ready-for-dev` gate contributors otherwise had to learn by failing CI: labeling, acceptance criteria, evidence placement, linked issues, and bot abstention."}
   - {repo: OpenHands/OpenHands, number: 16758, merged: 2026-08-23, name: OpenHands, desc: "Searching `xai` in the Cloud LLM provider list returned only a fuzzy name match while the real `xAI` entry sat past the default page cut: the providers hook read the first page and dropped `next_page_id`. It now walks the cursor to exhaustion, cycle-guarded, so all 135 providers surface. This is the follow-up the #16415 close comment predicted after #16453 fixed the local path."}
   - {repo: OpenHands/OpenHands, number: 16656, merged: 2026-08-23, name: OpenHands, desc: "The desktop app shipped macOS and Windows installers but nothing for Linux, and the deb target could not build at all: fpm refuses a package with no author email. Adds a Linux CI lane mirroring the other two and the four-line `maintainer` field, so AppImage and deb both build. Smoke-tested on Fedora."}
   - {repo: OpenHands/OpenHands, number: 16145, merged: 2026-08-23, name: OpenHands, desc: "The ACP auth banner detected a signed-in user by shelling the provider's CLI, which only tells the truth on a native local install. On Docker and cloud that probe came back empty, so a correctly supplied credential showed no acknowledgement at all. Adds a neutral 'credentials configured' banner state driven by the secret store, which works on all three. Re-landed here after agent-canvas moved into this repo."}
@@ -45,12 +49,12 @@ merged:
 in_review:
   - repo: OpenHands/docs
     name: OpenHands / docs
-    numbers: [750]
-    desc: "Contributors had to learn the `ready-for-dev` gate exists by failing CI, because nothing documented issue triage or what the readiness check wants. Writes up how issues get labeled, what the PR description gate enforces, and the pitfalls: heading levels, evidence placement, closed linked issues, bot abstention."
+    numbers: [757]
+    desc: "Documents the prompt token composition metrics from software-agent-sdk #4623: what each component bucket measures, the estimates-vs-provider-usage contract, and how to opt in."
   - repo: OpenHands/software-agent-sdk
     name: "OpenHands / software-agent-sdk"
-    numbers: [4565]
-    desc: "A skill or path rule fires once per conversation, on an event condensation is allowed to forget, while the 'already activated' marker persists and is never cleared. After condensation the guidance can be gone from everything the model sees while state still reports it active. Two end-to-end cases run the whole scenario so the intended lifecycle gets settled against observed behavior rather than a reading of the code."
+    numbers: [4565, 4623]
+    desc: "A skill or path rule fires once per conversation, on an event condensation is allowed to forget, while the 'already activated' marker persists and is never cleared. After condensation the guidance can be gone from everything the model sees while state still reports it active. Two end-to-end cases run the whole scenario so the intended lifecycle gets settled against observed behavior rather than a reading of the code. #4623: every LLM call can now say what its prompt is made of (system prompt, tool schemas, history, latest message), opt-in via `enable_prompt_composition`, each estimate joined to the provider's authoritative usage. Validated live against provider billing on two model lanes."
   - repo: anomalyco/opencode
     name: opencode
     numbers: [43685]
@@ -61,8 +65,8 @@ in_review:
     desc: "OpenAI's tool-use API rejects function names over 64 characters, so a long MCP server and tool name made the provider return 400 and opencode silently stopped processing. Truncates over-long names to a readable prefix plus a stable hash suffix, so two tools that would otherwise collide stay distinct, and warns instead of dropping one silently."
   - repo: OpenHands/OpenHands
     name: OpenHands
-    numbers: [16439, 16441]
-    desc: "A user reported his agent quietly switching itself to a weaker model. The `switch_llm` tool ships enabled under a confirmation policy that never asks, so a conversation can end up on a model nobody chose. These expose the off switch the SDK already had but the interface never rendered, and re-derive the model stamp from event history so a dropped socket stops leaving the readout disagreeing with itself."
+    numbers: [16439]
+    desc: "Re-derives the active model stamp from event history so a dropped socket stops leaving the readout disagreeing with the model the agent is using."
   - repo: OpenHands/OpenHands
     name: OpenHands
     numbers: [16426]
@@ -75,10 +79,6 @@ in_review:
     name: OpenHands
     numbers: [16600]
     desc: "Conversation tags a user applies by hand, a filter bar across the panel, and per-card collapse, so a long conversation list stays navigable instead of scrolling forever."
-  - repo: OpenHands/OpenHands
-    name: OpenHands
-    numbers: [16279, 16280]
-    desc: "The same `SIGHUP` gap as #16239, one launcher over in each case. Orphaned services hold their ports, and a surviving agent-server keeps heartbeating its lease files, so the next start reports every conversation as held and lists none."
   - repo: livekit/agents
     name: "livekit / agents"
     numbers: [6280]

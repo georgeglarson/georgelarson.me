@@ -168,7 +168,7 @@
     "url": "https://github.com/OpenHands/OpenHands/pull/16272"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-24T12:25:14Z",
     "createdAt": "2026-08-04T01:49:17Z",
     "isDraft": false,
     "number": 16279,
@@ -176,13 +176,13 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "fix: clean up dev:minimal services on SIGHUP",
     "url": "https://github.com/OpenHands/OpenHands/pull/16279"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-24T12:25:03Z",
     "createdAt": "2026-08-04T01:49:21Z",
     "isDraft": false,
     "number": 16280,
@@ -190,8 +190,8 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "fix: clean up dev:extra-backend agent-server on SIGHUP",
     "url": "https://github.com/OpenHands/OpenHands/pull/16280"
   },
@@ -266,7 +266,7 @@
     "url": "https://github.com/OpenHands/OpenHands/pull/16439"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-24T13:47:59Z",
     "createdAt": "2026-08-08T23:10:41Z",
     "isDraft": false,
     "number": 16441,
@@ -274,8 +274,8 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "feat(settings): expose the LLM-switching toggle in Agent settings",
     "url": "https://github.com/OpenHands/OpenHands/pull/16441"
   },
@@ -882,7 +882,7 @@
     "url": "https://github.com/OpenHands/OpenHands/pull/16758"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-24T02:30:39Z",
     "createdAt": "2026-08-23T22:07:48Z",
     "isDraft": false,
     "number": 750,
@@ -890,8 +890,8 @@
       "name": "docs",
       "nameWithOwner": "OpenHands/docs"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "docs: document issue triage and the ready-for-dev gate",
     "url": "https://github.com/OpenHands/docs/pull/750"
   },
@@ -936,5 +936,33 @@
     "status": "open",
     "title": "fix(mcp): truncate tool names exceeding 64-char provider limit",
     "url": "https://github.com/anomalyco/opencode/pull/43684"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-24T20:58:23Z",
+    "isDraft": false,
+    "number": 757,
+    "repository": {
+      "name": "docs",
+      "nameWithOwner": "OpenHands/docs"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "docs(sdk): document per-call prompt token composition metrics",
+    "url": "https://github.com/OpenHands/docs/pull/757"
+  },
+  {
+    "closedAt": "0001-01-01T00:00:00Z",
+    "createdAt": "2026-08-24T20:59:01Z",
+    "isDraft": false,
+    "number": 4623,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(sdk): add per-call prompt token composition metrics",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4623"
   }
 ]
