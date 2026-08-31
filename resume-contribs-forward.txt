@@ -62,7 +62,8 @@ SYSTEMS PROJECTS (creator / maintainer)
 - wiregraph (Rust): GPU-rendered network-traffic visualizer. Hosts as nodes, flows as edges, real-time topology over a live capture.
 - Fracture (TypeScript): modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services. Live demo at fracture.georgelarson.me.
 - Agent mesh (Zig + Rust): a multi-node Agent Zero deployment with agent-to-agent routing, dedicated chat and utility models, and per-node project isolation.
-- venice-dev-tools (TypeScript, npm-published) and venice-ai-php: OpenAI-compatible SDKs for the Venice AI API.
+- pgh-hospital-prices: compares what Pittsburgh hospitals charge for the same procedure, built over the federal hospital price-transparency files: corpus, query grammar, and a public dashboard at prices.georgelarson.me.
+- venice-dev-tools (TypeScript, npm-published) and venice-ai-php: OpenAI-compatible SDKs for the Venice AI API; deep-research-privacy (45 stars), a privacy-first AI research tool with an iterative search-and-synthesis pipeline built on them.
 - llm-showdown: an evaluation rig benchmarking 15+ coding models on a $25 VPS with an iterative agent loop; publishes per-round results.
 
 WORK EXPERIENCE
