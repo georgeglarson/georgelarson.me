@@ -1,0 +1,113 @@
+GEORGE LARSON
+Senior Software Engineer · Open Source / AI-Agent Infrastructure
+Email: george.g.larson@gmail.com
+Phone: 412-945-0101
+Location: Pittsburgh, PA (open to remote)
+Portfolio: https://georgelarson.me
+Contributions: https://georgelarson.me/contributions
+GitHub: https://github.com/georgeglarson
+LinkedIn: https://www.linkedin.com/in/georgelarson
+
+SUMMARY
+_Updated 2026-08_
+Twenty-nine merged pull requests across twelve open-source projects, twenty-six of them since June 2026. Twenty-one landed in the OpenHands ecosystem: the app, the software-agent SDK, Agent Canvas, the docs, and the typescript client. OpenHands named me an Active Contributor in August 2026, a community tier carrying priority PR review at maintainer level and issue-triage access, granted after the project reviewed my work across its repos. Listed in the official contributor directory at champions.hub.openhands.dev, whose README names me among its recently active contributors.
+
+Behind the contribution run: 25 years building and operating production software. Director of Technology for a mid-size manufacturer, senior engineer and manager at a medical-billing startup that scaled to national reach, software engineer at Sony Electronics. Production AI inside the business since 2023, agent and LLM infrastructure since: MCP servers, multi-provider model routing with tiered fallback, eval gates, RAG where the payoff is real.
+
+OPEN SOURCE CONTRIBUTIONS
+Every entry links a merged pull request. Full record with receipts: georgelarson.me/contributions
+
+OpenHands app (12 merged)
+- Context-window usage meter, usage drawer, and manual compaction, replacing the old metrics modal (#16311); the ring track drawn from the right token (#16534).
+- Linux desktop installer build: a CI lane mirroring the macOS and Windows builds, plus the four-line maintainer field without which the deb cannot build at all (#16656).
+- SIGHUP handling across all three dev launchers, so a closed terminal or multiplexer stops orphaning services, ports, and stale conversation leases (#16239, #16279, #16280).
+- ACP "credentials configured" banner driven by the secret store, which tells the truth on Docker and cloud installs where the old CLI probe could not (#16145).
+- Cloud provider picker follows the pagination cursor, so all 135 providers surface past the default page cut (#16758).
+- LLM-switching toggle exposed in Agent settings (#16441); active-model stamp re-derived from event history after a dropped socket (#16439).
+- Mock-LLM end-to-end stack shuts down gracefully instead of leaking six processes and four bound ports (#16152); runtime state ignored at the .tmp/ root (#16272).
+
+OpenHands software-agent SDK, docs, clients (9 merged)
+- Boundary tests for events_to_messages, the event-log to messages[] projection, which exposed and fixed a live defect dropping reasoning items from re-batched parallel tool calls (#4526).
+- POST /file/create_directory on the file router, verified end to end over real HTTP against a running agent-server (#4482).
+- send_message skill-activation wiring pinned by tests: matching, recalled knowledge, once-per-conversation activation (#4536).
+- Kimi Code membership verified as a first-class Moonshot provider across the SDK and Agent Canvas (#4150, #1844).
+- The issue-triage and ready-for-dev gate page, so contributors stop learning the gate by failing CI (docs #750).
+- Release-gate permission fix, the first fork PR merged in the typescript-client repo's history (#364).
+
+Beyond OpenHands (8 merged)
+- juspay/neurolink #1134: system messages moved to the AI SDK generateText system option; shipped in v9.82.0 on npm.
+- ferriskey/ferriskey #1133: RFC 8693 TokenExchange grant type and domain value objects for the Rust auth server.
+- kputnam/stupidedi #288, #289: re-enabled three X12 4010 EDI transaction sets (PO850, AR943, RE944) whose autoload had been off after the segment definitions outgrew their element lists.
+- mvanhorn/last30days-skill #564: a pass(1) credential source, the Linux analog of the macOS Keychain integration.
+- sst/models.dev #475, sst/opencode #4748: a Claude Opus 4.5 catalog entry and Venice.ai provider documentation.
+- WPBuddy/largo #164: the long end of the track record, 2014.
+
+In review
+- software-agent-sdk #4775 + docs #771: preserve structured MCP result data (structuredContent and result _meta) through the observation boundary, the contract protocol-aware clients build on.
+- software-agent-sdk #4623: per-call prompt token composition metrics, each estimate joined to the provider's authoritative usage.
+- mitmproxy #8199, #8200: Flow.kill() resume-event and KillInjected fixes so teardown closes the client connection and disconnects in-transit flows.
+- livekit/agents #6280: duplicate same-target handoff tool call no longer reads as ambiguous and aborts the agent switch.
+- charmbracelet/crush #2749, #2750: LSP score-based client selection and single-file-server handling.
+- stryker-mutator/stryker-net #3694, allenai/open-instruct #1751, kputnam/stupidedi #292, #293, sst/opencode #43684, #43685.
+
+Fixed upstream (idea shipped under someone else's commit)
+- n8n #29516: per-runner consecutive-timeout counter for stuck task-runner detection, cutting detection from hours to about six seconds. A maintainer re-implemented the idea and credited the diagnosis by name in merged #35456.
+- OpenHands #16415 and #16443, charmbracelet/catwalk #112: the same problems later fixed by others' merged PRs.
+
+SYSTEMS PROJECTS (creator / maintainer)
+- netgrep (Rust): modern replacement for ngrep. Live capture and pcap analysis with TCP stream reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, and an interactive terminal UI.
+- termshark (Go): modernized terminal UI for Wireshark/tshark. Refactored architecture, improved test coverage, Go 1.22+ idioms, experimental web interface.
+- wiregraph (Rust): GPU-rendered network-traffic visualizer. Hosts as nodes, flows as edges, real-time topology over a live capture.
+- Fracture (TypeScript): modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services. Live demo at fracture.georgelarson.me.
+- Agent mesh (Zig + Rust): a multi-node Agent Zero deployment with agent-to-agent routing, dedicated chat and utility models, and per-node project isolation.
+- venice-dev-tools (TypeScript, npm-published) and venice-ai-php: OpenAI-compatible SDKs for the Venice AI API.
+- llm-showdown: an evaluation rig benchmarking 15+ coding models on a $25 VPS with an iterative agent loop; publishes per-round results.
+
+WORK EXPERIENCE
+
+Senior Software Engineer & Director of Technology, FM Expressions (2018 to April 2026)
+- Built and ran the software and infrastructure stack for a mid-size manufacturer serving ecommerce channels, hands-on across the codebase while owning technology strategy.
+- Shipped production AI inside the business from 2023: a customer-facing DALL-E design assistant for custom heat transfers, an OpenAI/Pythagora code-generation tool on MongoDB, an AI knowledge platform (wiki.fmx.ink), a customer-service AI/BI integration, and a Python/FastAPI templating system bridging the Fanatics and VivX vendor pipelines.
+- Improved database performance 93% and drove critical systems to 99% uptime; cut MySQL slow-query volume 96% to accelerate incident response.
+- Built a knowledge-management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) capturing production logs, transcripts, and operator notes for real-time search.
+- Hardened hybrid infrastructure: Authentik SSO, HashiCorp Vault, automated TLS, firewall hardening, DMARC/SPF/DKIM enforcement at p=reject (1.5M emails/month, 99.48% compliance), and HostedScan/OWASP ZAP sweeps across 36 public assets holding critical/high findings at zero.
+- Built and operated integrations across the print and fulfillment vendor stack, ecommerce platforms (Shopify, Magento), and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share one data model.
+
+Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
+- Helped scale the company from a 50-person startup to a national leader in medical billing (Inc 5000, #34 in Health, #503 overall).
+- Designed the EDI framework, ACH transmission, ERP integration, payer portal, Gold Standard Review, and recovery-analytics layers of the platform.
+- Acted as security-response lead, HIPAA/HITECH SME, and Linux SME; migrated project management to Redmine with custom plugins.
+- Built OCR bill-entry validation that reduced errors and sped turnaround.
+- Led internal and offshore teams across development and Linux infrastructure.
+
+Software Engineer and Team Manager, Sony Electronics (2004 to 2009)
+- Directed software development, logistics, and technical operations for the Pittsburgh Customer Satisfaction Center, starting from effectively bare shelves.
+- Designed and ran the TiVo firmware upgrade station for the United States market.
+- Created an AS/400 parts-ordering interface that saved millions in operational spend.
+- Front-end software work delivered roughly 30% productivity gain and 12% expense reduction.
+
+Maintenance and Automation Technician, T. Marzetti Company (2000 to 2004)
+- Led second-shift maintenance for robotics, conveyors, and packaging machinery.
+- Programmed PLCs and Adept V++ robotics in-house; tuned sensors, actuators, and industrial controls on the production line.
+
+Earlier Career (1990s to 2000s)
+- Software developer and webmaster for non-profit organizations.
+- Built custom C++ modules for Major BBS and kept one of the first internet-connected BBS systems alive.
+- Contract development for Daifuku USA on material-handling support systems; paid programming and database work 1994 to 2000.
+
+TECHNICAL SKILLS
+Languages: PHP, Perl, SQL, Bash, Python, Go, Rust, Zig, C#, TypeScript, C++
+AI / Agent Infrastructure: Model Context Protocol (MCP server design), agent-to-agent (A2A) routing, multi-node agent mesh, project isolation, scheduled autonomous tasks
+LLM Engineering: multi-provider model routing across 12 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral, and others), tiered inference, prompt caching, eval harnesses, RAG, semantic search, LiteLLM
+Coding-agent tooling: operational across 10 coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack
+Databases and Web: MySQL, PostgreSQL, Qdrant, WordPress, Redmine, Gitea, Wiki.js
+Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare
+Cloud: AWS, Azure, Google Cloud, Proxmox
+Security and Identity: Authentik, HashiCorp Vault, HostedScan, OWASP ZAP, Nikto, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, zero-trust network design
+Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls
+Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab
+
+EDUCATION AND PROFESSIONAL DEVELOPMENT
+- Self-taught from C++ books as a teenager; built BBS modules in production before college.
+- Currently studying Stanford CS336, Language Modeling from Scratch (2025).
+- Continuous coursework across systems engineering, network security, database internals, and cloud architecture (Coursera, MIT OpenCourseWare, vendor certification programs).
