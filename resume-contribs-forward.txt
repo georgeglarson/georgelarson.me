@@ -44,7 +44,7 @@ Beyond OpenHands (8 merged)
 
 In review
 - software-agent-sdk #4775 + docs #771: preserve structured MCP result data (structuredContent and result _meta) through the observation boundary, the contract protocol-aware clients build on.
-- software-agent-sdk #4623: per-call prompt token composition metrics, each estimate joined to the provider's authoritative usage.
+- software-agent-sdk #4623: an offline prompt-composition report (scripts/prompt_composition_report.py) that ingests log_completions output and breaks each LLM call's prompt into system, tool-schema, history, and latest-message buckets, with a text chart.
 - mitmproxy #8199, #8200: Flow.kill() resume-event and KillInjected fixes so teardown closes the client connection and disconnects in-transit flows.
 - livekit/agents #6280: duplicate same-target handoff tool call no longer reads as ambiguous and aborts the agent switch.
 - charmbracelet/crush #2749, #2750: LSP score-based client selection and single-file-server handling.
@@ -54,7 +54,7 @@ Fixed upstream (idea shipped under someone else's commit)
 - n8n #29516: per-runner consecutive-timeout counter for stuck task-runner detection, cutting detection from hours to about six seconds. A maintainer re-implemented the idea and credited the diagnosis by name in merged #35456.
 - OpenHands #16415 and #16443, charmbracelet/catwalk #112: the same problems later fixed by others' merged PRs.
 
-SYSTEMS PROJECTS (creator / maintainer)
+SYSTEMS PROJECTS
 - Agent Canvas extensions (JavaScript, OpenHands): two Canvas Extensions (manifest schema 1, host API 1) for the OpenHands agent stack. agent-canvas-subagent-monitor watches parallel task-tool subagent calls in a live conversation, pairing TaskAction events with their TaskObservation results. agent-canvas-usage-explorer makes recorded LLM usage inspectable across runs: sortable, filterable run tables from persisted usage metrics, with per-bucket and per-call detail.
 - rust-connect (Rust): desktop-agnostic KDE Connect reimplementation, API-first, pairing with the stock KDE Connect Android app with no KDE or GNOME dependencies. Feature-complete against the reference implementations; v0.1.0 released with deb packages. The first brick of a broader proximity-interface direction: messaging lives on the phone, the computer is a projection surface.
 - netgrep (Rust): modern replacement for ngrep. Live capture and pcap analysis with TCP stream reassembly, TLS 1.2/1.3 decryption, HTTP/2 and DNS parsing, and an interactive terminal UI.
@@ -62,9 +62,10 @@ SYSTEMS PROJECTS (creator / maintainer)
 - wiregraph (Rust): GPU-rendered network-traffic visualizer. Hosts as nodes, flows as edges, real-time topology over a live capture.
 - Fracture (TypeScript): modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services. Live demo at fracture.georgelarson.me.
 - Agent mesh (Zig + Rust): a multi-node Agent Zero deployment with agent-to-agent routing, dedicated chat and utility models, and per-node project isolation.
-- venicecode (TypeScript, 2025): a fork of sst/opencode made Venice.ai-compatible in the platform's early days, when its endpoints worked with none of the major coding tools. Carried compatibility tests for provider-specific reasoning and tool-call shapes.
+- venicecode (TypeScript, 2025, archived 2026): a fork of sst/opencode made Venice.ai-compatible in the platform's early days, when its endpoints worked with none of the major coding tools. Carried compatibility tests for provider-specific reasoning and tool-call shapes.
 - pgh-hospital-prices: compares what Pittsburgh hospitals charge for the same procedure, built over the federal hospital price-transparency files: corpus, query grammar, and a public dashboard at prices.georgelarson.me.
-- venice-dev-tools (TypeScript, npm-published) and venice-ai-php: OpenAI-compatible SDKs for the Venice AI API; deep-research-privacy (45 stars), a privacy-first AI research tool with an iterative search-and-synthesis pipeline built on them.
+- deep-research-privacy (45 stars, TypeScript): a standalone privacy-first AI research tool with an iterative search-and-synthesis pipeline: Brave Search, zero data collection, parallel queries with cited output.
+- venice-dev-tools (TypeScript, npm-published) and venice-ai-php (2025-2026, archived): OpenAI-compatible SDKs for the Venice AI API.
 - llm-showdown: an evaluation rig benchmarking 15+ coding models on a $25 VPS with an iterative agent loop; publishes per-round results.
 
 WORK EXPERIENCE

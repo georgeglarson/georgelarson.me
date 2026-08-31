@@ -15,7 +15,7 @@ Can free LLMs do real agentic work? Not chat. Not autocomplete. Actually build a
 
 I spun up a $25/year RackNerd VPS (2.5GB RAM, 3 cores), wrote a URL shortener challenge spec (Express backend, SQLite, HTML frontend, rate limiting, 5 integration tests), and pointed 15 models at it. Same prompt, same environment, up to 15 iterations each with a 10-minute timeout per iteration. I called it the showdown loop. Run the agent, check if it said it's done, repeat.
 
-15 models across 4 providers. OpenCode's built-in free models, Venice, Groq, OpenRouter's free tier. None of them cost me anything to run. I hold Venice's DIEM token, which comes with daily inference credits, and the rest were free-tier models.
+15 models across 4 providers. OpenCode's built-in free models, Venice, Groq, OpenRouter's free tier. None of them cost me anything to run. I held Venice's DIEM token at the time, which came with daily inference credits, and the rest were free-tier models.
 
 8 out of 15 passed. Two models tied at 1 minute 43 seconds, one iteration each. At the other end, nemotron-3-super-free needed 3 iterations and 30 minutes. Seven models failed entirely.
 

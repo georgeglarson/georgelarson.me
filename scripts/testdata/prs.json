@@ -1048,5 +1048,33 @@
     "status": "open",
     "title": "chore: require Node 24 for agent canvas",
     "url": "https://github.com/OpenHands/OpenHands/pull/17009"
+  },
+  {
+    "closedAt": null,
+    "createdAt": "2026-08-31T16:53:40Z",
+    "isDraft": false,
+    "number": 4796,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(ci): stop the endpoint audit failing every fork PR",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4796"
+  },
+  {
+    "closedAt": null,
+    "createdAt": "2026-08-31T17:35:18Z",
+    "isDraft": true,
+    "number": 4799,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "fix(events): use the WebSocket global and drop the ws dependency",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4799"
   }
 ]

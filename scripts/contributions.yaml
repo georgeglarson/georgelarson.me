@@ -49,6 +49,10 @@ merged:
 # PR whose repo+number isn't covered here, and any number here that's no longer
 # open in gh (it merged or closed).
 in_review:
+  - repo: OpenHands/software-agent-sdk
+    name: "OpenHands / software-agent-sdk"
+    numbers: [4796]
+    desc: "The endpoint-audit CI check failed on every fork PR: posting the report comment 403s on a fork's read-only token, so the job went red before anyone read the audit. The report now always lands in the job summary, and the comment posts only on same-repo PRs."
   - repo: OpenHands/docs
     name: OpenHands / docs
     numbers: [771]
@@ -76,11 +80,11 @@ in_review:
   - repo: OpenHands/docs
     name: OpenHands / docs
     numbers: [757]
-    desc: "Documents the prompt token composition metrics from software-agent-sdk #4623: what each component bucket measures, the estimates-vs-provider-usage contract, and how to opt in."
+    desc: "Documents the offline prompt-composition report from software-agent-sdk #4623: what each component bucket measures, and how to run `scripts/prompt_composition_report.py` against `log_completions` output."
   - repo: OpenHands/software-agent-sdk
     name: "OpenHands / software-agent-sdk"
     numbers: [4565, 4623]
-    desc: "A skill or path rule fires once per conversation, on an event condensation is allowed to forget, while the 'already activated' marker persists and is never cleared. After condensation the guidance can be gone from everything the model sees while state still reports it active. Two end-to-end cases run the whole scenario so the intended lifecycle gets settled against observed behavior rather than a reading of the code. #4623: every LLM call can now say what its prompt is made of (system prompt, tool schemas, history, latest message), opt-in via `enable_prompt_composition`, each estimate joined to the provider's authoritative usage. Validated live against provider billing on two model lanes."
+    desc: "A skill or path rule fires once per conversation, on an event condensation is allowed to forget, while the 'already activated' marker persists and is never cleared. After condensation the guidance can be gone from everything the model sees while state still reports it active. Two end-to-end cases run the whole scenario so the intended lifecycle gets settled against observed behavior rather than a reading of the code. #4623: an offline prompt-composition report, `scripts/prompt_composition_report.py`, that ingests `log_completions` output and shows what each LLM call's prompt is made of (system prompt, tool schemas, history, latest message), as a per-call breakdown plus a text chart."
   - repo: anomalyco/opencode
     name: opencode
     numbers: [43685]

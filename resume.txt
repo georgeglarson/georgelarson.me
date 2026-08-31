@@ -46,17 +46,22 @@ Merged
 - sst/opencode #4748: documented the Venice.ai provider for the opencode coding agent. Merged Nov 2025.
 
 In review
-- n8n-io/n8n #29516 (+288/-2 across 6 files, 48 jest tests passing): per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s.
 - livekit/agents #6280: duplicate same-target handoff tool call no longer reads as ambiguous and aborts the agent switch.
 - allenai/open-instruct #1751: a --launcher flag so non-Ai2 users can run the training launcher locally without a Beaker cluster account.
 - stryker-mutator/stryker-net #3694: extends the array-creation mutator to implicit array creation.
 - mitmproxy/mitmproxy #8199, #8200: Flow.kill() resume-event and KillInjected fixes so teardown closes the client connection and disconnects in-transit flows.
 - charmbracelet/crush #2749, #2750: LSP score-based client selection and single-file-server handling so single-file servers start without root markers.
 
-Venice AI SDKs (2025 to Present)
-- deep-research-privacy (36 stars, TypeScript): privacy-first AI research tool with an iterative search-and-synthesis pipeline, plus published TypeScript and PHP SDKs (venice-dev-tools, venice-ai-php) for the Venice API.
+Fixed upstream (idea shipped under someone else's commit)
+- n8n-io/n8n #29516: per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s. A maintainer re-implemented the idea on current master and credited the diagnosis by name (#35456); shipped in the 2.33 and 2.34 release lines.
 
-LLM Showdown (2026 to Present)
+deep-research-privacy (45 stars, TypeScript)
+- Standalone privacy-first AI research tool: Brave Search, zero data collection, parallel queries with cited output, and an iterative search-and-synthesis pipeline.
+
+Venice AI SDKs (2025 to 2026, archived)
+- Published TypeScript and PHP SDKs (venice-dev-tools, venice-ai-php) for the Venice API. Dated craft work; repositories archived 2026.
+
+LLM Showdown (2026)
 - llm-showdown-data. Companion dataset for the blog series benchmarking 15+ free coding models on a $25 VPS using opencode and a ralph-wiggum-style iterative loop.
 - Designed and runs the evaluation rig; publishes per-round results comparing model behavior on real coding tasks.
 
