@@ -252,7 +252,7 @@
     "url": "https://github.com/OpenHands/OpenHands/pull/16426"
   },
   {
-    "closedAt": "0001-01-01T00:00:00Z",
+    "closedAt": "2026-08-28T12:12:25Z",
     "createdAt": "2026-08-08T20:10:53Z",
     "isDraft": false,
     "number": 16439,
@@ -260,8 +260,8 @@
       "name": "OpenHands",
       "nameWithOwner": "OpenHands/OpenHands"
     },
-    "state": "open",
-    "status": "open",
+    "state": "merged",
+    "status": "merged",
     "title": "fix(chat): re-derive active profile stamp from event history on reload",
     "url": "https://github.com/OpenHands/OpenHands/pull/16439"
   },
@@ -964,5 +964,89 @@
     "status": "open",
     "title": "feat(sdk): add per-call prompt token composition metrics",
     "url": "https://github.com/OpenHands/software-agent-sdk/pull/4623"
+  },
+  {
+    "closedAt": "2026-08-28T21:16:23Z",
+    "createdAt": "2026-08-28T15:04:56Z",
+    "isDraft": false,
+    "number": 364,
+    "repository": {
+      "name": "typescript-client",
+      "nameWithOwner": "OpenHands/typescript-client"
+    },
+    "state": "merged",
+    "status": "merged",
+    "title": "ci: grant contents: write to the release-ready caller",
+    "url": "https://github.com/OpenHands/typescript-client/pull/364"
+  },
+  {
+    "closedAt": null,
+    "createdAt": "2026-08-30T22:14:00Z",
+    "isDraft": false,
+    "number": 771,
+    "repository": {
+      "name": "docs",
+      "nameWithOwner": "OpenHands/docs"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "docs(sdk): describe structured MCP results",
+    "url": "https://github.com/OpenHands/docs/pull/771"
+  },
+  {
+    "closedAt": null,
+    "createdAt": "2026-08-30T21:22:36Z",
+    "isDraft": false,
+    "number": 4775,
+    "repository": {
+      "name": "software-agent-sdk",
+      "nameWithOwner": "OpenHands/software-agent-sdk"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "feat(sdk): preserve structured MCP result data",
+    "url": "https://github.com/OpenHands/software-agent-sdk/pull/4775"
+  },
+  {
+    "closedAt": null,
+    "createdAt": "2026-08-26T11:06:04Z",
+    "isDraft": false,
+    "number": 761,
+    "repository": {
+      "name": "docs",
+      "nameWithOwner": "OpenHands/docs"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "docs(sdk): explain per-task LLM profile selection",
+    "url": "https://github.com/OpenHands/docs/pull/761"
+  },
+  {
+    "closedAt": null,
+    "createdAt": "2026-08-28T15:05:03Z",
+    "isDraft": false,
+    "number": 16994,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "ci: grant contents: write to the release-ready caller",
+    "url": "https://github.com/OpenHands/OpenHands/pull/16994"
+  },
+  {
+    "closedAt": null,
+    "createdAt": "2026-08-30T00:35:19Z",
+    "isDraft": false,
+    "number": 17009,
+    "repository": {
+      "name": "OpenHands",
+      "nameWithOwner": "OpenHands/OpenHands"
+    },
+    "state": "open",
+    "status": "open",
+    "title": "chore: require Node 24 for agent canvas",
+    "url": "https://github.com/OpenHands/OpenHands/pull/17009"
   }
 ]

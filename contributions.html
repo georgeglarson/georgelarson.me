@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions · George Larson</title>
-<meta name="description" content="27 fixes merged across eleven projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
+<meta name="description" content="29 fixes merged across twelve projects, more in review. Every one survives a click: OpenHands, n8n, mitmproxy, Charm's Crush, opencode, models.dev, and more.">
 
 <link rel="icon" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Open-source contributions · George Larson">
-<meta property="og:description" content="27 fixes merged across eleven projects, more in review. Every one survives a click.">
+<meta property="og:description" content="29 fixes merged across twelve projects, more in review. Every one survives a click.">
 <meta property="og:url" content="https://georgelarson.me/contributions">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open-source contributions · George Larson">
-<meta name="twitter:description" content="27 fixes merged across eleven projects, more in review. Every one survives a click.">
+<meta name="twitter:description" content="29 fixes merged across twelve projects, more in review. Every one survives a click.">
 
 <link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
@@ -43,7 +43,7 @@
     <h1 class="title reveal">Contributions</h1>
       <p class="stats reveal">
 <!-- contributions:stats:start -->
-        <span><b>27</b> merged</span><span><b>11</b> projects</span><span><b>18</b> in review</span><span><b>4</b> fixed upstream</span>
+        <span><b>29</b> merged</span><span><b>12</b> projects</span><span><b>23</b> in review</span><span><b>4</b> fixed upstream</span>
       <!-- contributions:stats:end -->
       </p>
 
@@ -54,8 +54,8 @@
         triage access, and contributor benefits. The title matters more to me because of who grants
         it: the people building a coding-agent harness, after reviewing my work and collaborating
         with me across their projects.</p>
-        <p>It's an honor. Nineteen merged contributions across the OpenHands app, software-agent SDK,
-        docs, and Agent Canvas are public below and in the
+        <p>It's an honor. Twenty-one merged contributions across the OpenHands app, software-agent SDK,
+        docs, typescript client, and Agent Canvas are public below and in the
         <a class="lnk" href="https://champions.hub.openhands.dev/">official OpenHands contributor directory</a>.</p>
       </div>
     </section>
@@ -64,6 +64,14 @@
       <h2 class="label">Merged</h2>
       <ul class="tools">
 <!-- contributions:merged:start -->
+        <li>
+          <div class="name">OpenHands / typescript-client <a class="lnk" href="https://github.com/OpenHands/typescript-client/pull/364">#364</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">The <code>release ready</code> gate had never once started: every run ended as <code>startup_failure</code> with no jobs and no logs, because the caller granted <code>contents: read</code> to a reusable workflow whose jobs need <code>contents: write</code>, and GitHub validates called-workflow permissions statically, before anything runs. One grant, and the gate runs. First fork PR merged in this repo.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16439">#16439</a> <span class="tag">merged Aug 2026</span></div>
+          <p class="desc">Re-derives the active model stamp from event history so a dropped socket stops leaving the readout disagreeing with the model the agent is using.</p>
+        </li>
         <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16441">#16441</a> <span class="tag">merged Aug 2026</span></div>
           <p class="desc">Exposes the SDK&#x27;s existing LLM-switching toggle in Agent settings, so users can stop an agent from moving itself to another model under a confirmation policy that never asks.</p>
@@ -181,6 +189,30 @@
       <ul class="tools">
 <!-- contributions:inreview:start -->
         <li>
+          <div class="name">OpenHands / docs <a class="lnk" href="https://github.com/OpenHands/docs/pull/771">#771</a></div>
+          <p class="desc">Documents the two <code>MCPToolObservation</code> fields from software-agent-sdk #4775: <code>structured_content</code> and <code>result_meta</code> keep an MCP result&#x27;s <code>structuredContent</code> and <code>_meta</code> in the serialized observation, so protocol-aware clients receive what the tool actually returned.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4775">#4775</a></div>
+          <p class="desc">MCP tool results can carry <code>structuredContent</code> and result <code>_meta</code> alongside their content blocks, and the conversion into <code>MCPToolObservation</code> silently discarded both, after which no downstream consumer (event persistence, websocket delivery, protocol-aware clients) could recover them. The observation gains the two fields. Closes #4776.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / docs <a class="lnk" href="https://github.com/OpenHands/docs/pull/761">#761</a></div>
+          <p class="desc">Documents the per-call <code>llm_profile</code> option from software-agent-sdk #4510: model-selection precedence, unknown-profile errors, resume behavior, and the custom profile-store discovery limitation.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4510">#4510</a></div>
+          <p class="desc">An optional <code>llm_profile</code> field on the task tool, so a parent agent keeps its own model while delegating one task to a cheaper, faster, or specialized saved profile.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16994">#16994</a></div>
+          <p class="desc">The same <code>release ready</code> <code>startup_failure</code> as typescript-client #364, in the monorepo: 100 runs back to 2026-08-07 all died before any job started, invisible in the Actions UI. One <code>contents: write</code> grant in the caller.</p>
+        </li>
+        <li>
+          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/17009">#17009</a></div>
+          <p class="desc">The package declared <code>engines.node &gt;= 22.12</code> while every CI pin builds on 24, so npm handed the published package to a runtime nothing tests, with no <code>EBADENGINE</code> to warn. <code>engines</code> becomes <code>&gt;=24</code>, matching what CI builds.</p>
+        </li>
+        <li>
           <div class="name">OpenHands / docs <a class="lnk" href="https://github.com/OpenHands/docs/pull/757">#757</a></div>
           <p class="desc">Documents the prompt token composition metrics from software-agent-sdk #4623: what each component bucket measures, the estimates-vs-provider-usage contract, and how to opt in.</p>
         </li>
@@ -195,10 +227,6 @@
         <li>
           <div class="name">opencode <a class="lnk" href="https://github.com/anomalyco/opencode/pull/43684">#43684</a></div>
           <p class="desc">OpenAI&#x27;s tool-use API rejects function names over 64 characters, so a long MCP server and tool name made the provider return 400 and opencode silently stopped processing. Truncates over-long names to a readable prefix plus a stable hash suffix, so two tools that would otherwise collide stay distinct, and warns instead of dropping one silently.</p>
-        </li>
-        <li>
-          <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16439">#16439</a></div>
-          <p class="desc">Re-derives the active model stamp from event history so a dropped socket stops leaving the readout disagreeing with the model the agent is using.</p>
         </li>
         <li>
           <div class="name">OpenHands <a class="lnk" href="https://github.com/OpenHands/OpenHands/pull/16426">#16426</a></div>

@@ -36,22 +36,22 @@ class MergedSectionTests(unittest.TestCase):
     def setUp(self):
         self.cur = bc.load_curation(YAML)
 
-    def test_twenty_seven_merged_entries(self):
+    def test_merged_entry_count(self):
         html = bc.render_merged_html(self.cur)
-        self.assertEqual(html.count("<li>"), 27)
+        self.assertEqual(html.count("<li>"), 29)
 
     def test_sorted_newest_first(self):
         numbers = bc.merged_numbers_in_order(self.cur)
         self.assertEqual(
             numbers,
-            [16441, 16279, 16280, 750, 16758, 16656, 16145, 4536, 4526, 4482, 16534, 16311, 16272, 16239,
+            [364, 16439, 16441, 16279, 16280, 750, 16758, 16656, 16145, 4536, 4526, 4482, 16534, 16311, 16272, 16239,
              4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564, 475, 4748,
              164],
         )
 
     def test_every_receipt_present(self):
         html = bc.render_merged_html(self.cur)
-        for n in (16441, 16279, 16280, 750, 16758, 16656, 16145, 4536, 4526, 4482, 16534, 16311, 16272,
+        for n in (364, 16439, 16441, 16279, 16280, 750, 16758, 16656, 16145, 4536, 4526, 4482, 16534, 16311, 16272,
                   16239, 4150, 16152, 1844, 289, 288, 1368, 1133, 1134, 1434, 564,
                   475, 4748, 164):
             self.assertIn(f"#{n}", html)
@@ -59,7 +59,7 @@ class MergedSectionTests(unittest.TestCase):
     def test_first_entry_is_newest(self):
         html = bc.render_merged_html(self.cur)
         first = html.split("<li>", 1)[1]
-        self.assertIn("#16441", first)
+        self.assertIn("#364", first)
 
 
 class HeadlineTests(unittest.TestCase):
@@ -68,13 +68,13 @@ class HeadlineTests(unittest.TestCase):
 
     def test_counts(self):
         n_fixes, n_projects, sentence = bc.headline(self.cur)
-        self.assertEqual(n_fixes, 27)
-        self.assertEqual(n_projects, 11)
+        self.assertEqual(n_fixes, 29)
+        self.assertEqual(n_projects, 12)
 
     def test_sentence_spelled_out(self):
         _, _, sentence = bc.headline(self.cur)
-        self.assertIn("27", sentence)
-        self.assertIn("eleven", sentence)
+        self.assertIn("29", sentence)
+        self.assertIn("twelve", sentence)
 
 
 class InReviewTests(unittest.TestCase):

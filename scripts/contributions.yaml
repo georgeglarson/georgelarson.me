@@ -13,6 +13,8 @@
 # --- Merged receipts (authoritative; the portfolio count draws from this set) ---
 # Generator sorts by `merged` date descending. `merged` = GitHub merge date.
 merged:
+  - {repo: OpenHands/typescript-client, number: 364, merged: 2026-08-28, name: "OpenHands / typescript-client", desc: "The `release ready` gate had never once started: every run ended as `startup_failure` with no jobs and no logs, because the caller granted `contents: read` to a reusable workflow whose jobs need `contents: write`, and GitHub validates called-workflow permissions statically, before anything runs. One grant, and the gate runs. First fork PR merged in this repo."}
+  - {repo: OpenHands/OpenHands, number: 16439, merged: 2026-08-28, name: OpenHands, desc: "Re-derives the active model stamp from event history so a dropped socket stops leaving the readout disagreeing with the model the agent is using."}
   - {repo: OpenHands/OpenHands, number: 16441, merged: 2026-08-24, name: OpenHands, desc: "Exposes the SDK's existing LLM-switching toggle in Agent settings, so users can stop an agent from moving itself to another model under a confirmation policy that never asks."}
   - {repo: OpenHands/OpenHands, number: 16279, merged: 2026-08-24, name: OpenHands, desc: "Handles `SIGHUP` in the minimal development launcher so closing a terminal or multiplexer cleans up its detached services instead of leaving ports and lease files behind."}
   - {repo: OpenHands/OpenHands, number: 16280, merged: 2026-08-24, name: OpenHands, desc: "Handles `SIGHUP` in the extra-backend development launcher so the agent-server cannot survive its parent and keep stale conversation leases alive."}
@@ -49,6 +51,30 @@ merged:
 in_review:
   - repo: OpenHands/docs
     name: OpenHands / docs
+    numbers: [771]
+    desc: "Documents the two `MCPToolObservation` fields from software-agent-sdk #4775: `structured_content` and `result_meta` keep an MCP result's `structuredContent` and `_meta` in the serialized observation, so protocol-aware clients receive what the tool actually returned."
+  - repo: OpenHands/software-agent-sdk
+    name: "OpenHands / software-agent-sdk"
+    numbers: [4775]
+    desc: "MCP tool results can carry `structuredContent` and result `_meta` alongside their content blocks, and the conversion into `MCPToolObservation` silently discarded both, after which no downstream consumer (event persistence, websocket delivery, protocol-aware clients) could recover them. The observation gains the two fields. Closes #4776."
+  - repo: OpenHands/docs
+    name: OpenHands / docs
+    numbers: [761]
+    desc: "Documents the per-call `llm_profile` option from software-agent-sdk #4510: model-selection precedence, unknown-profile errors, resume behavior, and the custom profile-store discovery limitation."
+  - repo: OpenHands/software-agent-sdk
+    name: "OpenHands / software-agent-sdk"
+    numbers: [4510]
+    desc: "An optional `llm_profile` field on the task tool, so a parent agent keeps its own model while delegating one task to a cheaper, faster, or specialized saved profile."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [16994]
+    desc: "The same `release ready` `startup_failure` as typescript-client #364, in the monorepo: 100 runs back to 2026-08-07 all died before any job started, invisible in the Actions UI. One `contents: write` grant in the caller."
+  - repo: OpenHands/OpenHands
+    name: OpenHands
+    numbers: [17009]
+    desc: "The package declared `engines.node >= 22.12` while every CI pin builds on 24, so npm handed the published package to a runtime nothing tests, with no `EBADENGINE` to warn. `engines` becomes `>=24`, matching what CI builds."
+  - repo: OpenHands/docs
+    name: OpenHands / docs
     numbers: [757]
     desc: "Documents the prompt token composition metrics from software-agent-sdk #4623: what each component bucket measures, the estimates-vs-provider-usage contract, and how to opt in."
   - repo: OpenHands/software-agent-sdk
@@ -63,10 +89,6 @@ in_review:
     name: opencode
     numbers: [43684]
     desc: "OpenAI's tool-use API rejects function names over 64 characters, so a long MCP server and tool name made the provider return 400 and opencode silently stopped processing. Truncates over-long names to a readable prefix plus a stable hash suffix, so two tools that would otherwise collide stay distinct, and warns instead of dropping one silently."
-  - repo: OpenHands/OpenHands
-    name: OpenHands
-    numbers: [16439]
-    desc: "Re-derives the active model stamp from event history so a dropped socket stops leaving the readout disagreeing with the model the agent is using."
   - repo: OpenHands/OpenHands
     name: OpenHands
     numbers: [16426]
