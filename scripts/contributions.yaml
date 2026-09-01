@@ -51,6 +51,10 @@ merged:
 in_review:
   - repo: OpenHands/software-agent-sdk
     name: "OpenHands / software-agent-sdk"
+    numbers: [4799]
+    desc: "The conversation and bash event clients only checked `window.WebSocket`, then fell back to `require('ws')` — which does not exist in the package's ESM build, so Node 22+ reported no WebSocket implementation despite shipping a global. Reads `globalThis.WebSocket` directly and drops the `ws` dependency."
+  - repo: OpenHands/software-agent-sdk
+    name: "OpenHands / software-agent-sdk"
     numbers: [4796]
     desc: "The endpoint-audit CI check failed on every fork PR: posting the report comment 403s on a fork's read-only token, so the job went red before anyone read the audit. The report now always lands in the job summary, and the comment posts only on same-repo PRs."
   - repo: OpenHands/docs

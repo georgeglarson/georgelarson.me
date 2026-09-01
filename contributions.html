@@ -43,7 +43,7 @@
     <h1 class="title reveal">Contributions</h1>
       <p class="stats reveal">
 <!-- contributions:stats:start -->
-        <span><b>29</b> merged</span><span><b>12</b> projects</span><span><b>24</b> in review</span><span><b>4</b> fixed upstream</span>
+        <span><b>29</b> merged</span><span><b>12</b> projects</span><span><b>25</b> in review</span><span><b>4</b> fixed upstream</span>
       <!-- contributions:stats:end -->
       </p>
 
@@ -188,6 +188,10 @@
       <h2 class="label">In review</h2>
       <ul class="tools">
 <!-- contributions:inreview:start -->
+        <li>
+          <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4799">#4799</a></div>
+          <p class="desc">The conversation and bash event clients only checked <code>window.WebSocket</code>, then fell back to <code>require(&#x27;ws&#x27;)</code> — which does not exist in the package&#x27;s ESM build, so Node 22+ reported no WebSocket implementation despite shipping a global. Reads <code>globalThis.WebSocket</code> directly and drops the <code>ws</code> dependency.</p>
+        </li>
         <li>
           <div class="name">OpenHands / software-agent-sdk <a class="lnk" href="https://github.com/OpenHands/software-agent-sdk/pull/4796">#4796</a></div>
           <p class="desc">The endpoint-audit CI check failed on every fork PR: posting the report comment 403s on a fork&#x27;s read-only token, so the job went red before anyone read the audit. The report now always lands in the job summary, and the comment posts only on same-repo PRs.</p>
