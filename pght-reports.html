@@ -53,11 +53,25 @@
       <a href="https://prices.georgelarson.me">explore the full PGHT project</a></p>
     </section>
     <section class="block reveal">
+      <h2 class="label">A workspace you can keep</h2>
+      <div class="prose">
+        <p>Copy an example or save a report from chat into My reports. Rename it,
+        change it, duplicate it, or start over. Each visitor gets a workspace in their
+        own browser, so exploring the demo leaves everyone else’s examples intact.</p>
+        <p>The browser saves the query and chart definition. Opening a saved report
+        validates the query again and fetches its results, even after the server’s
+        temporary report has expired. There is no account to create or scheduled reset
+        to interrupt a session. Saved reports stay in that browser until removed;
+        clearing the site’s browser data removes them too.</p>
+      </div>
+    </section>
+    <section class="block reveal">
       <h2 class="label">People and agents share the report</h2>
       <div class="prose">
         <p>The built-in chat serves visitors directly. WebMCP exposes reporting actions
         to a compatible browser agent, so it can discover reports, open them, inspect their context,
-        and read visible results from the same page the person is using.</p>
+        and read visible results from the same page the person is using. It can also save
+        copies and edit personal reports in that browser’s workspace.</p>
         <p>A separate local MCP workflow supports report creation, preview, and publication.
         The public application protects the shared examples while allowing temporary exploration.</p>
         <p>WebMCP requires a supporting browser and activation. The ordinary chat and
@@ -69,7 +83,8 @@
       <div class="prose">
         <p>The reporting layer connects Quill’s React UI and SDK to a backend I built
         over PGHT data. That work includes query validation, report generation and lifecycle,
-        chart and drilldown repairs, the local MCP authoring interface, and the browser-agent tools.</p>
+        chart and drilldown repairs, browser-local report persistence, the local MCP authoring
+        interface, and the browser-agent tools.</p>
         <p>The broader PGHT project handles hospital-file ingestion and source-aware analysis.
         Its query MCP supports catalog discovery, validation, and execution. The reporting
         application uses a separate extracted dataset and has its own backend.</p>
