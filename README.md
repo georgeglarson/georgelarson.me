@@ -10,6 +10,7 @@ Fonts are self-hosted (no CDN). The design system lives in `css/site.css`.
 - `index.html` - landing: the positioning spine and the projects
 - `who-is-george.html` - the deep story / who's-behind-it page
 - `network-tools.html`, `n8n.html`, `fracture.html` - case studies
+- `pght-reports.html` - chat/reporting and browser-agent project; release with the verified reporting app at `reports.georgelarson.me`
 - `contributions.html` - the open-source record (merged + in-review, every PR verified live)
 - `resume.html` - renders `resume.txt` inline; links the PDF and text downloads
 - `resume.txt` - plain-text resume, the source of truth
