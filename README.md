@@ -22,6 +22,10 @@ Fonts are self-hosted (no CDN). The design system lives in `css/site.css`.
 - `scripts/generate_pdf.py` + `build-resume.sh` - build the resume PDF from `resume.txt`
 - `scripts/distribute.sh` - push generated article variants to their destinations
 
+The `feat-pght-reports` branch includes homepage and projects-index links as well
+as the detail page. Merge/deploy it only after the reporting app and its new
+hostname have passed release verification.
+
 ## Resume PDF
 
 `resume.txt` is the source of truth. `build-resume.sh` runs `scripts/generate_pdf.py` to
