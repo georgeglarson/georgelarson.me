@@ -81,10 +81,11 @@
     <section class="block reveal">
       <h2 class="label">What I built</h2>
       <div class="prose">
-        <p>The reporting layer connects Quill’s React UI and SDK to a backend I built
-        over PGHT data. That work includes query validation, report generation and lifecycle,
-        chart and drilldown repairs, browser-local report persistence, the local MCP authoring
-        interface, and the browser-agent tools.</p>
+        <p>The React reporting interface and backend connect questions to PGHT data.
+        Charts, query results, and chat share the current report. The backend validates
+        queries and manages temporary reports; the browser keeps each visitor’s saved
+        definitions. The local MCP authoring interface and WebMCP tools provide two
+        ways for agents to work with reports.</p>
         <p>The broader PGHT project handles hospital-file ingestion and source-aware analysis.
         Its query MCP supports catalog discovery, validation, and execution. The reporting
         application uses a separate extracted dataset and has its own backend.</p>
@@ -92,8 +93,7 @@
         patient’s bill; comparisons depend on the selected sources, settings, and billing classes.</p>
       </div>
       <p class="sources"><a href="/writing/2026-07-26-pght/">the hospital-file work</a> ·
-      <a href="https://developer.chrome.com/docs/ai/webmcp/">WebMCP browser support</a> ·
-      <a href="https://github.com/quill-sql/ai-reporting">Quill UI source</a></p>
+      <a href="https://developer.chrome.com/docs/ai/webmcp/">WebMCP browser support</a></p>
     </section>
   </article>
 </main>
