@@ -64,25 +64,13 @@ The limits are deliberate and visible: 25 reports, with size bounds on each defi
 
 ## Nine tools the page already had
 
-[WebMCP's imperative API](https://github.com/webmachinelearning/webmcp/blob/main/README.md) lets a page register tools through document.modelContext. PGHT Reports uses it to expose operations on the running application.
-
-The nine tools list and open shared reports, read report context and data, and list, open, copy, update, and delete personal ones. They are not a parallel API. They call the same workspace operations the buttons call.
+[WebMCP's imperative API](https://github.com/webmachinelearning/webmcp/blob/main/README.md) lets a page register tools through document.modelContext. The nine tools here cover shared and personal reports, and they are not a parallel API. They call the same workspace operations the buttons call.
 
 Which means a browser agent opening a report changes the report the person is looking at.
 
-Data access needs more care than handing back whichever rows happen to be in memory. Opening another report clears the previous snapshot, so a data request during loading or after a query error gets that state rather than stale rows dressed up as a successful answer. Responses cap at 50 rows, 50 columns, and 512 characters per cell, carrying truncation flags that tell an agent when to ask for more. Context separates the filters a report requested from evidence that the executed query actually applied them.
+Data access takes more care than handing back whichever rows sit in memory. Opening another report clears the previous snapshot, so a request during loading or after a query error gets that state rather than stale rows dressed up as a successful answer. Responses cap at 50 rows, 50 columns, and 512 characters per cell, with truncation flags. Context separates the filters a report asked for from evidence the executed query applied them.
 
-A persistent **Try WebMCP** view walks visitors through discovering reports, opening one, and reading its context or rows, and **View report** returns to the chart without discarding the tool session. The panel says plainly when execution is native. Browsers without WebMCP still exercise the same handlers through a labeled preview, and the page checks for support before registering anything, so ordinary reporting and chat carry on regardless.
-
-## Authoring lives somewhere else
-
-The local authoring workflow has different purpose and different authority. Its MCP server uses the [stdio transport](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports), so an MCP client runs it as a local subprocess. The adapter calls a loopback authoring backend with a configured bearer token, and needs neither database credentials nor model calls of its own.
-
-Its six tools cover schema discovery, report discovery and inspection, saving a draft, previewing it, and publishing it. Publication requires a successful preview of that same draft revision, query execution and chart-shape validation included. Edit the draft and you preview again. Replacing an existing publication checks its expected revision too.
-
-That gate proves the draft was tested. It proves nothing about whether a human agreed to it, and anyone who needs that has to build it themselves. The backend also refuses to start with public and authoring modes both enabled.
-
-Three agent interfaces exist across these projects: PGHT's underlying query MCP, the reporting application's local authoring MCP, and its browser WebMCP tools. A browser tool call stays in the browser. It cannot reach the authoring backend, and it never picks up the local author's publication rights.
+Publishing happens somewhere else. A local MCP server handles authoring, and publication there requires a successful preview of that same draft revision. Edit the draft and you preview again. The gate proves the draft was tested; it proves nothing about whether a human agreed to it, and anyone needing that has to build it. A browser tool call never reaches any of this. It stays in the browser and never picks up the local author's publication rights.
 
 ## What the tests could not see
 
