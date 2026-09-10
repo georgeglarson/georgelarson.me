@@ -73,6 +73,7 @@
     <p>The nine tools cover listing and opening shared reports, reading report context and data, and listing, opening, copying, updating, and deleting personal reports. They call the same workspace operations used by the interface. A browser agent opening a report changes the report the person sees.</p>
     <p>Data access needs more care than returning whichever rows happen to be in memory. Opening another report clears the previous snapshot. A data request during loading or after a query error receives that state instead of stale rows dressed up as a successful answer.</p>
     <p>Responses are bounded to 50 rows, 50 columns, and 512 characters per cell, with truncation flags. Context distinguishes requested filters from evidence that a particular query applied them. An agent gets enough information to inspect the current report, along with reasons it may need to ask for more.</p>
+    <p>A persistent <strong>Try WebMCP</strong> view walks visitors through discovering reports, opening one, and reading its context or rows. <strong>View report</strong> returns to the chart without discarding the tool session. The panel identifies native browser execution; when the browser lacks WebMCP, visitors can still exercise the same handlers through a labeled preview.</p>
     <p>The page detects browser support before registering tools. Its ordinary reporting and chat interface remains usable when WebMCP is unavailable. This makes the browser integration an additional way to operate the application, with the existing UI available for inspection.</p>
     </section>
 
@@ -86,7 +87,7 @@
 
     <section>
     <h2>Keep the conversation attached to the report</h2>
-    <p>On desktop, chat occupies a resizable pane beside the workbench. On a phone, Report and Chat become views of the same workspace. Switching between them preserves the conversation and draft input.</p>
+    <p>The workbench separates Report, Build a report, and Try WebMCP into views with their own scrolling. Browsing reports preserves an unfinished builder draft. On desktop, chat occupies a resizable pane beside the workbench, with a width limit that reserves room for the report. On a phone, Report and Chat become views of the same workspace. Switching between them preserves the conversation and draft input.</p>
     <p>This affected asynchronous behavior too. A preview may finish after someone changes views or opens another report. The application preserves work across the paired Report/Chat views, while navigation to a different context invalidates old results. Otherwise an earlier request could update the wrong report or interrupt a later conversation.</p>
     <p>Verification included the frontend and backend suites, then direct browser checks of native tool calls, saved-report behavior, resizing, and phone navigation. Browser inspection caught a layout problem that passing component tests had not exposed. A real chat query returning the extract's row count also exercised the connection between the visible interface and backend data.</p>
     <p>The next thing I want to learn is how people use these operations together: which reports they keep, what they ask an agent to inspect, and where they return to the visual interface. The <a href="/pght-reports.html">project walkthrough</a> collects the demo and its controls for trying that workflow.</p>

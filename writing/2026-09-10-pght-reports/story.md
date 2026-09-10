@@ -58,6 +58,8 @@ Data access needs more care than returning whichever rows happen to be in memory
 
 Responses are bounded to 50 rows, 50 columns, and 512 characters per cell, with truncation flags. Context distinguishes requested filters from evidence that a particular query applied them. An agent gets enough information to inspect the current report, along with reasons it may need to ask for more.
 
+A persistent **Try WebMCP** view walks visitors through discovering reports, opening one, and reading its context or rows. **View report** returns to the chart without discarding the tool session. The panel identifies native browser execution; when the browser lacks WebMCP, visitors can still exercise the same handlers through a labeled preview.
+
 The page detects browser support before registering tools. Its ordinary reporting and chat interface remains usable when WebMCP is unavailable. This makes the browser integration an additional way to operate the application, with the existing UI available for inspection.
 
 ## Keep authoring separate
@@ -72,7 +74,7 @@ There are three agent interfaces across the projects: PGHT's underlying query MC
 
 ## Keep the conversation attached to the report
 
-On desktop, chat occupies a resizable pane beside the workbench. On a phone, Report and Chat become views of the same workspace. Switching between them preserves the conversation and draft input.
+The workbench separates Report, Build a report, and Try WebMCP into views with their own scrolling. Browsing reports preserves an unfinished builder draft. On desktop, chat occupies a resizable pane beside the workbench, with a width limit that reserves room for the report. On a phone, Report and Chat become views of the same workspace. Switching between them preserves the conversation and draft input.
 
 This affected asynchronous behavior too. A preview may finish after someone changes views or opens another report. The application preserves work across the paired Report/Chat views, while navigation to a different context invalidates old results. Otherwise an earlier request could update the wrong report or interrupt a later conversation.
 
