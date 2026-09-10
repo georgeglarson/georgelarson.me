@@ -1,13 +1,10 @@
 ---
 title: "Letting agents use the reporting app"
-slug: 2026-09-10-pght-reports
-date: 2026-09-10
+published: false
 description: "Inside PGHT Reports: chat, browser-local reports, SQL guardrails, and two ways for agents to work with the application."
 tags: mcp, webmcp, engineering, healthcare-data
-og_title: "Letting agents use the reporting app"
-og_description: "Following a report through PGHT Reports, from hospital-file observations to browser tools and validated publication."
+canonical_url: https://georgelarson.me/writing/2026-09-10-pght-reports/
 cover_image: cover.svg
-lead: "Ask a question about hospital prices, keep the answer, and let an agent pick up the same report later. It sounds like an afternoon's work on a dashboard."
 ---
 
 Ask a question about hospital prices. Keep the answer. Let an agent pick it up later and work with the same report you are looking at.
@@ -16,7 +13,7 @@ That was the whole request, and it sounds like an afternoon's work on a dashboar
 
 [PGHT Reports](/pght-reports.html) is where it landed: a reporting workbench, conversational queries, personal report definitions, and tools for agents, all sharing one piece of state.
 
-![PGHT Reports architecture: browser UI and WebMCP share report state; localStorage retains definitions; the public backend validates queries against a read-only database; a separate local MCP authoring path gates publication on preview.](cover.svg)
+![PGHT Reports architecture: browser UI and WebMCP share report state; localStorage retains definitions; the public backend validates queries against a read-only database; a separate local MCP authoring path gates publication on preview.](https://georgelarson.me/writing/2026-09-10-pght-reports/cover.svg)
 
 [Open the diagram at full size](cover.svg).
 
@@ -99,3 +96,7 @@ The same lifetime problem shows up in async work. A preview can finish after som
 Verification ran the frontend and backend suites, then went to the browser for native tool calls, saved-report behavior, resizing, and phone navigation. A real chat query returning the extract's row count tied the visible interface back to actual backend data.
 
 What I want to learn next is how people use these operations together: which reports they keep, what they ask an agent to inspect, and where they go back to the visual interface. The [project walkthrough](/pght-reports.html) collects the demo and its controls.
+
+---
+
+*George Larson, 25 years in software engineering, infrastructure, manufacturing systems, and cybersecurity. Currently looking for Director/VP or senior engineering roles. More at [georgelarson.me](https://georgelarson.me).*
