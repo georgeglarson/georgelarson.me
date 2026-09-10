@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Letting agents use the reporting app · George Larson</title>
+<meta name="description" content="Inside PGHT Reports: chat, browser-local reports, SQL guardrails, and two ways for agents to work with the application." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Letting agents use the reporting app" />
+<meta property="og:description" content="Following a report through PGHT Reports, from hospital-file observations to browser tools and validated publication." />
+<meta property="og:url" content="https://georgelarson.me/writing/2026-09-10-pght-reports/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Letting agents use the reporting app" />
+<meta name="twitter:description" content="Following a report through PGHT Reports, from hospital-file observations to browser tools and validated publication." />
+<link rel="preload" href="/fonts/ibm-plex-serif-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+
+<header class="shell site-head">
+  <a class="wordmark" href="/">george larson</a>
+  <nav class="site-nav" aria-label="primary">
+    <a href="/who-is-george">who</a>
+    <a href="/projects">projects</a>
+    <a href="/writing">writing</a>
+    <a href="mailto:george.g.larson@gmail.com">contact</a>
+  </nav>
+</header>
+
+<main class="shell">
+  <article class="measure">
+
+    <p class="reveal"><a class="back" href="/writing"><span class="caret">←</span> writing</a></p>
+
+    <p class="kicker reveal">Writing · 2026-09-10</p>
+    <h1 class="title reveal">Letting agents use the reporting app</h1>
+    <p class="dek reveal">A reporting app gets more interesting when an agent can work with the report you already have open.</p>
+
+    <div class="article-body reveal">
+    <p>I wanted to be able to ask a question about hospital prices, keep the useful result, and let an agent work with that same report later. That sounds like a small addition to a dashboard. It reaches into nearly every part of the application: query execution, saved state, navigation, publication, and what an agent can safely infer from the screen.</p>
+    <p><a href="/pght-reports.html">PGHT Reports</a> is my working version of that idea. It combines a reporting workbench, conversational queries, personal report definitions, and tools for agents. The interesting parts are the boundaries between them.</p>
+    <div class="screenshot"><img src="cover.svg" alt="PGHT Reports architecture: browser UI and WebMCP share report state; localStorage retains definitions; the public backend validates queries against a read-only database; a separate local MCP authoring path gates publication on preview." loading="lazy" /></div>
+    <p><a href="cover.svg">Open the diagram at full size</a>.</p>
+    <section>
+    <h2>Start with what a row means</h2>
+    <p>The broader PGHT project ingests Pittsburgh hospitals' published standard-charge files and builds source-aware queries over them. I wrote about the reconciliation work in <a href="/writing/2026-07-26-pght/">Four traps in hospital price data</a>.</p>
+    <p>The reporting application uses a separate extract: 22,428 observations across five hospitals in the demonstration dataset. That count describes rows in this extract. It does not count patients or establish how many distinct contracts exist, and it does not describe the size of the full PGHT corpus.</p>
+    <p>This distinction matters when chat makes querying easy. A query can execute correctly while comparing incompatible settings or billing classes. The reporting layer provides ways to inspect results; the source choices and the meaning of a comparison still need attention.</p>
+    </section>
+
+    <section>
+    <h2>Follow the question through the backend</h2>
+    <p>A question in chat goes to the reporting backend's AI route. Proposed SQL passes through the query guard before execution. Builder-generated queries and restored report definitions also encounter validation on their respective paths.</p>
+    <p>The guard parses SQL and examines its structure. It rejects multiple statements, write operations, data-modifying CTEs, and SELECT INTO. It restricts tables, schemas, columns, and functions, and applies a result-limit policy. An allowed function list prevents an apparently ordinary SELECT from reaching arbitrary database functions.</p>
+    <p>The database connection supplies another boundary. The demo uses a read-only database role, and connections carry a statement timeout. The role's privileges are deployment configuration, so choosing the correct database account is part of setting up the application. Query validation and database permissions both have work to do.</p>
+    <p>Public mode also bounds request size, request rate, concurrency, and the number of temporary reports. Excess concurrent requests receive a rejection rather than accumulating in an unbounded queue. A fluent model response never grants permission to bypass these checks.</p>
+    </section>
+
+    <section>
+    <h2>Let visitors keep their work</h2>
+    <p>A read-only demo can feel unfinished when every useful experiment disappears. I wanted visitors to change a report and return to it without giving strangers a shared write surface or adding accounts to a portfolio project.</p>
+    <p>The compromise is <strong>My Reports</strong>. Copying a report saves its definition in localStorage: its name, query or builder state, and presentation settings. Result rows are fetched again when the report opens. The browser retains the recipe without promising that yesterday's result remains current.</p>
+    <p>On reopen, the backend validates the definition and executes the query before registering a fresh temporary report. Builder-origin definitions are recompiled from their builder state. SQL-origin definitions pass through the SQL guard. An expired temporary ID or backend restart therefore does not require the visitor to reconstruct the saved report.</p>
+    <p>Storage has explicit limits: 25 reports, with size bounds on each definition and its SQL. Invalid stored data blocks further saves until reset, so a damaged workspace is not silently overwritten. Persistence belongs to this browser profile and origin; clearing browser data removes it, and another device does not receive a copy.</p>
+    <p>Those limits make the feature useful without creating an account-sync service to operate. Visitors can experiment with personal copies while the shared examples remain protected.</p>
+    </section>
+
+    <section>
+    <h2>Give agents the page's own operations</h2>
+    <p><a href="https://github.com/webmachinelearning/webmcp/blob/main/README.md" target="_blank" rel="noopener">WebMCP's imperative API</a> lets a page register tools through document.modelContext. PGHT Reports uses that surface to expose operations on the running application.</p>
+    <p>The nine tools cover listing and opening shared reports, reading report context and data, and listing, opening, copying, updating, and deleting personal reports. They call the same workspace operations used by the interface. A browser agent opening a report changes the report the person sees.</p>
+    <p>Data access needs more care than returning whichever rows happen to be in memory. Opening another report clears the previous snapshot. A data request during loading or after a query error receives that state instead of stale rows dressed up as a successful answer.</p>
+    <p>Responses are bounded to 50 rows, 50 columns, and 512 characters per cell, with truncation flags. Context distinguishes requested filters from evidence that a particular query applied them. An agent gets enough information to inspect the current report, along with reasons it may need to ask for more.</p>
+    <p>The page detects browser support before registering tools. Its ordinary reporting and chat interface remains usable when WebMCP is unavailable. This makes the browser integration an additional way to operate the application, with the existing UI available for inspection.</p>
+    </section>
+
+    <section>
+    <h2>Keep authoring separate</h2>
+    <p>The local authoring workflow has a different purpose and different authority. Its MCP server uses the <a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/transports" target="_blank" rel="noopener">stdio transport</a>: an MCP client runs it as a local subprocess. The adapter calls a loopback authoring backend with a configured bearer token. It does not need database credentials or make its own model calls.</p>
+    <p>Its six tools support schema discovery, report discovery and inspection, saving a draft, previewing it, and publishing it. Publication requires a successful preview of the same draft revision, including query execution and chart-shape validation. Editing the draft means previewing again. Replacing an existing publication also checks its expected revision.</p>
+    <p>That gate establishes what was tested. It does not establish human approval; callers must supply any approval workflow they require. The backend refuses to start with public and authoring modes enabled together.</p>
+    <p>There are three agent interfaces across the projects: PGHT's underlying query MCP, the reporting application's local authoring MCP, and its browser WebMCP tools. The reporting extract has its own backend. A browser tool call does not travel through all three interfaces or acquire the local author's publication privileges.</p>
+    </section>
+
+    <section>
+    <h2>Keep the conversation attached to the report</h2>
+    <p>On desktop, chat occupies a resizable pane beside the workbench. On a phone, Report and Chat become views of the same workspace. Switching between them preserves the conversation and draft input.</p>
+    <p>This affected asynchronous behavior too. A preview may finish after someone changes views or opens another report. The application preserves work across the paired Report/Chat views, while navigation to a different context invalidates old results. Otherwise an earlier request could update the wrong report or interrupt a later conversation.</p>
+    <p>Verification included the frontend and backend suites, then direct browser checks of native tool calls, saved-report behavior, resizing, and phone navigation. Browser inspection caught a layout problem that passing component tests had not exposed. A real chat query returning the extract's row count also exercised the connection between the visible interface and backend data.</p>
+    <p>The next thing I want to learn is how people use these operations together: which reports they keep, what they ask an agent to inspect, and where they return to the visual interface. The <a href="/pght-reports.html">project walkthrough</a> collects the demo and its controls for trying that workflow.</p>
+    </section>
+    </div>
+
+  </article>
+</main>
+
+<div class="shell rule rule--mono" role="separator"></div>
+<footer class="shell site-foot">
+  <span>george larson · director of technology</span>
+  <span><a href="https://github.com/georgeglarson">github</a> · <a href="https://www.linkedin.com/in/georgelarson/">linkedin</a> · <a href="/resume">resume</a></span>
+</footer>
+
+</body>
+</html>

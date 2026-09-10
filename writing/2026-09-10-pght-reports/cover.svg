@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="840" viewBox="0 0 960 840" role="img" aria-labelledby="title desc">
+<title id="title">A report, through the layers</title>
+<desc id="desc">The browser UI and WebMCP share report state and save personal definitions locally. The public backend validates SQL before querying a read-only database. Separate local MCP authoring requires a successful preview before publication.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#437566" stroke-width="1.5"/></marker></defs>
+<rect width="960" height="840" fill="#f4f1e9"/>
+<g font-family="monospace" fill="#253b34">
+<text x="48" y="60" font-size="16" letter-spacing="3">PGHT REPORTS / APPLICATION MAP</text>
+<text x="48" y="109" font-size="32">A report, through the layers</text>
+<rect x="48" y="148" width="864" height="176" rx="8" fill="#e0e9e0" stroke="#648b79"/>
+<text x="72" y="184" font-size="17">BROWSER</text>
+<text x="72" y="222" font-size="24">Workbench + chat + WebMCP</text>
+<text x="72" y="256" font-size="18">Shared report state and workspace operations</text>
+<text x="72" y="293" font-size="17">localStorage: personal definitions, no result rows</text>
+<path d="M480 324V378" stroke="#437566" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="390" width="864" height="122" rx="8" fill="#fffdf7" stroke="#648b79"/>
+<text x="72" y="426" font-size="17">PUBLIC REPORTING BACKEND</text>
+<text x="72" y="463" font-size="23">SQL validation + bounded temporary reports</text>
+<text x="72" y="491" font-size="17">Request budgets, concurrency caps, restore validation</text>
+<path d="M480 512V554" stroke="#437566" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="566" width="864" height="88" rx="8" fill="#e0e9e0" stroke="#648b79"/>
+<text x="72" y="602" font-size="23">PostgreSQL reporting extract</text>
+<text x="72" y="633" font-size="17">Read-only role + statement timeout</text>
+<path d="M48 687H912" stroke="#b2bbae" stroke-dasharray="5 6"/>
+<text x="48" y="721" font-size="16" letter-spacing="2">SEPARATE LOCAL AUTHORING MODE</text>
+<text x="48" y="758" font-size="22">MCP → authenticated loopback backend</text>
+<text x="48" y="793" font-size="18">Save draft → preview revision → publish that revision</text>
+</g></svg>
