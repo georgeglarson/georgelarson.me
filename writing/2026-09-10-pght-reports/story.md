@@ -32,6 +32,18 @@ A question in chat goes to the reporting backend's AI route. Proposed SQL passes
 
 The guard parses SQL and examines its structure. It rejects multiple statements, write operations, data-modifying CTEs, and SELECT INTO. It restricts tables, schemas, columns, and functions, and applies a result-limit policy. An allowed function list prevents an apparently ordinary SELECT from reaching arbitrary database functions.
 
+### Validate the tree, not the spelling
+
+The parser turns SQL into an abstract syntax tree (AST). The guard can then ask what each node does, instead of trusting a string that happens to begin with `SELECT`.
+
+CTEs make that distinction concrete. A name defined by `WITH` is a scoped relation, so the resolver tracks where that name is visible and checks the physical tables underneath it separately.
+
+The statement type alone is not enough. A parser may label a statement `select` even when it contains `SELECT INTO` or a data-changing CTE. The guard walks those nodes, rejects recursive CTEs, and refuses multiple statements.
+
+The same walk checks aliases, derived tables, columns, and functions against their allowlists. It applies the row bound to the complete outer result, including `UNION`, `INTERSECT`, and `EXCEPT`, rather than trusting one branch's limit.
+
+This is a useful engineering boundary: the AST establishes what the query is allowed to touch, while the database role and timeout constrain what it can do in practice. Neither one proves that the analysis answers the right question.
+
 The database connection supplies another boundary. The demo uses a read-only database role, and connections carry a statement timeout. The role's privileges are deployment configuration, so choosing the correct database account is part of setting up the application. Query validation and database permissions both have work to do.
 
 Public mode also bounds request size, request rate, concurrency, and the number of temporary reports. Excess concurrent requests receive a rejection rather than accumulating in an unbounded queue. A fluent model response never grants permission to bypass these checks.
