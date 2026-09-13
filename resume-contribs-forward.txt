@@ -77,6 +77,7 @@ Senior Software Engineer & Director of Technology, FM Expressions (2018 to April
 - Built a knowledge-management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) capturing production logs, transcripts, and operator notes for real-time search.
 - Hardened hybrid infrastructure: Authentik SSO, HashiCorp Vault, automated TLS, firewall hardening, DMARC/SPF/DKIM enforcement at p=reject (1.5M emails/month, 99.48% compliance), and HostedScan/OWASP ZAP sweeps across 36 public assets holding critical/high findings at zero.
 - Built and operated integrations across the print and fulfillment vendor stack, ecommerce platforms (Shopify, Magento), and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share one data model.
+- Took over and ran Printro, FM's own C# SaaS platform for ordering heat transfers; developed Dashboard, the PHP and JavaScript system the whole operation ran on; integrated EFI Pace and Aptean Impress; and wrote the C# integration to VivX for templated print-ready art.
 
 Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
 - Helped scale the company from a 50-person startup to a national leader in medical billing (Inc 5000, #34 in Health, #503 overall).
@@ -101,13 +102,13 @@ Earlier Career (1990s to 2000s)
 - Contract development for Daifuku USA on material-handling support systems; paid programming and database work 1994 to 2000.
 
 TECHNICAL SKILLS
-Languages: PHP, Perl, SQL, Bash, Python, Go, Rust, Zig, C#, TypeScript, C++
+Languages: PHP, JavaScript, SQL, Bash, Python, Go, Rust, TypeScript, C#, Perl, Zig, C++
 AI / Agent Infrastructure: Model Context Protocol (MCP server design), agent-to-agent (A2A) routing, multi-node agent mesh, project isolation, scheduled autonomous tasks
 LLM Engineering: multi-provider model routing across 12 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral, and others), tiered inference, prompt caching, eval harnesses, RAG, semantic search, LiteLLM
 Coding-agent tooling: operational across 10 coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack
 Databases and Web: MySQL, PostgreSQL, Qdrant, WordPress, Redmine, Gitea, Wiki.js
-Infrastructure: Linux, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare
-Cloud: AWS, Azure, Google Cloud, Proxmox
+Infrastructure: Linux, Apache, Nginx, Caddy, IIS, VMware ESXi, Datto, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare
+Cloud: AWS, Azure, Linode, Rackspace, Google Cloud, Proxmox
 Security and Identity: Authentik, HashiCorp Vault, HostedScan, OWASP ZAP, Nikto, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, zero-trust network design
 Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls
 Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab
