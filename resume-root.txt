@@ -1,0 +1,93 @@
+GEORGE LARSON
+Software Engineer · AI Enablement and Agent Infrastructure
+Email: george.g.larson@gmail.com
+Phone: 412-945-0101
+Location: Pittsburgh, PA (open to remote)
+Portfolio: https://georgelarson.me
+Contributions: https://georgelarson.me/contributions
+GitHub: https://github.com/georgeglarson
+LinkedIn: https://www.linkedin.com/in/georgelarson
+
+SUMMARY
+_Updated 2026-09, tailored for Root (Staff Software Engineer, AI Enablement)_
+Twenty-five years building and shipping production systems, with production AI inside a real business since 2023 and agent/LLM infrastructure as the daily craft since: multi-provider model routing with tiered fallback, eval gates that catch regressions before they ship, MCP server design, and a multi-model review methodology used to gate code and design decisions. I have led the adoption side as well as the build side: as Director of Technology for a mid-size manufacturer I introduced AI tooling to non-technical teams, built the knowledge platform that made institutional knowledge searchable, and measured adoption to prove the time-to-answer gains. Earlier: scaled a medical-billing startup to national reach and led internal and offshore teams. I write about all of this publicly, and my recent open-source run (twenty-nine merged PRs across twelve projects, twenty-one in the OpenHands agent ecosystem, which named me an Active Contributor in August 2026) is the shipping record behind the claims.
+
+CORE STRENGTHS
+
+AI Enablement and Adoption
+- Introduced AI tooling into a running business: customer-facing and internal AI features, an internal code-generation tool, and a knowledge platform, paired with onboarding, documentation, and adoption metrics so usage was measured rather than assumed.
+- Evaluation discipline: an eval rig benchmarking 15+ coding models on real tasks with published per-round results, and operational fluency across ten coding-agent CLIs used as both benchmark and production stack.
+
+AI and Agent Engineering
+- Multi-agent infrastructure: MCP server design, agent-to-agent routing, project isolation, scheduled autonomous tasks.
+- Production LLM pipelines: multi-provider routing across 12 authenticated providers, tiered inference, prompt caching, eval harnesses.
+- RAG and semantic search where the payoff is real, with attention to the unglamorous failure modes: silent provider stalls, observability, recovery.
+
+Software Development and Engineering
+- Full-stack delivery across TypeScript, JavaScript, PHP, Python, SQL, Go, Rust, C#, with Perl as a long-standing second string.
+- Code review, automated testing, and performance tuning for legacy and greenfield systems.
+
+Technical Leadership
+- Set technical direction for a mid-size company while staying hands-on daily; calm stewardship of blended internal, offshore, and vendor teams.
+- Mentorship and onboarding across levels; strategic roadmaps that connect executive goals to team-level delivery.
+
+OPEN-SOURCE ENGINEERING
+
+Twenty-nine merged pull requests across twelve projects; every entry links a merged PR at georgelarson.me/contributions.
+
+- OpenHands app (12 merged): context-window usage meter and manual compaction; Linux desktop installer build; SIGHUP handling across all three dev launchers; credentials banner driven by the secret store; provider-picker pagination; LLM-switching toggle; mock-LLM stack shutdown.
+- OpenHands agent SDK, docs, clients (9 merged): boundary tests for the event-log projection that exposed a live defect in parallel tool calls; file-router endpoint verified over real HTTP; skill-activation wiring pinned by tests; first fork PR merged in the typescript-client repo's history.
+- Beyond OpenHands (8 merged): an AI SDK system-message fix shipped on npm (juspay/neurolink); RFC 8693 TokenExchange for a Rust auth server (ferriskey); three X12 4010 EDI transaction sets re-enabled in kputnam/stupidedi, the canonical open-source X12 library.
+
+Selected systems projects
+- Agent Canvas extensions (JavaScript, OpenHands): subagent-call monitor and LLM-usage explorer for the OpenHands agent stack.
+- llm-showdown: evaluation rig benchmarking coding models with an iterative agent loop; publishes per-round results.
+- Fracture (TypeScript): modernizes Mozilla's 2012 BrowserQuest into a contemporary multiplayer architecture with eight integrated AI services; live demo at fracture.georgelarson.me.
+- pgh-hospital-prices (Go): what Pittsburgh hospitals charge for the same procedure, over the federal price-transparency files; public dashboard at prices.georgelarson.me.
+- netgrep (Rust), termshark (Go), wiregraph (Rust): network-capture and analysis tooling.
+
+WORK EXPERIENCE
+
+Senior Software Engineer & Director of Technology, FM Expressions (2018 to April 2026)
+- Built and ran the software and infrastructure stack for a mid-size manufacturer serving ecommerce channels, hands-on across the codebase while owning technology strategy.
+- Shipped production AI inside the business from 2023: a customer-facing DALL-E design assistant, an OpenAI/Pythagora code-generation tool, an AI knowledge platform, a customer-service AI/BI integration, and a Python/FastAPI templating system bridging vendor pipelines.
+- Built a knowledge-management platform (Wiki.js, Gitea, Qdrant, ETL pipelines) capturing production logs, transcripts, and operator notes for real-time search, and drove adoption metrics to quantify time-to-answer gains for production and customer operations.
+- Resolved conflicting manufacturing documentation, created a style guide and glossary, and instituted monthly and quarterly review cycles to keep guidance consistent.
+- Improved database performance 93% and drove critical systems to 99% uptime; cut MySQL slow-query volume 96%.
+- Built and operated integrations across the vendor stack (EFI Pace, Aptean Impress, VivX, Fanatics, Alphabroder), ecommerce platforms (Shopify, Magento), and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share one data model.
+- Hardened hybrid infrastructure (SSO, HashiCorp Vault, automated TLS, DMARC at p=reject, OWASP ZAP sweeps holding critical/high findings at zero) and ran the collaboration core: self-hosted GitLab CI/CD, Redmine, helpdesk, and monitoring.
+- Absorbed the infrastructure team when the role was eliminated during a downturn, running technology and infrastructure together with no added headcount.
+
+Senior Software Engineer and Manager, Universal SmartComp (2009 to 2016)
+- Helped scale the company from a 50-person startup to a national leader in medical billing (Inc 5000, #34 in Health).
+- Designed the EDI framework, ACH transmission, ERP integration, payer portal, and recovery-analytics layers of the platform.
+- Led internal and offshore teams across development and Linux infrastructure; security-response lead and HIPAA/HITECH SME.
+- Built OCR bill-entry validation that reduced errors and sped turnaround.
+
+Software Engineer and Team Manager, Sony Electronics (2004 to 2009)
+- Directed software development, logistics, and technical operations for the Pittsburgh Customer Satisfaction Center, starting from effectively bare shelves.
+- Managed more than 50 combined technical and non-technical staff, including roughly 30 contracted personnel.
+- Designed and ran the TiVo firmware upgrade station for the United States market; created an AS/400 parts-ordering interface that saved millions in operational spend.
+
+Maintenance and Automation Technician, T. Marzetti Company (2000 to 2004)
+- Led second-shift maintenance for robotics, conveyors, and packaging machinery; programmed PLCs in-house.
+
+Earlier Career (1990s to 2000s)
+- Software developer and webmaster for non-profit organizations; contract development for Daifuku USA; paid programming and database work from 1994.
+
+TECHNICAL SKILLS
+Languages: TypeScript, JavaScript, PHP, SQL, Python, Go, Rust, C#, Bash, Perl, Zig, C++
+AI / Agent Infrastructure: Model Context Protocol (MCP server design), agent-to-agent routing, multi-node agent mesh, project isolation, scheduled autonomous tasks
+LLM Engineering: multi-provider model routing across 12 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral, and others), tiered inference, prompt caching, eval harnesses, RAG, semantic search, LiteLLM
+Coding-agent tooling: operational across 10 coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack
+Databases and Web: MySQL, PostgreSQL, Qdrant, WordPress, Redmine, Gitea, Wiki.js
+Infrastructure: Linux, Apache, Nginx, Caddy, IIS, VMware ESXi, Datto, Cisco Meraki, SonicWall, pfSense, CrowdSec, Let's Encrypt/ACME, Cloudflare
+Cloud: AWS, Azure, Linode, Rackspace, Google Cloud, Proxmox
+Security and Identity: Authentik, HashiCorp Vault, OWASP ZAP, DMARC/SPF/DKIM, zero-trust network design, incident response
+Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls
+Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab
+
+EDUCATION AND PROFESSIONAL DEVELOPMENT
+- Self-taught from C++ books as a teenager; built BBS modules in production before college.
+- Currently studying Stanford CS336, Language Modeling from Scratch (2025).
+- Continuous coursework across systems engineering, network security, database internals, and cloud architecture (Coursera, MIT OpenCourseWare, vendor certification programs).
