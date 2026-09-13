@@ -28,10 +28,12 @@ hostname have passed release verification.
 
 ## Resume PDF
 
-`resume.txt` is the source of truth. `scripts/generate_pdf.py` (WeasyPrint) renders `george-larson-resume.pdf`; `build-resume.sh` (pandoc + wkhtmltopdf) renders any variant `.txt` to
-produce `george-larson-resume.pdf`. `resume.html` fetches `resume.txt` at load and renders it
-inline, so the page and the text download never drift. The PDF only tracks after you re-run
-`build-resume.sh` following a `resume.txt` edit.
+`resume.txt` is the source of truth. `build-resume.sh resume.txt george-larson-resume.pdf`
+(pandoc + wkhtmltopdf) renders it; the same script renders any variant `.txt`
+(`resume-contribs-forward.txt`, `resume-ic-ai-engineer.txt`) to its PDF. `scripts/generate_pdf.py`
+is an older WeasyPrint renderer and is not what the published PDF is built with. `resume.html`
+fetches `resume.txt` at load and renders it inline, so the page and the text download never
+drift. The PDF only tracks after you re-run `build-resume.sh` following a `resume.txt` edit.
 
 ## Publishing
 
