@@ -8,16 +8,16 @@ GitHub: https://github.com/georgeglarson
 LinkedIn: https://www.linkedin.com/in/georgelarson
 
 SUMMARY
-_Updated 2026-07_
-Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, and a personal review methodology now shipping surgical fixes upstream in mitmproxy, n8n, ComfyUI, and Charm's Crush.
+_Updated 2026-09_
+Director of Technology with 25+ years building and operating software, infrastructure, and manufacturing systems. I have led teams at Sony Electronics, scaled a medical billing startup to national reach, programmed PLCs on production lines, and directed technology for a mid-size manufacturer. I do Linux platforms, DevOps automation, ecommerce, and security programs. I stay close to the keyboard even when the job is strategic. I build AI tooling that actually ships: multi-agent infrastructure, MCP servers, model-routing pipelines, and a personal review methodology with twenty-nine fixes merged upstream across a dozen projects, twenty-one of them in the OpenHands ecosystem, which named me an Active Contributor in August 2026.
 
 CORE STRENGTHS
 Software Development and Engineering
-- Full stack delivery across PHP, Perl, SQL, Python, Go, Rust, C#, TypeScript, C++. PHP and Perl have been the career staples; the rest sit alongside.
+- Full stack delivery across PHP, JavaScript, SQL, Python, Go, Rust, C#, TypeScript, C++, with Perl as a long-standing second string.
 - Code review, automated testing, and performance tuning for legacy and greenfield systems.
 
 DevOps and Infrastructure Automation
-- CI and CD design, infrastructure as code, container orchestration, and repeatable releases on self-hosted runners.
+- CI and CD design, infrastructure as code, containers (Docker, Podman), and repeatable releases on self-hosted runners.
 - Observability, incident response, high-availability design (replication, backups, CDN), and pragmatic SLO tracking for hybrid environments.
 
 Technology Leadership and Strategy
@@ -35,17 +35,24 @@ Data Engineering and Automation
 OPEN SOURCE PROJECTS
 
 Recent Upstream Contributions
-Merged
+Twenty-nine merged pull requests across twelve projects, twenty-six of them since June 2026. Every entry links a merged PR at georgelarson.me/contributions.
+
+Merged, OpenHands ecosystem (21; named an Active Contributor, August 2026)
+- OpenHands app (12): context-window usage meter, usage drawer, and manual compaction (#16311, #16534); the Linux desktop installer build (#16656); SIGHUP handling across all three dev launchers (#16239, #16279, #16280); the ACP credentials banner driven by the secret store (#16145); cloud provider picker following the pagination cursor (#16758); the LLM-switching toggle and active-model stamp (#16441, #16439); mock-LLM end-to-end shutdown (#16152); runtime state ignored at the .tmp/ root (#16272).
+- Software-agent SDK, docs, and clients (9): boundary tests for events_to_messages that exposed and fixed a live defect dropping reasoning items (#4526); POST /file/create_directory on the file router (#4482); send_message skill-activation wiring (#4536); Kimi Code as a first-class Moonshot provider across the SDK and Agent Canvas (#4150, #1844); the issue-triage and ready-for-dev gate page (docs #750); the release-gate permission fix, the first fork PR merged in the typescript-client repo (#364); the Agent Canvas workspace-folder dropdown and acp-docker example (#1368, #1434).
+
+Merged, beyond OpenHands (8)
 - kputnam/stupidedi #288, #289: re-enabled the X12 4010 PO850, AR943, and RE944 EDI transaction sets, whose autoload had been off after the segment definitions outgrew their element lists. Merged July 2026.
 - juspay/neurolink #1134: moved system messages to the AI SDK generateText system option; shipped in v9.82.0 on npm. Merged July 2026.
 - ferriskey/ferriskey #1133: added the RFC 8693 TokenExchange grant type and its domain value objects to the Rust auth server. Merged July 2026.
-- OpenHands/agent-canvas #1368: parent-grouped workspace-folder dropdown so nested paths stay organized. Merged July 2026.
-- OpenHands/agent-canvas #1434: acp-docker example inherits its agent-server image from config/defaults.json instead of pinning below the Canvas compatibility floor. Merged June 2026.
 - mvanhorn/last30days-skill #564: pass(1) credential source, a Linux/Unix analog of the macOS Keychain integration. Merged June 2026.
 - sst/models.dev #475: added Claude Opus 4.5 to the model catalog. Merged Dec 2025.
 - sst/opencode #4748: documented the Venice.ai provider for the opencode coding agent. Merged Nov 2025.
+- WPBuddy/largo #164: the long end of the track record, 2014.
 
 In review
+- OpenHands/software-agent-sdk #4775 and docs #771: preserve structured MCP result data (structuredContent and result _meta) through the observation boundary, the contract protocol-aware clients build on.
+- OpenHands/software-agent-sdk #4623: an offline prompt-composition report that breaks each LLM call's prompt into system, tool-schema, history, and latest-message buckets.
 - livekit/agents #6280: duplicate same-target handoff tool call no longer reads as ambiguous and aborts the agent switch.
 - allenai/open-instruct #1751: a --launcher flag so non-Ai2 users can run the training launcher locally without a Beaker cluster account.
 - stryker-mutator/stryker-net #3694: extends the array-creation mutator to implicit array creation.
@@ -54,6 +61,7 @@ In review
 
 Fixed upstream (idea shipped under someone else's commit)
 - n8n-io/n8n #29516: per-runner consecutive-timeout counter for stuck task-runner channel detection and recovery; reduced detection latency from hours to ~6s. A maintainer re-implemented the idea on current master and credited the diagnosis by name (#35456); shipped in the 2.33 and 2.34 release lines.
+- OpenHands #16415 and #16443, charmbracelet/catwalk #112: the same problems later fixed by others' merged PRs.
 
 deep-research-privacy (45 stars, TypeScript)
 - Standalone privacy-first AI research tool: Brave Search, zero data collection, parallel queries with cited output, and an iterative search-and-synthesis pipeline.
@@ -85,6 +93,15 @@ termshark (Go), Contributor and Maintainer (2026 to Present)
 wiregraph (Rust, 2026 to Present)
 - GPU-rendered network traffic visualizer. Hosts as nodes, flows as edges, real-time topology view of a live capture session.
 
+rust-connect (Rust, 2026 to Present)
+- Desktop-agnostic KDE Connect reimplementation, API-first, pairing with the stock KDE Connect Android app with no KDE or GNOME dependencies. Feature-complete against the reference implementations; v0.1.0 released with deb packages.
+
+pgh-hospital-prices (Go, 2026)
+- Compares what Pittsburgh hospitals charge for the same procedure, built over the federal hospital price-transparency files: corpus, query grammar, and a public dashboard at prices.georgelarson.me.
+
+Agent Canvas extensions (JavaScript, OpenHands, 2026)
+- Two Canvas Extensions for the OpenHands agent stack: agent-canvas-subagent-monitor watches parallel task-tool subagent calls in a live conversation; agent-canvas-usage-explorer makes recorded LLM usage inspectable across runs.
+
 WORK EXPERIENCE
 Director of Technology, FM Expressions (2018 to April 2026)
 - Led technology strategy for a mid-size manufacturing company serving ecommerce channels.
@@ -102,7 +119,11 @@ Director of Technology, FM Expressions (2018 to April 2026)
 - Drove adoption metrics for the knowledge stack to quantify time-to-answer gains for production and customer operations.
 - Captured Meteor print-head PCAPs and tuned Nikto, Metasploit, and custom fuzz rigs to secure industrial protocols while leading the move from VPN toward zero-trust access.
 - Implemented Agile delivery, ticketing, and analytics to align product, operations, and finance on throughput, defect, and margin targets.
-- Built and operated integrations across the print and fulfillment vendor stack (Pace/EFI, Printro, VivX, Fanatics, Alphabroder, SignTronics) plus ecommerce platforms (Shopify, Magento) and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share a coherent data model.
+- Developed and operated Dashboard, FM's internal proprietary system for everything: orders, kiosk, production, prepress, preflight, planner, users, and servers, with importers feeding it from Impress, Boxseat, and Printro. PHP and MySQL with JavaScript and jQuery throughout.
+- Took over Printro, FM's own C# SaaS Digital Art Management platform for ordering heat transfers, and ran it: the API, the dashboard, the Azure infrastructure, CI/CD, and the roadmap. Its order EDI into Dashboard was a Node.js service.
+- Integrated and operated the two MIS/ERP systems the business ran on, EFI Pace and Aptean Impress: Power BI ETL against the Pace database, the Impress ProcessXML integration and order importer, staging environments, and their hosting and migrations.
+- Wrote the C# integration to VivX, the templated-art engine on a Windows box in Azure that takes a customer's name, sets it on the jersey in the right font, and builds a print-ready PDF for the heat transfer.
+- Built and operated integrations across the print and fulfillment vendor stack (EFI Pace, Aptean Impress, VivX, Fanatics, Alphabroder, SignTronics) plus ecommerce platforms (Shopify, Magento) and marketing tooling (HubSpot, Power BI), so the production floor, order pipeline, and analytics layer share a coherent data model.
 - Administered the prepress production stack (Esko, Prinergy, RIP workflows) and 3PL logistics integrations that kept the manufacturing floor running.
 - Built financial-modeling tools using AI/ML to analyze company performance and forecast scenarios; presented findings directly to executive leadership to inform strategic decisions during a difficult business period.
 
@@ -140,17 +161,17 @@ VOLUNTEER WORK
 - OCR and digitization project contributor for historical legal documents.
 
 TECHNICAL SKILLS
-Languages: PHP, Perl, SQL, Bash, Python, Go, Rust, Zig, C#, TypeScript, C++
+Languages: PHP, JavaScript, SQL, Bash, Python, Go, Rust, TypeScript, C#, Perl, Zig, C++
 Web and Data: MySQL, MSSQL, PostgreSQL, WordPress, Redmine, Gitea, Wiki.js
-Infrastructure: Linux, Active Directory, Entra ID, Group Policy, PowerShell, Apache, Nginx, Caddy, IIS, Kubernetes, VMware ESXi, Datto backups, Cisco firewalls, Cisco Meraki, SonicWall, pfSense, OpenVPN, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
-Cloud: AWS, Azure, Google Cloud, Proxmox
+Infrastructure: Linux, Active Directory, Entra ID, Group Policy, PowerShell, Apache, Nginx, Caddy, IIS, VMware ESXi, Datto backups, Cisco firewalls, Cisco Meraki, SonicWall, pfSense, OpenVPN, CrowdSec, Let's Encrypt/ACME, Cloudflare CDN
+Cloud: AWS, Azure, Linode, Rackspace, Google Cloud, Proxmox
 Security and Identity: Authentik, HashiCorp Vault, Psono, CrowdSec, HostedScan, OWASP ZAP, Nikto, Metasploit, SSL/TLS, iptables, UFW, fail2ban, DMARC/SPF/DKIM, Mimecast, KnowBe4, DefectDojo, OpenVAS, zero-trust network design, incident response, CCPA/GDPR compliance work
 Collaboration: Agile, Scrum, Kanban, Redmine, Zammad, GitLab, CryptPad
 Mail Systems: iRedMail, Postfix, Dovecot
 Commerce: Shopify, custom ecommerce platforms, payment integrations
 Data and Automation: RAG design, OCR pipelines, semantic search, ETL, knowledge base design
 AI Agent Infrastructure: Agent Zero (A2A protocol, multi-node mesh, project isolation), Model Context Protocol (MCP server design), Composio toolkit integration, Venice AI SDK ecosystem (TypeScript/PHP SDKs), LiteLLM, multi-provider model routing across 12 authenticated providers (Anthropic, OpenAI, Z.AI GLM, MiniMax, Moonshot/Kimi, Airouter, Groq, Cerebras, Featherless, OpenRouter, NVIDIA, Mistral), tiered inference (utility/chat split), prompt caching, agent-driven CI and content pipelines, RAG and semantic search, agent security boundaries, scheduled autonomous tasks. Operational fluency across ten coding-agent CLIs (Claude Code, opencode, gemini-cli, Codex CLI, Kimi Code, OpenHands, Aider, Octofriend, Crush, letta-code) used as a benchmark and production stack.
-Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, prepress production (Esko, Prinergy, RIP workflows), IRC server administration
+Systems and Networking: TCP/IP analysis, packet capture, PLC programming, industrial controls, prepress production (Esko, Prinergy, RIP workflows), print MIS and ERP (EFI Pace, Aptean Impress), IRC server administration
 Monitoring & Dashboards: Uptime Kuma, HostedScan, Red Sift OnDMARC, Dashy internal portal
 
 EDUCATION AND PROFESSIONAL DEVELOPMENT
