@@ -155,6 +155,9 @@ Earlier Career Highlights (1990s to 2000s)
 - Paid programming and database work 1994 to 2000 via Pacific Judgment Recovery (Brice, OH), AGL Personnel (Grove City, OH), and a Remedy Staffing CNC contract.
 - Two-time Business Professionals of America Chapter 13 president; state and regional wins in Computer Programming, Team Mathematics, and Extemporaneous Speech.
 
+INDEPENDENT WORK
+- Rebuilt a teacher's archive site (2026): migrated a WordPress site to a static build served from the owner's own Cloudflare account; downloaded and transcribed 645 recordings on a home GPU with cloud overflow; published 681 searchable talk pages with browser-side full-text search, a calendar feed, and a no-script newsletter signup; preserved all original URLs; handed over source, transcripts, and how-to guides so the owner maintains it herself. Writeup at georgelarson.me/writing/2026-10-16-sailorbob.
+
 VOLUNTEER WORK
 - Systems administrator for a volunteer Linux community, digital radio station, and open shell environment.
 - Long-term support for animal shelters, including events, outreach, and facilities work.
