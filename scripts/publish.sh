@@ -473,7 +473,7 @@ ${STYLE_IN_HEAD}</head>
     <a href="/who-is-george">who</a>
     <a href="/projects">projects</a>
     <a href="/writing">writing</a>
-    <a href="mailto:george.g.larson@gmail.com">contact</a>
+    <a href="https://cal.com/georgelarson/meeting">contact</a>
   </nav>
 </header>
 
